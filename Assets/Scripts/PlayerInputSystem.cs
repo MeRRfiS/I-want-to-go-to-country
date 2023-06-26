@@ -43,7 +43,7 @@ public class PlayerInputSystem : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT);
 
-        if (hit.collider.tag == TagConstants.HOLD && hit.collider != null)
+        if (hit.collider != null && hit.collider.tag == TagConstants.HOLD)
         {
             if (!PlayerController.GetInstance().HoldingObject())
             {
