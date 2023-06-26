@@ -18,25 +18,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _chController;
 
     public static PlayerController GetInstance() => instance;
-    public bool IsGrounded() => _chController.isGrounded;
-
-    public float Velocity
-    {
-        get => _velocity;
-        set => _velocity = value;
-    }
-    public Vector2 InputMovement
-    {
-        set => _inputMovement = value;
-    }
-    public Vector3 RotationCamera
-    {
-        set => _rotationCamera = value;
-    }
-    public Vector3 RotationPlayer
-    {
-        set => _rotationPlayer = value;
-    }
+    private bool IsGrounded() => _chController.isGrounded;
 
     private void Awake()
     {
@@ -84,5 +66,24 @@ public class PlayerController : MonoBehaviour
     {
         Camera.main.transform.localRotation = Quaternion.Euler(_rotationCamera);
         transform.rotation = Quaternion.Euler(_rotationPlayer);
+    }
+
+    public void ChangeMovement(Vector2 movement)
+    {
+        _inputMovement = movement;
+    }
+
+    public void ChangeVelocity() 
+    {
+        if (!IsGrounded()) return;
+
+        _velocity = PlayerConstants.JUMP_SPEED;
+    }
+
+    public void ChangeRotation(float rotationCamera = 0, 
+                               float rotationPlayer = 0)
+    {
+        _rotationCamera = (Vector3)(rotationCamera != 0 ? new Vector3(rotationCamera, 0, 0) : _rotationCamera);
+        _rotationPlayer = (Vector3)(rotationPlayer != 0 ? new Vector3(0, rotationPlayer, 0) : _rotationPlayer);
     }
 }
