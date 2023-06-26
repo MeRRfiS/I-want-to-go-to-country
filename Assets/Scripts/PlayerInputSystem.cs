@@ -34,4 +34,25 @@ public class PlayerInputSystem : MonoBehaviour
                                  PlayerConstants.MAXIMUM_VERT);
         PlayerController.GetInstance().ChangeRotation(rotationCamera: _rotationX);
     }
+
+    public void GetObject(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        Transform startPoint = Camera.main.transform;
+        RaycastHit hit;
+        Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT);
+
+        if (hit.collider.tag == TagConstants.HOLD && hit.collider != null)
+        {
+            if (!PlayerController.GetInstance().HoldingObject())
+            {
+                PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
+            }
+            else
+            {
+                PlayerController.GetInstance().DropObject();
+            }
+        }
+    }
 }
