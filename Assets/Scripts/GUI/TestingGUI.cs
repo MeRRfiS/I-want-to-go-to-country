@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestingGUI : MonoBehaviour
 {
+
     private void OnGUI()
     {
         DotOnTheCenter();
