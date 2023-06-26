@@ -10,21 +10,20 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        PlayerController.GetInstance().InputMovement = context.ReadValue<Vector2>();
+        PlayerController.GetInstance().ChangeMovement(context.ReadValue<Vector2>());
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (!PlayerController.GetInstance().IsGrounded()) return;
 
-        PlayerController.GetInstance().Velocity += PlayerConstants.JUMP_SPEED;
+        PlayerController.GetInstance().ChangeVelocity();
     }
 
     public void RotationX(InputAction.CallbackContext context)
     {
         _rotationY += context.ReadValue<float>() * PlayerConstants.SENSITIVITY_HOR;
-        PlayerController.GetInstance().RotationPlayer = new Vector3(0, _rotationY, 0);
+        PlayerController.GetInstance().ChangeRotation(rotationPlayer: _rotationY);
     }
 
     public void RotationY(InputAction.CallbackContext context)
@@ -33,6 +32,6 @@ public class PlayerInputSystem : MonoBehaviour
         _rotationX = Mathf.Clamp(_rotationX,
                                  PlayerConstants.MINIMUM_VERT,
                                  PlayerConstants.MAXIMUM_VERT);
-        PlayerController.GetInstance().RotationCamera = new Vector3(_rotationX, 0, 0);
+        PlayerController.GetInstance().ChangeRotation(rotationCamera: _rotationX);
     }
 }
