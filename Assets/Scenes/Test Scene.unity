@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 360524633}
   - component: {fileID: 360524632}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Information
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.1.5pa
+  m_text: 'v. 0.1.6pa
 
     WASD - Moving
 
