@@ -54,5 +54,22 @@ public class PlayerInputSystem : MonoBehaviour
                 PlayerController.GetInstance().DropObject();
             }
         }
+        else if(hit.collider != null && hit.collider.tag == TagConstants.INSTRUMENT)
+        {
+            if (!PlayerController.GetInstance().HoldingInstrument())
+            {
+                PlayerController.GetInstance().PickupInstrument(hit.collider.gameObject);
+            }
+        }
+    }
+
+    public void DropObject(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        if (PlayerController.GetInstance().HoldingInstrument())
+        {
+            PlayerController.GetInstance().DropInstrument();
+        }
     }
 }

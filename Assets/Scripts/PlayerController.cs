@@ -11,13 +11,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 _rotationCamera;
     private Vector3 _rotationPlayer;
     private GameObject _heldObject;
+    private GameObject _heldInstrument;
     private Rigidbody _heldRigidbody;
+    private Rigidbody _heldRigidbodyInstrument;
     private CharacterController _chController;
 
+    [Header("Player object")]
     [SerializeField] private Transform _holdArea;
+    [SerializeField] private Transform _hand;
 
     public static PlayerController GetInstance() => instance;
     public bool HoldingObject() => _heldObject != null;
+    public bool HoldingInstrument() => _heldInstrument != null;
     private bool IsGrounded() => _chController.isGrounded;
 
     private void Awake()
@@ -114,12 +119,35 @@ public class PlayerController : MonoBehaviour
     {
         if (_heldObject == null) return;
 
-        _heldRigidbody = _heldObject.GetComponent<Rigidbody>();
         _heldRigidbody.useGravity = true;
         _heldRigidbody.drag = 1;
         _heldRigidbody.constraints = RigidbodyConstraints.None;
         _heldObject.transform.parent = null;
         _heldRigidbody = null;
         _heldObject = null;
+    }
+
+    public void PickupInstrument(GameObject heldInstrument)
+    {
+        if (_heldInstrument != null) return;
+
+        _heldRigidbodyInstrument = heldInstrument.GetComponent<Rigidbody>();
+
+        _heldRigidbodyInstrument.isKinematic = true;
+        _heldRigidbodyInstrument.transform.parent = _hand;
+        _heldInstrument = heldInstrument;
+        _heldInstrument.transform.localPosition = Vector3.zero;
+        _heldInstrument.transform.localRotation = Quaternion.Euler(Vector3.zero);
+    }
+
+    public void DropInstrument()
+    {
+        if (_heldInstrument == null) return;
+
+        _heldRigidbodyInstrument = _heldInstrument.GetComponent<Rigidbody>();
+        _heldRigidbodyInstrument.isKinematic = false;
+        _heldInstrument.transform.parent = null;
+        _heldRigidbodyInstrument = null;
+        _heldInstrument = null;
     }
 }
