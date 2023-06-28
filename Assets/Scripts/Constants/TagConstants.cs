@@ -8,4 +8,5 @@ public static class TagConstants
 {
     public static string HOLD = "Hold";
     public static string INSTRUMENT = "Instrument";
+    public static string EARTH = "Earth";
 }

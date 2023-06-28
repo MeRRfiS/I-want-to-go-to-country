@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,9 +12,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 _rotationCamera;
     private Vector3 _rotationPlayer;
     private GameObject _heldObject;
-    private GameObject _heldInstrument;
     private Rigidbody _heldRigidbody;
     private Rigidbody _heldRigidbodyInstrument;
+    private InstrumentController _heldInstrument;
     private CharacterController _chController;
 
     [Header("Player object")]
@@ -24,6 +25,11 @@ public class PlayerController : MonoBehaviour
     public bool HoldingObject() => _heldObject != null;
     public bool HoldingInstrument() => _heldInstrument != null;
     private bool IsGrounded() => _chController.isGrounded;
+
+    public InstrumentController HeldInstrument
+    {
+        get => _heldInstrument; 
+    }
 
     private void Awake()
     {
@@ -135,7 +141,8 @@ public class PlayerController : MonoBehaviour
 
         _heldRigidbodyInstrument.isKinematic = true;
         _heldRigidbodyInstrument.transform.parent = _hand;
-        _heldInstrument = heldInstrument;
+        _heldInstrument = heldInstrument.GetComponent<InstrumentController>();
+        _heldInstrument.enabled = true;
         _heldInstrument.transform.localPosition = Vector3.zero;
         _heldInstrument.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
@@ -146,8 +153,14 @@ public class PlayerController : MonoBehaviour
 
         _heldRigidbodyInstrument = _heldInstrument.GetComponent<Rigidbody>();
         _heldRigidbodyInstrument.isKinematic = false;
+        _heldInstrument.enabled = false;
         _heldInstrument.transform.parent = null;
         _heldRigidbodyInstrument = null;
         _heldInstrument = null;
+    }
+
+    public void UseInstrument()
+    {
+        _heldInstrument.Instrument.Use();
     }
 }
