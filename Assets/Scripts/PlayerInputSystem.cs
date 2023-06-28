@@ -72,4 +72,12 @@ public class PlayerInputSystem : MonoBehaviour
             PlayerController.GetInstance().DropInstrument();
         }
     }
+
+    public void UseInstrument(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if (!PlayerController.GetInstance().HoldingInstrument()) return;
+
+        PlayerController.GetInstance().UseInstrument();
+    }
 }

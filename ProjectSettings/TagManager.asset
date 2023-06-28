@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hold
   - Instrument
+  - Earth
   layers:
   - Default
   - TransparentFX

@@ -516,13 +516,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.1.6pa
+  m_text: 'v. 0.2.9pa
 
     WASD - Moving
 
     Space - Jump
 
     E - Pickup/Drop object
+
+    LMB
+    - Use instrument
 
 '
   m_isRightToLeft: 0
@@ -1124,6 +1127,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: db24dcd6-adf9-4397-9e61-fe5d99090b22
     m_ActionName: Gameplay/DropObject[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 937795824}
+        m_TargetAssemblyTypeName: PlayerInputSystem, Assembly-CSharp
+        m_MethodName: UseInstrument
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c61ecda-b2eb-4ed9-9b89-f4db22607041
+    m_ActionName: Gameplay/UseInstrument[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1530,6 +1549,7 @@ GameObject:
   - component: {fileID: 1194135456}
   - component: {fileID: 1194135455}
   - component: {fileID: 1194135454}
+  - component: {fileID: 1194135457}
   m_Layer: 0
   m_Name: Hoe
   m_TagString: Instrument
@@ -1602,6 +1622,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1194135457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194135453}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7edf0c883b8fea4f8228fff8af506aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: 0
+  _durability: 0
+  _patchPrefab: {fileID: 8073833192983224627, guid: e89caef2c91d0c445aa174e498a2cf7a, type: 3}
 --- !u!1 &1215528435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,7 +1784,7 @@ GameObject:
   - component: {fileID: 1222821325}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Earth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2041,7 +2076,7 @@ Transform:
   m_GameObject: {fileID: 1458508381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.05, z: 0.33333334}
+  m_LocalScale: {x: 0.2, y: 0.05, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1194135456}
