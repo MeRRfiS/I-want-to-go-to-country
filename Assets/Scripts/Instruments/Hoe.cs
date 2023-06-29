@@ -39,6 +39,8 @@ public class Hoe : Instrument
 
     public override void Use()
     {
+        if (patch == null) return;
+
         patch.layer = LayerMask.NameToLayer("Default");
         patch.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         MonoBehaviour.Instantiate(patch);
