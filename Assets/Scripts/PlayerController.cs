@@ -143,6 +143,12 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyInstrument.transform.parent = _hand;
         _heldInstrument = heldInstrument.GetComponent<InstrumentController>();
         _heldInstrument.enabled = true;
+        _heldInstrument.gameObject.layer = LayerMask.NameToLayer(LayerConstants.INSTRUMENT);
+        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
+        for (int i = 0; i < _heldInstrument.transform.childCount; i++)
+        {
+            _heldInstrument.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.INSTRUMENT);
+        }
         _heldInstrument.transform.localPosition = Vector3.zero;
         _heldInstrument.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
@@ -154,6 +160,12 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyInstrument = _heldInstrument.GetComponent<Rigidbody>();
         _heldRigidbodyInstrument.isKinematic = false;
         _heldInstrument.enabled = false;
+        _heldInstrument.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
+        for (int i = 0; i < _heldInstrument.transform.childCount; i++)
+        {
+            _heldInstrument.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        }
         _heldInstrument.transform.parent = null;
         _heldRigidbodyInstrument = null;
         _heldInstrument = null;
