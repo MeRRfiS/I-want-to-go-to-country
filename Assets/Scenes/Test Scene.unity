@@ -517,16 +517,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.2.9pa
+  m_text: 'v. 0.2.13pa
 
     WASD - Moving
 
     Space - Jump
 
-    E - Pickup/Drop object
+    E - Pickup/Drop
+    object
 
-    LMB
-    - Use instrument
+    LMB - Use instrument
 
 '
   m_isRightToLeft: 0
@@ -651,7 +651,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &382808771
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1222,7 +1222,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &1085389203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2816,7 +2816,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &1984476495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2949,7 +2949,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &2011899145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2045436393}
   - component: {fileID: 2045436395}
-  - component: {fileID: 2045436394}
   m_Layer: 0
   m_Name: Instruments Camera
   m_TagString: Untagged
@@ -3069,14 +3068,6 @@ Transform:
   m_Father: {fileID: 122311627}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &2045436394
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045436392}
-  m_Enabled: 1
 --- !u!20 &2045436395
 Camera:
   m_ObjectHideFlags: 0
