@@ -41,7 +41,7 @@ public class Hoe : Instrument
     {
         if (patch == null) return;
 
-        patch.layer = LayerMask.NameToLayer("Default");
+        patch.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         patch.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         MonoBehaviour.Instantiate(patch);
     }

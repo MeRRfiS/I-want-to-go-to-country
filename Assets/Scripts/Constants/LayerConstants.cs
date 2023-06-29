@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public static class TagConstants
+public static class LayerConstants
 {
-    public const string HOLD = "Hold";
+    public const string DEFAULT = "Default";
     public const string INSTRUMENT = "Instrument";
-    public const string EARTH = "Earth";
 }

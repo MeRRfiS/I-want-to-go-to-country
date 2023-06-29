@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class WorldConstants
 {
-    public static float GRAVITY_MULTIPLIER = 1.5f;
+    public const float GRAVITY_MULTIPLIER = 1.5f;
 }
