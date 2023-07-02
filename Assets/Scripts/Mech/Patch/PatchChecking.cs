@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 [RequireComponent(typeof(Patch))]
 public class PatchChecking : MonoBehaviour
@@ -34,6 +35,29 @@ public class PatchChecking : MonoBehaviour
         get => new Vector3(fastenXPos, 0, fastenZPos);
     }
 
+    private RaycastHit GetHit(Vector3 side)
+    {
+        RaycastHit hitSideOne;
+        RaycastHit hitSideTwo;
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, side, out hitSideTwo, MechConstants.DISTANCE_TO_PATCH))
+        {
+            if (hitSideTwo.collider.CompareTag(TagConstants.PATCH))
+            {
+                hit = hitSideTwo;
+            }
+        }
+        else if (Physics.Raycast(transform.position, -side, out hitSideOne, MechConstants.DISTANCE_TO_PATCH))
+        {
+            if (hitSideOne.collider.CompareTag(TagConstants.PATCH))
+            {
+                hit = hitSideOne;
+            }
+        }
+
+        return hit;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == TagConstants.EARTH) return;
@@ -60,24 +84,7 @@ public class PatchChecking : MonoBehaviour
             if (hitHor.collider == hitVer.collider) return false;
         }
 
-        RaycastHit hitLeft;
-        RaycastHit hitRight;
-        hitHor = new RaycastHit();
-        if (Physics.Raycast(transform.position, transform.right, out hitRight, MechConstants.DISTANCE_TO_PATCH))
-        {
-            if (hitRight.collider.CompareTag(TagConstants.PATCH))
-            {
-                hitHor = hitRight;
-            }
-        }
-        else if(Physics.Raycast(transform.position, -transform.right, out hitLeft, MechConstants.DISTANCE_TO_PATCH))
-        {
-            if (hitLeft.collider.CompareTag(TagConstants.PATCH))
-            {
-                hitHor = hitLeft;
-            }
-        }
-
+        hitHor = GetHit(transform.right);
         if (hitHor.collider != null)
         {
             fastenZPos = hitHor.collider.transform.position.z;
@@ -96,24 +103,7 @@ public class PatchChecking : MonoBehaviour
             if (hitHor.collider == hitVer.collider) return false;
         }
 
-        RaycastHit hitForward;
-        RaycastHit hitDown;
-        hitVer = new RaycastHit();
-        if (Physics.Raycast(transform.position, transform.forward, out hitForward, MechConstants.DISTANCE_TO_PATCH))
-        {
-            if (hitForward.collider.CompareTag(TagConstants.PATCH))
-            {
-                hitVer = hitForward;
-            }
-        }
-        else if (Physics.Raycast(transform.position, -transform.forward, out hitDown, MechConstants.DISTANCE_TO_PATCH))
-        {
-            if (hitDown.collider.CompareTag(TagConstants.PATCH))
-            {
-                hitVer = hitDown;
-            }
-        }
-
+        hitVer = GetHit(transform.forward);
         if (hitVer.collider != null)
         {
             fastenXPos = hitVer.collider.transform.position.x;

@@ -33,7 +33,6 @@ public class Hoe : Instrument
             point = new Vector3(patchCheck.IsVerFasten ? patchCheck.FastenPos.x : hit.point.x,
                                 0,
                                 patchCheck.IsHorFasten ? patchCheck.FastenPos.z : hit.point.z);
-            Debug.Log(Vector3.Distance(point, hit.point));
             if(Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
             {
                 patchCheck.ResetFastenChecking();
