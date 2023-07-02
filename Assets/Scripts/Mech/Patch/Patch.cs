@@ -11,11 +11,6 @@ public class Patch : MonoBehaviour
         get => checker;
     }
 
-    private void Start()
-    {
-        //gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
-    }
-
     public void DestroyChecker()
     {
         Destroy(checker);
