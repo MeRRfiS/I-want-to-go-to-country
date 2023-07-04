@@ -41,24 +41,27 @@ public class PlayerInputSystem : MonoBehaviour
 
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
-        Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT);
 
-        if (hit.collider != null && hit.collider.tag == TagConstants.HOLD)
+        if(Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT))
         {
-            if (!PlayerController.GetInstance().HoldingObject())
+            switch (hit.collider.tag)
             {
-                PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
-            }
-            else
-            {
-                PlayerController.GetInstance().DropObject();
-            }
-        }
-        else if(hit.collider != null && hit.collider.tag == TagConstants.INSTRUMENT)
-        {
-            if (!PlayerController.GetInstance().HoldingInstrument())
-            {
-                PlayerController.GetInstance().PickupInstrument(hit.collider.gameObject);
+                case TagConstants.HOLD:
+                    if (!PlayerController.GetInstance().HoldingObject())
+                    {
+                        PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
+                    }
+                    else
+                    {
+                        PlayerController.GetInstance().DropObject();
+                    }
+                    break;
+                case TagConstants.INSTRUMENT:
+                    if (!PlayerController.GetInstance().HoldingItem())
+                    {
+                        PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
+                    }
+                    break;
             }
         }
     }
@@ -67,17 +70,17 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (PlayerController.GetInstance().HoldingInstrument())
+        if (PlayerController.GetInstance().HoldingItem())
         {
-            PlayerController.GetInstance().DropInstrument();
+            PlayerController.GetInstance().DropItem();
         }
     }
 
-    public void UseInstrument(InputAction.CallbackContext context)
+    public void UseItem(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (!PlayerController.GetInstance().HoldingInstrument()) return;
+        if (!PlayerController.GetInstance().HoldingItem()) return;
 
-        PlayerController.GetInstance().UseInstrument();
+        PlayerController.GetInstance().UseItem();
     }
 }

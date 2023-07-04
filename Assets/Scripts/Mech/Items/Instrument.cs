@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstrumentModel
+public abstract class Instrument: Item
 {
-    public InstrumentTypeEnum InstrumentType { get; set; }
     public int Level { get; set; }
     public int Durability { get; set; }
+
+    public override void Use()
+    {
+        UseInstrument();
+    }
+
+    protected abstract void UseInstrument();
 }

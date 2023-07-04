@@ -8,5 +8,5 @@ public static class LayerConstants
 {
     public const string DEFAULT = "Default";
     public const string IGNORE_REYCAST = "Ignore Raycast";
-    public const string INSTRUMENT = "Instrument";
+    public const string ITEM = "Item";
 }
