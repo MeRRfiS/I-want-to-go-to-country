@@ -9,7 +9,13 @@ public class Hoe : Instrument
 
     private bool IsPatchObjNull() => patchObj == null;
 
-    public override GameObject CreateObj(GameObject obj = null, GameObject prefab = null)
+    public Hoe(int level, int durability)
+    {
+        Level = level;
+        Durability = durability;
+    }
+
+    public GameObject CreatePatch(GameObject obj, GameObject prefab)
     {
         patchObj = obj;
         if(!IsPatchObjNull())
@@ -53,13 +59,13 @@ public class Hoe : Instrument
         }
         else
         {
-            patchObj = DestroyObj(patchObj);
+            patchObj = DestroyPatch(patchObj);
         }
 
         return patchObj;
     }
 
-    public override GameObject DestroyObj(GameObject obj = null)
+    public GameObject DestroyPatch(GameObject obj)
     {
         if (!IsPatchObjNull()) MonoBehaviour.Destroy(patchObj);
         patchObj = null;
@@ -67,7 +73,7 @@ public class Hoe : Instrument
         return patchObj;
     }
 
-    public override void Use()
+    protected override void UseInstrument()
     {
         if (IsPatchObjNull()) return;
         if (patchCheck.IsOnObject) return;

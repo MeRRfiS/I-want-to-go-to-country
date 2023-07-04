@@ -1132,7 +1132,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 937795824}
         m_TargetAssemblyTypeName: PlayerInputSystem, Assembly-CSharp
-        m_MethodName: UseInstrument
+        m_MethodName: UseItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1194135453}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7edf0c883b8fea4f8228fff8af506aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f2c531fa9039ab48a795766a2020b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 0

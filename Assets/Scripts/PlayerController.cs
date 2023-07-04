@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _rotationPlayer;
     private GameObject _heldObject;
     private Rigidbody _heldRigidbody;
-    private Rigidbody _heldRigidbodyInstrument;
-    private InstrumentController _heldInstrument;
+    private Rigidbody _heldRigidbodyItem;
+    private ItemController _heldItem;
     private CharacterController _chController;
 
     [Header("Player object")]
@@ -23,13 +23,8 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController GetInstance() => instance;
     public bool HoldingObject() => _heldObject != null;
-    public bool HoldingInstrument() => _heldInstrument != null;
+    public bool HoldingItem() => _heldItem != null;
     private bool IsGrounded() => _chController.isGrounded;
-
-    public InstrumentController HeldInstrument
-    {
-        get => _heldInstrument; 
-    }
 
     private void Awake()
     {
@@ -133,46 +128,45 @@ public class PlayerController : MonoBehaviour
         _heldObject = null;
     }
 
-    public void PickupInstrument(GameObject heldInstrument)
+    public void PickupItem(GameObject heldItem)
     {
-        if (_heldInstrument != null) return;
+        if (_heldItem != null) return;
 
-        _heldRigidbodyInstrument = heldInstrument.GetComponent<Rigidbody>();
-
-        _heldRigidbodyInstrument.isKinematic = true;
-        _heldRigidbodyInstrument.transform.parent = _hand;
-        _heldInstrument = heldInstrument.GetComponent<InstrumentController>();
-        _heldInstrument.enabled = true;
-        _heldInstrument.gameObject.layer = LayerMask.NameToLayer(LayerConstants.INSTRUMENT);
+        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem.isKinematic = true;
+        _heldRigidbodyItem.transform.parent = _hand;
+        _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem.enabled = true;
+        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldInstrument.transform.childCount; i++)
+        for (int i = 0; i < _heldItem.transform.childCount; i++)
         {
-            _heldInstrument.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.INSTRUMENT);
+            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
         }
-        _heldInstrument.transform.localPosition = Vector3.zero;
-        _heldInstrument.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        _heldItem.transform.localPosition = Vector3.zero;
+        _heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
-    public void DropInstrument()
+    public void DropItem()
     {
-        if (_heldInstrument == null) return;
+        if (_heldItem == null) return;
 
-        _heldRigidbodyInstrument = _heldInstrument.GetComponent<Rigidbody>();
-        _heldRigidbodyInstrument.isKinematic = false;
-        _heldInstrument.enabled = false;
-        _heldInstrument.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem.isKinematic = false;
+        _heldItem.enabled = false;
+        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldInstrument.transform.childCount; i++)
+        for (int i = 0; i < _heldItem.transform.childCount; i++)
         {
-            _heldInstrument.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         }
-        _heldInstrument.transform.parent = null;
-        _heldRigidbodyInstrument = null;
-        _heldInstrument = null;
+        _heldItem.transform.parent = null;
+        _heldRigidbodyItem = null;
+        _heldItem = null;
     }
 
-    public void UseInstrument()
+    public void UseItem()
     {
-        _heldInstrument.Instrument.Use();
+        _heldItem.Item.Use();
     }
 }
