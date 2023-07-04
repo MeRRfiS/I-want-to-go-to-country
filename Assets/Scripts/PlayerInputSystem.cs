@@ -57,6 +57,7 @@ public class PlayerInputSystem : MonoBehaviour
                     }
                     break;
                 case TagConstants.INSTRUMENT:
+                case TagConstants.SEED:
                     if (!PlayerController.GetInstance().HoldingItem())
                     {
                         PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
@@ -79,8 +80,27 @@ public class PlayerInputSystem : MonoBehaviour
     public void UseItem(InputAction.CallbackContext context)
     {
         if (!context.started) return;
+
         if (!PlayerController.GetInstance().HoldingItem()) return;
 
         PlayerController.GetInstance().UseItem();
+    }
+
+    public void Interaction(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        Transform startPoint = Camera.main.transform;
+        RaycastHit hit;
+
+        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT))
+        {
+            switch (hit.collider.tag)
+            {
+                case TagConstants.PLANT:
+                    hit.collider.GetComponent<Plant>().Harvesting();
+                    break;
+            }
+        }
     }
 }

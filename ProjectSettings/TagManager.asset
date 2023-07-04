@@ -8,6 +8,8 @@ TagManager:
   - Instrument
   - Earth
   - Patch
+  - Seed
+  - Plant
   layers:
   - Default
   - TransparentFX
