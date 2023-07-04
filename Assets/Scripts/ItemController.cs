@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class ItemController : MonoBehaviour
 {
     private Item item;
 
     [Header("Settings")]
+    public InstrumentTypeEnum instrumentType;
+    public PlantTypeEnum seedType;
     public int _level;
     public int _durability;
 
@@ -23,7 +26,10 @@ public class ItemController : MonoBehaviour
     [Obsolete]
     private void Start()
     {
-        item = new Hoe(_level, _durability);
+        if (instrumentType == InstrumentTypeEnum.Hoe)
+            item = new Hoe(_level, _durability);
+        else
+            item = new Seed(seedType);
     }
 
     private void Update()
