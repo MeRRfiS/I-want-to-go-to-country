@@ -26,10 +26,23 @@ public class ItemController : MonoBehaviour
     [Obsolete]
     private void Start()
     {
-        if (instrumentType == InstrumentTypeEnum.Hoe)
-            item = new Hoe(_level, _durability);
-        else
-            item = new Seed(seedType);
+        switch (instrumentType)
+        {
+            case InstrumentTypeEnum.None:
+                item = new Seed(seedType);
+                break;
+            case InstrumentTypeEnum.Hoe:
+                item = new Hoe(_level, _durability);
+                break;
+            case InstrumentTypeEnum.Axe:
+                break;
+            case InstrumentTypeEnum.Funnel:
+                item = new Funnel(_level, _durability);
+                break;
+            default:
+                break;
+        }
+            
     }
 
     private void Update()

@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Funnel : MonoBehaviour
+public class Funnel : Instrument
 {
-    // Start is called before the first frame update
-    void Start()
+    public Funnel(int level, int durability)
     {
-        
+        Level = level;
+        Durability = durability;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void UseInstrument()
     {
-        
+        Transform startPoint = Camera.main.transform;
+        RaycastHit hit;
+
+        if(Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.DISTANCE_FOR_PLANT)) 
+        {
+            GameObject hitObject = hit.collider.gameObject;
+            if (!hitObject.CompareTag(TagConstants.PLANT)) return;
+
+            hitObject.GetComponent<PlantController>().Watering();
+        }
     }
 }
