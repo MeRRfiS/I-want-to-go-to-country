@@ -95,10 +95,11 @@ public class PlayerInputSystem : MonoBehaviour
 
         if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT))
         {
-            switch (hit.collider.tag)
+            GameObject hitObject = hit.collider.gameObject;
+            switch (hitObject.tag)
             {
                 case TagConstants.PLANT:
-                    hit.collider.GetComponent<Plant>().Harvesting();
+                    hitObject.GetComponent<PlantController>().Harvesting();
                     break;
             }
         }

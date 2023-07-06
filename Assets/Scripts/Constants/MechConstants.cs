@@ -9,4 +9,6 @@ public static class MechConstants
     public const float DISTANCE_TO_PATCH = 1.5f;
     public const float DISTANCE_FOR_PLANT = 3f;
     public const float MAX_DISTANCE_FOR_FASTEN_PATCH = 1f;
+
+    public const float WAIT_TIME_FOR_WATER = 20f;
 }
