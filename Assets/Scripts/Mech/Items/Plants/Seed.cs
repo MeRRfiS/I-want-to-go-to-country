@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Seed : Item
 {
-    private PlantTypeEnum _type;
+    private GameObject saplingObj;
+    private TreeChecking treeCheck;
+    private SeedTypeEnum _type;
 
-    public Seed(PlantTypeEnum type)
+    private bool IsSaplingObjNull() => saplingObj == null;
+
+    public Seed(SeedTypeEnum type)
     {
         _type = type;
     }
@@ -24,12 +28,8 @@ public class Seed : Item
 
             GameObject plant = Resources.Load(ResourceConstants.PLANTS + ((int)_type).ToString()) as GameObject;
             GameObject plantObj = MonoBehaviour.Instantiate(plant, hitTransform);
-            plantObj.GetComponent<PlantController>().SetPlantType(_type);
+            plantObj.GetComponent<PlantController>().SetSeedType(_type);
             plantObj.transform.localPosition = new Vector3(0, 0.5f, 0);
-        }
-        else
-        {
-            Debug.Log("Patch not found or it so far!");
         }
     }
 }

@@ -15,7 +15,20 @@ public class Hoe : Instrument
         Durability = durability;
     }
 
-    public GameObject CreatePatch(GameObject obj, GameObject prefab)
+    public override void Use()
+    {
+        if (IsPatchObjNull()) return;
+        if (patchCheck.IsOnObject) return;
+
+        patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
+        patchObj.GetComponent<Patch>().DestroyChecker();
+        MonoBehaviour.Instantiate(patchObj);
+        patchCheck = null;
+        patchObj = null;
+    }
+
+    public override GameObject Visualization(GameObject obj, GameObject prefab)
     {
         patchObj = obj;
         if(!IsPatchObjNull())
@@ -59,30 +72,17 @@ public class Hoe : Instrument
         }
         else
         {
-            patchObj = DestroyPatch(patchObj);
+            patchObj = this.StopVisualization();
         }
 
         return patchObj;
     }
 
-    public GameObject DestroyPatch(GameObject obj)
+    public override GameObject StopVisualization()
     {
         if (!IsPatchObjNull()) MonoBehaviour.Destroy(patchObj);
         patchObj = null;
 
         return patchObj;
-    }
-
-    protected override void UseInstrument()
-    {
-        if (IsPatchObjNull()) return;
-        if (patchCheck.IsOnObject) return;
-
-        patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-        patchObj.GetComponent<Patch>().DestroyChecker();
-        MonoBehaviour.Instantiate(patchObj);
-        patchCheck = null;
-        patchObj = null;
     }
 }

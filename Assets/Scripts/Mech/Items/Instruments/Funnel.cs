@@ -10,7 +10,7 @@ public class Funnel : Instrument
         Durability = durability;
     }
 
-    protected override void UseInstrument()
+    public override void Use()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
@@ -18,7 +18,7 @@ public class Funnel : Instrument
         if(Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.DISTANCE_FOR_PLANT)) 
         {
             GameObject hitObject = hit.collider.gameObject;
-            if (!hitObject.CompareTag(TagConstants.PLANT)) return;
+            if (!hitObject.CompareTag(TagConstants.PLANT) && !hitObject.CompareTag(TagConstants.TREE)) return;
 
             hitObject.GetComponent<PlantController>().Watering();
         }

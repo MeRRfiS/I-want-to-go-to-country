@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,14 +10,15 @@ public class ItemController : MonoBehaviour
     private Item item;
 
     [Header("Settings")]
-    public InstrumentTypeEnum instrumentType;
-    public PlantTypeEnum seedType;
+    public ItemTypeEnum itemType;
+    public SeedTypeEnum seedType;
+    public TreeTypeEnum treeType;
     public int _level;
     public int _durability;
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject _patchPrefab;
-    private GameObject _patch;
+    [SerializeField] private GameObject _objPrefab;
+    private GameObject _obj;
 
     public Item Item
     {
@@ -26,18 +28,23 @@ public class ItemController : MonoBehaviour
     [Obsolete]
     private void Start()
     {
-        switch (instrumentType)
+        switch (itemType)
         {
-            case InstrumentTypeEnum.None:
-                item = new Seed(seedType);
+            case ItemTypeEnum.None:
                 break;
-            case InstrumentTypeEnum.Hoe:
+            case ItemTypeEnum.Hoe:
                 item = new Hoe(_level, _durability);
                 break;
-            case InstrumentTypeEnum.Axe:
+            case ItemTypeEnum.Axe:
                 break;
-            case InstrumentTypeEnum.Funnel:
+            case ItemTypeEnum.Funnel:
                 item = new Funnel(_level, _durability);
+                break;
+            case ItemTypeEnum.Seed:
+                item = new Seed(seedType);
+                break;
+            case ItemTypeEnum.Tree:
+                item = new Tree(treeType);
                 break;
             default:
                 break;
@@ -47,27 +54,21 @@ public class ItemController : MonoBehaviour
 
     private void Update()
     {
-        ApplyHoeUpdate();
+        ApplyItemUpdate();
     }
 
     private void OnDisable()
     {
-        ApplyHoeDisable();
+        ApplyItemDisable();
     }
 
-    private void ApplyHoeUpdate()
+    private void ApplyItemUpdate()
     {
-        if (!item.GetType().Equals(typeof(Hoe))) return;
-
-        Hoe hoe = (Hoe)item;
-        _patch = hoe.CreatePatch(_patch, _patchPrefab);
+        _obj = item.Visualization(_obj, _objPrefab);
     }
 
-    private void ApplyHoeDisable()
+    private void ApplyItemDisable()
     {
-        if (!item.GetType().Equals(typeof(Hoe))) return;
-
-        Hoe hoe = (Hoe)item;
-        _patch = hoe.DestroyPatch(_patch);
+        _obj = item.StopVisualization();
     }
 }

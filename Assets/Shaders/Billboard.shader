@@ -11,7 +11,7 @@ Shader "Unlit/Billboard"
 
         Pass
         {
-            ZTest Off
+            //ZTest Off
             Blend SrcAlpha OneMinusSrcAlpha
             Cull Off
 
