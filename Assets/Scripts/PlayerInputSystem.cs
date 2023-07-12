@@ -99,7 +99,10 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hitObject.tag)
             {
                 case TagConstants.PLANT:
-                    hitObject.GetComponent<PlantController>().Harvesting();
+                    hitObject.GetComponent<PlantController>().PatchHarvesting();
+                    break;
+                case TagConstants.TREE:
+                    hitObject.GetComponent<PlantController>().TreeHarvesting();
                     break;
             }
         }

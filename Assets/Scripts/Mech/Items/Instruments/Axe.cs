@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Axe : Instrument
 {
-    protected override void UseInstrument()
+    public override void Use()
     {
         throw new System.NotImplementedException();
     }
