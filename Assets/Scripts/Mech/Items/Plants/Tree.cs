@@ -42,7 +42,7 @@ public class Tree : Item
         saplingObj = null;
     }
 
-    public override GameObject Visualization(GameObject obj, GameObject prefab)
+    public override GameObject Updating(GameObject obj, GameObject prefab)
     {
         saplingObj = obj;
         if (!IsSaplingObjNull())
@@ -100,13 +100,13 @@ public class Tree : Item
         }
         else
         {
-            saplingObj = this.StopVisualization();
+            saplingObj = this.StopUpdating();
         }
 
         return saplingObj;
     }
 
-    public override GameObject StopVisualization()
+    public override GameObject StopUpdating()
     {
         if (!IsSaplingObjNull()) MonoBehaviour.Destroy(saplingObj);
         saplingObj = null;
