@@ -42,11 +42,11 @@ public class PlantController : MonoBehaviour
                     break;
             }
 
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
         if (_plant.IsPlantDry)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 
