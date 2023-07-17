@@ -28,7 +28,7 @@ public class Hoe : Instrument
         patchObj = null;
     }
 
-    public override GameObject Visualization(GameObject obj, GameObject prefab)
+    public override GameObject Updating(GameObject obj, GameObject prefab)
     {
         patchObj = obj;
         if(!IsPatchObjNull())
@@ -72,13 +72,13 @@ public class Hoe : Instrument
         }
         else
         {
-            patchObj = this.StopVisualization();
+            patchObj = this.StopUpdating();
         }
 
         return patchObj;
     }
 
-    public override GameObject StopVisualization()
+    public override GameObject StopUpdating()
     {
         if (!IsPatchObjNull()) MonoBehaviour.Destroy(patchObj);
         patchObj = null;

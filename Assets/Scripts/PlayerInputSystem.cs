@@ -7,6 +7,7 @@ public class PlayerInputSystem : MonoBehaviour
 {
     private float _rotationX;
     private float _rotationY;
+    public static bool holdingLMB = false;
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -79,11 +80,20 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
+        if (context.started)
+        {
+            if (!PlayerController.GetInstance().HoldingItem()) return;
 
-        if (!PlayerController.GetInstance().HoldingItem()) return;
-
-        PlayerController.GetInstance().UseItem();
+            PlayerController.GetInstance().UseItem();
+        }
+        else if(context.performed)
+        {
+            holdingLMB = true;
+        }
+        else if (context.canceled)
+        {
+            holdingLMB = false;
+        }
     }
 
     public void Interaction(InputAction.CallbackContext context)

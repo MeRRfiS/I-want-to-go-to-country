@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlantController : MonoBehaviour
 {
     private int collectTimes = 0;
+    private int chopTreeTime = 0;
     [SerializeField] private Plant _plant;
     [SerializeField] private GameObject _icon;
+
+    public bool IsCanChoppingTree() => _plant.IsPlantGrow || _plant.IsPlantDry;
 
     private void Update()
     {
@@ -17,8 +20,6 @@ public class PlantController : MonoBehaviour
     {
         _icon.SetActive(_plant.IsNeedWater);
     }
-
-    
 
     public void SetSeedType(SeedTypeEnum seedType)
     {
@@ -65,10 +66,10 @@ public class PlantController : MonoBehaviour
                     return;
             }
         }
-        if (_plant.IsPlantDry)
-        {
-            Destroy(gameObject);
-        }
+        //if (_plant.IsPlantDry)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     public void Watering()
@@ -76,5 +77,15 @@ public class PlantController : MonoBehaviour
         if (!_plant.IsNeedWater) return;
 
         _plant.GetWater();
+    }
+
+    public void ChoppingTree(int hitCount)
+    {
+        chopTreeTime++;
+        Debug.Log(chopTreeTime);
+        if(chopTreeTime == hitCount)
+        {
+            Destroy(gameObject);
+        }
     }
 }

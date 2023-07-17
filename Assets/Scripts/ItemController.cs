@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BoxCollider))]
 public class ItemController : MonoBehaviour
 {
     private Item item;
@@ -36,6 +37,7 @@ public class ItemController : MonoBehaviour
                 item = new Hoe(_level, _durability);
                 break;
             case ItemTypeEnum.Axe:
+                item = new Axe(_level, _durability);
                 break;
             case ItemTypeEnum.Funnel:
                 item = new Funnel(_level, _durability);
@@ -64,11 +66,11 @@ public class ItemController : MonoBehaviour
 
     private void ApplyItemUpdate()
     {
-        _obj = item.Visualization(_obj, _objPrefab);
+        _obj = item.Updating(_obj, _objPrefab);
     }
 
     private void ApplyItemDisable()
     {
-        _obj = item.StopVisualization();
+        _obj = item.StopUpdating();
     }
 }
