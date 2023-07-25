@@ -562,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.4.24pa
+  m_text: 'v. 0.4.25pa
 
     Esc - Close game
 
@@ -2836,7 +2836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 5
   seedType: 0
-  treeType: 0
+  treeType: 1
   _level: 0
   _durability: 0
   _objPrefab: {fileID: 8917473772584949530, guid: 9c305e1c22fe4b049870c2a420400bda, type: 3}
