@@ -25,6 +25,12 @@ public class UIController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     private void Update()
     {
         UpdateProgressBar();
