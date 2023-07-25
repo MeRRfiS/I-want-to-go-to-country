@@ -627,7 +627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.4.25pa
+  m_text: 'v. 0.4.26pa
 
     Esc - Close game
 
@@ -637,6 +637,8 @@ MonoBehaviour:
 
     E
     - Pickup/Drop object
+
+    I - Open/Close inventory
 
     LMB - Use instrument/Harvesting
 
