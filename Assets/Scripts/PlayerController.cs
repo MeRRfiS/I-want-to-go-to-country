@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
+    private bool _isCanMoving = true;
+    private bool _isCanRotation = true;
     private float _velocity;
     private Vector2 _inputMovement;
     private Vector3 _direction;
@@ -25,6 +27,18 @@ public class PlayerController : MonoBehaviour
     public bool HoldingObject() => _heldObject != null;
     public bool HoldingItem() => _heldItem != null;
     private bool IsGrounded() => _chController.isGrounded;
+
+    public bool IsCanMoving
+    {
+        get => _isCanMoving;
+        set => _isCanMoving = value;
+    }
+
+    public bool IsCanRotation
+    {
+        get => _isCanRotation;
+        set => _isCanRotation = value;
+    }
 
     private void Awake()
     {
@@ -49,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (!_isCanMoving) return;
+
         if (IsGrounded() && _velocity < 0.0f)
         {
             _velocity = -1.0f;
@@ -63,6 +79,8 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
+        if (!_isCanMoving) return;
+
         Vector3 direction = (_inputMovement.y * transform.forward) + (_inputMovement.x * transform.right);
         _direction.x = direction.x;
         _direction.z = direction.z; 
@@ -71,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyRotation()
     {
+        if (!_isCanRotation) return;
+
         Camera.main.transform.localRotation = Quaternion.Euler(_rotationCamera);
         transform.rotation = Quaternion.Euler(_rotationPlayer);
     }
