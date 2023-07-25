@@ -11,11 +11,14 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!PlayerController.GetInstance().IsCanMoving) return;
+
         PlayerController.GetInstance().ChangeMovement(context.ReadValue<Vector2>());
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
+        if (!PlayerController.GetInstance().IsCanMoving) return;
         if (!context.started) return;
 
         PlayerController.GetInstance().ChangeVelocity();
@@ -23,12 +26,16 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void RotationX(InputAction.CallbackContext context)
     {
+        if (!PlayerController.GetInstance().IsCanRotation) return;
+
         _rotationY += context.ReadValue<float>() * PlayerConstants.SENSITIVITY_HOR;
         PlayerController.GetInstance().ChangeRotation(rotationPlayer: _rotationY);
     }
 
     public void RotationY(InputAction.CallbackContext context)
     {
+        if (!PlayerController.GetInstance().IsCanRotation) return;
+
         _rotationX -= context.ReadValue<float>() * PlayerConstants.SENSITIVITY_VERT;
         _rotationX = Mathf.Clamp(_rotationX,
                                  PlayerConstants.MINIMUM_VERT,
