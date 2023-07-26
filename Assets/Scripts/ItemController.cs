@@ -11,12 +11,15 @@ public class ItemController : MonoBehaviour
     private Item item;
 
     [Header("Settings")]
-    public ItemTypeEnum itemType;
-    public SeedTypeEnum seedType;
-    public TreeTypeEnum treeType;
+    [SerializeField] private ItemTypeEnum _itemType;
+    [SerializeField] private InstrumentTypeEnum _instrumentType;
+    [SerializeField] private SeedTypeEnum _seedType;
+    [SerializeField] private TreeTypeEnum _treeType;
     public int _level;
     public int _durability;
+    public int _count;
 
+    private int _id;
     [Header("Prefabs")]
     [SerializeField] private GameObject _objPrefab;
     private GameObject _obj;
@@ -29,29 +32,25 @@ public class ItemController : MonoBehaviour
     [Obsolete]
     private void Start()
     {
-        switch (itemType)
+        switch (_itemType)
         {
             case ItemTypeEnum.None:
                 break;
-            case ItemTypeEnum.Hoe:
-                item = new Hoe(_level, _durability);
-                break;
-            case ItemTypeEnum.Axe:
-                item = new Axe(_level, _durability);
-                break;
-            case ItemTypeEnum.Funnel:
-                item = new Funnel(_level, _durability);
+            case ItemTypeEnum.Instrument:
+                item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
                 break;
             case ItemTypeEnum.Seed:
-                item = new Seed(seedType);
+                item = new Seed(_seedType);
                 break;
             case ItemTypeEnum.Tree:
-                item = new Tree(treeType);
+                item = new Tree(_treeType);
                 break;
             default:
                 break;
         }
-            
+        item.Type = _itemType;
+        item.Count = _count;
+        GetComponent<ItemController>().enabled = false;
     }
 
     private void Update()

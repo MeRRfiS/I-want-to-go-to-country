@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Hoe : Instrument
     {
         Level = level;
         Durability = durability;
+        Id = (int)Enum.Parse(typeof(ItemIdsEnum),
+                             $"Hoe_Level_{level}");
     }
 
     public override void Use()

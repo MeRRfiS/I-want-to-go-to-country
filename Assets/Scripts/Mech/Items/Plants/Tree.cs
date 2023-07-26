@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -17,6 +18,8 @@ public class Tree : Item
     public Tree(TreeTypeEnum type)
     {
         _type = type;
+        Id = (int)Enum.Parse(typeof(ItemIdsEnum),
+                             $"Tree_{type.ToString()}");
     }
 
     public override void Use()

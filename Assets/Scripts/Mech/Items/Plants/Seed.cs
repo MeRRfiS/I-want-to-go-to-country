@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Seed : Item
     public Seed(SeedTypeEnum type)
     {
         _type = type;
+        Id = (int)Enum.Parse(typeof(ItemIdsEnum),
+                             $"Seed_{type.ToString()}");
     }
 
     public override void Use()
