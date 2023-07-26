@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class Funnel : Instrument
     {
         Level = level;
         Durability = durability;
+
+        Id = (int)Enum.Parse(typeof(ItemIdsEnum),
+                             $"Funnel_Level_{level}");
     }
 
     public override void Use()

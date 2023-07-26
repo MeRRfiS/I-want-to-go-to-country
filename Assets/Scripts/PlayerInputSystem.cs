@@ -66,10 +66,12 @@ public class PlayerInputSystem : MonoBehaviour
                     break;
                 case TagConstants.INSTRUMENT:
                 case TagConstants.SEED:
-                    if (!PlayerController.GetInstance().HoldingItem())
-                    {
-                        PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
-                    }
+                    PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
+                    //if (!PlayerController.GetInstance().HoldingItem())
+                    //{
+                    //    PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
+                    //}
+                    
                     break;
             }
         }

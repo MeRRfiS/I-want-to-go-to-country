@@ -25,6 +25,9 @@ public class Axe : Instrument
                 TimeChop = 5;
                 break;
         }
+
+        Id = (int)Enum.Parse(typeof(ItemIdsEnum),
+                             $"Axe_Level_{level}");
     }
 
     private void ChopTree()

@@ -1,9 +1,8 @@
 public enum ItemTypeEnum
 {
     None = 0,
-    Hoe = 1,
-    Axe = 2,
-    Funnel = 3,
-    Seed = 4,
-    Tree = 5
+    Instrument = 1,
+    Seed = 2,
+    Tree = 3,
+    Harvest = 4
 }

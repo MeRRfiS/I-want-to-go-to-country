@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,6 +12,7 @@ public class UIController : MonoBehaviour
 
     [Header("Menus")]
     [SerializeField] private GameObject _inventory;
+    [SerializeField] private List<Transform> _cells;
 
     private bool _usingProgressBar = false;
     private int _timerMultiple = 1;
@@ -84,6 +87,32 @@ public class UIController : MonoBehaviour
     {
         bool state = !_inventory.activeSelf;
 
+        var items = InventoryController.GetInstance().ItemsArray;
+        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
+        {
+            if (items[i] == null) continue;
+
+            Image image = _cells[i].GetChild(0).GetComponent<Image>();
+            image.gameObject.SetActive(state);
+            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + items[i].Id);
+            switch (items[i].Type)
+            {
+                case ItemTypeEnum.Instrument:
+                    Slider slider = _cells[i].GetChild(2).GetComponent<Slider>();
+                    slider.gameObject.SetActive(state);
+                    slider.maxValue = (items[i] as Instrument).Durability;
+                    break;
+                case ItemTypeEnum.Seed:
+                case ItemTypeEnum.Tree:
+                case ItemTypeEnum.Harvest:
+                    TextMeshProUGUI text = _cells[i].GetChild(1).GetComponent<TextMeshProUGUI>();
+                    text.gameObject.SetActive(state);
+                    text.text = items[i].Count.ToString();
+                    break;
+                default:
+                    break;
+            }
+        }
         PlayerController.GetInstance().IsCanMoving = !state;
         PlayerController.GetInstance().IsCanRotation = !state;
 

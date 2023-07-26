@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _velocity += Physics.gravity.y * WorldConstants.GRAVITY_MULTIPLIER * Time.deltaTime;
+            _velocity += Physics.gravity.y * GlobalConstants.GRAVITY_MULTIPLIER * Time.deltaTime;
         }
 
         _direction.y = _velocity;
@@ -150,21 +150,25 @@ public class PlayerController : MonoBehaviour
 
     public void PickupItem(GameObject heldItem)
     {
-        if (_heldItem != null) return;
-
-        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
-        _heldRigidbodyItem.isKinematic = true;
-        _heldRigidbodyItem.transform.parent = _hand;
         _heldItem = heldItem.GetComponent<ItemController>();
-        _heldItem.enabled = true;
-        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldItem.transform.childCount; i++)
-        {
-            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-        }
-        _heldItem.transform.localPosition = Vector3.zero;
-        _heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        if(!InventoryController.GetInstance().AddItem(_heldItem.Item, _heldItem.Item.Count)) return;
+        Destroy(heldItem);
+
+        //if (_heldItem != null) return;
+
+        //_heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
+        //_heldRigidbodyItem.isKinematic = true;
+        //_heldRigidbodyItem.transform.parent = _hand;
+        //_heldItem = heldItem.GetComponent<ItemController>();
+        //_heldItem.enabled = true;
+        //_heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+        ////ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
+        //for (int i = 0; i < _heldItem.transform.childCount; i++)
+        //{
+        //    _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+        //}
+        //_heldItem.transform.localPosition = Vector3.zero;
+        //_heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void DropItem()
