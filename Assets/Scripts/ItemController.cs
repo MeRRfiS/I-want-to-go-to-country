@@ -19,10 +19,16 @@ public class ItemController : MonoBehaviour
     public int _durability;
     public int _count;
 
+    private bool _isUpdating = false;
     private int _id;
     [Header("Prefabs")]
     [SerializeField] private GameObject _objPrefab;
     private GameObject _obj;
+
+    public bool IsUpdating
+    {
+        set => _isUpdating = value;
+    }
 
     public Item Item
     {
@@ -50,7 +56,7 @@ public class ItemController : MonoBehaviour
         }
         item.Type = _itemType;
         item.Count = _count;
-        GetComponent<ItemController>().enabled = false;
+        //_isUpdating = false;
     }
 
     private void Update()
@@ -58,17 +64,14 @@ public class ItemController : MonoBehaviour
         ApplyItemUpdate();
     }
 
-    private void OnDisable()
-    {
-        ApplyItemDisable();
-    }
-
     private void ApplyItemUpdate()
     {
+        if (!_isUpdating) return;
+
         _obj = item.Updating(_obj, _objPrefab);
     }
 
-    private void ApplyItemDisable()
+    public void ApplyItemDisable()
     {
         _obj = item.StopUpdating();
     }
