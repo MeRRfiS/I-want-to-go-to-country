@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8265152281819616754}
   - component: {fileID: 90060803148527505}
   m_Layer: 0
-  m_Name: 0
+  m_Name: 1
   m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

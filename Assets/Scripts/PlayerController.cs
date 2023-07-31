@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isCanMoving = true;
     private bool _isCanRotation = true;
+    private bool _isCanUsingItem = true;
     private float _velocity;
     private Vector2 _inputMovement;
     private Vector3 _direction;
@@ -38,6 +39,12 @@ public class PlayerController : MonoBehaviour
     {
         get => _isCanRotation;
         set => _isCanRotation = value;
+    }
+
+    public bool IsCanUsingItem
+    {
+        get => _isCanUsingItem;
+        set => _isCanUsingItem = value;
     }
 
     private void Awake()
@@ -150,34 +157,41 @@ public class PlayerController : MonoBehaviour
 
     public void PickupItem(GameObject heldItem)
     {
-        _heldItem = heldItem.GetComponent<ItemController>();
-        if(!InventoryController.GetInstance().AddItem(_heldItem.Item, _heldItem.Item.Count)) return;
+        Item item = heldItem.GetComponent<ItemController>().Item;
+        if(!InventoryController.GetInstance().AddItem(item, item.Count)) return;
         Destroy(heldItem);
+    }
 
-        //if (_heldItem != null) return;
+    public void ChangeActiveItemInHand(Item item)
+    {
+        if (_heldItem != null) Destroy(_heldItem.gameObject);
+        if (item == null) return;
 
-        //_heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
-        //_heldRigidbodyItem.isKinematic = true;
-        //_heldRigidbodyItem.transform.parent = _hand;
-        //_heldItem = heldItem.GetComponent<ItemController>();
-        //_heldItem.enabled = true;
-        //_heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-        ////ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        //for (int i = 0; i < _heldItem.transform.childCount; i++)
-        //{
-        //    _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-        //}
-        //_heldItem.transform.localPosition = Vector3.zero;
-        //_heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + item.Id));
+        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem.isKinematic = true;
+        _heldRigidbodyItem.transform.parent = _hand;
+        _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem.IsUpdating = true;
+        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
+        for (int i = 0; i < _heldItem.transform.childCount; i++)
+        {
+            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+        }
+        _heldItem.transform.localPosition = Vector3.zero;
+        _heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
     }
 
     public void DropItem()
     {
         if (_heldItem == null) return;
 
+        InventoryController.GetInstance().RemoveItem();
         _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
-        _heldItem.enabled = false;
+        _heldItem.IsUpdating = false;
+        _heldItem.ApplyItemDisable();
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
         for (int i = 0; i < _heldItem.transform.childCount; i++)
@@ -191,6 +205,8 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem()
     {
+        if (!_isCanUsingItem) return;
+
         _heldItem.Item.Use();
     }
 }
