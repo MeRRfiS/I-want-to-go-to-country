@@ -75,7 +75,7 @@ public class Tree : Item
             }
 
             saplingObj.transform.position = new Vector3(hit.point.x,
-                                                        0,
+                                                        1,
                                                         hit.point.z);
 
             if (treeCheck && (treeCheck.IsOnObject || treeCheck.IsNearTree))
