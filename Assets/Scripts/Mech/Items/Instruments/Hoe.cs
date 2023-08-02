@@ -53,7 +53,7 @@ public class Hoe : Instrument
 
             Vector3 point = Vector3.zero;
             point = new Vector3(patchCheck.IsVerFasten ? patchCheck.FastenPos.x : hit.point.x,
-                                0,
+                                1,
                                 patchCheck.IsHorFasten ? patchCheck.FastenPos.z : hit.point.z);
             if(Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
             {
@@ -61,7 +61,7 @@ public class Hoe : Instrument
                 point = hit.point;
             }
             patchObj.transform.position = new Vector3(point.x,
-                                                      0,
+                                                      1,
                                                       point.z);
 
             if (patchCheck && patchCheck.IsOnObject)
