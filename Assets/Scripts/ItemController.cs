@@ -17,7 +17,7 @@ public class ItemController : MonoBehaviour
     [SerializeField] private TreeTypeEnum _treeType;
     public int _level;
     public int _durability;
-    public int _count;
+    private int _count = 1;
 
     private bool _isUpdating = false;
     private int _id;
@@ -28,6 +28,11 @@ public class ItemController : MonoBehaviour
     public bool IsUpdating
     {
         set => _isUpdating = value;
+    }
+
+    public int Count
+    {
+        set => _count = value;
     }
 
     public Item Item
@@ -52,6 +57,8 @@ public class ItemController : MonoBehaviour
                 item = new Tree(_treeType);
                 break;
             default:
+                item = new Item();
+                item.Id = 23;
                 break;
         }
         item.Type = _itemType;
@@ -62,6 +69,11 @@ public class ItemController : MonoBehaviour
     private void Update()
     {
         ApplyItemUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        ApplyItemDisable();
     }
 
     private void ApplyItemUpdate()

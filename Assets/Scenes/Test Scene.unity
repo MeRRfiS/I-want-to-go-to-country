@@ -943,7 +943,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: 6c94b2d3576b8aa4d9ae4088fd1c2304, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2812,7 +2812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0044375, y: 0.7227408}
   m_AnchorMax: {x: 0.28500003, y: 1}
-  m_AnchoredPosition: {x: 1.4001465, y: 1.2835083}
+  m_AnchoredPosition: {x: 1.4001465, y: 1.2834473}
   m_SizeDelta: {x: -6.7903, y: -2.5671997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360524632
@@ -6387,7 +6387,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
+  - {fileID: 2100000, guid: 6c94b2d3576b8aa4d9ae4088fd1c2304, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19498,7 +19498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34500003, y: 0}
   m_AnchorMax: {x: 0.6544792, y: 0.16977824}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.6235962}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0.62353516}
   m_SizeDelta: {x: -0.88290024, y: -0.6236}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2141991739

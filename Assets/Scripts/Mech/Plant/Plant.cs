@@ -12,6 +12,7 @@ public class Plant : MonoBehaviour
     private bool _isFruitsGrow = false;
     private const string WAIT_WATER_COR = "WaitWater";
     private const string SHADER_COLOR_VAR = "_Color";
+    [SerializeField] private ItemIdsEnum _harvestId;
     [SerializeField] private List<Fruit> fruits;
     private Animator _animator;
     private Renderer _renderer;
@@ -45,6 +46,11 @@ public class Plant : MonoBehaviour
     {
         get; set;
     }
+
+    //public ItemIdsEnum HarvestId
+    //{
+    //    get => _harvestId;
+    //}
 
     private void Start()
     {
