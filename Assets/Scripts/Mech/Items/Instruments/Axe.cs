@@ -35,7 +35,7 @@ public class Axe : Instrument
         tree.ChoppingTree(HitCount);
     }
 
-    public override void Use()
+    public override void UseItem()
     {
         if (tree == null) return;
 

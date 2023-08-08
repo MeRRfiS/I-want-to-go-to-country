@@ -5,5 +5,6 @@
     Axe_Level_1 = 11,
     Seed_Default = 16,
     Tree_Default = 21,
-    Harvest_Default = 23
+    Fertilizers_1 = 23,
+    Harvest_Default = 27
 }

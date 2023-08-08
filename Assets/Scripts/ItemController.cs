@@ -56,9 +56,12 @@ public class ItemController : MonoBehaviour
             case ItemTypeEnum.Tree:
                 item = new Tree(_treeType);
                 break;
+            case ItemTypeEnum.Fertilizers:
+                item = new Fertilizers(_level);
+                break;
             default:
                 item = new Item();
-                item.Id = 23;
+                item.Id = (int)ItemIdsEnum.Harvest_Default;
                 break;
         }
         item.Type = _itemType;

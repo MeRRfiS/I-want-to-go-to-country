@@ -8,7 +8,7 @@ public class Item
     public int Price { get; set; }
     public int Count { get; set; }
     public ItemTypeEnum Type { get; set; }
-    public virtual void Use() { }
+    public virtual void UseItem() { }
 
     public virtual GameObject Updating(GameObject obj, GameObject prefab) => null;
     public virtual GameObject StopUpdating() => null;

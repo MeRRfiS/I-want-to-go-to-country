@@ -22,7 +22,7 @@ public class Tree : Item
                              $"Tree_{type.ToString()}");
     }
 
-    public override void Use()
+    public override void UseItem()
     {
         if (IsSaplingObjNull()) return;
         if (treeCheck.IsOnObject || treeCheck.IsNearTree) return;

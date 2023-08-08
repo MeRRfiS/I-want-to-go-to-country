@@ -18,7 +18,7 @@ public class Hoe : Instrument
                              $"Hoe_Level_{level}");
     }
 
-    public override void Use()
+    public override void UseItem()
     {
         if (IsPatchObjNull()) return;
         if (patchCheck.IsOnObject) return;
