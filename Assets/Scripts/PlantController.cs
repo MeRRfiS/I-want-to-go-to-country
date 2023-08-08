@@ -6,6 +6,12 @@ public class PlantController : MonoBehaviour
 {
     private int collectTimes = 0;
     private int chopTreeTime = 0;
+    private int harvestCount = 1;
+    [Header("Materials")]
+    [SerializeField] private Material _earthWithFertilize;
+    [Header("Setting")]
+    [SerializeField] private PlantTypeEnum _type;
+    [Header("Components")]
     [SerializeField] private Plant _plant;
     [SerializeField] private GameObject _icon;
 
@@ -14,11 +20,25 @@ public class PlantController : MonoBehaviour
     private void Update()
     {
         ApplyWaterIcon();
+        ApplyFertilize();
     }
 
     private void ApplyWaterIcon()
     {
         _icon.SetActive(_plant.IsNeedWater);
+    }
+
+    private void ApplyFertilize()
+    {
+        if (!_plant.IsFertilized) return;
+
+        switch (gameObject.tag)
+        {
+            case TagConstants.PLANT:
+                Renderer earth = transform.GetComponentInParent<Renderer>();
+                earth.material = _earthWithFertilize;
+                break;
+        }
     }
 
     public void SetSeedType(SeedTypeEnum seedType)
@@ -36,7 +56,7 @@ public class PlantController : MonoBehaviour
         if (_plant.IsPlantGrow)
         {
             Item item = new Item();
-            item.Count = 1;
+            item.Count = harvestCount;
             item.Type = ItemTypeEnum.Harvest;
             switch (_plant.SeedType)
             {
@@ -81,9 +101,36 @@ public class PlantController : MonoBehaviour
 
     public void Watering()
     {
-        if (!_plant.IsNeedWater) return;
+        _plant.WateringPlant();
+    }
 
-        _plant.GetWater();
+    public void Fertilizering(int level)
+    {
+        switch (_type)
+        {
+            case PlantTypeEnum.Normal:
+                harvestCount = level + 1;
+                break;
+            case PlantTypeEnum.Special:
+                if (level < 2) return;
+
+                harvestCount = level;
+                break;
+            case PlantTypeEnum.Rare:
+                if (level < 3) return;
+
+                harvestCount = level - 1;
+                break;
+            case PlantTypeEnum.VeryRare:
+                if (level != 4) return;
+
+                harvestCount = level - 2;
+                break;
+            default:
+                break;
+        }
+
+        _plant.FertilizeringPlant();
     }
 
     public void ChoppingTree(int hitCount)

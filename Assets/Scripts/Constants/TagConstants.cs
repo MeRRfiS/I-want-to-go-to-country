@@ -14,4 +14,5 @@ public static class TagConstants
     public const string SEED = "Seed";
     public const string PLANT = "Plant";
     public const string TREE = "Tree";
+    public const string ITEM = "Item";
 }

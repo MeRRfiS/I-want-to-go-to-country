@@ -4,5 +4,6 @@ public enum ItemTypeEnum
     Instrument = 1,
     Seed = 2,
     Tree = 3,
-    Harvest = 4
+    Harvest = 4,
+    Fertilizers = 5
 }

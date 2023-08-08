@@ -18,7 +18,7 @@ public class Seed : Item
                              $"Seed_{type.ToString()}");
     }
 
-    public override void Use()
+    public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;

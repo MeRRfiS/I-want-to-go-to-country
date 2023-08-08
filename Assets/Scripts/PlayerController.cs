@@ -208,6 +208,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isCanUsingItem) return;
 
-        _heldItem.Item.Use();
+        _heldItem.Item.UseItem();
     }
 }

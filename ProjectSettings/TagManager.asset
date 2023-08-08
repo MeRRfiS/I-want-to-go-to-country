@@ -11,6 +11,7 @@ TagManager:
   - Seed
   - Plant
   - Tree
+  - Item
   layers:
   - Default
   - TransparentFX

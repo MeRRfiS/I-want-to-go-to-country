@@ -105,6 +105,11 @@ public class UIController : MonoBehaviour
                     slider.gameObject.SetActive(true);
                     text.gameObject.SetActive(false);
                     break;
+                case ItemTypeEnum.Fertilizers:
+                    slider.maxValue = (items[i] as Fertilizers).Usings;
+                    slider.gameObject.SetActive(true);
+                    text.gameObject.SetActive(false);
+                    break;
                 case ItemTypeEnum.Seed:
                 case ItemTypeEnum.Tree:
                 case ItemTypeEnum.Harvest:
@@ -160,6 +165,8 @@ public class UIController : MonoBehaviour
 
     public void PinUpItemToMouse(int index = -1, CellTypeEnum type = CellTypeEnum.None)
     {
+        if (!_inventory.activeSelf) return;
+
         if (_pinUp.childCount == 0)
         {
             Image image = null;

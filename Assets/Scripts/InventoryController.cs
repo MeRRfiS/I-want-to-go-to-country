@@ -187,6 +187,7 @@ public class InventoryController : MonoBehaviour
             case ItemTypeEnum.None:
                 return false;
             case ItemTypeEnum.Instrument:
+            case ItemTypeEnum.Fertilizers:
                 if (!GetEmptyCell(out index)) return false;
 
                 _itemsArray[index] = item.Copy();

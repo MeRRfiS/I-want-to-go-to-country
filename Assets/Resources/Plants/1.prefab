@@ -47,8 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e1044b76fba9544b4b6c44edbf6ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _earthWithFertilize: {fileID: 2100000, guid: cc1b2c0bb3f788b4b93b56222f8a6c34, type: 2}
   _plant: {fileID: 429700315068600693}
   _icon: {fileID: 4412900591965181061}
+  _fertilize: {fileID: 0}
 --- !u!65 &90060803148527505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -301,7 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c67f474997a074294fa4863d9f006b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _harvestId: 23
   fruits: []
 --- !u!4 &7927575462043868232 stripped
 Transform:

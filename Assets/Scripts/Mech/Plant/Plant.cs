@@ -10,12 +10,17 @@ public class Plant : MonoBehaviour
     private bool _isPlantDry = false;
     private bool _isNeedWater = false;
     private bool _isFruitsGrow = false;
+    private bool _isFertilized = false;
     private const string WAIT_WATER_COR = "WaitWater";
     private const string SHADER_COLOR_VAR = "_Color";
-    [SerializeField] private ItemIdsEnum _harvestId;
     [SerializeField] private List<Fruit> fruits;
     private Animator _animator;
     private Renderer _renderer;
+
+    public bool IsFertilized
+    {
+        get => _isFertilized;
+    }
 
     public bool IsPlantGrow
     {
@@ -46,11 +51,6 @@ public class Plant : MonoBehaviour
     {
         get; set;
     }
-
-    //public ItemIdsEnum HarvestId
-    //{
-    //    get => _harvestId;
-    //}
 
     private void Start()
     {
@@ -111,8 +111,9 @@ public class Plant : MonoBehaviour
         _isPlantDry = true;
     }
 
-    public void GetWater()
+    public void WateringPlant()
     {
+        if (!_isNeedWater) return;
         if (_isPlantDry) return;
 
         StopCoroutine(WAIT_WATER_COR);
@@ -143,6 +144,15 @@ public class Plant : MonoBehaviour
         return 1;
     }
 
+    public void FertilizeringPlant()
+    {
+        if (_isFertilized) return;
+        if (_isPlantGrow) return;
+
+        _isFertilized = true;
+    }
+
+    //Method for animation's event
     public void PlantGrew()
     {
         _isPlantGrow = true;
@@ -156,6 +166,7 @@ public class Plant : MonoBehaviour
         }
     }
 
+    //Method for animation's event
     public void NeedWater()
     {
         _isNeedWater = true;

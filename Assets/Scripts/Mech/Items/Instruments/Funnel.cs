@@ -14,7 +14,7 @@ public class Funnel : Instrument
                              $"Funnel_Level_{level}");
     }
 
-    public override void Use()
+    public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
