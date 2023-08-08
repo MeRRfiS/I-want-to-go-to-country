@@ -65,22 +65,11 @@ public class TreeChecking : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("I found tree!");
             isNearTree = true;
         }
         else
         {
             isNearTree = false;
         }
-        //RaycastHit hitVer = GetHit(transform.forward);
-        //RaycastHit hitHor = GetHit(transform.right);
-        //if (hitVer.collider != null || hitHor.collider != null)
-        //{
-        //    isNearTree = true;
-        //}
-        //else
-        //{
-        //    isNearTree = false;
-        //}
     }
 }

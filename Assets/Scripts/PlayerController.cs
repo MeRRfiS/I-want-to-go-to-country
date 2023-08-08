@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
         _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem.Count = item.Count;
         _heldItem.IsUpdating = true;
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)

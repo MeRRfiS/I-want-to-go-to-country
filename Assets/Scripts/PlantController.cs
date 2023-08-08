@@ -35,12 +35,17 @@ public class PlantController : MonoBehaviour
     {
         if (_plant.IsPlantGrow)
         {
+            Item item = new Item();
+            item.Count = 1;
+            item.Type = ItemTypeEnum.Harvest;
             switch (_plant.SeedType)
             {
                 case SeedTypeEnum.None: break;
                 case SeedTypeEnum.Default:
+                    item.Id = (int)ItemIdsEnum.Harvest_Default;
                     break;
             }
+            InventoryController.GetInstance().AddItem(item, item.Count);
 
             Destroy(transform.parent.gameObject);
         }
@@ -54,10 +59,15 @@ public class PlantController : MonoBehaviour
     {
         if (_plant.IsFruitsGrow)
         {
+            Item item = new Item();
+            item.Count = Random.Range(MechConstants.MIN_TREE_HARVEST,
+                                      MechConstants.MAX_TREE_HARVEST);
+            item.Type = ItemTypeEnum.Harvest;
             switch (_plant.TreeType)
             {
                 case TreeTypeEnum.None: break;
                 case TreeTypeEnum.Default:
+                    item.Id = (int)ItemIdsEnum.Harvest_Default;
                     collectTimes += _plant.CollectFruit();
                     if (collectTimes == MechConstants.MAX_COUNT_OF_HARVEST)
                     {
@@ -65,11 +75,8 @@ public class PlantController : MonoBehaviour
                     }
                     return;
             }
+            InventoryController.GetInstance().AddItem(item, item.Count);
         }
-        //if (_plant.IsPlantDry)
-        //{
-        //    Destroy(gameObject);
-        //}
     }
 
     public void Watering()

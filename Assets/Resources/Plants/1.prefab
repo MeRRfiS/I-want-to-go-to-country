@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c67f474997a074294fa4863d9f006b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _harvestId: 23
+  fruits: []
 --- !u!4 &7927575462043868232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0ed28480616a39d48a90fb12f2d3e227, type: 3}

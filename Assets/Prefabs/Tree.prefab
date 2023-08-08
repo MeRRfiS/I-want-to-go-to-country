@@ -1550,6 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c67f474997a074294fa4863d9f006b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _harvestId: 23
   fruits:
   - {fileID: 3129433815479933491}
   - {fileID: 2355496554090972981}
