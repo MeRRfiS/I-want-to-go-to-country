@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7905453511865722512}
   - component: {fileID: 8647678562966139187}
   m_Layer: 0
-  m_Name: 16
+  m_Name: Seed_Default
   m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

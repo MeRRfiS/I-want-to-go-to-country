@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2056746738875422066}
   - component: {fileID: 1524990143135345598}
   m_Layer: 0
-  m_Name: 23
+  m_Name: Fertilizers_1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

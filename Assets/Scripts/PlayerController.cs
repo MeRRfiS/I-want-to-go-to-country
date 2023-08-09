@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         if (_heldItem != null) Destroy(_heldItem.gameObject);
         if (item == null) return;
 
-        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + item.Id));
+        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item.Id));
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
