@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 945087811459834967}
   - component: {fileID: 5790875115010876827}
   m_Layer: 0
-  m_Name: 27
+  m_Name: Harvest_Default
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

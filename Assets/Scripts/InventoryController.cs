@@ -163,12 +163,12 @@ public class InventoryController : MonoBehaviour
             {
                 case CellTypeEnum.Inventory:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           _itemsArray[_selectedItem._itemIndex].Id));
+                                           (ItemIdsEnum)_itemsArray[_selectedItem._itemIndex].Id));
                     _itemsArray[_selectedItem._itemIndex] = null;
                     break;
                 case CellTypeEnum.Player:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           _playerItems[_selectedItem._itemIndex].Id));
+                                           (ItemIdsEnum)_playerItems[_selectedItem._itemIndex].Id));
                     _playerItems[_selectedItem._itemIndex] = null;
                     break;
             }

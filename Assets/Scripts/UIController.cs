@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
                 continue;
             }
 
-            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + items[i].Id);
+            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i].Id);
             image.gameObject.SetActive(true);
             switch (items[i].Type)
             {
