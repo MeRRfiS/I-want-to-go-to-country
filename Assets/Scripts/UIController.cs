@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
+    public bool InventoryActiveSelf() => _inventory.activeSelf;
 
     private void Awake()
     {
@@ -83,9 +84,10 @@ public class UIController : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            Image image = cells[i].GetChild(0).GetComponent<Image>();
-            TextMeshProUGUI text = cells[i].GetChild(1).GetComponent<TextMeshProUGUI>();
-            Slider slider = cells[i].GetChild(2).GetComponent<Slider>();
+            InventoryCell cell = cells[i].GetComponent<InventoryCell>();
+            Image image = cell.ItemIcon;
+            TextMeshProUGUI text = cell.TextCount;
+            Slider slider = cell.SliderDurability;
             if (items[i] == null)
             {
                 image.sprite = null;
@@ -101,12 +103,15 @@ public class UIController : MonoBehaviour
             switch (items[i].Type)
             {
                 case ItemTypeEnum.Instrument:
-                    slider.maxValue = (items[i] as Instrument).Durability;
+                    Instrument instrument = items[i] as Instrument;
+                    slider.maxValue = instrument.MaxDurability;
+                    slider.value = instrument.Durability;
                     slider.gameObject.SetActive(true);
                     text.gameObject.SetActive(false);
                     break;
                 case ItemTypeEnum.Fertilizers:
-                    slider.maxValue = (items[i] as Fertilizers).Usings;
+                    slider.maxValue = MechConstants.MAX_USING_OF_FERTILIZER;
+                    slider.value = (items[i] as Fertilizers).Usings;
                     slider.gameObject.SetActive(true);
                     text.gameObject.SetActive(false);
                     break;
@@ -165,8 +170,6 @@ public class UIController : MonoBehaviour
 
     public void PinUpItemToMouse(int index = -1, CellTypeEnum type = CellTypeEnum.None)
     {
-        if (!_inventory.activeSelf) return;
-
         if (_pinUp.childCount == 0)
         {
             Image image = null;

@@ -89,7 +89,7 @@ public class PlayerInputSystem : MonoBehaviour
         {
             if (!PlayerController.GetInstance().HoldingItem()) return;
 
-            PlayerController.GetInstance().UseItem();
+            PlayerController.GetInstance().UseItemInPlayerHand();
         }
         else if(context.performed)
         {

@@ -11,7 +11,14 @@ public class Fertilizers: Item
         Level = level;
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Fertilizers_{level}");
-        Usings = 10;
+        Usings = MechConstants.MAX_USING_OF_FERTILIZER;
+    }
+
+    public override bool IsItemCountZero()
+    {
+        if (Usings == 0) return true;
+
+        return false;
     }
 
     public override void UseItem()
@@ -24,6 +31,7 @@ public class Fertilizers: Item
             Transform hitTransform = hit.collider.gameObject.transform;
             if (!hitTransform.CompareTag(TagConstants.PLANT)) return;
 
+            Usings--;
             PlantController plant = hitTransform.GetComponent<PlantController>();
             plant.Fertilizering(Level);
         }

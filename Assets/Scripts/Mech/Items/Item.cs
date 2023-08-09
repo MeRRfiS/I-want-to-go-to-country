@@ -8,7 +8,15 @@ public class Item
     public int Price { get; set; }
     public int Count { get; set; }
     public ItemTypeEnum Type { get; set; }
+
     public virtual void UseItem() { }
+
+    public virtual bool IsItemCountZero() 
+    { 
+        if(Count == 0) return true;
+
+        return false;
+    }
 
     public virtual GameObject Updating(GameObject obj, GameObject prefab) => null;
     public virtual GameObject StopUpdating() => null;

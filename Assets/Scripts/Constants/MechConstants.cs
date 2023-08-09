@@ -15,4 +15,6 @@ public static class MechConstants
     public const int MAX_TREE_HARVEST = 11;
     public const int MAX_COUNT_OF_HARVEST = 5;
     public const float WAIT_TIME_FOR_WATER = 20f;
+
+    public const int MAX_USING_OF_FERTILIZER = 10;
 }
