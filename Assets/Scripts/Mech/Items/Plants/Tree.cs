@@ -18,6 +18,7 @@ public class Tree : Item
     public Tree(TreeTypeEnum type)
     {
         _type = type;
+        Count = 5;
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Tree_{type.ToString()}");
     }
@@ -27,6 +28,7 @@ public class Tree : Item
         if (IsSaplingObjNull()) return;
         if (treeCheck.IsOnObject || treeCheck.IsNearTree) return;
 
+        Count--;
         saplingObj.layer = LayerMask.NameToLayer(LayerConstants.TREE);
         for (int i = 0; i < treeObj.GetComponent<Renderer>().materials.Length; i++)
         {

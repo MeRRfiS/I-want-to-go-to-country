@@ -10,10 +10,28 @@ public class Hoe : Instrument
 
     private bool IsPatchObjNull() => patchObj == null;
 
-    public Hoe(int level, int durability)
+    public Hoe(int level)
     {
         Level = level;
-        Durability = durability;
+        switch (level)
+        {
+            case 1:
+                MaxDurability = 25;
+                break;
+            case 2:
+                MaxDurability = 50;
+                break;
+            case 3:
+                MaxDurability = 75;
+                break;
+            case 4:
+                MaxDurability = 100;
+                break;
+            case 5:
+                MaxDurability = 150;
+                break;
+        }
+        Durability = MaxDurability;
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Hoe_Level_{level}");
     }
@@ -23,6 +41,7 @@ public class Hoe : Instrument
         if (IsPatchObjNull()) return;
         if (patchCheck.IsOnObject) return;
 
+        Durability--;
         patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         patchObj.GetComponent<Patch>().DestroyChecker();

@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ItemController : MonoBehaviour
 {
-    private Item item;
+    private Item _item;
 
     [Header("Settings")]
     [SerializeField] private ItemTypeEnum _itemType;
@@ -17,7 +17,6 @@ public class ItemController : MonoBehaviour
     [SerializeField] private TreeTypeEnum _treeType;
     public int _level;
     public int _durability;
-    private int _count = 1;
 
     private bool _isUpdating = false;
     private int _id;
@@ -30,48 +29,45 @@ public class ItemController : MonoBehaviour
         set => _isUpdating = value;
     }
 
-    public int Count
-    {
-        set => _count = value;
-    }
-
     public Item Item
     {
-        get => item;
+        get => _item;
+        set => _item = value;
     }
 
     [Obsolete]
     private void Start()
     {
+        if (_item != null) return;
+
         switch (_itemType)
         {
             case ItemTypeEnum.None:
                 break;
             case ItemTypeEnum.Instrument:
-                item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
+                _item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
                 break;
             case ItemTypeEnum.Seed:
-                item = new Seed(_seedType);
+                _item = new Seed(_seedType);
                 break;
             case ItemTypeEnum.Tree:
-                item = new Tree(_treeType);
+                _item = new Tree(_treeType);
                 break;
             case ItemTypeEnum.Fertilizers:
-                item = new Fertilizers(_level);
+                _item = new Fertilizers(_level);
                 break;
             default:
-                item = new Item();
-                item.Id = (int)ItemIdsEnum.Harvest_Default;
+                _item = new Item();
+                _item.Id = (int)ItemIdsEnum.Harvest_Default;
                 break;
         }
-        item.Type = _itemType;
-        item.Count = _count;
-        //_isUpdating = false;
+        _item.Type = _itemType;
     }
 
     private void Update()
     {
         ApplyItemUpdate();
+        ApplyItemBroke();
     }
 
     private void OnDestroy()
@@ -79,15 +75,23 @@ public class ItemController : MonoBehaviour
         ApplyItemDisable();
     }
 
+    private void ApplyItemBroke()
+    {
+        if (!_item.IsItemCountZero()) return;
+
+        InventoryController.GetInstance().RemoveItem();
+        Destroy(gameObject);
+    }
+
     private void ApplyItemUpdate()
     {
         if (!_isUpdating) return;
 
-        _obj = item.Updating(_obj, _objPrefab);
+        _obj = _item.Updating(_obj, _objPrefab);
     }
 
     public void ApplyItemDisable()
     {
-        _obj = item.StopUpdating();
+        _obj = _item.StopUpdating();
     }
 }

@@ -139,12 +139,7 @@ public class InventoryController : MonoBehaviour
         ChangeActiveItem(true);
     }
 
-    private void Update()
-    {
-        //ApplyActiveItem();
-    }
-
-    public void RemoveItem(CellTypeEnum type = CellTypeEnum.None)
+    public void RemoveItem()
     {
         if (_selectedItem.Equals(default(SelectedItem))) 
         {
@@ -154,7 +149,7 @@ public class InventoryController : MonoBehaviour
         UIController.GetInstance().RedrawInventories();
     }
 
-    public void DropItem()
+    public void DropItemFromInventory()
     {
         if (!_selectedItem.Equals(default(SelectedItem)))
         {
@@ -190,7 +185,7 @@ public class InventoryController : MonoBehaviour
             case ItemTypeEnum.Fertilizers:
                 if (!GetEmptyCell(out index)) return false;
 
-                _itemsArray[index] = item.Copy();
+                _itemsArray[index] = item/*.Copy()*/;
                 break;
             case ItemTypeEnum.Seed:
             case ItemTypeEnum.Tree:
@@ -252,7 +247,8 @@ public class InventoryController : MonoBehaviour
 
     public void ChangeActiveItem(bool isPositiv = true, int index = -1)
     {
-        if(index == -1)
+        int oldActivePlayerItemIndex = _activePlayerItemIndex;
+        if (index == -1)
         {
             _activePlayerItemIndex += isPositiv ? 1 : -1;
         }
@@ -262,6 +258,6 @@ public class InventoryController : MonoBehaviour
         }
         _activePlayerItemIndex = Mathf.Clamp(_activePlayerItemIndex, 
                                              0, GlobalConstants.MAX_ITEMS_IN_PLAYER - 1);
-        ApplyActiveItem();
+        if(_activePlayerItemIndex != oldActivePlayerItemIndex) ApplyActiveItem();
     }
 }

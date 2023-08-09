@@ -2777,6 +2777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 7
   _typeCell: 1
+  _image: {fileID: 1289869803}
+  _slider: {fileID: 493578968}
+  _text: {fileID: 644315329}
 --- !u!1 &360524630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,6 +3660,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 2
   _typeCell: 1
+  _image: {fileID: 61947826}
+  _slider: {fileID: 1249723234}
+  _text: {fileID: 470614609}
 --- !u!1 &493578966
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,6 +7774,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 3
   _typeCell: 1
+  _image: {fileID: 635107037}
+  _slider: {fileID: 1481877387}
+  _text: {fileID: 503347433}
 --- !u!1 &678701837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7945,6 +7954,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 6
   _typeCell: 1
+  _image: {fileID: 749184949}
+  _slider: {fileID: 1210399277}
+  _text: {fileID: 245815823}
 --- !u!1 &699171130
 GameObject:
   m_ObjectHideFlags: 0
@@ -10980,6 +10992,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   _typeCell: 2
+  _image: {fileID: 1196770681}
+  _slider: {fileID: 911561777}
+  _text: {fileID: 1190526261}
 --- !u!1 &1019030781
 GameObject:
   m_ObjectHideFlags: 0
@@ -11789,6 +11804,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _typeCell: 2
+  _image: {fileID: 1758205281}
+  _slider: {fileID: 537653115}
+  _text: {fileID: 34508546}
 --- !u!1 &1124866364
 GameObject:
   m_ObjectHideFlags: 0
@@ -15339,6 +15357,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 0
   _typeCell: 1
+  _image: {fileID: 789034578}
+  _slider: {fileID: 772597251}
+  _text: {fileID: 216107787}
 --- !u!1 &1408403901
 GameObject:
   m_ObjectHideFlags: 0
@@ -16871,6 +16892,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 2
   _typeCell: 2
+  _image: {fileID: 1910465949}
+  _slider: {fileID: 1369241904}
+  _text: {fileID: 1461990060}
 --- !u!1 &1615533539
 GameObject:
   m_ObjectHideFlags: 0
@@ -17011,6 +17035,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 5
   _typeCell: 1
+  _image: {fileID: 427831529}
+  _slider: {fileID: 1466821058}
+  _text: {fileID: 751830807}
 --- !u!1 &1637028896
 GameObject:
   m_ObjectHideFlags: 0
@@ -17816,6 +17843,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 4
   _typeCell: 1
+  _image: {fileID: 1526242385}
+  _slider: {fileID: 1415015011}
+  _text: {fileID: 172451317}
 --- !u!1 &1803037157
 GameObject:
   m_ObjectHideFlags: 0
@@ -18446,6 +18476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _index: 1
   _typeCell: 1
+  _image: {fileID: 699171132}
+  _slider: {fileID: 108894029}
+  _text: {fileID: 1408403903}
 --- !u!1 &1880670127
 GameObject:
   m_ObjectHideFlags: 0

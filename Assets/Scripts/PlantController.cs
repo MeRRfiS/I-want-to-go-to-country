@@ -136,7 +136,6 @@ public class PlantController : MonoBehaviour
     public void ChoppingTree(int hitCount)
     {
         chopTreeTime++;
-        Debug.Log(chopTreeTime);
         if(chopTreeTime == hitCount)
         {
             Destroy(gameObject);
