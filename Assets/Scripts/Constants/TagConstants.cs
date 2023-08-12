@@ -15,4 +15,5 @@ public static class TagConstants
     public const string PLANT = "Plant";
     public const string TREE = "Tree";
     public const string ITEM = "Item";
+    public const string WELL = "Well";
 }

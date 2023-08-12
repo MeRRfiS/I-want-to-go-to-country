@@ -49,7 +49,7 @@ public class TreeChecking : MonoBehaviour
 
     private void ApplyDebugSphere()
     {
-        float distance = MechConstants.DISTANCE_TO_TREE;
+        float distance = MechConstants.MAX_DISTANCE_FOR_USING_ITEM;
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position, distance);
     }
@@ -58,7 +58,7 @@ public class TreeChecking : MonoBehaviour
     {
         RaycastHit[] hits;
         hits = Physics.SphereCastAll(transform.position,
-                                     MechConstants.DISTANCE_TO_TREE,
+                                     MechConstants.MAX_DISTANCE_FOR_USING_ITEM,
                                      transform.position,
                                      0, 
                                      layerMask);

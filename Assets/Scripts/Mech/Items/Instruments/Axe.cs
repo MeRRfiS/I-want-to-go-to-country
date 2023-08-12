@@ -15,36 +15,17 @@ public class Axe : Instrument
 
     public Axe(int level, int durability)
     {
+        InstrumentType = InstrumentTypeEnum.Axe;
         Level = level;
-        switch (level)
+        Durability = durability;
+        
+        switch (level) 
         {
-            case 1:
-                MaxDurability = 50;
+            default: 
                 HitCount = 10;
                 TimeChop = 5;
                 break;
-            case 2:
-                MaxDurability = 55;
-                HitCount = 8;
-                TimeChop = 4;
-                break;
-            case 3:
-                MaxDurability = 60;
-                HitCount = 6;
-                TimeChop = 3;
-                break;
-            case 4:
-                MaxDurability = 65;
-                HitCount = 4;
-                TimeChop = 2;
-                break;
-            case 5:
-                MaxDurability = 70;
-                HitCount = 2;
-                TimeChop = 1;
-                break;
         }
-        Durability = MaxDurability;
 
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Axe_Level_{level}");
@@ -53,7 +34,6 @@ public class Axe : Instrument
     private void ChopTree()
     {
         tree.ChoppingTree(HitCount);
-        Durability--;
     }
 
     public override void UseItem()
@@ -74,7 +54,7 @@ public class Axe : Instrument
         if (Physics.Raycast(startPoint.position,
                            startPoint.forward,
                            out hit,
-                           MechConstants.DISTANCE_TO_TREE))
+                           MechConstants.MAX_DISTANCE_FOR_USING_ITEM))
         {
             Transform hitObj = hit.transform;
 

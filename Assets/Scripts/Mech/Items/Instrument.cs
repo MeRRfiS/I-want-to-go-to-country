@@ -7,6 +7,7 @@ public class Instrument: Item
     public int Level { get; set; }
     public int MaxDurability { get; set; }
     public int Durability { get; set; }
+    public InstrumentTypeEnum InstrumentType { get; set; }
 
     public override bool IsItemCountZero()
     {
