@@ -23,7 +23,6 @@ public class Axe : Instrument
         {
             case 1:
                 MaxDurability = 50;
-            default:
                 HitCount = 10;
                 TimeChop = 5;
                 break;
