@@ -10,6 +10,7 @@ public class Funnel : Instrument
 
     public Funnel(int level, int durability)
     {
+        InstrumentType = InstrumentTypeEnum.Funnel;
         Level = level;
         switch (level)
         {
@@ -34,6 +35,7 @@ public class Funnel : Instrument
                 MaxUnings = 10;
                 break;
         }
+        Usings = MaxUnings;
         Durability = MaxDurability;
 
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
@@ -45,13 +47,23 @@ public class Funnel : Instrument
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if(Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.DISTANCE_FOR_PLANT)) 
+        if(Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.MAX_DISTANCE_FOR_USING_ITEM)) 
         {
             GameObject hitObject = hit.collider.gameObject;
-            if (!hitObject.CompareTag(TagConstants.PLANT) && !hitObject.CompareTag(TagConstants.TREE)) return;
+            switch (hitObject.tag)
+            {
+                case TagConstants.PLANT:
+                case TagConstants.TREE:
+                    if (Usings == 0) return;
 
-            Durability--;
-            hitObject.GetComponent<PlantController>().Watering();
+                    Durability--;
+                    Usings--;
+                    hitObject.GetComponent<PlantController>().Watering();
+                    break;
+                case TagConstants.WELL:
+                    Usings = MaxUnings;
+                    break;
+            }
         }
     }
 }

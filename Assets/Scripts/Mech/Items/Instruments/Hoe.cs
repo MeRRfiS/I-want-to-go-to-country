@@ -12,6 +12,7 @@ public class Hoe : Instrument
 
     public Hoe(int level)
     {
+        InstrumentType = InstrumentTypeEnum.Hoe;
         Level = level;
         switch (level)
         {

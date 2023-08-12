@@ -15,7 +15,9 @@ public class Axe : Instrument
 
     public Axe(int level, int durability)
     {
+        InstrumentType = InstrumentTypeEnum.Axe;
         Level = level;
+
         switch (level)
         {
             case 1:
@@ -74,7 +76,7 @@ public class Axe : Instrument
         if (Physics.Raycast(startPoint.position,
                            startPoint.forward,
                            out hit,
-                           MechConstants.DISTANCE_TO_TREE))
+                           MechConstants.MAX_DISTANCE_FOR_USING_ITEM))
         {
             Transform hitObj = hit.transform;
 

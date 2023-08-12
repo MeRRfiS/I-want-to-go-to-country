@@ -12,6 +12,7 @@ TagManager:
   - Plant
   - Tree
   - Item
+  - Well
   layers:
   - Default
   - TransparentFX

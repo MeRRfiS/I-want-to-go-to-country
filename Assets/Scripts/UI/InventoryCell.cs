@@ -15,6 +15,7 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
     [Header("Components")]
     [SerializeField] private Image _image;
     [SerializeField] private Slider _slider;
+    [SerializeField] private Slider _waterSlider;
     [SerializeField] private TextMeshProUGUI _text;
 
     public Image ItemIcon
@@ -25,6 +26,11 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
     public Slider SliderDurability
     {
         get => _slider;
+    }
+
+    public Slider WaterValueSlider
+    {
+        get => _waterSlider;
     }
 
     public TextMeshProUGUI TextCount
@@ -58,6 +64,11 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
                 break;
             case ItemTypeEnum.Instrument:
                 Instrument instrument = item as Instrument;
+                if (instrument.InstrumentType == InstrumentTypeEnum.Funnel)
+                {
+                    Funnel funnel = item as Funnel;
+                    _waterSlider.value = funnel.Usings;
+                }
                 _slider.value = instrument.Durability;
                 break;
             case ItemTypeEnum.Seed:

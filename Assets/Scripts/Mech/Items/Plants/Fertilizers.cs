@@ -26,7 +26,7 @@ public class Fertilizers: Item
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.DISTANCE_FOR_PLANT))
+        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.MAX_DISTANCE_FOR_USING_ITEM))
         {
             Transform hitTransform = hit.collider.gameObject.transform;
             if (!hitTransform.CompareTag(TagConstants.PLANT)) return;

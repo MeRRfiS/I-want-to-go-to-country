@@ -80,6 +80,7 @@ public class UIController : MonoBehaviour
         _pinUp.position = Input.mousePosition;
     }
 
+    //TODO: Make method more readable
     private void RedrawInventory(Item[] items, List<Transform> cells)
     {
         for (int i = 0; i < items.Length; i++)
@@ -104,6 +105,13 @@ public class UIController : MonoBehaviour
             {
                 case ItemTypeEnum.Instrument:
                     Instrument instrument = items[i] as Instrument;
+                    if (instrument.InstrumentType == InstrumentTypeEnum.Funnel)
+                    {
+                        Funnel funnel = items[i] as Funnel;
+                        cell.WaterValueSlider.maxValue = funnel.MaxUnings;
+                        cell.WaterValueSlider.value = funnel.Usings;
+                        cell.WaterValueSlider.gameObject.SetActive(true);
+                    }
                     slider.maxValue = instrument.MaxDurability;
                     slider.value = instrument.Durability;
                     slider.gameObject.SetActive(true);
@@ -172,28 +180,28 @@ public class UIController : MonoBehaviour
     {
         if (_pinUp.childCount == 0)
         {
-            Image image = null;
-            TextMeshProUGUI text = null;
-            Slider slider = null;
+            InventoryCell cell = null;
             switch (type)
             {
                 case CellTypeEnum.Inventory:
-                    image = _cells[index].GetChild(0).GetComponent<Image>();
-                    text = _cells[index].GetChild(1).GetComponent<TextMeshProUGUI>();
-                    slider = _cells[index].GetChild(2).GetComponent<Slider>();
+                    cell = _cells[index].GetComponent<InventoryCell>();
                     break;
                 case CellTypeEnum.Player:
-                    image = _playerCells[index].GetChild(0).GetComponent<Image>();
-                    text = _playerCells[index].GetChild(1).GetComponent<TextMeshProUGUI>();
-                    slider = _playerCells[index].GetChild(2).GetComponent<Slider>();
+                    cell = _playerCells[index].GetComponent<InventoryCell>();
                     break;
             }
+            Image image = cell.ItemIcon;
+            TextMeshProUGUI text = cell.TextCount;
+            Slider slider = cell.SliderDurability;
+            Slider waterSlider = cell.WaterValueSlider;
             Instantiate(image, _pinUp);
             Instantiate(text, _pinUp);
             Instantiate(slider, _pinUp);
+            Instantiate(waterSlider, _pinUp);
             image.gameObject.SetActive(false);
             text.gameObject.SetActive(false);
-            slider.gameObject.SetActive(false); 
+            slider.gameObject.SetActive(false);
+            waterSlider.gameObject.SetActive(false);
         }
         else
         {
