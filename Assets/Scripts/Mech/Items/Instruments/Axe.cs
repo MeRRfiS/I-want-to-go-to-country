@@ -17,7 +17,6 @@ public class Axe : Instrument
     {
         InstrumentType = InstrumentTypeEnum.Axe;
         Level = level;
-        Durability = durability;
 
         switch (level)
         {
