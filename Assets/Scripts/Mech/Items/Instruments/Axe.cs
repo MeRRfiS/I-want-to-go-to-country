@@ -18,14 +18,37 @@ public class Axe : Instrument
         InstrumentType = InstrumentTypeEnum.Axe;
         Level = level;
         Durability = durability;
-        
-        switch (level) 
+
+        switch (level)
         {
-            default: 
+            case 1:
+                MaxDurability = 50;
+            default:
                 HitCount = 10;
                 TimeChop = 5;
                 break;
+            case 2:
+                MaxDurability = 55;
+                HitCount = 8;
+                TimeChop = 4;
+                break;
+            case 3:
+                MaxDurability = 60;
+                HitCount = 6;
+                TimeChop = 3;
+                break;
+            case 4:
+                MaxDurability = 65;
+                HitCount = 4;
+                TimeChop = 2;
+                break;
+            case 5:
+                MaxDurability = 70;
+                HitCount = 2;
+                TimeChop = 1;
+                break;
         }
+        Durability = MaxDurability;
 
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Axe_Level_{level}");
@@ -34,6 +57,7 @@ public class Axe : Instrument
     private void ChopTree()
     {
         tree.ChoppingTree(HitCount);
+        Durability--;
     }
 
     public override void UseItem()
