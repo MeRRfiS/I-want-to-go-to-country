@@ -9,9 +9,11 @@ public class Fertilizers: Item
     public Fertilizers(int level) 
     {
         Level = level;
+        Price = 250;
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Fertilizers_{level}");
         Usings = MechConstants.MAX_USING_OF_FERTILIZER;
+        IsCanSold = false;
     }
 
     public override bool IsItemCountZero()

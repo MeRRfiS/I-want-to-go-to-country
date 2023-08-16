@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryController : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class InventoryController : MonoBehaviour
 
     private static InventoryController instance;
 
+    private bool _isCanChangeActiveItem = true;
     private int _activePlayerItemIndex = 0;
     private SelectedItem _selectedItem;
     private Item[] _playerItems = new Item[GlobalConstants.MAX_ITEMS_IN_PLAYER];
@@ -20,6 +23,11 @@ public class InventoryController : MonoBehaviour
     [SerializeField] private Transform _hand;
 
     public static InventoryController GetInstance() => instance;
+
+    public bool IsCanChangeActiveItem
+    {
+        set => _isCanChangeActiveItem = value;
+    }
 
     public Item[] ItemsArray
     {
@@ -129,6 +137,25 @@ public class InventoryController : MonoBehaviour
         UIController.GetInstance().SelectingPlayerCell(_activePlayerItemIndex);
     }
 
+    private void ReduceCountOfItem(Item[] items, int removeId, int count)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if(items[i] == null) continue;
+            if (items[i].Id == removeId)
+            {
+                int itemsCount = items[i].Count;
+                items[i].Count -= count;
+                if (items[i].Count <= 0)
+                {
+                    items[i] = null;
+                }
+                count -= itemsCount;
+                if (count <= 0) return;
+            }
+        }
+    }
+
     private void Awake()
     {
         instance = this;
@@ -137,16 +164,6 @@ public class InventoryController : MonoBehaviour
     private void Start()
     {
         ChangeActiveItem(true);
-    }
-
-    public void RemoveItem()
-    {
-        if (_selectedItem.Equals(default(SelectedItem))) 
-        {
-            _playerItems[_activePlayerItemIndex] = null;
-        }
-
-        UIController.GetInstance().RedrawInventories();
     }
 
     public void DropItemFromInventory()
@@ -213,6 +230,23 @@ public class InventoryController : MonoBehaviour
         return true;
     }
 
+    public void RemoveItem()
+    {
+        if (_selectedItem.Equals(default(SelectedItem)))
+        {
+            _playerItems[_activePlayerItemIndex] = null;
+        }
+
+        UIController.GetInstance().RedrawInventories();
+    }
+
+    public void RemoveItem(Item removeItem, int count)
+    {
+        ReduceCountOfItem(_itemsArray, removeItem.Id, count);
+        ReduceCountOfItem(_playerItems, removeItem.Id, count);
+        UIController.GetInstance().RedrawInventories();
+    }
+
     //Select item for move to another cell
     public void SelectItem(int index, CellTypeEnum type)
     {
@@ -247,6 +281,8 @@ public class InventoryController : MonoBehaviour
 
     public void ChangeActiveItem(bool isPositiv = true, int index = -1)
     {
+        if (!_isCanChangeActiveItem) return;
+
         int oldActivePlayerItemIndex = _activePlayerItemIndex;
         if (index == -1)
         {

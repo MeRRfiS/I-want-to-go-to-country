@@ -38,30 +38,7 @@ public class ItemController : MonoBehaviour
     [Obsolete]
     private void Start()
     {
-        if (_item != null) return;
-
-        switch (_itemType)
-        {
-            case ItemTypeEnum.None:
-                break;
-            case ItemTypeEnum.Instrument:
-                _item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
-                break;
-            case ItemTypeEnum.Seed:
-                _item = new Seed(_seedType);
-                break;
-            case ItemTypeEnum.Tree:
-                _item = new Tree(_treeType);
-                break;
-            case ItemTypeEnum.Fertilizers:
-                _item = new Fertilizers(_level);
-                break;
-            default:
-                _item = new Item();
-                _item.Id = (int)ItemIdsEnum.Harvest_Default;
-                break;
-        }
-        _item.Type = _itemType;
+        InitializeItem();
     }
 
     private void Update()
@@ -88,6 +65,38 @@ public class ItemController : MonoBehaviour
         if (!_isUpdating) return;
 
         _obj = _item.Updating(_obj, _objPrefab);
+    }
+
+    public void InitializeItem()
+    {
+        if (_item != null) return;
+
+        switch (_itemType)
+        {
+            case ItemTypeEnum.None:
+                break;
+            case ItemTypeEnum.Instrument:
+                _item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
+                break;
+            case ItemTypeEnum.Seed:
+                _item = new Seed(_seedType);
+                break;
+            case ItemTypeEnum.Tree:
+                _item = new Tree(_treeType);
+                break;
+            case ItemTypeEnum.Fertilizers:
+                _item = new Fertilizers(_level);
+                break;
+            //ToDo: Create Harvest class (https://trello.com/c/HGxBJlDN/58-create-harvest-class)
+            case ItemTypeEnum.Harvest:
+                _item = new Item();
+                _item.Count = 5;
+                _item.Price = 15;
+                _item.Id = (int)ItemIdsEnum.Harvest_Default;
+                _item.IsCanSold = true;
+                break;
+        }
+        _item.Type = _itemType;
     }
 
     public void ApplyItemDisable()

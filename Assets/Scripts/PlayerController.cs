@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool _isCanMoving = true;
     private bool _isCanRotation = true;
     private bool _isCanUsingItem = true;
+    private int _money = 200;
     private float _velocity;
     private Vector2 _inputMovement;
     private Vector3 _direction;
@@ -45,6 +46,12 @@ public class PlayerController : MonoBehaviour
     {
         get => _isCanUsingItem;
         set => _isCanUsingItem = value;
+    }
+
+    public int Money
+    {
+        get => _money; 
+        set => _money = value;
     }
 
     private void Awake()
@@ -209,5 +216,12 @@ public class PlayerController : MonoBehaviour
         if (!_isCanUsingItem) return;
 
         _heldItem.Item.UseItem();
+    }
+
+    public void SwitchActiveController(bool state)
+    {
+        _isCanMoving = state;
+        _isCanRotation = state;
+        _isCanUsingItem = state;
     }
 }

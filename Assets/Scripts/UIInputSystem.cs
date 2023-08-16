@@ -17,6 +17,7 @@ public class UIInputSystem : MonoBehaviour
     public void Inventory(InputAction.CallbackContext context)
     {
         if (!context.started) return;
+        if (UIController.GetInstance().MenuActiveSelf()) return;
 
         UIController.GetInstance().SwitchActiveInventoryMenu();
     }
