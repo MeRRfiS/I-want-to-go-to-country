@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item
 {
+    public bool IsCanSold { get; set; }
     public int Id { get; set; }
     public int Price { get; set; }
     public int Count { get; set; }

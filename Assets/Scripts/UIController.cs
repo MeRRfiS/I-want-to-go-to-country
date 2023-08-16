@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -11,8 +12,16 @@ public class UIController : MonoBehaviour
 
     [Header("Menus")]
     [SerializeField] private GameObject _inventory;
+    [SerializeField] private GameObject _shop;
+    [SerializeField] private Transform _buyItemMenu;
+    [SerializeField] private Transform _sellItemMenu;
     [SerializeField] private List<Transform> _cells;
     [SerializeField] private List<Transform> _playerCells;
+    [SerializeField] private TextMeshProUGUI _money;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject _buyShopCell;
+    [SerializeField] private GameObject _sellShopCell;
 
     [Header("Setting")]
     [SerializeField] private Color _deselectedColor;
@@ -28,7 +37,7 @@ public class UIController : MonoBehaviour
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
-    public bool InventoryActiveSelf() => _inventory.activeSelf;
+    public bool MenuActiveSelf() => _inventory.activeSelf || _shop.activeSelf;
 
     private void Awake()
     {
@@ -48,6 +57,12 @@ public class UIController : MonoBehaviour
     {
         UpdateProgressBar();
         ApplyMovementPinUpTransform();
+        UpdateMoneyCountText();
+    }
+
+    private void UpdateMoneyCountText()
+    {
+        _money.text = PlayerController.GetInstance().Money.ToString();
     }
 
     private void UpdateProgressBar()
@@ -136,6 +151,13 @@ public class UIController : MonoBehaviour
         }
     }
 
+    private void SwitchActiveMouse(bool state)
+    {
+        if (state) Cursor.lockState = CursorLockMode.Confined;
+        else Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = state;
+    }
+
     public void ProgressBar(int timerMultiple, UnityAction action)
     {
         if (_usingProgressBar) return;
@@ -156,15 +178,30 @@ public class UIController : MonoBehaviour
         bool state = !_inventory.activeSelf;
 
         RedrawInventory(InventoryController.GetInstance().ItemsArray, _cells);
-        PlayerController.GetInstance().IsCanMoving = !state;
-        PlayerController.GetInstance().IsCanRotation = !state;
-        PlayerController.GetInstance().IsCanUsingItem = !state;
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
 
         _pinUp.gameObject.SetActive(state);
-        if (state) Cursor.lockState = CursorLockMode.Confined;
-        else Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = state;
+        SwitchActiveMouse(state);
         _inventory.SetActive(state);
+    }
+
+    public void SwitchActiveShopMenu()
+    {
+        bool state = !_shop.activeSelf;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
+
+        SwitchActiveMouse(state);
+        if (!state)
+        {
+            for (int i = _buyItemMenu.childCount - 1; i >= 0; i--)
+            {
+                Destroy(_buyItemMenu.GetChild(i).gameObject);
+            }
+        }
+        _shop.SetActive(state);
     }
 
     public void RedrawInventories()
@@ -174,6 +211,36 @@ public class UIController : MonoBehaviour
 
         //Redrawing player Inventory
         RedrawInventory(InventoryController.GetInstance().PlayerItems, _playerCells);
+    }
+
+    public void RedrawShop(List<GoodsModel> goodsForDay, ShopController shop)
+    {
+        for (int i = _buyItemMenu.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_buyItemMenu.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < goodsForDay.Count; i++)
+        {
+            if (goodsForDay[i] == null) continue;
+
+            ShopCell cell = Instantiate(_buyShopCell, _buyItemMenu).GetComponent<ShopCell>();
+            cell.DrawCellInformation(goodsForDay[i], shop);
+            cell.Index = i;
+        }
+    }
+
+    public void RedrawShop(Dictionary<int, GoodsModel> sellingGoods, ShopController shop)
+    {
+        for (int i = _sellItemMenu.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_sellItemMenu.GetChild(i).gameObject);
+        }
+        foreach (var goods in sellingGoods)
+        {
+            ShopCell cell = Instantiate(_sellShopCell, _sellItemMenu).GetComponent<ShopCell>();
+            cell.DrawCellInformation(goods.Value, shop);
+            cell.Index = goods.Key;
+        }
     }
 
     public void PinUpItemToMouse(int index = -1, CellTypeEnum type = CellTypeEnum.None)

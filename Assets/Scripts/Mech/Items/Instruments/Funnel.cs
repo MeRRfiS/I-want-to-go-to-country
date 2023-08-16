@@ -10,6 +10,7 @@ public class Funnel : Instrument
 
     public Funnel(int level, int durability)
     {
+        IsCanSold = false;
         InstrumentType = InstrumentTypeEnum.Funnel;
         Level = level;
         switch (level)
@@ -17,22 +18,27 @@ public class Funnel : Instrument
             case 1:
                 MaxDurability = 100;
                 MaxUnings = 2;
+                Price = 50;
                 break;
             case 2:
                 MaxDurability = 150;
                 MaxUnings = 4;
+                Price = 150;
                 break;
             case 3:
                 MaxDurability = 200;
                 MaxUnings = 6;
+                Price = 400;
                 break;
             case 4:
                 MaxDurability = 300;
                 MaxUnings = 8;
+                Price = 800;
                 break;
             case 5:
                 MaxDurability = 400;
                 MaxUnings = 10;
+                Price = 1250;
                 break;
         }
         Usings = MaxUnings;

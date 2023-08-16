@@ -19,6 +19,17 @@ public class Tree : Item
     {
         _type = type;
         Count = 5;
+        IsCanSold = false;
+        switch (type)
+        {
+            case TreeTypeEnum.None:
+                break;
+            case TreeTypeEnum.Default:
+                Price = 10;
+                break;
+            default:
+                break;
+        }
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Tree_{type.ToString()}");
     }

@@ -40,7 +40,7 @@ public class InventoryCell : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!UIController.GetInstance().InventoryActiveSelf()) return;
+        if (!UIController.GetInstance().MenuActiveSelf()) return;
 
         UIController.GetInstance().PinUpItemToMouse(_index, _typeCell);
         InventoryController.GetInstance().SelectItem(_index, _typeCell);

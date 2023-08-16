@@ -17,33 +17,38 @@ public class Axe : Instrument
     {
         InstrumentType = InstrumentTypeEnum.Axe;
         Level = level;
-
+        IsCanSold = false;
         switch (level)
         {
             case 1:
                 MaxDurability = 50;
                 HitCount = 10;
                 TimeChop = 5;
+                Price = 50;
                 break;
             case 2:
                 MaxDurability = 55;
                 HitCount = 8;
                 TimeChop = 4;
+                Price = 200;
                 break;
             case 3:
                 MaxDurability = 60;
                 HitCount = 6;
                 TimeChop = 3;
+                Price = 500;
                 break;
             case 4:
                 MaxDurability = 65;
                 HitCount = 4;
                 TimeChop = 2;
+                Price = 900;
                 break;
             case 5:
                 MaxDurability = 70;
                 HitCount = 2;
                 TimeChop = 1;
+                Price = 1400;
                 break;
         }
         Durability = MaxDurability;

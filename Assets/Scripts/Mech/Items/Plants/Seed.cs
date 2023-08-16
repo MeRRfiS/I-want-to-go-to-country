@@ -6,15 +6,21 @@ using UnityEngine;
 public class Seed : Item
 {
     private GameObject saplingObj;
-    private TreeChecking treeCheck;
     private SeedTypeEnum _type;
-
-    private bool IsSaplingObjNull() => saplingObj == null;
 
     public Seed(SeedTypeEnum type)
     {
         _type = type;
         Count = 5;
+        IsCanSold = false;
+        switch (type)
+        {
+            case SeedTypeEnum.None:
+                break;
+            case SeedTypeEnum.Default:
+                Price = 10;
+                break;
+        }
         Id = (int)Enum.Parse(typeof(ItemIdsEnum),
                              $"Seed_{type.ToString()}");
     }

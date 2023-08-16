@@ -13,6 +13,7 @@ TagManager:
   - Tree
   - Item
   - Well
+  - Shop
   layers:
   - Default
   - TransparentFX

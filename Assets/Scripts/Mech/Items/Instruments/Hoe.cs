@@ -12,24 +12,30 @@ public class Hoe : Instrument
 
     public Hoe(int level)
     {
+        IsCanSold = false;
         InstrumentType = InstrumentTypeEnum.Hoe;
         Level = level;
         switch (level)
         {
             case 1:
                 MaxDurability = 25;
+                Price = 50;
                 break;
             case 2:
                 MaxDurability = 50;
+                Price = 200;
                 break;
             case 3:
                 MaxDurability = 75;
+                Price = 500;
                 break;
             case 4:
                 MaxDurability = 100;
+                Price = 900;
                 break;
             case 5:
                 MaxDurability = 150;
+                Price = 1400;
                 break;
         }
         Durability = MaxDurability;
