@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class InventoryController : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class InventoryController : MonoBehaviour
     private bool _isCanChangeActiveItem = true;
     private int _activePlayerItemIndex = 0;
     private SelectedItem _selectedItem;
-    private Item[] _playerItems = new Item[GlobalConstants.MAX_ITEMS_IN_PLAYER];
-    private Item[] _itemsArray = new Item[GlobalConstants.MAX_ITEMS_IN_INVENTORY];
+
+    [Header("Inventory")]
+    [SerializeField] private Inventory _mainInventory;
+    [SerializeField] private Inventory _playerInventory;
 
     [Header("Components")]
     [SerializeField] private Transform _hand;
@@ -31,30 +34,30 @@ public class InventoryController : MonoBehaviour
 
     public Item[] ItemsArray
     {
-        get => _itemsArray;
+        get => _mainInventory.Container;
     }
 
     public Item[] PlayerItems
     {
-        get => _playerItems;
+        get => _playerInventory.Container;
     }
 
     private void MoveItemFromInventory(int indexOfSecondCell, CellTypeEnum type)
     {
-        if (_itemsArray[_selectedItem._itemIndex] == null) return;
+        if (_mainInventory.Container[_selectedItem._itemIndex] == null) return;
 
         Item temp;
         switch (type)
         {
             case CellTypeEnum.Inventory:
-                temp = _itemsArray[indexOfSecondCell];
-                _itemsArray[indexOfSecondCell] = _itemsArray[_selectedItem._itemIndex];
-                _itemsArray[_selectedItem._itemIndex] = temp;
+                temp = _mainInventory.Container[indexOfSecondCell];
+                _mainInventory.Container[indexOfSecondCell] = _mainInventory.Container[_selectedItem._itemIndex];
+                _mainInventory.Container[_selectedItem._itemIndex] = temp;
                 break;
             case CellTypeEnum.Player:
-                temp = _playerItems[indexOfSecondCell];
-                _playerItems[indexOfSecondCell] = _itemsArray[_selectedItem._itemIndex];
-                _itemsArray[_selectedItem._itemIndex] = temp;
+                temp = _playerInventory.Container[indexOfSecondCell];
+                _playerInventory.Container[indexOfSecondCell] = _mainInventory.Container[_selectedItem._itemIndex];
+                _mainInventory.Container[_selectedItem._itemIndex] = temp;
                 break;
         }
 
@@ -63,101 +66,36 @@ public class InventoryController : MonoBehaviour
 
     private void MoveItemFromPlayer(int indexOfSecondCell, CellTypeEnum type)
     {
-        if (_playerItems[_selectedItem._itemIndex] == null) return;
+        if (_playerInventory.Container[_selectedItem._itemIndex] == null) return;
 
         Item temp;
         switch (type)
         {
             case CellTypeEnum.Inventory:
-                temp = _itemsArray[indexOfSecondCell];
-                _itemsArray[indexOfSecondCell] = _playerItems[_selectedItem._itemIndex];
-                _playerItems[_selectedItem._itemIndex] = temp;
+                temp = _mainInventory.Container[indexOfSecondCell];
+                _mainInventory.Container[indexOfSecondCell] = _playerInventory.Container[_selectedItem._itemIndex];
+                _playerInventory.Container[_selectedItem._itemIndex] = temp;
                 break;
             case CellTypeEnum.Player:
-                temp = _playerItems[indexOfSecondCell];
-                _playerItems[indexOfSecondCell] = _playerItems[_selectedItem._itemIndex];
-                _playerItems[_selectedItem._itemIndex] = temp;
+                temp = _playerInventory.Container[indexOfSecondCell];
+                _playerInventory.Container[indexOfSecondCell] = _playerInventory.Container[_selectedItem._itemIndex];
+                _playerInventory.Container[_selectedItem._itemIndex] = temp;
                 break;
         }
 
         UIController.GetInstance().RedrawInventories();
     }
 
-    private bool GetItemIndex(Item item, out int index)
-    {
-        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
-        {
-            if (_itemsArray[i] == null) continue;
-            if (_itemsArray[i].Id == item.Id && _itemsArray[i].Count != 100)
-            {
-                index = i;
-                return true;
-            }
-        }
-
-        index = -1;
-        return false;
-    }
-
-    private bool GetEmptyCell(out int index)
-    {
-        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
-        {
-            if (_itemsArray[i] == null)
-            {
-                index = i;
-                return true;
-            }
-        }
-
-        index = -1;
-        return false;
-    }
-
-    private bool AddNewValuesToArray(Item item, int value)
-    {
-        while (value > 0)
-        {
-            int index;
-            if (!GetEmptyCell(out index)) return false;
-
-            _itemsArray[index] = item.Copy();
-            _itemsArray[index].Count = value > GlobalConstants.MAX_ITEM_IN_CELL ?
-                                          GlobalConstants.MAX_ITEM_IN_CELL : value;
-            value -= 100;
-            //ToDo: Make throwing items if inventory full
-        }
-
-        return true;
-    }
-
     private void ApplyActiveItem()
     {
-        PlayerController.GetInstance().ChangeActiveItemInHand(_playerItems[_activePlayerItemIndex]);
+        PlayerController.GetInstance().ChangeActiveItemInHand(_playerInventory.Container[_activePlayerItemIndex]);
         UIController.GetInstance().SelectingPlayerCell(_activePlayerItemIndex);
-    }
-
-    private void ReduceCountOfItem(Item[] items, int removeId, int count)
-    {
-        for (int i = 0; i < items.Length; i++)
-        {
-            if(items[i] == null) continue;
-            if (items[i].Id == removeId)
-            {
-                int itemsCount = items[i].Count;
-                items[i].Count -= count;
-                if (items[i].Count <= 0)
-                {
-                    items[i] = null;
-                }
-                count -= itemsCount;
-                if (count <= 0) return;
-            }
-        }
     }
 
     private void Awake()
     {
+        _mainInventory.Init();
+        _playerInventory.Init();
         instance = this;
     }
 
@@ -175,13 +113,13 @@ public class InventoryController : MonoBehaviour
             {
                 case CellTypeEnum.Inventory:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)_itemsArray[_selectedItem._itemIndex].Id));
-                    _itemsArray[_selectedItem._itemIndex] = null;
+                                           (ItemIdsEnum)_mainInventory.Container[_selectedItem._itemIndex]._id));
+                    _mainInventory.Container[_selectedItem._itemIndex] = null;
                     break;
                 case CellTypeEnum.Player:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)_playerItems[_selectedItem._itemIndex].Id));
-                    _playerItems[_selectedItem._itemIndex] = null;
+                                           (ItemIdsEnum)_playerInventory.Container[_selectedItem._itemIndex]._id));
+                    _playerInventory.Container[_selectedItem._itemIndex] = null;
                     break;
             }
             dropItem.transform.position = _hand.position;
@@ -191,50 +129,16 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public bool AddItem(Item item, int value)
+    public bool AddItemToMainInventory(Item item, int amount)
     {
-        int index;
-        switch (item.Type)
-        {
-            case ItemTypeEnum.None:
-                return false;
-            case ItemTypeEnum.Instrument:
-            case ItemTypeEnum.Fertilizers:
-                if (!GetEmptyCell(out index)) return false;
-
-                _itemsArray[index] = item/*.Copy()*/;
-                break;
-            case ItemTypeEnum.Seed:
-            case ItemTypeEnum.Tree:
-            case ItemTypeEnum.Harvest:
-                if (GetItemIndex(item, out index))
-                {
-                    if (_itemsArray[index].Count + value > GlobalConstants.MAX_ITEM_IN_CELL)
-                    {
-                        value -= GlobalConstants.MAX_ITEM_IN_CELL - _itemsArray[index].Count;
-                        _itemsArray[index].Count = GlobalConstants.MAX_ITEM_IN_CELL;
-                        if(!AddNewValuesToArray(item, value)) return false;
-                    }
-                    else
-                    {
-                        _itemsArray[index].Count += value;
-                    }
-                }
-                else
-                {
-                    if (!AddNewValuesToArray(item, value)) return false;
-                }
-                break;
-        }
-
-        return true;
+        return _mainInventory.AddItem(new InventorySlot(item, amount));
     }
 
     public void RemoveItem()
     {
         if (_selectedItem.Equals(default(SelectedItem)))
         {
-            _playerItems[_activePlayerItemIndex] = null;
+            _playerInventory.Container[_activePlayerItemIndex] = null;
         }
 
         UIController.GetInstance().RedrawInventories();
@@ -242,8 +146,8 @@ public class InventoryController : MonoBehaviour
 
     public void RemoveItem(Item removeItem, int count)
     {
-        ReduceCountOfItem(_itemsArray, removeItem.Id, count);
-        ReduceCountOfItem(_playerItems, removeItem.Id, count);
+        _mainInventory.RemoveItem(removeItem, count);
+        _playerInventory.RemoveItem(removeItem, count);
         UIController.GetInstance().RedrawInventories();
     }
 
@@ -255,10 +159,10 @@ public class InventoryController : MonoBehaviour
             switch (type)
             {
                 case CellTypeEnum.Inventory:
-                    if (_itemsArray[index] == null) return;
+                    if (_mainInventory.Container[index] == null) return;
                     break;
                 case CellTypeEnum.Player:
-                    if (_playerItems[index] == null) return;
+                    if (_playerInventory.Container[index] == null) return;
                     break;
             }
             _selectedItem = new SelectedItem() { _itemIndex = index, _cellType = type };

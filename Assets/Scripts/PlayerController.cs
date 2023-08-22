@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     public void PickupItem(GameObject heldItem)
     {
         Item item = heldItem.GetComponent<ItemController>().Item;
-        if(!InventoryController.GetInstance().AddItem(item, item.Count)) return;
+        if(!InventoryController.GetInstance().AddItemToMainInventory(item, item.Amount)) return;
         Destroy(heldItem);
     }
 
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
         if (_heldItem != null) Destroy(_heldItem.gameObject);
         if (item == null) return;
 
-        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item.Id));
+        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id));
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;

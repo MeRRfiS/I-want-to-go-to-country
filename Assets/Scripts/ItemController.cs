@@ -8,15 +8,15 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ItemController : MonoBehaviour
 {
-    private Item _item;
+    [SerializeField] private Item _item;
 
     [Header("Settings")]
-    [SerializeField] private ItemTypeEnum _itemType;
-    [SerializeField] private InstrumentTypeEnum _instrumentType;
-    [SerializeField] private SeedTypeEnum _seedType;
-    [SerializeField] private TreeTypeEnum _treeType;
-    public int _level;
-    public int _durability;
+    //[SerializeField] private ItemTypeEnum _itemType;
+    //[SerializeField] private InstrumentTypeEnum _instrumentType;
+    //[SerializeField] private SeedTypeEnum _seedType;
+    //[SerializeField] private TreeTypeEnum _treeType;
+    //public int _level;
+    //public int _durability;
 
     private bool _isUpdating = false;
     private int _id;
@@ -69,34 +69,34 @@ public class ItemController : MonoBehaviour
 
     public void InitializeItem()
     {
-        if (_item != null) return;
+        _item.Init();
+        //if (_item != null) return;
 
-        switch (_itemType)
-        {
-            case ItemTypeEnum.None:
-                break;
-            case ItemTypeEnum.Instrument:
-                _item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
-                break;
-            case ItemTypeEnum.Seed:
-                _item = new Seed(_seedType);
-                break;
-            case ItemTypeEnum.Tree:
-                _item = new Tree(_treeType);
-                break;
-            case ItemTypeEnum.Fertilizers:
-                _item = new Fertilizers(_level);
-                break;
-            //ToDo: Create Harvest class (https://trello.com/c/HGxBJlDN/58-create-harvest-class)
-            case ItemTypeEnum.Harvest:
-                _item = new Item();
-                _item.Count = 5;
-                _item.Price = 15;
-                _item.Id = (int)ItemIdsEnum.Harvest_Default;
-                _item.IsCanSold = true;
-                break;
-        }
-        _item.Type = _itemType;
+        //switch (_itemType)
+        //{
+        //    case ItemTypeEnum.None:
+        //        break;
+        //    case ItemTypeEnum.Instrument:
+        //        _item = Instrument.CreateInstrument(_instrumentType, _level, _durability);
+        //        break;
+        //    case ItemTypeEnum.Seed:
+        //        _item = new Seed(_seedType);
+        //        break;
+        //    case ItemTypeEnum.Tree:
+        //        _item = new Tree(_treeType);
+        //        break;
+        //    case ItemTypeEnum.Fertilizers:
+        //        _item = new Fertilizers(_level);
+        //        break;
+        //    //ToDo: Create Harvest class (https://trello.com/c/HGxBJlDN/58-create-harvest-class)
+        //    case ItemTypeEnum.Harvest:
+        //        _item = new Item();
+        //        _item._price = 15;
+        //        _item._id = (int)ItemIdsEnum.Harvest_Default;
+        //        _item._isCanSold = true;
+        //        break;
+        //}
+        //_item._type = _itemType;
     }
 
     public void ApplyItemDisable()

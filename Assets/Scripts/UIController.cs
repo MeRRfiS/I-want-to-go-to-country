@@ -100,7 +100,7 @@ public class UIController : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            InventoryCell cell = cells[i].GetComponent<InventoryCell>();
+            InventoryCellHandler cell = cells[i].GetComponent<InventoryCellHandler>();
             Image image = cell.ItemIcon;
             TextMeshProUGUI text = cell.TextCount;
             Slider slider = cell.SliderDurability;
@@ -114,20 +114,20 @@ public class UIController : MonoBehaviour
                 continue;
             }
 
-            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i].Id);
+            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i]._id);
             image.gameObject.SetActive(true);
-            switch (items[i].Type)
+            switch (items[i]._type)
             {
                 case ItemTypeEnum.Instrument:
                     Instrument instrument = items[i] as Instrument;
-                    if (instrument.InstrumentType == InstrumentTypeEnum.Funnel)
+                    if (instrument._instrumentType == InstrumentTypeEnum.Funnel)
                     {
                         Funnel funnel = items[i] as Funnel;
-                        cell.WaterValueSlider.maxValue = funnel.MaxUnings;
+                        cell.WaterValueSlider.maxValue = funnel._maxUsings;
                         cell.WaterValueSlider.value = funnel.Usings;
                         cell.WaterValueSlider.gameObject.SetActive(true);
                     }
-                    slider.maxValue = instrument.MaxDurability;
+                    slider.maxValue = instrument._maxDurability;
                     slider.value = instrument.Durability;
                     slider.gameObject.SetActive(true);
                     text.gameObject.SetActive(false);
@@ -141,7 +141,7 @@ public class UIController : MonoBehaviour
                 case ItemTypeEnum.Seed:
                 case ItemTypeEnum.Tree:
                 case ItemTypeEnum.Harvest:
-                    text.text = items[i].Count.ToString();
+                    text.text = items[i].Amount.ToString();
                     text.gameObject.SetActive(true);
                     slider.gameObject.SetActive(false);
                     break;
@@ -223,7 +223,7 @@ public class UIController : MonoBehaviour
         {
             if (goodsForDay[i] == null) continue;
 
-            ShopCell cell = Instantiate(_buyShopCell, _buyItemMenu).GetComponent<ShopCell>();
+            ShopCellHandler cell = Instantiate(_buyShopCell, _buyItemMenu).GetComponent<ShopCellHandler>();
             cell.DrawCellInformation(goodsForDay[i], shop);
             cell.Index = i;
         }
@@ -237,7 +237,7 @@ public class UIController : MonoBehaviour
         }
         foreach (var goods in sellingGoods)
         {
-            ShopCell cell = Instantiate(_sellShopCell, _sellItemMenu).GetComponent<ShopCell>();
+            ShopCellHandler cell = Instantiate(_sellShopCell, _sellItemMenu).GetComponent<ShopCellHandler>();
             cell.DrawCellInformation(goods.Value, shop);
             cell.Index = goods.Key;
         }
@@ -247,14 +247,16 @@ public class UIController : MonoBehaviour
     {
         if (_pinUp.childCount == 0)
         {
-            InventoryCell cell = null;
+            InventoryCellHandler cell = null;
             switch (type)
             {
                 case CellTypeEnum.Inventory:
-                    cell = _cells[index].GetComponent<InventoryCell>();
+                    if (InventoryController.GetInstance().ItemsArray[index] == null) return;
+                    cell = _cells[index].GetComponent<InventoryCellHandler>();
                     break;
                 case CellTypeEnum.Player:
-                    cell = _playerCells[index].GetComponent<InventoryCell>();
+                    if (InventoryController.GetInstance().PlayerItems[index] == null) return;
+                    cell = _playerCells[index].GetComponent<InventoryCellHandler>();
                     break;
             }
             Image image = cell.ItemIcon;

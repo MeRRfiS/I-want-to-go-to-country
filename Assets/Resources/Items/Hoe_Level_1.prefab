@@ -308,11 +308,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2c531fa9039ab48a795766a2020b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemType: 1
-  _instrumentType: 1
-  _seedType: 0
-  _treeType: 0
-  _level: 1
-  _durability: 0
-  _count: 1
+  _item: {fileID: 11400000, guid: 917ca5314a1e1eb4386d33697989f341, type: 2}
   _objPrefab: {fileID: 8073833192983224627, guid: e89caef2c91d0c445aa174e498a2cf7a, type: 3}
