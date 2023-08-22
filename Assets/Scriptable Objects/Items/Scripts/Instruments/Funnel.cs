@@ -21,41 +21,6 @@ public class Funnel : Instrument
         _amount = 1;
     }
 
-    public Funnel(int level, int durability)
-    {
-        //_isCanSold = false;
-        //_instrumentType = InstrumentTypeEnum.Funnel;
-        //_level = level;
-        //switch (level)
-        //{
-        //    case 1:
-        //        _maxDurability = 100;
-        //        _maxUnings = 2;
-        //        _price = 50;
-        //        break;
-        //    case 2:
-        //        _maxDurability = 150;
-        //        _maxUnings = 4;
-        //        _price = 150;
-        //        break;
-        //    case 3:
-        //        _maxDurability = 200;
-        //        _maxUnings = 6;
-        //        _price = 400;
-        //        break;
-        //    case 4:
-        //        _maxDurability = 300;
-        //        _maxUnings = 8;
-        //        _price = 800;
-        //        break;
-        //    case 5:
-        //        _maxDurability = 400;
-        //        _maxUnings = 10;
-        //        _price = 1250;
-        //        break;
-        //}
-    }
-
     public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;

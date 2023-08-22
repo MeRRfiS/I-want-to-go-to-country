@@ -20,20 +20,4 @@ public class Instrument: Item
 
         return false;
     }
-
-    //public static Item CreateInstrument(InstrumentTypeEnum type, int level, int durability)
-    //{
-    //    switch (type)
-    //    {
-    //        case InstrumentTypeEnum.Hoe:
-    //            return new Hoe();
-    //        case InstrumentTypeEnum.Axe:
-    //            return new Axe(level, durability);
-    //        case InstrumentTypeEnum.Funnel:
-    //            return new Funnel(level, durability);
-    //        case InstrumentTypeEnum.None:
-    //        default:
-    //            return null;
-    //    }
-    //}
 }
