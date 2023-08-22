@@ -96,13 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2c531fa9039ab48a795766a2020b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemType: 1
-  _instrumentType: 2
-  _seedType: 0
-  _treeType: 0
-  _level: 1
-  _durability: 0
-  _count: 1
+  _item: {fileID: 11400000, guid: fdfc130c4ad32774cbb19cb4ce9be9c4, type: 2}
   _objPrefab: {fileID: 8073833192983224627, guid: e89caef2c91d0c445aa174e498a2cf7a, type: 3}
 --- !u!1 &1311756307234759403
 GameObject:

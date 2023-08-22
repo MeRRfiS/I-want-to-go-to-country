@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.5.32pa
+  bundleVersion: 0.6.36pa
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -154,7 +154,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.Project-New-Generation.I-want-to-go-to-country
+    Standalone: com.Project-New-Generation.I-wanna-go-the-country
   buildNumber:
     Bratwurst: 0
     Standalone: 0

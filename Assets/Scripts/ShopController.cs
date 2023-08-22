@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
-    [SerializeField] private List<ItemIdsEnum> _itemsSells;
+    [SerializeField] private List<Item> _itemsSells;
     private List<GoodsModel> _goods = new List<GoodsModel>();
     private List<GoodsModel> _goodsForDay = new List<GoodsModel>();
     private Dictionary<int, GoodsModel> _sellingItems;
@@ -20,14 +20,14 @@ public class ShopController : MonoBehaviour
     {
         foreach (var itemSells in _itemsSells)
         {
-            ItemController itemController = (Resources.Load<GameObject>(ResourceConstants.ITEMS + itemSells.ToString()))
+            ItemController itemController = (Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)itemSells._id))
                                             .GetComponent<ItemController>();
             itemController.InitializeItem();
             GoodsModel goodsModel = new GoodsModel()
             {
                 Goods = itemController.Item,
-                Count = 5,
-                Price = itemController.Item.Price
+                Count = 99,
+                Price = itemController.Item._price
             };
             _goods.Add(goodsModel);
         }
@@ -38,21 +38,21 @@ public class ShopController : MonoBehaviour
         foreach (var item in items)
         {
             if (item == null) continue;
-            if (!item.IsCanSold) continue;
+            if (!item._isCanSold) continue;
 
-            if (_sellingItems.ContainsKey(item.Id))
+            if (_sellingItems.ContainsKey(item._id))
             {
-                _sellingItems[item.Id].Count += item.Count;
+                _sellingItems[item._id].Count += item.Amount;
             }
             else
             {
                 GoodsModel goods = new GoodsModel()
                 {
                     Goods = item,
-                    Count = item.Count,
-                    Price = item.Price
+                    Count = item.Amount,
+                    Price = item._price
                 };
-                _sellingItems.Add(item.Id, goods);
+                _sellingItems.Add(item._id, goods);
             }
         }
     }
@@ -73,7 +73,7 @@ public class ShopController : MonoBehaviour
     {
         foreach (var g in _goods)
         {
-            if(g.Goods.Type != ItemTypeEnum.Tree && g.Goods.Type != ItemTypeEnum.Seed)
+            if(g.Goods._type != ItemTypeEnum.Tree && g.Goods._type != ItemTypeEnum.Seed)
             {
                 _goodsForDay.Add(g);
                 continue;
@@ -87,7 +87,7 @@ public class ShopController : MonoBehaviour
         while (_goodsForDay.Count() != 2) 
         { 
             int index = Random.Range(0, _goods.Count);
-            var existGoods = _goodsForDay.Where(g => g.Goods.Id == _goods[index].Goods.Id);
+            var existGoods = _goodsForDay.Where(g => g.Goods._id == _goods[index].Goods._id);
             if (existGoods.Count() != 0) continue;
 
             _goodsForDay.Add(_goods[index]);
@@ -112,7 +112,7 @@ public class ShopController : MonoBehaviour
 
         _goodsForDay[index].Count--;
         PlayerController.GetInstance().Money -= _goodsForDay[index].Price;
-        InventoryController.GetInstance().AddItem(_goodsForDay[index].Goods, 1);
+        InventoryController.GetInstance().AddItemToMainInventory(_goodsForDay[index].Goods, 1);
         if (_goodsForDay[index].Count == 0) _goodsForDay[index] = null;
 
         LoadGoodsForDayToUI();
