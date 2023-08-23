@@ -6,12 +6,13 @@ public class PlantController : MonoBehaviour
 {
     private int collectTimes = 0;
     private int chopTreeTime = 0;
-    private int harvestCount = 1;
+    private int harvestAmount = 1;
     [Header("Materials")]
     [SerializeField] private Material _earthWithFertilize;
     [Header("Setting")]
     [SerializeField] private PlantTypeEnum _type;
     [Header("Components")]
+    [SerializeField] private Item _harvest;
     [SerializeField] private Plant _plant;
     [SerializeField] private GameObject _icon;
 
@@ -55,16 +56,7 @@ public class PlantController : MonoBehaviour
     {
         if (_plant.IsPlantGrow)
         {
-            Item item = new Item();
-            item._type = ItemTypeEnum.Harvest;
-            switch (_plant.SeedType)
-            {
-                case SeedTypeEnum.None: break;
-                case SeedTypeEnum.Default:
-                    item._id = (int)ItemIdsEnum.Harvest_Default;
-                    break;
-            }
-            InventoryController.GetInstance().AddItemToMainInventory(item, harvestCount);
+            InventoryController.GetInstance().AddItemToMainInventory(_harvest, harvestAmount);
 
             Destroy(transform.parent.gameObject);
         }
@@ -78,15 +70,12 @@ public class PlantController : MonoBehaviour
     {
         if (_plant.IsFruitsGrow)
         {
-            Item item = new Item();
             int fruitCount = Random.Range(MechConstants.MIN_TREE_HARVEST,
                                           MechConstants.MAX_TREE_HARVEST);
-            item._type = ItemTypeEnum.Harvest;
             switch (_plant.TreeType)
             {
                 case TreeTypeEnum.None: break;
                 case TreeTypeEnum.Default:
-                    item._id = (int)ItemIdsEnum.Harvest_Default;
                     collectTimes += _plant.CollectFruit();
                     if (collectTimes == MechConstants.MAX_COUNT_OF_HARVEST)
                     {
@@ -94,7 +83,7 @@ public class PlantController : MonoBehaviour
                     }
                     return;
             }
-            InventoryController.GetInstance().AddItemToMainInventory(item, fruitCount);
+            InventoryController.GetInstance().AddItemToMainInventory(_harvest, fruitCount);
         }
     }
 
@@ -108,22 +97,22 @@ public class PlantController : MonoBehaviour
         switch (_type)
         {
             case PlantTypeEnum.Normal:
-                harvestCount = level + 1;
+                harvestAmount = level + 1;
                 break;
             case PlantTypeEnum.Special:
                 if (level < 2) return;
 
-                harvestCount = level;
+                harvestAmount = level;
                 break;
             case PlantTypeEnum.Rare:
                 if (level < 3) return;
 
-                harvestCount = level - 1;
+                harvestAmount = level - 1;
                 break;
             case PlantTypeEnum.VeryRare:
                 if (level != 4) return;
 
-                harvestCount = level - 2;
+                harvestAmount = level - 2;
                 break;
             default:
                 break;

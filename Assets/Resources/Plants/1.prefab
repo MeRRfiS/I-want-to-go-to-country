@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _earthWithFertilize: {fileID: 2100000, guid: cc1b2c0bb3f788b4b93b56222f8a6c34, type: 2}
+  _type: 0
+  _harvest: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
   _plant: {fileID: 429700315068600693}
   _icon: {fileID: 4412900591965181061}
-  _fertilize: {fileID: 0}
 --- !u!65 &90060803148527505
 BoxCollider:
   m_ObjectHideFlags: 0
