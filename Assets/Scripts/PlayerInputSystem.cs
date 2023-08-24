@@ -120,7 +120,7 @@ public class PlayerInputSystem : MonoBehaviour
                     hitObject.GetComponent<PlantController>().TreeHarvesting();
                     break;
                 case TagConstants.SHOP:
-                    if (UIController.GetInstance().MenuActiveSelf()) return;
+                    if (UIController.GetInstance().InventoryActiveSelf()) return;
                     hitObject.GetComponent<ShopController>().LoadGoodsForSellingToUI();
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();
