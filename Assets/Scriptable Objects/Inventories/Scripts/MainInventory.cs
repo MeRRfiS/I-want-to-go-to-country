@@ -49,7 +49,7 @@ public class MainInventory : Inventory
             int index;
             if (!GetEmptyCell(out index)) return false;
 
-            Container[index] = item.Copy();
+            Container[index] = item;
             Container[index].Amount = amount > GlobalConstants.MAX_ITEM_IN_CELL ?
                                       GlobalConstants.MAX_ITEM_IN_CELL : amount;
             amount -= 100;

@@ -104,6 +104,7 @@ public class UIController : MonoBehaviour
             Image image = cell.ItemIcon;
             TextMeshProUGUI text = cell.TextCount;
             Slider slider = cell.SliderDurability;
+            Slider waterSlider = cell.WaterValueSlider;
             if (items[i] == null)
             {
                 image.sprite = null;
@@ -111,6 +112,7 @@ public class UIController : MonoBehaviour
                 text.text = String.Empty;
                 text.gameObject.SetActive(false);
                 slider.gameObject.SetActive(false);
+                waterSlider.gameObject.SetActive(false);
                 continue;
             }
 
@@ -123,9 +125,9 @@ public class UIController : MonoBehaviour
                     if (instrument._instrumentType == InstrumentTypeEnum.Funnel)
                     {
                         Funnel funnel = items[i] as Funnel;
-                        cell.WaterValueSlider.maxValue = funnel._maxUsings;
-                        cell.WaterValueSlider.value = funnel.Usings;
-                        cell.WaterValueSlider.gameObject.SetActive(true);
+                        waterSlider.maxValue = funnel._maxUsings;
+                        waterSlider.value = funnel.Usings;
+                        waterSlider.gameObject.SetActive(true);
                     }
                     slider.maxValue = instrument._maxDurability;
                     slider.value = instrument.Durability;

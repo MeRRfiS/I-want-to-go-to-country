@@ -16,8 +16,14 @@ public class Funnel : Instrument
 
     public override void Init()
     {
-        _usings = _maxUsings;
-        _durability = _maxDurability;
+        if (_usings == 0)
+        {
+            _usings = _maxUsings;
+        }
+        if (_durability == 0)
+        {
+            _durability = _maxDurability;
+        }
         _amount = 1;
     }
 
@@ -35,14 +41,23 @@ public class Funnel : Instrument
                 case TagConstants.TREE:
                     if (Usings == 0) return;
 
+                    PlantController plant = hitObject.GetComponent<PlantController>();
+                    if (!plant.IsPlantNeedWater()) return;
+
                     _durability--;
                     _usings--;
-                    hitObject.GetComponent<PlantController>().Watering();
+                    plant.Watering();
                     break;
                 case TagConstants.WELL:
                     _usings = _maxUsings;
                     break;
             }
         }
+    }
+
+    public override void Destruct()
+    {
+        _usings = 0;
+        _durability = 0;
     }
 }

@@ -15,7 +15,10 @@ public class Axe : Instrument
 
     public override void Init()
     {
-        _durability = _maxDurability;
+        if (_durability == 0)
+        {
+            _durability = _maxDurability;
+        }
         _amount = 1;
     }
 
@@ -64,5 +67,10 @@ public class Axe : Instrument
         }
 
         return base.Updating(obj, prefab);
+    }
+
+    public override void Destruct()
+    {
+        _durability = 0;
     }
 }

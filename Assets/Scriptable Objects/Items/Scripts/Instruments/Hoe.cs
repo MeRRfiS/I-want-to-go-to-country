@@ -88,4 +88,9 @@ public class Hoe : Instrument
 
         return patchObj;
     }
+
+    public override void Destruct()
+    {
+        _durability = 0;
+    }
 }

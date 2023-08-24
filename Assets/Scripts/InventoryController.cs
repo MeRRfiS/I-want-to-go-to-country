@@ -104,6 +104,25 @@ public class InventoryController : MonoBehaviour
         ChangeActiveItem(true);
     }
 
+    private void OnApplicationQuit()
+    {
+        ApplyItemDestructFromInventory();
+    }
+
+    private void ApplyItemDestructFromInventory()
+    {
+        foreach (var item in ItemsArray)
+        {
+            if (item == null) continue;
+            item.Destruct();
+        }
+        foreach (var item in PlayerItems)
+        {
+            if (item == null) continue;
+            item.Destruct();
+        }
+    }
+
     public void DropItemFromInventory()
     {
         if (!_selectedItem.Equals(default(SelectedItem)))

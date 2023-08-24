@@ -112,7 +112,9 @@ public class ShopController : MonoBehaviour
 
         _goodsForDay[index].Count--;
         PlayerController.GetInstance().Money -= _goodsForDay[index].Price;
-        InventoryController.GetInstance().AddItemToMainInventory(_goodsForDay[index].Goods, 1);
+        Item soldGoods = _goodsForDay[index].Goods.Copy();
+        soldGoods.Init();
+        InventoryController.GetInstance().AddItemToMainInventory(soldGoods, 1);
         if (_goodsForDay[index].Count == 0) _goodsForDay[index] = null;
 
         LoadGoodsForDayToUI();

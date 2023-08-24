@@ -9,6 +9,7 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField] private Item _item;
+    private Item _itemObject;
 
     private bool _isUpdating = false;
     [Header("Prefabs")]
@@ -22,8 +23,8 @@ public class ItemController : MonoBehaviour
 
     public Item Item
     {
-        get => _item;
-        set => _item = value;
+        get => _itemObject;
+        set => _itemObject = value;
     }
 
     [Obsolete]
@@ -43,9 +44,14 @@ public class ItemController : MonoBehaviour
         ApplyItemDisable();
     }
 
+    private void OnApplicationQuit()
+    {
+        ApplyItemDestruct();
+    }
+
     private void ApplyItemBroke()
     {
-        if (!_item.IsItemCountZero()) return;
+        if (!_itemObject.IsItemCountZero()) return;
 
         InventoryController.GetInstance().RemoveItem();
         Destroy(gameObject);
@@ -55,16 +61,24 @@ public class ItemController : MonoBehaviour
     {
         if (!_isUpdating) return;
 
-        _obj = _item.Updating(_obj, _objPrefab);
+        _obj = _itemObject.Updating(_obj, _objPrefab);
     }
 
     public void InitializeItem()
     {
-        _item.Init();
+        if (_itemObject != null) return;
+
+        _itemObject = _item.Copy();
+        _itemObject.Init();
     }
 
     public void ApplyItemDisable()
     {
-        _obj = _item.StopUpdating();
+        _obj = _itemObject.StopUpdating();
+    }
+
+    public void ApplyItemDestruct()
+    {
+        _itemObject.Destruct();
     }
 }
