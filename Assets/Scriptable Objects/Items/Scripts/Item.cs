@@ -26,6 +26,7 @@ public class Item : ScriptableObject
     }
 
     public virtual void Init() { }
+    public virtual void Destruct() { }
     public virtual GameObject Updating(GameObject obj, GameObject prefab) => null;
     public virtual GameObject StopUpdating() => null;
 

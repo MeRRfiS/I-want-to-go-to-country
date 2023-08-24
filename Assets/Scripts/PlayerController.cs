@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     public void PickupItem(GameObject heldItem)
     {
         Item item = heldItem.GetComponent<ItemController>().Item;
-        if(!InventoryController.GetInstance().AddItemToMainInventory(item, item.Amount)) return;
+        if(!InventoryController.GetInstance().AddItemToMainInventory(item.Copy(), item.Amount)) return;
         Destroy(heldItem);
     }
 

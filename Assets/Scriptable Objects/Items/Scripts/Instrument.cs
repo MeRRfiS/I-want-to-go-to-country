@@ -6,7 +6,7 @@ public class Instrument: Item
 {
     public int _level;
     public int _maxDurability;
-    protected int _durability;
+    protected int _durability = 0;
     public InstrumentTypeEnum _instrumentType;
 
     public int Durability

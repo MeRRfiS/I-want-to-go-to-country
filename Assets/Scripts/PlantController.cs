@@ -17,6 +17,7 @@ public class PlantController : MonoBehaviour
     [SerializeField] private GameObject _icon;
 
     public bool IsCanChoppingTree() => _plant.IsPlantGrow || _plant.IsPlantDry;
+    public bool IsPlantNeedWater() => _plant.IsNeedWater;
 
     private void Update()
     {
