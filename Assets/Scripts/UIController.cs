@@ -37,7 +37,8 @@ public class UIController : MonoBehaviour
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
-    public bool MenuActiveSelf() => _inventory.activeSelf || _shop.activeSelf;
+    public bool InventoryActiveSelf() => _inventory.activeSelf;
+    public bool ShopActiveSelf() => _shop.activeSelf;
 
     private void Awake()
     {
