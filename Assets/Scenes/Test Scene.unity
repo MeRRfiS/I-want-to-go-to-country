@@ -4680,7 +4680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.6.38pa
+  m_text: 'v. 0.6.39pa
 
     Esc - Close game
 
