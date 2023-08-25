@@ -82,7 +82,7 @@ public class PlantController : MonoBehaviour
                     {
                         _plant.PlantDead();
                     }
-                    return;
+                    break;
             }
             InventoryController.GetInstance().AddItemToMainInventory(_harvest, fruitCount);
         }

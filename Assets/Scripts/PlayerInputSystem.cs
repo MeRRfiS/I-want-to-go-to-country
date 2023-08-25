@@ -121,6 +121,7 @@ public class PlayerInputSystem : MonoBehaviour
                     break;
                 case TagConstants.SHOP:
                     if (UIController.GetInstance().InventoryActiveSelf()) return;
+                    if (UIController.GetInstance().ShopActiveSelf()) return;
                     hitObject.GetComponent<ShopController>().LoadGoodsForSellingToUI();
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();
