@@ -8,45 +8,50 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Tree")]
 public class Tree : Item
 {
-    private GameObject saplingObj;
-    private GameObject treeObj;
-    private List<Material> materials = new List<Material>();
-    private TreeChecking treeCheck;
+    private GameObject _saplingObj;
+    private GameObject _treeObj;
+    private List<Material> _materials;
+    private TreeChecking _treeCheck;
     public TreeTypeEnum _treeType;
 
-    private bool IsSaplingObjNull() => saplingObj == null;
+    private bool IsSaplingObjNull() => _saplingObj == null;
+
+    public override void Init()
+    {
+        _materials = new List<Material>();
+    }
 
     public override void UseItem()
     {
         if (IsSaplingObjNull()) return;
-        if (treeCheck.IsOnObject || treeCheck.IsNearTree) return;
+        if (_treeCheck.IsOnObject || _treeCheck.IsNearTree) return;
 
         _amount--;
-        saplingObj.layer = LayerMask.NameToLayer(LayerConstants.TREE);
-        for (int i = 0; i < treeObj.GetComponent<Renderer>().materials.Length; i++)
+        _saplingObj.layer = LayerMask.NameToLayer(LayerConstants.TREE);
+        for (int i = 0; i < _treeObj.GetComponent<Renderer>().materials.Length; i++)
         {
-            treeObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                       materials[i].color.r,
-                                       materials[i].color.g,
-                                       materials[i].color.b,
+            _treeObj.GetComponent<Renderer>().materials[i].color = new Color(
+                                       _materials[i].color.r,
+                                       _materials[i].color.g,
+                                       _materials[i].color.b,
                                        1);
         }
-        treeObj.GetComponent<Animator>().enabled = true;
-        var tree = Instantiate(saplingObj);
+        _treeObj.GetComponent<Animator>().enabled = true;
+        var tree = Instantiate(_saplingObj);
         tree.GetComponent<PlantController>().SetTreeType(_treeType);
         Destroy(tree.GetComponent<TreeChecking>());
-        treeCheck = null;
-        treeObj = null;
-        saplingObj = null;
+        _treeCheck = null;
+        _treeObj = null;
+        _saplingObj = null;
     }
 
     public override GameObject Updating(GameObject obj, GameObject prefab)
     {
-        saplingObj = obj;
+        _saplingObj = obj;
         if (!IsSaplingObjNull())
         {
-            treeCheck = obj.GetComponent<TreeChecking>();
-            treeObj = obj.transform.GetChild(0).gameObject;
+            _treeCheck = obj.GetComponent<TreeChecking>();
+            _treeObj = obj.transform.GetChild(0).gameObject;
         }
 
         Transform startPoint = Camera.main.transform;
@@ -60,55 +65,55 @@ public class Tree : Item
         {
             if (IsSaplingObjNull())
             {
-                saplingObj = Instantiate(prefab);
-                treeCheck = saplingObj.GetComponent<TreeChecking>();
-                treeObj = saplingObj.transform.GetChild(0).gameObject;
-                for (int i = 0; i < treeObj.GetComponent<Renderer>().materials.Length; i++)
+                _saplingObj = Instantiate(prefab);
+                _treeCheck = _saplingObj.GetComponent<TreeChecking>();
+                _treeObj = _saplingObj.transform.GetChild(0).gameObject;
+                for (int i = 0; i < _treeObj.GetComponent<Renderer>().materials.Length; i++)
                 {
-                    materials.Add(new Material(treeObj.GetComponent<Renderer>().materials[i]));
+                    _materials.Add(new Material(_treeObj.GetComponent<Renderer>().materials[i]));
                 }
             }
 
-            saplingObj.transform.position = new Vector3(hit.point.x,
+            _saplingObj.transform.position = new Vector3(hit.point.x,
                                                         1,
                                                         hit.point.z);
 
-            if (treeCheck && (treeCheck.IsOnObject || treeCheck.IsNearTree))
+            if (_treeCheck && (_treeCheck.IsOnObject || _treeCheck.IsNearTree))
             {
-                for (int i = 0; i < treeObj.GetComponent<Renderer>().materials.Length; i++)
+                for (int i = 0; i < _treeObj.GetComponent<Renderer>().materials.Length; i++)
                 {
-                    treeObj.GetComponent<Renderer>().materials[i].color = new Color(
+                    _treeObj.GetComponent<Renderer>().materials[i].color = new Color(
                                                1,
-                                               treeObj.GetComponent<Renderer>().materials[i].color.g,
-                                               treeObj.GetComponent<Renderer>().materials[i].color.b,
+                                               _treeObj.GetComponent<Renderer>().materials[i].color.g,
+                                               _treeObj.GetComponent<Renderer>().materials[i].color.b,
                                                0.5f);
                 }
             }
-            else if (treeCheck)
+            else if (_treeCheck)
             {
-                for (int i = 0; i < treeObj.GetComponent<Renderer>().materials.Length; i++)
+                for (int i = 0; i < _treeObj.GetComponent<Renderer>().materials.Length; i++)
                 {
-                    treeObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                               materials[i].color.r,
-                                               materials[i].color.g,
-                                               materials[i].color.b,
+                    _treeObj.GetComponent<Renderer>().materials[i].color = new Color(
+                                               _materials[i].color.r,
+                                               _materials[i].color.g,
+                                               _materials[i].color.b,
                                                0.5f);
                 }
             }
         }
         else
         {
-            saplingObj = this.StopUpdating();
+            _saplingObj = this.StopUpdating();
         }
 
-        return saplingObj;
+        return _saplingObj;
     }
 
     public override GameObject StopUpdating()
     {
-        if (!IsSaplingObjNull()) Destroy(saplingObj);
-        saplingObj = null;
+        if (!IsSaplingObjNull()) Destroy(_saplingObj);
+        _saplingObj = null;
 
-        return saplingObj;
+        return _saplingObj;
     }
 }
