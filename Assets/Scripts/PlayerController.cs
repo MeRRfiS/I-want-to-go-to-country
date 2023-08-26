@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool _isCanMoving = true;
     private bool _isCanRotation = true;
     private bool _isCanUsingItem = true;
-    private int _money = 200;
+    private int _money = 300;
     private float _velocity;
     private Vector2 _inputMovement;
     private Vector3 _direction;

@@ -145,6 +145,7 @@ public class InventoryController : MonoBehaviour
             _selectedItem = new SelectedItem();
             UIController.GetInstance().PinUpItemToMouse();
             UIController.GetInstance().RedrawInventories();
+            ApplyActiveItem();
         }
     }
 
