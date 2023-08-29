@@ -9,7 +9,7 @@ public class Inventory : ScriptableObject
     public virtual void Init() { }
     public virtual bool AddItem(InventorySlot newItem) => false;
 
-    public void RemoveItem(Item removeItem, int amount)
+    public void RemoveItem(Item removeItem, ref int amount)
     {
         for (int i = 0; i < Container.Length; i++)
         {
@@ -23,7 +23,11 @@ public class Inventory : ScriptableObject
                     Container[i] = null;
                 }
                 amount -= itemsAmount;
-                if (amount <= 0) return;
+                if (amount <= 0) 
+                {
+                    amount = 0;
+                    return;
+                }
             }
         }
     }

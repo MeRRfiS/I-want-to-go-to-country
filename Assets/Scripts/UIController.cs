@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,18 +11,29 @@ public class UIController : MonoBehaviour
 {
     private static UIController instance;
 
-    [Header("Menus")]
+    [Header("Inventory Menu")]
     [SerializeField] private GameObject _inventory;
+    [SerializeField] private List<Transform> _cells;
+    [SerializeField] private List<Transform> _playerCells;
+
+    [Header("Shop Menu")]
     [SerializeField] private GameObject _shop;
     [SerializeField] private Transform _buyItemMenu;
     [SerializeField] private Transform _sellItemMenu;
-    [SerializeField] private List<Transform> _cells;
-    [SerializeField] private List<Transform> _playerCells;
     [SerializeField] private TextMeshProUGUI _money;
+
+    [Header("Quest Menu")]
+    [SerializeField] private GameObject _questMenu;
+    [SerializeField] private GameObject _dayQuestObject;
+    [SerializeField] private GameObject _playerQuestObject;
+    [SerializeField] private Transform _dayQuestList;
+    [SerializeField] private Transform _playerQuestList;
+    [SerializeField] private QuestHandler _questInformation;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject _buyShopCell;
     [SerializeField] private GameObject _sellShopCell;
+    [SerializeField] private GameObject _quest;
 
     [Header("Setting")]
     [SerializeField] private Color _deselectedColor;
@@ -39,6 +51,7 @@ public class UIController : MonoBehaviour
     public static UIController GetInstance() => instance;
     public bool InventoryActiveSelf() => _inventory.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
+    public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
 
     private void Awake()
     {
@@ -154,6 +167,20 @@ public class UIController : MonoBehaviour
         }
     }
 
+    private void RedrawQuestMenu(List<QuestModel> questList, Transform list, QuestTypeEnum type)
+    {
+        for (int i = list.childCount - 1; i >= 0; i--)
+        {
+            Destroy(list.GetChild(i).gameObject);
+        }
+        foreach (var quest in questList)
+        {
+            QuestCellHandler questCell = Instantiate(_quest, list).GetComponent<QuestCellHandler>();
+            questCell.DrawCellInformation(quest);
+            questCell.QuestType = type;
+        }
+    }
+
     private void SwitchActiveMouse(bool state)
     {
         if (state) Cursor.lockState = CursorLockMode.Confined;
@@ -207,6 +234,20 @@ public class UIController : MonoBehaviour
         _shop.SetActive(state);
     }
 
+    public void SwitchActiveQuestMenu()
+    {
+        bool state = !_questMenu.activeSelf;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
+
+        CloseQuestInformation();
+        _dayQuestObject.SetActive(state);
+        _playerQuestObject.SetActive(!state);
+        SwitchActiveMouse(state);
+        _questMenu.SetActive(state);
+    }
+
     public void RedrawInventories()
     {
         //Redrawing main Inventory
@@ -244,6 +285,43 @@ public class UIController : MonoBehaviour
             cell.DrawCellInformation(goods.Value, shop);
             cell.Index = goods.Key;
         }
+    }
+
+    public void RedrawDayQuestMenu(List<QuestModel> questList)
+    {
+        RedrawQuestMenu(questList, _dayQuestList, QuestTypeEnum.DayQuest);
+    }
+
+    public void RedrawPlayerQuestMenu(List<QuestModel> questList)
+    {
+        RedrawQuestMenu(questList, _playerQuestList, QuestTypeEnum.PlayerQuest);
+    }
+
+    public void OpenQuestInformation(QuestModel quest, QuestTypeEnum typeQuest)
+    {
+        _questInformation.DrawQuestInformation(quest, typeQuest);
+        _questInformation.gameObject.SetActive(true);
+    }
+
+    public void CloseQuestInformation()
+    {
+        _questInformation.gameObject.SetActive(false);
+    }
+
+    public void OpenDayQuestMenu()
+    {
+        CloseQuestInformation();
+        _playerQuestObject.SetActive(false);
+        RedrawDayQuestMenu(QuestSystemController.GetInstance().DayContainer.Container);
+        _dayQuestObject.SetActive(true);
+    }
+
+    public void OpenPlayerQuestMenu()
+    {
+        CloseQuestInformation();
+        _dayQuestObject.SetActive(false);
+        RedrawPlayerQuestMenu(QuestSystemController.GetInstance().PlayerContainer.Container);
+        _playerQuestObject.SetActive(true);
     }
 
     public void PinUpItemToMouse(int index = -1, CellTypeEnum type = CellTypeEnum.None)

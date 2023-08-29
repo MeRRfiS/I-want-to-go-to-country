@@ -57,7 +57,7 @@ public class PlantController : MonoBehaviour
     {
         if (_plant.IsPlantGrow)
         {
-            InventoryController.GetInstance().AddItemToMainInventory(_harvest, harvestAmount);
+            InventoryController.GetInstance().AddItemToMainInventory(_harvest.Copy(), harvestAmount);
 
             Destroy(transform.parent.gameObject);
         }
@@ -84,7 +84,7 @@ public class PlantController : MonoBehaviour
                     }
                     break;
             }
-            InventoryController.GetInstance().AddItemToMainInventory(_harvest, fruitCount);
+            InventoryController.GetInstance().AddItemToMainInventory(_harvest.Copy(), fruitCount);
         }
     }
 

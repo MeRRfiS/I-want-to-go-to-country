@@ -18,6 +18,7 @@ public class UIInputSystem : MonoBehaviour
     {
         if (!context.started) return;
         if (UIController.GetInstance().ShopActiveSelf()) return;
+        if (UIController.GetInstance().QuestMenuActiveSelf()) return;
 
         UIController.GetInstance().SwitchActiveInventoryMenu();
     }
