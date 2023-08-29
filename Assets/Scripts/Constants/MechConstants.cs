@@ -16,4 +16,6 @@ public static class MechConstants
     public const float WAIT_TIME_FOR_WATER = 20f;
 
     public const int MAX_USING_OF_FERTILIZER = 10;
+
+    public const int MAX_DAY_QUEST = 3;
 }

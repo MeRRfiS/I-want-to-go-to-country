@@ -133,11 +133,13 @@ public class InventoryController : MonoBehaviour
                 case CellTypeEnum.Inventory:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
                                            (ItemIdsEnum)_mainInventory.Container[_selectedItem._itemIndex]._id));
+                    dropItem.GetComponent<ItemController>().Item = _mainInventory.Container[_selectedItem._itemIndex];
                     _mainInventory.Container[_selectedItem._itemIndex] = null;
                     break;
                 case CellTypeEnum.Player:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
                                            (ItemIdsEnum)_playerInventory.Container[_selectedItem._itemIndex]._id));
+                    dropItem.GetComponent<ItemController>().Item = _playerInventory.Container[_selectedItem._itemIndex];
                     _playerInventory.Container[_selectedItem._itemIndex] = null;
                     break;
             }
@@ -166,8 +168,8 @@ public class InventoryController : MonoBehaviour
 
     public void RemoveItem(Item removeItem, int count)
     {
-        _mainInventory.RemoveItem(removeItem, count);
-        _playerInventory.RemoveItem(removeItem, count);
+        _mainInventory.RemoveItem(removeItem, ref count);
+        _playerInventory.RemoveItem(removeItem, ref count);
         UIController.GetInstance().RedrawInventories();
     }
 

@@ -126,6 +126,12 @@ public class PlayerInputSystem : MonoBehaviour
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();
                     break;
+                case TagConstants.MAIL_BOX:
+                    if (UIController.GetInstance().InventoryActiveSelf()) return;
+                    if (UIController.GetInstance().QuestMenuActiveSelf()) return;
+                    hitObject.GetComponent<QuestSystemController>().LoadDayQuestListToUI();
+                    UIController.GetInstance().SwitchActiveQuestMenu();
+                    break;
             }
         }
     }
