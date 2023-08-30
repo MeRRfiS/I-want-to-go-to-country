@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2314368008095845451}
   - component: {fileID: 2447068994779645149}
   m_Layer: 0
-  m_Name: Tree Log
+  m_Name: Tree_Log
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
