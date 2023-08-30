@@ -1366,6 +1366,7 @@ MonoBehaviour:
   _earthWithFertilize: {fileID: 0}
   _type: 1
   _harvest: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+  _logs: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
   _plant: {fileID: 1160640235268464306}
   _icon: {fileID: 8108602451715834170}
 --- !u!65 &2014770445730877867
