@@ -13,6 +13,7 @@ public class PlantController : MonoBehaviour
     [SerializeField] private PlantTypeEnum _type;
     [Header("Components")]
     [SerializeField] private Item _harvest;
+    [SerializeField] private Item _logs;
     [SerializeField] private Plant _plant;
     [SerializeField] private GameObject _icon;
 
@@ -127,6 +128,9 @@ public class PlantController : MonoBehaviour
         chopTreeTime++;
         if(chopTreeTime == hitCount)
         {
+            int logCount = Random.Range(MechConstants.MIN_TREE_LOG,
+                                        MechConstants.MAX_TREE_LOG);
+            InventoryController.GetInstance().AddItemToMainInventory(_logs.Copy(), logCount);
             Destroy(gameObject);
         }
     }
