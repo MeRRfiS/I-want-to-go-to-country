@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCanSold: 0
   _id: 10
-  _price: 0
+  _price: 1250
   _type: 1
-  _level: 0
-  _maxDurability: 0
+  _level: 5
+  _maxDurability: 400
   _instrumentType: 3
-  _maxUsings: 0
+  _maxUsings: 10

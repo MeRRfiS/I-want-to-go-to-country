@@ -1,11 +1,26 @@
 ﻿public enum ItemIdsEnum
 {
     Hoe_Level_1 = 1,
+    Hoe_Level_2 = 2,
+    Hoe_Level_3 = 3,
+    Hoe_Level_4 = 4,
+    Hoe_Level_5 = 5,
     Funnel_Level_1 = 6,
+    Funnel_Level_2 = 7,
+    Funnel_Level_3 = 8,
+    Funnel_Level_4 = 9,
+    Funnel_Level_5 = 10,
     Axe_Level_1 = 11,
+    Axe_Level_2 = 12,
+    Axe_Level_3 = 13,
+    Axe_Level_4 = 14,
+    Axe_Level_5 = 15,
     Seed_Default = 16,
     Tree_Default = 21,
     Fertilizers_1 = 23,
+    Fertilizers_2 = 24,
+    Fertilizers_3 = 25,
+    Fertilizers_4 = 26,
     Harvest_Default = 27,
     Tree_Log = 30
 }
