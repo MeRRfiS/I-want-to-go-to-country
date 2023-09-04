@@ -24703,6 +24703,7 @@ MonoBehaviour:
   _playerQuestObject: {fileID: 1480571054}
   _dayQuestList: {fileID: 397257255}
   _playerQuestList: {fileID: 894566047}
+  _questAmount: {fileID: 464308881}
   _questInformation: {fileID: 1542522399}
   _buyShopCell: {fileID: 2856393640042647838, guid: a8499bd504c09384abb1d32b49c3e003, type: 3}
   _sellShopCell: {fileID: 6657828268754853335, guid: c664ee2e1b6546c478c395471345d572, type: 3}
