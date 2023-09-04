@@ -11,6 +11,10 @@ public class UIController : MonoBehaviour
 {
     private static UIController instance;
 
+    [Header("Information")]
+    [SerializeField] private TextMeshProUGUI _time;
+    [SerializeField] private TextMeshProUGUI _money;
+
     [Header("Inventory Menu")]
     [SerializeField] private GameObject _inventory;
     [SerializeField] private List<Transform> _cells;
@@ -20,7 +24,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _shop;
     [SerializeField] private Transform _buyItemMenu;
     [SerializeField] private Transform _sellItemMenu;
-    [SerializeField] private TextMeshProUGUI _money;
 
     [Header("Quest Menu")]
     [SerializeField] private GameObject _questMenu;
@@ -44,6 +47,7 @@ public class UIController : MonoBehaviour
     private int _timerMultiple = 1;
     private float _indicatorTimer = 0.0f;
     private float _maxIndicatorTimer = 1.0f;
+    private string _timeTextFormat;
     [Header("Other")]
     [SerializeField] private Transform _pinUp;
     [SerializeField] private Image radialIndicatorUI;
@@ -64,6 +68,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        _timeTextFormat = _time.text;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -74,6 +79,7 @@ public class UIController : MonoBehaviour
         ApplyMovementPinUpTransform();
         UpdateMoneyCountText();
         UpdateQuestAmountText();
+        UpdateTimeText();
     }
 
     private void UpdateMoneyCountText()
@@ -84,6 +90,15 @@ public class UIController : MonoBehaviour
     private void UpdateQuestAmountText()
     { 
         _questAmount.text = QuestSystemController.GetInstance().PlayerContainer.Container.Count.ToString();
+    }
+
+    private void UpdateTimeText()
+    {
+        float timeValue = WorldController.GetInstance().TimeOfDay;
+        int hours = (int)Math.Truncate(timeValue);
+        int minutes = (int)Math.Floor((timeValue - hours) * UIConstants.MINUTES_MULTIPLIER);
+        string timeText = String.Format(_timeTextFormat, hours, minutes < 10 ? $"0{minutes}" : minutes);
+        _time.text = timeText;
     }
 
     private void UpdateProgressBar()
