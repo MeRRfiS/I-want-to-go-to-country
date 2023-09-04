@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Seed")]
-public class Seed : Item
+public class Seed : Plant
 {
     public SeedTypeEnum _seedType;
 

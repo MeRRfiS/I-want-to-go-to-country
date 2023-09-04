@@ -19,5 +19,5 @@ public static class MechConstants
 
     public const int MAX_USING_OF_FERTILIZER = 10;
 
-    public const int MAX_DAY_QUEST = 3;
+    public const int MAX_DAY_QUEST = 2;
 }

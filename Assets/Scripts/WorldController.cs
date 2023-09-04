@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteAlways]
-public class LightController : MonoBehaviour
+public class WorldController : MonoBehaviour
 {
+    [Header("Light Settings")]
     [SerializeField, Range(GlobalConstants.MIN_TIME_VALUE, GlobalConstants.MAX_TIME_VALUE)] 
     private float _timeOfDay;
     [SerializeField] private Light _directionalLight;
     [SerializeField] private LightingPreset _preset;
 
-    private static LightController instance;
+    private static WorldController instance;
 
-    public static LightController GetInstance() => instance;
+    public static WorldController GetInstance() => instance;
 
     private void UpdateLighting(float timePercent)
     {
@@ -28,6 +29,24 @@ public class LightController : MonoBehaviour
         }
     }
 
+    private void UpdateShops()
+    {
+        ShopController[] shops = FindObjectsOfType<ShopController>();
+        foreach (ShopController shop in shops)
+        {
+            if (!shop.IsEverydayUpdating) continue;
+            shop.InitializeGoodsForDay();
+            shop.LoadGoodsForDayToUI();
+        }
+    }
+
+    private void UpdateDayQuest()
+    {
+        QuestSystemController.GetInstance().InitializeDayQuests();
+        QuestSystemController.GetInstance().LoadDayQuestListToUI();
+        UIController.GetInstance().CloseQuestInformation();
+    }
+
     private void Awake()
     {
         instance = this;
@@ -35,17 +54,29 @@ public class LightController : MonoBehaviour
 
     private void Update()
     {
-        if(_preset == null) return;
+        ApplyTimeChanging();
+    }
+
+    private void ApplyTimeChanging()
+    {
+        if (_preset == null) return;
 
         if (Application.isPlaying)
         {
             _timeOfDay += (Time.deltaTime * GlobalConstants.TIME_MULTIPLIER);
-            _timeOfDay %= 24;
-            UpdateLighting(_timeOfDay / 24f);
+
+            if(_timeOfDay >= GlobalConstants.MAX_TIME_VALUE)
+            {
+                UpdateShops();
+                UpdateDayQuest();
+            }
+
+            _timeOfDay %= GlobalConstants.MAX_TIME_VALUE;
+            UpdateLighting(_timeOfDay / GlobalConstants.MAX_TIME_VALUE);
         }
         else
         {
-            UpdateLighting(_timeOfDay / 24f);
+            UpdateLighting(_timeOfDay / GlobalConstants.MAX_TIME_VALUE);
         }
     }
 

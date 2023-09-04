@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Tree")]
-public class Tree : Item
+public class Tree : Plant
 {
     private GameObject _saplingObj;
     private GameObject _treeObj;

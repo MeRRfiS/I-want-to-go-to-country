@@ -16,4 +16,5 @@ MonoBehaviour:
   _id: 21
   _price: 10
   _type: 3
+  _plantRare: 50
   _treeType: 1
