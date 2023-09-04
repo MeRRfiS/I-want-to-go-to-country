@@ -28,6 +28,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _playerQuestObject;
     [SerializeField] private Transform _dayQuestList;
     [SerializeField] private Transform _playerQuestList;
+    [SerializeField] private TextMeshProUGUI _questAmount;
     [SerializeField] private QuestHandler _questInformation;
 
     [Header("Prefabs")]
@@ -72,11 +73,17 @@ public class UIController : MonoBehaviour
         UpdateProgressBar();
         ApplyMovementPinUpTransform();
         UpdateMoneyCountText();
+        UpdateQuestAmountText();
     }
 
     private void UpdateMoneyCountText()
     {
         _money.text = PlayerController.GetInstance().Money.ToString();
+    }
+
+    private void UpdateQuestAmountText()
+    { 
+        _questAmount.text = QuestSystemController.GetInstance().PlayerContainer.Container.Count.ToString();
     }
 
     private void UpdateProgressBar()

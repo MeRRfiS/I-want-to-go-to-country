@@ -21,6 +21,9 @@ public class QuestHandler : MonoBehaviour
 
     private void TakeQuest()
     {
+        if (QuestSystemController.GetInstance().PlayerContainer.Container.Count ==
+            MechConstants.MAX_PLAYER_AMOUNT_QUEST) return;
+
         QuestSystemController.GetInstance().DayContainer.RemoveQuest(_quest);
         QuestSystemController.GetInstance().PlayerContainer.AddQuest(_quest);
         QuestSystemController.GetInstance().LoadDayQuestListToUI();
