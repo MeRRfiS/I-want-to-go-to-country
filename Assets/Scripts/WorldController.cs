@@ -15,6 +15,11 @@ public class WorldController : MonoBehaviour
 
     public static WorldController GetInstance() => instance;
 
+    public float TimeOfDay
+    {
+        get => _timeOfDay;
+    }
+
     private void UpdateLighting(float timePercent)
     {
         RenderSettings.ambientLight = _preset._ambientColor.Evaluate(timePercent);
