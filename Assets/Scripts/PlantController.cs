@@ -14,7 +14,7 @@ public class PlantController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Item _harvest;
     [SerializeField] private Item _logs;
-    [SerializeField] private Plant _plant;
+    [SerializeField] private PlantsHandler _plant;
     [SerializeField] private GameObject _icon;
 
     public bool IsCanChoppingTree() => _plant.IsPlantGrow || _plant.IsPlantDry;

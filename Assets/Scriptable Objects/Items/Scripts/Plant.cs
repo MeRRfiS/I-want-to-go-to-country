@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum PlantTypeEnum
+public class Plant: Item
 {
-    Normal = 100,
-    Special = 50,
-    Rare = 25,
-    VeryRare = 5
+    public PlantTypeEnum _plantRare;
 }

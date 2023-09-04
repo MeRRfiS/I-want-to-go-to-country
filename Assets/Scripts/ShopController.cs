@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
+    [SerializeField] private bool _isEverydayUpdating;
     [SerializeField] private List<Item> _itemsSells;
     private List<GoodsModel> _goods = new List<GoodsModel>();
     private List<GoodsModel> _goodsForDay = new List<GoodsModel>();
     private Dictionary<int, GoodsModel> _sellingItems;
+
+    public bool IsEverydayUpdating
+    {
+        get => _isEverydayUpdating;
+    }
 
     private void Start()
     {
@@ -27,7 +33,7 @@ public class ShopController : MonoBehaviour
             {
                 Goods = itemController.Item,
                 Count = 99,
-                Price = itemController.Item._price
+                Price = itemSells._price
             };
             _goods.Add(goodsModel);
         }
@@ -71,6 +77,8 @@ public class ShopController : MonoBehaviour
     //TODO: add check on type of plant: https://trello.com/c/OLVCJVxh/57-check-on-type-of-plant
     public void InitializeGoodsForDay()
     {
+        _goodsForDay.Clear();
+
         foreach (var g in _goods)
         {
             if(g.Goods._type != ItemTypeEnum.Tree && g.Goods._type != ItemTypeEnum.Seed)
@@ -87,6 +95,12 @@ public class ShopController : MonoBehaviour
         while (_goodsForDay.Count() != 2) 
         { 
             int index = Random.Range(0, _goods.Count);
+            if(_goods[index].Goods is Plant)
+            {
+                Plant plant = (Plant)_goods[index].Goods;
+                int chance = Random.Range(1, 101);
+                if (chance > (int)plant._plantRare) continue;
+            }
             var existGoods = _goodsForDay.Where(g => g.Goods._id == _goods[index].Goods._id);
             if (existGoods.Count() != 0) continue;
 

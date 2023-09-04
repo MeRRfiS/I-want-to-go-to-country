@@ -58,12 +58,14 @@ public class QuestSystemController : MonoBehaviour
         InitializeDayQuests();
     }
 
-    private void InitializeDayQuests()
+    public void InitializeDayQuests()
     {
+        _dayContainer.Container.Clear();
+
         for (int i = 0; i < MechConstants.MAX_DAY_QUEST; i++)
         {
             bool questIsAdded = false;
-            while (!questIsAdded) 
+            while (!questIsAdded)
             {
                 int indexQuest = Random.Range(0, _collection.Quests.Count);
                 questIsAdded = _dayContainer.AddQuest(_collection.Quests[indexQuest]);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Plant : MonoBehaviour
+public class PlantsHandler : MonoBehaviour
 {
     private bool _isPlantGrow = false;
     private bool _isPlantDry = false;
