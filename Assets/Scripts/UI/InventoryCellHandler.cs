@@ -18,6 +18,16 @@ public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Slider _waterSlider;
     [SerializeField] private TextMeshProUGUI _text;
 
+    public int Index
+    {
+        get => _index;
+    }
+
+    public CellTypeEnum Type
+    {
+        get => _typeCell;
+    }
+
     public Image ItemIcon
     {
         get => _image;
@@ -53,9 +63,19 @@ public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
 
     private void UpdateCellInformation()
     {
-        if (_typeCell != CellTypeEnum.Player) return;
+        Item item = null;
+        switch (_typeCell)
+        {
+            case CellTypeEnum.Inventory:
+                item = InventoryController.GetInstance().ItemsArray[_index];
+                break;
+            case CellTypeEnum.Player:
+                item = InventoryController.GetInstance().PlayerItems[_index];
+                break;
+            default:
+                break;
+        }
 
-        Item item = InventoryController.GetInstance().PlayerItems[_index];
         if (item == null) return;
 
         switch (item._type)
