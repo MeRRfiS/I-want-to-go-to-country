@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GlobalConstants
 {
-    public const int MAX_ITEM_IN_CELL = 100;
+    public const int MAX_ITEM_IN_CELL = 32;
     public const int MAX_ITEMS_IN_INVENTORY = 8;
     public const int MAX_ITEMS_IN_PLAYER = 3;
     public const int MIN_TIME_VALUE = 0;

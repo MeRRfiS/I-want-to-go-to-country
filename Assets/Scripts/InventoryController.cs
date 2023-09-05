@@ -2,11 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    private struct SelectedItem
+    private struct SelectedItemInfo
     {
         public int _itemIndex;
         public CellTypeEnum _cellType;
@@ -16,7 +17,7 @@ public class InventoryController : MonoBehaviour
 
     private bool _isCanChangeActiveItem = true;
     private int _activePlayerItemIndex = 0;
-    private SelectedItem _selectedItem;
+    private SelectedItemInfo _selectedItemInfo;
 
     [Header("Inventory")]
     [SerializeField] private Inventory _mainInventory;
@@ -42,53 +43,113 @@ public class InventoryController : MonoBehaviour
         get => _playerInventory.Container;
     }
 
+    private bool ToStackItems(ref Item selectedItem, int indexOfSecondCell, CellTypeEnum type)
+    {
+        if (_selectedItemInfo._cellType == type &&
+            _selectedItemInfo._itemIndex == indexOfSecondCell) return false;
+        if (selectedItem == null) return false;
+        if (selectedItem is Instrument || selectedItem is Fertilizers) return false;
+
+        switch (type)
+        {
+            case CellTypeEnum.Inventory:
+                if(ItemsArray[indexOfSecondCell] == null)
+                    return false;
+
+                if (ItemsArray[indexOfSecondCell]._id != selectedItem._id)
+                    return false;
+
+                if (ItemsArray[indexOfSecondCell].Amount + selectedItem.Amount > GlobalConstants.MAX_ITEM_IN_CELL)
+                {
+                    selectedItem.Amount = (ItemsArray[indexOfSecondCell].Amount + selectedItem.Amount) - 
+                                          GlobalConstants.MAX_ITEM_IN_CELL;
+                    ItemsArray[indexOfSecondCell].Amount = GlobalConstants.MAX_ITEM_IN_CELL;
+                    UIController.GetInstance().UpdatePinItemInfo();
+                }
+                else
+                {
+                    ItemsArray[indexOfSecondCell].Amount += selectedItem.Amount;
+                    selectedItem = null;
+                    UIController.GetInstance().UnpinItemFromMouse();
+                }
+                break;
+            case CellTypeEnum.Player:
+                if (PlayerItems[indexOfSecondCell] == null)
+                    return false;
+
+                if (PlayerItems[indexOfSecondCell]._id != selectedItem._id)
+                    return false;
+
+                if (PlayerItems[indexOfSecondCell].Amount + selectedItem.Amount > GlobalConstants.MAX_ITEM_IN_CELL)
+                {
+                    selectedItem.Amount = (PlayerItems[indexOfSecondCell].Amount + selectedItem.Amount) - 
+                                          GlobalConstants.MAX_ITEM_IN_CELL;
+                    PlayerItems[indexOfSecondCell].Amount = GlobalConstants.MAX_ITEM_IN_CELL;
+                    UIController.GetInstance().UpdatePinItemInfo();
+                }
+                else
+                {
+                    PlayerItems[indexOfSecondCell].Amount += selectedItem.Amount;
+                    selectedItem = null;
+                    UIController.GetInstance().UnpinItemFromMouse();
+                }
+                break;
+        }
+
+        return true;
+    }
+
     private void MoveItemFromInventory(int indexOfSecondCell, CellTypeEnum type)
     {
-        if (_mainInventory.Container[_selectedItem._itemIndex] == null) return;
+        if (ItemsArray[_selectedItemInfo._itemIndex] == null) return;
 
+        if (ToStackItems(ref ItemsArray[_selectedItemInfo._itemIndex], indexOfSecondCell, type)) return;
         Item temp;
         switch (type)
         {
             case CellTypeEnum.Inventory:
-                temp = _mainInventory.Container[indexOfSecondCell];
-                _mainInventory.Container[indexOfSecondCell] = _mainInventory.Container[_selectedItem._itemIndex];
-                _mainInventory.Container[_selectedItem._itemIndex] = temp;
+                temp = ItemsArray[indexOfSecondCell];
+                ItemsArray[indexOfSecondCell] = ItemsArray[_selectedItemInfo._itemIndex];
+                ItemsArray[_selectedItemInfo._itemIndex] = temp;
                 break;
             case CellTypeEnum.Player:
-                temp = _playerInventory.Container[indexOfSecondCell];
-                _playerInventory.Container[indexOfSecondCell] = _mainInventory.Container[_selectedItem._itemIndex];
-                _mainInventory.Container[_selectedItem._itemIndex] = temp;
+                temp = PlayerItems[indexOfSecondCell];
+                PlayerItems[indexOfSecondCell] = ItemsArray[_selectedItemInfo._itemIndex];
+                ItemsArray[_selectedItemInfo._itemIndex] = temp;
                 break;
         }
-
+        UIController.GetInstance().UnpinItemFromMouse();
         UIController.GetInstance().RedrawInventories();
+        _selectedItemInfo = new SelectedItemInfo();
     }
 
     private void MoveItemFromPlayer(int indexOfSecondCell, CellTypeEnum type)
     {
-        if (_playerInventory.Container[_selectedItem._itemIndex] == null) return;
+        if (PlayerItems[_selectedItemInfo._itemIndex] == null) return;
 
+        if (ToStackItems(ref PlayerItems[_selectedItemInfo._itemIndex], indexOfSecondCell, type)) return;
         Item temp;
         switch (type)
         {
             case CellTypeEnum.Inventory:
-                temp = _mainInventory.Container[indexOfSecondCell];
-                _mainInventory.Container[indexOfSecondCell] = _playerInventory.Container[_selectedItem._itemIndex];
-                _playerInventory.Container[_selectedItem._itemIndex] = temp;
+                temp = ItemsArray[indexOfSecondCell];
+                ItemsArray[indexOfSecondCell] = PlayerItems[_selectedItemInfo._itemIndex];
+                PlayerItems[_selectedItemInfo._itemIndex] = temp;
                 break;
             case CellTypeEnum.Player:
-                temp = _playerInventory.Container[indexOfSecondCell];
-                _playerInventory.Container[indexOfSecondCell] = _playerInventory.Container[_selectedItem._itemIndex];
-                _playerInventory.Container[_selectedItem._itemIndex] = temp;
+                temp = PlayerItems[indexOfSecondCell];
+                PlayerItems[indexOfSecondCell] = PlayerItems[_selectedItemInfo._itemIndex];
+                PlayerItems[_selectedItemInfo._itemIndex] = temp;
                 break;
         }
-
+        UIController.GetInstance().UnpinItemFromMouse();
         UIController.GetInstance().RedrawInventories();
+        _selectedItemInfo = new SelectedItemInfo();
     }
 
     private void ApplyActiveItem()
     {
-        PlayerController.GetInstance().ChangeActiveItemInHand(_playerInventory.Container[_activePlayerItemIndex]);
+        PlayerController.GetInstance().ChangeActiveItemInHand(PlayerItems[_activePlayerItemIndex]);
         UIController.GetInstance().SelectingPlayerCell(_activePlayerItemIndex);
     }
 
@@ -125,27 +186,27 @@ public class InventoryController : MonoBehaviour
 
     public void DropItemFromInventory()
     {
-        if (!_selectedItem.Equals(default(SelectedItem)))
+        if (!_selectedItemInfo.Equals(default(SelectedItemInfo)))
         {
             GameObject dropItem = null;
-            switch (_selectedItem._cellType)
+            switch (_selectedItemInfo._cellType)
             {
                 case CellTypeEnum.Inventory:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)_mainInventory.Container[_selectedItem._itemIndex]._id));
-                    dropItem.GetComponent<ItemController>().Item = _mainInventory.Container[_selectedItem._itemIndex];
-                    _mainInventory.Container[_selectedItem._itemIndex] = null;
+                                           (ItemIdsEnum)ItemsArray[_selectedItemInfo._itemIndex]._id));
+                    dropItem.GetComponent<ItemController>().Item = ItemsArray[_selectedItemInfo._itemIndex];
+                    ItemsArray[_selectedItemInfo._itemIndex] = null;
                     break;
                 case CellTypeEnum.Player:
                     dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)_playerInventory.Container[_selectedItem._itemIndex]._id));
-                    dropItem.GetComponent<ItemController>().Item = _playerInventory.Container[_selectedItem._itemIndex];
-                    _playerInventory.Container[_selectedItem._itemIndex] = null;
+                                           (ItemIdsEnum)PlayerItems[_selectedItemInfo._itemIndex]._id));
+                    dropItem.GetComponent<ItemController>().Item = PlayerItems[_selectedItemInfo._itemIndex];
+                    PlayerItems[_selectedItemInfo._itemIndex] = null;
                     break;
             }
             dropItem.transform.position = _hand.position;
-            _selectedItem = new SelectedItem();
-            UIController.GetInstance().PinUpItemToMouse();
+            _selectedItemInfo = new SelectedItemInfo();
+            UIController.GetInstance().UnpinItemFromMouse();
             UIController.GetInstance().RedrawInventories();
             ApplyActiveItem();
         }
@@ -158,9 +219,9 @@ public class InventoryController : MonoBehaviour
 
     public void RemoveItem()
     {
-        if (_selectedItem.Equals(default(SelectedItem)))
+        if (_selectedItemInfo.Equals(default(SelectedItemInfo)))
         {
-            _playerInventory.Container[_activePlayerItemIndex] = null;
+            PlayerItems[_activePlayerItemIndex] = null;
         }
 
         UIController.GetInstance().RedrawInventories();
@@ -176,22 +237,22 @@ public class InventoryController : MonoBehaviour
     //Select item for move to another cell
     public void SelectItem(int index, CellTypeEnum type)
     {
-        if (_selectedItem.Equals(default(SelectedItem)))
+        if (_selectedItemInfo.Equals(default(SelectedItemInfo)))
         {
             switch (type)
             {
                 case CellTypeEnum.Inventory:
-                    if (_mainInventory.Container[index] == null) return;
+                    if (ItemsArray[index] == null) return;
                     break;
                 case CellTypeEnum.Player:
-                    if (_playerInventory.Container[index] == null) return;
+                    if (PlayerItems[index] == null) return;
                     break;
             }
-            _selectedItem = new SelectedItem() { _itemIndex = index, _cellType = type };
+            _selectedItemInfo = new SelectedItemInfo() { _itemIndex = index, _cellType = type };
         }
         else
         {
-            switch (_selectedItem._cellType)
+            switch (_selectedItemInfo._cellType)
             {
                 case CellTypeEnum.Inventory:
                     MoveItemFromInventory(index, type);
@@ -200,7 +261,6 @@ public class InventoryController : MonoBehaviour
                     MoveItemFromPlayer(index, type);
                     break;
             }
-            _selectedItem = new SelectedItem();
             ApplyActiveItem();
         }
     }

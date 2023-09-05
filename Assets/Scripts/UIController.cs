@@ -49,8 +49,8 @@ public class UIController : MonoBehaviour
     private float _maxIndicatorTimer = 1.0f;
     private string _timeTextFormat;
     [Header("Other")]
-    [SerializeField] private Transform _pinUp;
     [SerializeField] private Image radialIndicatorUI;
+    [SerializeField] private PinUpItemInfo _pinUp;
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
@@ -128,7 +128,7 @@ public class UIController : MonoBehaviour
 
     private void ApplyMovementPinUpTransform()
     {
-        _pinUp.position = Input.mousePosition;
+        _pinUp.transform.position = Input.mousePosition;
     }
 
     //TODO: Make method more readable
@@ -154,11 +154,12 @@ public class UIController : MonoBehaviour
 
             image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i]._id);
             image.gameObject.SetActive(true);
+            waterSlider.gameObject.SetActive(false);
             switch (items[i]._type)
             {
                 case ItemTypeEnum.Instrument:
                     Instrument instrument = items[i] as Instrument;
-                    if (instrument._instrumentType == InstrumentTypeEnum.Funnel)
+                    if (instrument is Funnel)
                     {
                         Funnel funnel = items[i] as Funnel;
                         waterSlider.maxValue = funnel._maxUsings;
@@ -348,40 +349,32 @@ public class UIController : MonoBehaviour
 
     public void PinUpItemToMouse(int index = -1, CellTypeEnum type = CellTypeEnum.None)
     {
-        if (_pinUp.childCount == 0)
+        if (_pinUp.IsItemPin()) return;
+
+        InventoryCellHandler cell = null;
+        switch (type)
         {
-            InventoryCellHandler cell = null;
-            switch (type)
-            {
-                case CellTypeEnum.Inventory:
-                    if (InventoryController.GetInstance().ItemsArray[index] == null) return;
-                    cell = _cells[index].GetComponent<InventoryCellHandler>();
-                    break;
-                case CellTypeEnum.Player:
-                    if (InventoryController.GetInstance().PlayerItems[index] == null) return;
-                    cell = _playerCells[index].GetComponent<InventoryCellHandler>();
-                    break;
-            }
-            Image image = cell.ItemIcon;
-            TextMeshProUGUI text = cell.TextCount;
-            Slider slider = cell.SliderDurability;
-            Slider waterSlider = cell.WaterValueSlider;
-            Instantiate(image, _pinUp);
-            Instantiate(text, _pinUp);
-            Instantiate(slider, _pinUp);
-            Instantiate(waterSlider, _pinUp);
-            image.gameObject.SetActive(false);
-            text.gameObject.SetActive(false);
-            slider.gameObject.SetActive(false);
-            waterSlider.gameObject.SetActive(false);
+            case CellTypeEnum.Inventory:
+                if (InventoryController.GetInstance().ItemsArray[index] == null) return;
+                cell = _cells[index].GetComponent<InventoryCellHandler>();
+                break;
+            case CellTypeEnum.Player:
+                if (InventoryController.GetInstance().PlayerItems[index] == null) return;
+                cell = _playerCells[index].GetComponent<InventoryCellHandler>();
+                break;
         }
-        else
-        {
-            for (int i = _pinUp.childCount - 1; i >= 0; i--)
-            {
-                Destroy(_pinUp.GetChild(i).gameObject);
-            }
-        }
+
+        _pinUp.PinUpItem(cell);
+    }
+
+    public void UpdatePinItemInfo()
+    {
+        _pinUp.UpdatePinUpItemInformation();
+    }
+
+    public void UnpinItemFromMouse()
+    {
+        _pinUp.UnpinItem();
     }
 
     public void SelectingPlayerCell(int index)
