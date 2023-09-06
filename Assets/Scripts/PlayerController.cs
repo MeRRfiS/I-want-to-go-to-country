@@ -93,7 +93,11 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        if (!_isCanMoving) return;
+        if (!_isCanMoving) 
+        {
+            _inputMovement = Vector2.zero;
+            return;
+        }
 
         Vector3 direction = (_inputMovement.y * transform.forward) + (_inputMovement.x * transform.right);
         _direction.x = direction.x;
