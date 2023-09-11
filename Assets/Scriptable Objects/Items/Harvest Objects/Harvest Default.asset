@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isCanSold: 1
   _id: 27
-  _price: 55
+  _price: 15
   _type: 4
