@@ -42,7 +42,7 @@ public class Hoe : Instrument
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, InstrumentConstants.MAX_DISTANCE_TO_EARTH) && 
+        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, ItemConstants.MAX_DISTANCE_TO_EARTH) && 
             hit.collider.CompareTag(TagConstants.EARTH))
         {
             if (IsPatchObjNull())

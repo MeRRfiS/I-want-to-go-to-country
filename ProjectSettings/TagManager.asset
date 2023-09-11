@@ -15,6 +15,7 @@ TagManager:
   - Well
   - Shop
   - Mail Box
+  - Mill
   layers:
   - Default
   - TransparentFX

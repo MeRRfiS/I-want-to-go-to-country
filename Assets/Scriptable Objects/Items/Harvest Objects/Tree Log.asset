@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tree Log
   m_EditorClassIdentifier: 
   _isCanSold: 1
-  _id: 30
+  _id: 31
   _price: 10
   _type: 4
