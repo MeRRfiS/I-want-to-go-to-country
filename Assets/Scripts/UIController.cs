@@ -34,10 +34,16 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _questAmount;
     [SerializeField] private QuestHandler _questInformation;
 
+    [Header("Quest Menu")]
+    [SerializeField] private GameObject _craftMenu;
+    [SerializeField] private Transform _craftList;
+    [SerializeField] private CraftHandler _craftInformation;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject _buyShopCell;
     [SerializeField] private GameObject _sellShopCell;
     [SerializeField] private GameObject _quest;
+    [SerializeField] private GameObject _craft;
 
     [Header("Setting")]
     [SerializeField] private Color _deselectedColor;
@@ -57,6 +63,7 @@ public class UIController : MonoBehaviour
     public bool InventoryActiveSelf() => _inventory.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
+    public bool CraftMenuActiveSelf() => _craftMenu.activeSelf;
 
     private void Awake()
     {
@@ -271,6 +278,18 @@ public class UIController : MonoBehaviour
         _questMenu.SetActive(state);
     }
 
+    public void SwitchActiveCraftMenu()
+    {
+        bool state = !_craftMenu.activeSelf;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
+
+        CloseCraftInformation();
+        SwitchActiveMouse(state);
+        _craftMenu.SetActive(state);
+    }
+
     public void RedrawInventories()
     {
         //Redrawing main Inventory
@@ -320,6 +339,19 @@ public class UIController : MonoBehaviour
         RedrawQuestMenu(questList, _playerQuestList, QuestTypeEnum.PlayerQuest);
     }
 
+    public void RedrawCraftMenu(List<CraftModel> craftList, CraftController controller)
+    {
+        for (int i = _craftList.childCount - 1; i >= 0; i--)
+        {
+            Destroy(_craftList.GetChild(i).gameObject);
+        }
+        foreach (var craft in craftList)
+        {
+            CraftCellHandler craftCell = Instantiate(_craft, _craftList).GetComponent<CraftCellHandler>();
+            craftCell.DrawCellInformation(craft, controller);
+        }
+    }
+
     public void OpenQuestInformation(QuestModel quest, QuestTypeEnum typeQuest)
     {
         _questInformation.DrawQuestInformation(quest, typeQuest);
@@ -329,6 +361,17 @@ public class UIController : MonoBehaviour
     public void CloseQuestInformation()
     {
         _questInformation.gameObject.SetActive(false);
+    }
+
+    public void OpenCraftInformation(CraftModel craft, CraftController controller)
+    {
+        _craftInformation.DrawCraftInformation(craft, controller);
+        _craftInformation.gameObject.SetActive(true);
+    }
+
+    public void CloseCraftInformation()
+    {
+        _craftInformation.gameObject.SetActive(false);
     }
 
     public void OpenDayQuestMenu()

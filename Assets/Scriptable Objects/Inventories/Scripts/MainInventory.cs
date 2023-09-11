@@ -67,6 +67,7 @@ public class MainInventory : Inventory
                 return false;
             case ItemTypeEnum.Instrument:
             case ItemTypeEnum.Fertilizers:
+            case ItemTypeEnum.Building:
                 if (!GetEmptyCell(out index)) return false;
 
                 Container[index] = newItem.Item;

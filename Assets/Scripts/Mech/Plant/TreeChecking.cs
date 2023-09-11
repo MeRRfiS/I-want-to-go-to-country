@@ -19,11 +19,6 @@ public class TreeChecking : MonoBehaviour
         get => isNearTree;
     }
 
-    public void DestroyChecker()
-    {
-        Destroy(this);
-    }
-
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == TagConstants.EARTH) return;

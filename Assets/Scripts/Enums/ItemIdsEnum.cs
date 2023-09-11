@@ -22,5 +22,8 @@
     Fertilizers_3 = 25,
     Fertilizers_4 = 26,
     Harvest_Default = 27,
-    Tree_Log = 30
+    Tree_Log = 31,
+    Mill = 35,
+    Flour = 39,
+    Sugar = 40
 }

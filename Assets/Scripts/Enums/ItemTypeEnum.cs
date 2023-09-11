@@ -5,5 +5,6 @@ public enum ItemTypeEnum
     Seed = 2,
     Tree = 3,
     Harvest = 4,
-    Fertilizers = 5
+    Fertilizers = 5,
+    Building = 6
 }

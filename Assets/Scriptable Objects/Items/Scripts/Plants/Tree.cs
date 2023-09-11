@@ -60,7 +60,7 @@ public class Tree : Plant
         if (Physics.Raycast(startPoint.position, 
                             startPoint.forward, 
                             out hit, 
-                            InstrumentConstants.MAX_DISTANCE_TO_EARTH) &&
+                            ItemConstants.MAX_DISTANCE_TO_EARTH) &&
             hit.collider.CompareTag(TagConstants.EARTH))
         {
             if (IsSaplingObjNull())
