@@ -4483,6 +4483,7 @@ MonoBehaviour:
   _isEverydayUpdating: 0
   _itemsSells:
   - {fileID: 11400000, guid: 26804865b45e0b04c99181ab22a19b6b, type: 2}
+  - {fileID: 11400000, guid: 62aaa46c959742e43924728aa2ac4c6c, type: 2}
 --- !u!65 &228974449
 BoxCollider:
   m_ObjectHideFlags: 0

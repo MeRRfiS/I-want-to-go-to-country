@@ -11,7 +11,6 @@ public class Building: Item
 
     private GameObject _itemObj;
     private GameObject _buildingObj;
-    private List<Material> _materials;
     private BuildChecking _buildingCheck;
 
     private bool IsItemObjNull() => _itemObj == null;
@@ -19,7 +18,6 @@ public class Building: Item
     public override void Init()
     {
         _amount = 1;
-        _materials = new List<Material>();
     }
 
     public override void UseItem()
@@ -32,13 +30,13 @@ public class Building: Item
         for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
         {
             _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                       _materials[i].color.r,
-                                       _materials[i].color.g,
-                                       _materials[i].color.b,
+                                       1,
+                                       1,
+                                       1,
                                        1);
         }
         var build = Instantiate(_itemObj);
-        Destroy(build.GetComponent<TreeChecking>());
+        Destroy(build.GetComponent<BuildChecking>());
         _buildingCheck = null;
         _buildingObj = null;
         _itemObj = null;
@@ -67,10 +65,6 @@ public class Building: Item
                 _itemObj = Instantiate(prefab);
                 _buildingCheck = _itemObj.GetComponent<BuildChecking>();
                 _buildingObj = _itemObj.transform.GetChild(0).gameObject;
-                for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
-                {
-                    _materials.Add(new Material(_buildingObj.GetComponent<Renderer>().materials[i]));
-                }
             }
 
             _itemObj.transform.position = new Vector3(hit.point.x,
@@ -83,8 +77,8 @@ public class Building: Item
                 {
                     _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
                                                1,
-                                               _buildingObj.GetComponent<Renderer>().materials[i].color.g,
-                                               _buildingObj.GetComponent<Renderer>().materials[i].color.b,
+                                               0,
+                                               0,
                                                0.5f);
                 }
             }
@@ -93,9 +87,9 @@ public class Building: Item
                 for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
                 {
                     _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                               _materials[i].color.r,
-                                               _materials[i].color.g,
-                                               _materials[i].color.b,
+                                               1,
+                                               1,
+                                               1,
                                                0.5f);
                 }
             }
