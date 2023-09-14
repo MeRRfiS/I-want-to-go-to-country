@@ -90,6 +90,7 @@ public class InventoryController : MonoBehaviour
                 {
                     PlayerItems[indexOfSecondCell].Amount += selectedItem.Amount;
                     selectedItem = null;
+                    _selectedItemInfo = new SelectedItemInfo();
                     UIController.GetInstance().UnpinItemFromMouse();
                 }
                 break;

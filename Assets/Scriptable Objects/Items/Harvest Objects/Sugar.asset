@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sugar
   m_EditorClassIdentifier: 
   _isCanSold: 1
-  _id: 40
+  _id: 41
   _price: 55
   _type: 4
