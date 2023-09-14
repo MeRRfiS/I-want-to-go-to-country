@@ -15,7 +15,7 @@ public class MainInventory : Inventory
         for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
         {
             if (Container[i] == null) continue;
-            if (Container[i]._id == item._id && Container[i].Amount != 100)
+            if (Container[i]._id == item._id && Container[i].Amount != GlobalConstants.MAX_ITEM_IN_CELL)
             {
                 index = i;
                 return true;

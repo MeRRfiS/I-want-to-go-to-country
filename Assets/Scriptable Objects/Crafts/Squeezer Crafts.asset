@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783a561e166e6954d98346f4a6afd7fb, type: 3}
+  m_Name: Squeezer Crafts
+  m_EditorClassIdentifier: 
+  _craftedItemsList:
+  - _name: Apple Juice
+    _recipe:
+    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+      _amount: 10
+    _creftedItem: {fileID: 11400000, guid: 3906d8bc788ae8f4c95838ee08377980, type: 2}
+  - _name: Strawberry Juice
+    _recipe:
+    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+      _amount: 10
+    _creftedItem: {fileID: 11400000, guid: 52cb02b315fb7404b92b64592a14875e, type: 2}

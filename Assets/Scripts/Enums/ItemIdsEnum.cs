@@ -25,7 +25,10 @@
     Tree_Log = 31,
     Mill = 35,
     Bakery = 36,
-    Flour = 39,
-    Sugar = 40,
-    Bread = 41
+    Squeezer = 37,
+    Flour = 40,
+    Sugar = 41,
+    Bread = 42,
+    Apple_Juice = 43,
+    Strawberry_Juice = 44
 }

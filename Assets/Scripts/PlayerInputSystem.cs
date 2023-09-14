@@ -132,7 +132,7 @@ public class PlayerInputSystem : MonoBehaviour
                     hitObject.GetComponent<QuestSystemController>().LoadDayQuestListToUI();
                     UIController.GetInstance().SwitchActiveQuestMenu();
                     break;
-                case TagConstants.MILL:
+                case TagConstants.BUILDING:
                     if (UIController.GetInstance().InventoryActiveSelf()) return;
                     if (UIController.GetInstance().CraftMenuActiveSelf()) return;
                     hitObject.GetComponent<CraftController>().LoadCraftsCollectionToUI();
