@@ -70,6 +70,7 @@ public class InventoryController : MonoBehaviour
                     ItemsArray[indexOfSecondCell].Amount += selectedItem.Amount;
                     selectedItem = null;
                     UIController.GetInstance().UnpinItemFromMouse();
+                    _selectedItemInfo = new SelectedItemInfo();
                 }
                 break;
             case CellTypeEnum.Player:
@@ -90,8 +91,8 @@ public class InventoryController : MonoBehaviour
                 {
                     PlayerItems[indexOfSecondCell].Amount += selectedItem.Amount;
                     selectedItem = null;
-                    _selectedItemInfo = new SelectedItemInfo();
                     UIController.GetInstance().UnpinItemFromMouse();
+                    _selectedItemInfo = new SelectedItemInfo();
                 }
                 break;
         }

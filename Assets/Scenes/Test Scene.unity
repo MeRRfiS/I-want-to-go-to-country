@@ -4485,6 +4485,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26804865b45e0b04c99181ab22a19b6b, type: 2}
   - {fileID: 11400000, guid: 62aaa46c959742e43924728aa2ac4c6c, type: 2}
   - {fileID: 11400000, guid: c26bfbb1d3d9ae049ad2b560809b3f59, type: 2}
+  - {fileID: 11400000, guid: e8191c1db6d98cb40873fd37bde80ff1, type: 2}
 --- !u!65 &228974449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14791,7 +14792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.7.50pa
+  m_text: 'v. 0.8.54pa
 
     Esc - Close game
 

@@ -26,9 +26,13 @@
     Mill = 35,
     Bakery = 36,
     Squeezer = 37,
+    Jam_Maker = 38,
     Flour = 40,
     Sugar = 41,
     Bread = 42,
     Apple_Juice = 43,
-    Strawberry_Juice = 44
+    Strawberry_Juice = 44,
+    Apple_Jam = 45,
+    Strawberry_Jam = 46,
+    Carrot_Jam = 47
 }
