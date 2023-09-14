@@ -191,6 +191,10 @@ public class UIController : MonoBehaviour
                     text.gameObject.SetActive(true);
                     slider.gameObject.SetActive(false);
                     break;
+                case ItemTypeEnum.Building:
+                    text.gameObject.SetActive(false);
+                    slider.gameObject.SetActive(false);
+                    break;
                 default:
                     break;
             }

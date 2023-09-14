@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8294096866925405665}
   m_Layer: 0
   m_Name: Sugar
-  m_TagString: Seed
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

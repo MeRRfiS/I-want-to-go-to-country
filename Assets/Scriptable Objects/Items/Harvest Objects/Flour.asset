@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Flour
   m_EditorClassIdentifier: 
   _isCanSold: 1
-  _id: 39
+  _id: 40
   _price: 55
   _type: 4
