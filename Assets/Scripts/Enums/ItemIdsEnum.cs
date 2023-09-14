@@ -24,6 +24,8 @@
     Harvest_Default = 27,
     Tree_Log = 31,
     Mill = 35,
+    Bakery = 36,
     Flour = 39,
-    Sugar = 40
+    Sugar = 40,
+    Bread = 41
 }
