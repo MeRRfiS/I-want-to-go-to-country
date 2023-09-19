@@ -6,18 +6,10 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    private struct SelectedItemInfo
-    {
-        public int _itemIndex;
-        public CellTypeEnum _cellType;
-        public Inventory _inventory;
-    }
-
     private static InventoryController instance;
 
     private bool _isCanChangeActiveItem = true;
     private int _activePlayerItemIndex = 0;
-    //private SelectedItemInfo _selectedItemInfo;
     private MovedItemsModel _movedItemsModel;
 
     [Header("Inventory")]
