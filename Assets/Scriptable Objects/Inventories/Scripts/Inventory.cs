@@ -9,6 +9,14 @@ public class Inventory : ScriptableObject
     public virtual void Init() { }
     public virtual bool AddItem(InventorySlot newItem) => false;
 
+
+    public void MoveItem(int firstIndex, int secondIndex, Inventory toInventory)
+    {
+        Item temp = Container[firstIndex];
+        Container[firstIndex] = toInventory.Container[secondIndex];
+        toInventory.Container[secondIndex] = temp;
+    }
+
     public void RemoveItem(Item removeItem, ref int amount)
     {
         for (int i = 0; i < Container.Length; i++)
@@ -30,6 +38,33 @@ public class Inventory : ScriptableObject
                 }
             }
         }
+    }
+
+    public bool StackItem(int firstIndex, int secondIndex, Inventory toInventory)
+    {
+        if (toInventory.Container[secondIndex] == null)
+            return false;
+
+        if (toInventory.Container[secondIndex]._id != Container[firstIndex]._id)
+            return false;
+
+        if (toInventory.Container[secondIndex].Amount + Container[firstIndex].Amount > 
+            GlobalConstants.MAX_ITEM_IN_CELL)
+        {
+            Container[firstIndex].Amount = (toInventory.Container[secondIndex].Amount +
+                                            Container[firstIndex].Amount) -
+                                            GlobalConstants.MAX_ITEM_IN_CELL;
+            toInventory.Container[secondIndex].Amount = GlobalConstants.MAX_ITEM_IN_CELL;
+            UIController.GetInstance().UpdatePinItemInfo();
+        }
+        else
+        {
+            toInventory.Container[secondIndex].Amount += Container[firstIndex].Amount;
+            Container[firstIndex] = null;
+            UIController.GetInstance().UnpinItemFromMouse();
+        }
+
+        return true;
     }
 }
 

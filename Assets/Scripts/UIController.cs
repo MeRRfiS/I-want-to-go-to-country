@@ -16,9 +16,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _money;
 
     [Header("Inventory Menu")]
-    [SerializeField] private GameObject _inventory;
-    [SerializeField] private List<Transform> _cells;
-    [SerializeField] private List<Transform> _playerCells;
+    [SerializeField] private InventoryUI _mainInventory;
+    [SerializeField] private InventoryUI _playerInventory;
 
     [Header("Shop Menu")]
     [SerializeField] private GameObject _shop;
@@ -60,7 +59,7 @@ public class UIController : MonoBehaviour
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
-    public bool InventoryActiveSelf() => _inventory.activeSelf;
+    public bool InventoryActiveSelf() => _mainInventory.gameObject.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
     public bool CraftMenuActiveSelf() => _craftMenu.activeSelf;
@@ -139,68 +138,6 @@ public class UIController : MonoBehaviour
     }
 
     //TODO: Make method more readable
-    private void RedrawInventory(Item[] items, List<Transform> cells)
-    {
-        for (int i = 0; i < items.Length; i++)
-        {
-            InventoryCellHandler cell = cells[i].GetComponent<InventoryCellHandler>();
-            Image image = cell.ItemIcon;
-            TextMeshProUGUI text = cell.TextCount;
-            Slider slider = cell.SliderDurability;
-            Slider waterSlider = cell.WaterValueSlider;
-            if (items[i] == null)
-            {
-                image.sprite = null;
-                image.gameObject.SetActive(false);
-                text.text = String.Empty;
-                text.gameObject.SetActive(false);
-                slider.gameObject.SetActive(false);
-                waterSlider.gameObject.SetActive(false);
-                continue;
-            }
-
-            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i]._id);
-            image.gameObject.SetActive(true);
-            waterSlider.gameObject.SetActive(false);
-            switch (items[i]._type)
-            {
-                case ItemTypeEnum.Instrument:
-                    Instrument instrument = items[i] as Instrument;
-                    if (instrument is Funnel)
-                    {
-                        Funnel funnel = items[i] as Funnel;
-                        waterSlider.maxValue = funnel._maxUsings;
-                        waterSlider.value = funnel.Usings;
-                        waterSlider.gameObject.SetActive(true);
-                    }
-                    slider.maxValue = instrument._maxDurability;
-                    slider.value = instrument.Durability;
-                    slider.gameObject.SetActive(true);
-                    text.gameObject.SetActive(false);
-                    break;
-                case ItemTypeEnum.Fertilizers:
-                    slider.maxValue = MechConstants.MAX_USING_OF_FERTILIZER;
-                    slider.value = (items[i] as Fertilizers).Usings;
-                    slider.gameObject.SetActive(true);
-                    text.gameObject.SetActive(false);
-                    break;
-                case ItemTypeEnum.Seed:
-                case ItemTypeEnum.Tree:
-                case ItemTypeEnum.Harvest:
-                    text.text = items[i].Amount.ToString();
-                    text.gameObject.SetActive(true);
-                    slider.gameObject.SetActive(false);
-                    break;
-                case ItemTypeEnum.Building:
-                    text.gameObject.SetActive(false);
-                    slider.gameObject.SetActive(false);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
     private void RedrawQuestMenu(List<QuestModel> questList, Transform list, QuestTypeEnum type)
     {
         for (int i = list.childCount - 1; i >= 0; i--)
@@ -239,15 +176,15 @@ public class UIController : MonoBehaviour
 
     public void SwitchActiveInventoryMenu()
     {
-        bool state = !_inventory.activeSelf;
+        bool state = !_mainInventory.gameObject.activeSelf;
 
-        RedrawInventory(InventoryController.GetInstance().ItemsArray, _cells);
+        _mainInventory.RedrawInventory();
         InventoryController.GetInstance().IsCanChangeActiveItem = !state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         _pinUp.gameObject.SetActive(state);
         SwitchActiveMouse(state);
-        _inventory.SetActive(state);
+        _mainInventory.gameObject.SetActive(state);
     }
 
     public void SwitchActiveShopMenu()
@@ -296,11 +233,9 @@ public class UIController : MonoBehaviour
 
     public void RedrawInventories()
     {
-        //Redrawing main Inventory
-        RedrawInventory(InventoryController.GetInstance().ItemsArray, _cells);
+        _mainInventory.RedrawInventory();
 
-        //Redrawing player Inventory
-        RedrawInventory(InventoryController.GetInstance().PlayerItems, _playerCells);
+        _playerInventory.RedrawInventory();
     }
 
     public void RedrawShop(List<GoodsModel> goodsForDay, ShopController shop)
@@ -403,11 +338,11 @@ public class UIController : MonoBehaviour
         {
             case CellTypeEnum.Inventory:
                 if (InventoryController.GetInstance().ItemsArray[index] == null) return;
-                cell = _cells[index].GetComponent<InventoryCellHandler>();
+                cell = _mainInventory.Cells[index].GetComponent<InventoryCellHandler>();
                 break;
             case CellTypeEnum.Player:
                 if (InventoryController.GetInstance().PlayerItems[index] == null) return;
-                cell = _playerCells[index].GetComponent<InventoryCellHandler>();
+                cell = _playerInventory.Cells[index].GetComponent<InventoryCellHandler>();
                 break;
         }
 
@@ -426,15 +361,15 @@ public class UIController : MonoBehaviour
 
     public void SelectingPlayerCell(int index)
     {
-        for (int i = 0; i < _playerCells.Count; i++)
+        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_PLAYER; i++)
         {
             if (i == index) 
             {
-                _playerCells[index].GetComponent<Image>().color = _selectedColor;
+                _playerInventory.Cells[index].GetComponent<Image>().color = _selectedColor;
             }
             else
             {
-                _playerCells[i].GetComponent<Image>().color = _deselectedColor;
+                _playerInventory.Cells[i].GetComponent<Image>().color = _deselectedColor;
             }
         }
     }

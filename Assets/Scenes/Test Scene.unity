@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 25178969}
   - component: {fileID: 25178968}
   - component: {fileID: 25178967}
+  - component: {fileID: 25178970}
   m_Layer: 0
   m_Name: Inventory UI
   m_TagString: Untagged
@@ -547,6 +548,28 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &25178970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 25178965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bea5559bb0a9384bbc88638a07c627d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cells:
+  - {fileID: 970051919}
+  - {fileID: 1066503307}
+  - {fileID: 190514177}
+  - {fileID: 354181447}
+  - {fileID: 612964485}
+  - {fileID: 1169628575}
+  - {fileID: 1612292142}
+  - {fileID: 714231816}
+  _inventory: {fileID: 11400000, guid: 07da7002c39fd084f960b2d70a5dbe28, type: 2}
 --- !u!1 &50173516
 GameObject:
   m_ObjectHideFlags: 0
@@ -27209,6 +27232,7 @@ GameObject:
   - component: {fileID: 1658112698}
   - component: {fileID: 1658112697}
   - component: {fileID: 1658112696}
+  - component: {fileID: 1658112699}
   m_Layer: 0
   m_Name: Player Inventory UI
   m_TagString: Untagged
@@ -27300,6 +27324,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1658112699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658112694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bea5559bb0a9384bbc88638a07c627d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cells:
+  - {fileID: 1271312046}
+  - {fileID: 1292290235}
+  - {fileID: 1791724277}
+  _inventory: {fileID: 11400000, guid: 4942f5656e32f9d4fa42c9975b5ae6d0, type: 2}
 --- !u!1 &1663544092
 GameObject:
   m_ObjectHideFlags: 0
@@ -30742,20 +30783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _time: {fileID: 861645945}
   _money: {fileID: 965741004}
-  _inventory: {fileID: 25178965}
-  _cells:
-  - {fileID: 970051919}
-  - {fileID: 1066503307}
-  - {fileID: 190514177}
-  - {fileID: 354181447}
-  - {fileID: 612964485}
-  - {fileID: 1169628575}
-  - {fileID: 1612292142}
-  - {fileID: 714231816}
-  _playerCells:
-  - {fileID: 1271312046}
-  - {fileID: 1292290235}
-  - {fileID: 1791724277}
+  _mainInventory: {fileID: 25178970}
+  _playerInventory: {fileID: 1658112699}
   _shop: {fileID: 259865668}
   _buyItemMenu: {fileID: 1209971355}
   _sellItemMenu: {fileID: 634625557}
