@@ -19,4 +19,5 @@ public static class TagConstants
     public const string SHOP = "Shop";
     public const string MAIL_BOX = "Mail Box";
     public const string BUILDING = "Building";
+    public const string CHEST = "Chest";
 }

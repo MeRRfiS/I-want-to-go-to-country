@@ -45,6 +45,9 @@ public class PinUpItemInfo : MonoBehaviour
             case CellTypeEnum.Player:
                 _text.text = InventoryController.GetInstance().PlayerItems[_cell.Index].Amount.ToString();
                 break;
+            case CellTypeEnum.Chest:
+                _text.text = InventoryController.GetInstance().ChestItems[_cell.Index].Amount.ToString();
+                break;
         }
     }
 

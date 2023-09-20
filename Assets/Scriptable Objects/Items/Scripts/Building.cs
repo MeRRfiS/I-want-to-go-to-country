@@ -69,8 +69,8 @@ public class Building: Item
             }
 
             _itemObj.transform.position = new Vector3(hit.point.x,
-                                                        2,
-                                                        hit.point.z);
+                                                      prefab.transform.position.y,
+                                                      hit.point.z);
 
             if (_buildingCheck && _buildingCheck.IsOnObject)
             {

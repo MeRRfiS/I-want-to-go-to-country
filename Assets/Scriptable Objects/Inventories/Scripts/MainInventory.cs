@@ -7,15 +7,15 @@ public class MainInventory : Inventory
 {
     public override void Init()
     {
-        Container = new Item[GlobalConstants.MAX_ITEMS_IN_INVENTORY];
+        Container = new Item[MechConstants.MAX_ITEMS_IN_INVENTORY];
     }
 
     private bool GetItemIndex(Item item, out int index)
     {
-        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
+        for (int i = 0; i < MechConstants.MAX_ITEMS_IN_INVENTORY; i++)
         {
             if (Container[i] == null) continue;
-            if (Container[i]._id == item._id && Container[i].Amount != GlobalConstants.MAX_ITEM_IN_CELL)
+            if (Container[i]._id == item._id && Container[i].Amount != MechConstants.MAX_ITEM_IN_CELL)
             {
                 index = i;
                 return true;
@@ -28,7 +28,7 @@ public class MainInventory : Inventory
 
     private bool GetEmptyCell(out int index)
     {
-        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_INVENTORY; i++)
+        for (int i = 0; i < MechConstants.MAX_ITEMS_IN_INVENTORY; i++)
         {
             if (Container[i] == null)
             {
@@ -49,8 +49,8 @@ public class MainInventory : Inventory
             if (!GetEmptyCell(out index)) return false;
 
             Container[index] = item;
-            Container[index].Amount = amount > GlobalConstants.MAX_ITEM_IN_CELL ?
-                                      GlobalConstants.MAX_ITEM_IN_CELL : amount;
+            Container[index].Amount = amount > MechConstants.MAX_ITEM_IN_CELL ?
+                                      MechConstants.MAX_ITEM_IN_CELL : amount;
             amount -= 100;
             //ToDo: Make throwing items if inventory full
         }
@@ -77,10 +77,10 @@ public class MainInventory : Inventory
             case ItemTypeEnum.Harvest:
                 if (GetItemIndex(newItem.Item, out index))
                 {
-                    if (Container[index].Amount + newItem.Amount > GlobalConstants.MAX_ITEM_IN_CELL)
+                    if (Container[index].Amount + newItem.Amount > MechConstants.MAX_ITEM_IN_CELL)
                     {
-                        newItem.Amount -= GlobalConstants.MAX_ITEM_IN_CELL - Container[index].Amount;
-                        Container[index].Amount = GlobalConstants.MAX_ITEM_IN_CELL;
+                        newItem.Amount -= MechConstants.MAX_ITEM_IN_CELL - Container[index].Amount;
+                        Container[index].Amount = MechConstants.MAX_ITEM_IN_CELL;
                         if (!AddNewValuesToArray(newItem.Item, newItem.Amount)) return false;
                     }
                     else

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
@@ -50,7 +51,8 @@ public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!UIController.GetInstance().InventoryActiveSelf()) return;
+        if (!UIController.GetInstance().InventoryActiveSelf() && 
+            !UIController.GetInstance().ChestMenuActiveSelf()) return;
 
         UIController.GetInstance().PinUpItemToMouse(_index, _typeCell);
         InventoryController.GetInstance().SelectItem(_index, _typeCell);
@@ -71,6 +73,9 @@ public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
                 break;
             case CellTypeEnum.Player:
                 item = InventoryController.GetInstance().PlayerItems[_index];
+                break;
+            case CellTypeEnum.Chest:
+                item = InventoryController.GetInstance().ChestItems[_index];
                 break;
             default:
                 break;
