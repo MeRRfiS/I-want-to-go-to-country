@@ -16,6 +16,7 @@ TagManager:
   - Shop
   - Mail Box
   - Building
+  - Chest
   layers:
   - Default
   - TransparentFX

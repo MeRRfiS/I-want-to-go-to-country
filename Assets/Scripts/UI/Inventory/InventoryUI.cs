@@ -19,6 +19,15 @@ public class InventoryUI : MonoBehaviour
         get => _cells;
     }
 
+    private void OnEnable()
+    {
+        if(_inventory == null || _inventory is ChestInventory) 
+        {
+            _inventory = InventoryController.GetInstance().ChestInventory;
+            RedrawInventory();
+        }
+    }
+
     public void RedrawInventory()
     {
         Item[] items = _inventory.Container;

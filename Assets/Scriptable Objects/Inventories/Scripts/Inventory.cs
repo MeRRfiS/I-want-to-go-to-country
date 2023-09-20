@@ -48,13 +48,13 @@ public class Inventory : ScriptableObject
         if (toInventory.Container[secondIndex]._id != Container[firstIndex]._id)
             return false;
 
-        if (toInventory.Container[secondIndex].Amount + Container[firstIndex].Amount > 
-            GlobalConstants.MAX_ITEM_IN_CELL)
+        if (toInventory.Container[secondIndex].Amount + Container[firstIndex].Amount >
+            MechConstants.MAX_ITEM_IN_CELL)
         {
             Container[firstIndex].Amount = (toInventory.Container[secondIndex].Amount +
                                             Container[firstIndex].Amount) -
-                                            GlobalConstants.MAX_ITEM_IN_CELL;
-            toInventory.Container[secondIndex].Amount = GlobalConstants.MAX_ITEM_IN_CELL;
+                                            MechConstants.MAX_ITEM_IN_CELL;
+            toInventory.Container[secondIndex].Amount = MechConstants.MAX_ITEM_IN_CELL;
             UIController.GetInstance().UpdatePinItemInfo();
         }
         else

@@ -7,11 +7,6 @@ public class PlayerInventory : Inventory
 {
     public override void Init()
     {
-        Container = new Item[GlobalConstants.MAX_ITEMS_IN_PLAYER];
-    }
-
-    public override bool AddItem(InventorySlot newItem)
-    {
-        throw new System.NotImplementedException();
+        Container = new Item[MechConstants.MAX_ITEMS_IN_PLAYER];
     }
 }

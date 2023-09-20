@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -38,6 +36,11 @@ public class UIController : MonoBehaviour
     [SerializeField] private Transform _craftList;
     [SerializeField] private CraftHandler _craftInformation;
 
+    [Header("Chest Menu")]
+    [SerializeField] private GameObject _chestMenu;
+    [SerializeField] private InventoryUI _chestInventory;
+    [SerializeField] private InventoryUI _chestMainInventory;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject _buyShopCell;
     [SerializeField] private GameObject _sellShopCell;
@@ -63,6 +66,7 @@ public class UIController : MonoBehaviour
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
     public bool CraftMenuActiveSelf() => _craftMenu.activeSelf;
+    public bool ChestMenuActiveSelf() => _chestMenu.activeSelf;
 
     private void Awake()
     {
@@ -191,7 +195,6 @@ public class UIController : MonoBehaviour
     {
         bool state = !_shop.activeSelf;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         SwitchActiveMouse(state);
@@ -209,7 +212,6 @@ public class UIController : MonoBehaviour
     {
         bool state = !_questMenu.activeSelf;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         CloseQuestInformation();
@@ -223,7 +225,6 @@ public class UIController : MonoBehaviour
     {
         bool state = !_craftMenu.activeSelf;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         CloseCraftInformation();
@@ -231,9 +232,30 @@ public class UIController : MonoBehaviour
         _craftMenu.SetActive(state);
     }
 
+    public void SwitchActiveChestMenu()
+    {
+        bool state = !_chestMenu.activeSelf;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
+        _chestMainInventory.RedrawInventory();
+
+        _pinUp.gameObject.SetActive(state);
+        SwitchActiveMouse(state);
+        _chestMenu.SetActive(state);
+    }
+
     public void RedrawInventories()
     {
-        _mainInventory.RedrawInventory();
+        if (InventoryActiveSelf())
+        {
+            _mainInventory.RedrawInventory();
+        }
+        else if (ChestMenuActiveSelf())
+        {
+            _chestInventory.RedrawInventory();
+            _chestMainInventory.RedrawInventory();
+        }
 
         _playerInventory.RedrawInventory();
     }
@@ -338,11 +360,22 @@ public class UIController : MonoBehaviour
         {
             case CellTypeEnum.Inventory:
                 if (InventoryController.GetInstance().ItemsArray[index] == null) return;
-                cell = _mainInventory.Cells[index].GetComponent<InventoryCellHandler>();
+                if (InventoryActiveSelf())
+                {
+                    cell = _mainInventory.Cells[index].GetComponent<InventoryCellHandler>();
+                }
+                else if (ChestMenuActiveSelf())
+                {
+                    cell = _chestMainInventory.Cells[index].GetComponent<InventoryCellHandler>();
+                }
                 break;
             case CellTypeEnum.Player:
                 if (InventoryController.GetInstance().PlayerItems[index] == null) return;
                 cell = _playerInventory.Cells[index].GetComponent<InventoryCellHandler>();
+                break;
+            case CellTypeEnum.Chest:
+                if (InventoryController.GetInstance().ChestItems[index] == null) return;
+                cell = _chestInventory.Cells[index].GetComponent<InventoryCellHandler>();
                 break;
         }
 
@@ -361,7 +394,7 @@ public class UIController : MonoBehaviour
 
     public void SelectingPlayerCell(int index)
     {
-        for (int i = 0; i < GlobalConstants.MAX_ITEMS_IN_PLAYER; i++)
+        for (int i = 0; i < MechConstants.MAX_ITEMS_IN_PLAYER; i++)
         {
             if (i == index) 
             {

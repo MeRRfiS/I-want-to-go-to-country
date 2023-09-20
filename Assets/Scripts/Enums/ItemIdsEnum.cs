@@ -27,6 +27,7 @@
     Bakery = 36,
     Squeezer = 37,
     Jam_Maker = 38,
+    Chest = 39,
     Flour = 40,
     Sugar = 41,
     Bread = 42,

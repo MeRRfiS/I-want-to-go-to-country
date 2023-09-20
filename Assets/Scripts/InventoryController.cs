@@ -11,6 +11,7 @@ public class InventoryController : MonoBehaviour
     private bool _isCanChangeActiveItem = true;
     private int _activePlayerItemIndex = 0;
     private MovedItemsModel _movedItemsModel;
+    private Inventory _chestInventory;
 
     [Header("Inventory")]
     [SerializeField] private Inventory _mainInventory;
@@ -34,6 +35,16 @@ public class InventoryController : MonoBehaviour
     public Item[] PlayerItems
     {
         get => _playerInventory.Container;
+    }
+
+    public Item[] ChestItems
+    {
+        get => _chestInventory.Container;
+    }
+
+    public Inventory ChestInventory
+    {
+        get => _chestInventory;
     }
 
     private bool ToStackItems()
@@ -129,6 +140,12 @@ public class InventoryController : MonoBehaviour
                     dropItem.GetComponent<ItemController>().Item = PlayerItems[_movedItemsModel.FirstIndex];
                     PlayerItems[_movedItemsModel.FirstIndex] = null;
                     break;
+                case CellTypeEnum.Chest:
+                    dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
+                                           (ItemIdsEnum)ChestItems[_movedItemsModel.FirstIndex]._id));
+                    dropItem.GetComponent<ItemController>().Item = ChestItems[_movedItemsModel.FirstIndex];
+                    ChestItems[_movedItemsModel.FirstIndex] = null;
+                    break;
             }
             dropItem.transform.position = _hand.position;
             _movedItemsModel = null;
@@ -165,16 +182,22 @@ public class InventoryController : MonoBehaviour
     {
         if (_movedItemsModel == null)
         {
-            _movedItemsModel = new MovedItemsModel();
             switch (type)
             {
                 case CellTypeEnum.Inventory:
                     if (ItemsArray[index] == null) return;
+                    _movedItemsModel = new MovedItemsModel();
                     _movedItemsModel.FromInventory = _mainInventory;
                     break;
                 case CellTypeEnum.Player:
                     if (PlayerItems[index] == null) return;
+                    _movedItemsModel = new MovedItemsModel();
                     _movedItemsModel.FromInventory = _playerInventory;
+                    break;
+                case CellTypeEnum.Chest:
+                    if (ChestItems[index] == null) return;
+                    _movedItemsModel = new MovedItemsModel();
+                    _movedItemsModel.FromInventory = _chestInventory;
                     break;
             }
             _movedItemsModel.FirstCellTypeEnum = type;
@@ -189,6 +212,9 @@ public class InventoryController : MonoBehaviour
                     break;
                 case CellTypeEnum.Player:
                     _movedItemsModel.ToInventory = _playerInventory;
+                    break;
+                case CellTypeEnum.Chest:
+                    _movedItemsModel.ToInventory = _chestInventory;
                     break;
             }
             _movedItemsModel.SecondCellTypeEnum = type;
@@ -212,7 +238,12 @@ public class InventoryController : MonoBehaviour
             _activePlayerItemIndex = index;
         }
         _activePlayerItemIndex = Mathf.Clamp(_activePlayerItemIndex, 
-                                             0, GlobalConstants.MAX_ITEMS_IN_PLAYER - 1);
+                                             0, MechConstants.MAX_ITEMS_IN_PLAYER - 1);
         if(_activePlayerItemIndex != oldActivePlayerItemIndex) ApplyActiveItem();
+    }
+
+    public void SetChestInventory(Inventory chestInventory)
+    {
+        _chestInventory = chestInventory;
     }
 }

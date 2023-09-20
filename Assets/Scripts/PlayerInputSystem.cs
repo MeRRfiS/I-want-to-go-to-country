@@ -137,6 +137,11 @@ public class PlayerInputSystem : MonoBehaviour
                     if (UIController.GetInstance().CraftMenuActiveSelf()) return;
                     hitObject.GetComponent<CraftController>().LoadCraftsCollectionToUI();
                     break;
+                case TagConstants.CHEST:
+                    if (UIController.GetInstance().InventoryActiveSelf()) return;
+                    if (UIController.GetInstance().ChestMenuActiveSelf()) return;
+                    hitObject.GetComponent<ChestController>().LoadChestInventoryToUI();
+                    break;
             }
         }
     }

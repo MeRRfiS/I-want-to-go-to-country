@@ -21,4 +21,9 @@ public static class MechConstants
 
     public const int MAX_DAY_QUEST = 2;
     public const int MAX_PLAYER_AMOUNT_QUEST = 5;
+
+    public const int MAX_ITEM_IN_CELL = 32;
+    public const int MAX_ITEMS_IN_INVENTORY = 8;
+    public const int MAX_ITEMS_IN_PLAYER = 3;
+    public const int MAX_ITEMS_IN_CHEST = 4;
 }
