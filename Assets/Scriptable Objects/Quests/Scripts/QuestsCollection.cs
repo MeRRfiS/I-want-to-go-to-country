@@ -14,17 +14,8 @@ public class QuestsCollection : ScriptableObject
 }
 
 [System.Serializable]
-public class QuestModel
+public class QuestModel: InformationModel
 {
     public int _id;
-    public string _name;
-    public List<QuestItem> _questItems = new List<QuestItem>();
     public int _reward;
-}
-
-[System.Serializable]
-public class QuestItem
-{
-    public Item _item;
-    public int _amount;
 }

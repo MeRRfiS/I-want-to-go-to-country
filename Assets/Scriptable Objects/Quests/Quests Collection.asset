@@ -15,13 +15,13 @@ MonoBehaviour:
   _quests:
   - _id: 0
     _name: Quest 1
-    _questItems:
+    _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 1
     _reward: 15
   - _id: 1
     _name: Quest 2
-    _questItems:
+    _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 5
     - _item: {fileID: 11400000, guid: 917ca5314a1e1eb4386d33697989f341, type: 2}
@@ -29,7 +29,7 @@ MonoBehaviour:
     _reward: 140
   - _id: 2
     _name: Quest 3
-    _questItems:
+    _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 4
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}

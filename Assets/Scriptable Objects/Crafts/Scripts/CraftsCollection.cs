@@ -9,16 +9,7 @@ public class CraftsCollection : ScriptableObject
 }
 
 [System.Serializable]
-public class CraftModel
+public class CraftModel: InformationModel
 {
-    public string _name;
-    public List<CraftedItem> _recipe;
     public Item _creftedItem;
-}
-
-[System.Serializable]
-public class CraftedItem
-{
-    public Item _item;
-    public int _amount;
 }

@@ -26,4 +26,8 @@ public static class MechConstants
     public const int MAX_ITEMS_IN_INVENTORY = 8;
     public const int MAX_ITEMS_IN_PLAYER = 3;
     public const int MAX_ITEMS_IN_CHEST = 4;
+
+    public const int MAX_LEVEL_OF_BUILDING = 3;
+    public const float DICREASE_MULTIPLER_FOR_CRAFT_LEVEL_2 = 0.25f;
+    public const float DICREASE_MULTIPLER_FOR_CRAFT_LEVEL_3 = 0.5f;
 }

@@ -9,17 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783a561e166e6954d98346f4a6afd7fb, type: 3}
-  m_Name: Squeezer Crafts
+  m_Script: {fileID: 11500000, guid: c75efd1c2133ecb47bd81b33977a861c, type: 3}
+  m_Name: Bakary's Upgrade
   m_EditorClassIdentifier: 
-  _craftedItemsList:
-  - _name: Apple Juice
+  _upgrades:
+  - _name: Level 1
+    _neededItems: []
+    _price: 0
+    _active: 0
+  - _name: Level 2
     _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 10
-    _creftedItem: {fileID: 11400000, guid: 3906d8bc788ae8f4c95838ee08377980, type: 2}
-  - _name: Strawberry Juice
+    - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
+      _amount: 10
+    _price: 10
+    _active: 0
+  - _name: Level 3
     _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
-      _amount: 10
-    _creftedItem: {fileID: 11400000, guid: 52cb02b315fb7404b92b64592a14875e, type: 2}
+      _amount: 20
+    - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
+      _amount: 20
+    _price: 20
+    _active: 0

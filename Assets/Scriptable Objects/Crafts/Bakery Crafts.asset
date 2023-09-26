@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftedItemsList:
   - _name: Bread
-    _recipe:
+    _neededItems:
     - _item: {fileID: 11400000, guid: f208f5c618bec7e45b946de77769a592, type: 2}
       _amount: 3
     _creftedItem: {fileID: 11400000, guid: f212b3825d79346489ec25db5f989a2a, type: 2}

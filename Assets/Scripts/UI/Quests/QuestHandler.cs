@@ -35,7 +35,7 @@ public class QuestHandler : MonoBehaviour
         bool isQuestCompleted = QuestSystemController.GetInstance().IsQuestCompleted(_quest);
         if (isQuestCompleted)
         {
-            foreach (var questItem in _quest._questItems)
+            foreach (var questItem in _quest._neededItems)
             {
                 InventoryController.GetInstance().RemoveItem(questItem._item, questItem._amount);
             }
@@ -55,10 +55,10 @@ public class QuestHandler : MonoBehaviour
         }
 
         _quest = quest;
-        foreach (var questItem in quest._questItems) 
+        foreach (var questItem in quest._neededItems) 
         { 
-            QuestItemInformation QI_Information = Instantiate(_itemInfo, _itemList).GetComponent<QuestItemInformation>();
-            QI_Information.DrawQuestItemInformation(questItem);
+            ItemInformation QI_Information = Instantiate(_itemInfo, _itemList).GetComponent<ItemInformation>();
+            QI_Information.DrawItemInformation(questItem);
         }
         _reward.text = quest._reward.ToString();
 

@@ -12,14 +12,14 @@ public class CraftCellHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
 
     private CraftModel _craft;
-    private CraftController _controller;
+    private BuildController _controller;
 
     public void OpenCraftInformation()
     {
         UIController.GetInstance().OpenCraftInformation(_craft, _controller);
     }
 
-    public void DrawCellInformation(CraftModel craft, CraftController controller)
+    public void DrawCellInformation(CraftModel craft, BuildController controller)
     {
         _craft = craft;
         _controller = controller;

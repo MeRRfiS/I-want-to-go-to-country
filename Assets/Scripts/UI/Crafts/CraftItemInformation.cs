@@ -11,7 +11,7 @@ public class CraftItemInformation : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _count;
 
-    public void DrawCraftItemInformation(CraftedItem item)
+    public void DrawItemInformation(NeededItem item)
     {
         _icon.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)item._item._id);
         _name.text = ((ItemIdsEnum)item._item._id).ToString();
