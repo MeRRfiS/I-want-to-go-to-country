@@ -12,36 +12,50 @@ public class CraftHandler : MonoBehaviour
     [Header("Prefab")]
     [SerializeField] private GameObject _itemInfo;
 
+    private List<int> _amountOfItems = new List<int>();
     private CraftModel _craft;
-    private CraftController _controller;
+    private BuildController _controller;
 
     public void CraftItem()
     {
-        bool isCanCraft = _controller.IsCanCraft(_craft);
+        bool isCanCraft = _controller.IsCanDoSomething(_craft, _amountOfItems);
         if (isCanCraft)
         {
-            foreach (var craftedItem in _craft._recipe)
+            for (int i = 0; i < _craft._neededItems.Count; i++)
             {
-                InventoryController.GetInstance().RemoveItem(craftedItem._item, craftedItem._amount);
+                InventoryController.GetInstance().RemoveItem(_craft._neededItems[i]._item, _amountOfItems[i]);
             }
             InventoryController.GetInstance().AddItemToMainInventory(_craft._creftedItem, 1);
             UIController.GetInstance().RedrawInventories();
         }
     }
 
-    public void DrawCraftInformation(CraftModel craft, CraftController controller)
+    public void DrawCraftInformation(CraftModel craft, BuildController controller)
     {
+        _amountOfItems.Clear();
         for (int i = 0; i < _itemList.childCount; i++)
         {
             Destroy(_itemList.GetChild(i).gameObject);
         }
 
         _craft = craft;
-        _controller = controller;
-        foreach (var craftItem in craft._recipe)
+        _controller = controller; 
+        for (int i = 0; i < _craft._neededItems.Count; i++)
         {
-            CraftItemInformation craftInformation = Instantiate(_itemInfo, _itemList).GetComponent<CraftItemInformation>();
-            craftInformation.DrawCraftItemInformation(craftItem);
+            int amount = _craft._neededItems[i]._amount;
+            if(amount != 1) 
+            {
+                _amountOfItems.Add((int)Mathf.Floor(amount - amount * _controller.DecreaseCountMultipler));
+            }
+            else
+            {
+                _amountOfItems.Add(amount);
+            }
+        }
+        for (int i = 0; i < _craft._neededItems.Count; i++)
+        {
+            ItemInformation craftInformation = Instantiate(_itemInfo, _itemList).GetComponent<ItemInformation>();
+            craftInformation.DrawItemInformation(_craft._neededItems[i], _amountOfItems[i]);
         }
     }
 }

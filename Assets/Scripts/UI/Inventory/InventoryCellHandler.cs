@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler

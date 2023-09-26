@@ -135,7 +135,7 @@ public class PlayerInputSystem : MonoBehaviour
                 case TagConstants.BUILDING:
                     if (UIController.GetInstance().InventoryActiveSelf()) return;
                     if (UIController.GetInstance().CraftMenuActiveSelf()) return;
-                    hitObject.GetComponent<CraftController>().LoadCraftsCollectionToUI();
+                    hitObject.GetComponent<BuildController>().LoadCraftsCollectionToUI();
                     break;
                 case TagConstants.CHEST:
                     if (UIController.GetInstance().InventoryActiveSelf()) return;

@@ -69,7 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d780f32fa70f64eaee0a2072e8c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collection: {fileID: 11400000, guid: c4890dadc18c38c408cd1898aa200bf6, type: 2}
+  _craftCollection: {fileID: 11400000, guid: c4890dadc18c38c408cd1898aa200bf6, type: 2}
+  _upgradeCollection: {fileID: 11400000, guid: d2e283aba8bfd7746ac7f4098438f37f, type: 2}
 --- !u!114 &4989005220204145230
 MonoBehaviour:
   m_ObjectHideFlags: 0

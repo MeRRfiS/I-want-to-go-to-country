@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftedItemsList:
   - _name: Flour
-    _recipe:
+    _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 5
     _creftedItem: {fileID: 11400000, guid: f208f5c618bec7e45b946de77769a592, type: 2}
   - _name: Sugar
-    _recipe:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
-      _amount: 2
+    _neededItems:
     - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
       _amount: 3
+    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+      _amount: 2
     _creftedItem: {fileID: 11400000, guid: eb5f977b28046454a8382f92a7dab414, type: 2}

@@ -174,7 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d780f32fa70f64eaee0a2072e8c83e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collection: {fileID: 11400000, guid: 2df36f8e02191ad4e96f01d03e02f3f3, type: 2}
+  _craftCollection: {fileID: 11400000, guid: 2df36f8e02191ad4e96f01d03e02f3f3, type: 2}
+  _upgradeCollection: {fileID: 11400000, guid: 855e16e9808b2824f831e8dc9cafafe2, type: 2}
 --- !u!114 &2689489972595923803
 MonoBehaviour:
   m_ObjectHideFlags: 0

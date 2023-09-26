@@ -28,7 +28,7 @@ public class QuestSystemController : MonoBehaviour
 
     private bool IsHasQuestItem(List<Item> items, QuestModel quest)
     {
-        foreach (var questItem in quest._questItems)
+        foreach (var questItem in quest._neededItems)
         {
             List<Item> neededItems = items.Where(item => 
             {

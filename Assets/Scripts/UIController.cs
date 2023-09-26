@@ -31,8 +31,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _questAmount;
     [SerializeField] private QuestHandler _questInformation;
 
-    [Header("Quest Menu")]
-    [SerializeField] private GameObject _craftMenu;
+    [Header("Craft Menu")]
+    [SerializeField] private CraftUI _craftMenu;
     [SerializeField] private Transform _craftList;
     [SerializeField] private CraftHandler _craftInformation;
 
@@ -65,7 +65,7 @@ public class UIController : MonoBehaviour
     public bool InventoryActiveSelf() => _mainInventory.gameObject.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
-    public bool CraftMenuActiveSelf() => _craftMenu.activeSelf;
+    public bool CraftMenuActiveSelf() => _craftMenu.gameObject.activeSelf;
     public bool ChestMenuActiveSelf() => _chestMenu.activeSelf;
 
     private void Awake()
@@ -158,7 +158,7 @@ public class UIController : MonoBehaviour
 
     private void SwitchActiveMouse(bool state)
     {
-        if (state) Cursor.lockState = CursorLockMode.Confined;
+        if (!state) Cursor.lockState = CursorLockMode.Locked;
         else Cursor.lockState = CursorLockMode.None;
         Cursor.visible = state;
     }
@@ -223,13 +223,14 @@ public class UIController : MonoBehaviour
 
     public void SwitchActiveCraftMenu()
     {
-        bool state = !_craftMenu.activeSelf;
+        bool state = !_craftMenu.gameObject.activeSelf;
 
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         CloseCraftInformation();
         SwitchActiveMouse(state);
-        _craftMenu.SetActive(state);
+        _craftMenu.OpenCraftMenu();
+        _craftMenu.gameObject.SetActive(state);
     }
 
     public void SwitchActiveChestMenu()
@@ -300,8 +301,9 @@ public class UIController : MonoBehaviour
         RedrawQuestMenu(questList, _playerQuestList, QuestTypeEnum.PlayerQuest);
     }
 
-    public void RedrawCraftMenu(List<CraftModel> craftList, CraftController controller)
+    public void RedrawCraftMenu(List<CraftModel> craftList, BuildController controller)
     {
+        _craftMenu.BuildController = controller;
         for (int i = _craftList.childCount - 1; i >= 0; i--)
         {
             Destroy(_craftList.GetChild(i).gameObject);
@@ -324,7 +326,7 @@ public class UIController : MonoBehaviour
         _questInformation.gameObject.SetActive(false);
     }
 
-    public void OpenCraftInformation(CraftModel craft, CraftController controller)
+    public void OpenCraftInformation(CraftModel craft, BuildController controller)
     {
         _craftInformation.DrawCraftInformation(craft, controller);
         _craftInformation.gameObject.SetActive(true);
