@@ -101,7 +101,7 @@ public class PlayerInputSystem : MonoBehaviour
         }
     }
 
-    public void Interaction(InputAction.CallbackContext context)
+    public void InteractionByLMB(InputAction.CallbackContext context)
     {
         if (!context.started) return;
 
@@ -119,6 +119,22 @@ public class PlayerInputSystem : MonoBehaviour
                 case TagConstants.TREE:
                     hitObject.GetComponent<PlantController>().TreeHarvesting();
                     break;
+            }
+        }
+    }
+
+    public void InteractionByEKey(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        Transform startPoint = Camera.main.transform;
+        RaycastHit hit;
+
+        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT))
+        {
+            GameObject hitObject = hit.collider.gameObject;
+            switch (hitObject.tag)
+            {
                 case TagConstants.SHOP:
                     if (UIController.GetInstance().InventoryActiveSelf()) return;
                     if (UIController.GetInstance().ShopActiveSelf()) return;

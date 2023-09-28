@@ -20365,22 +20365,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v. 0.8.55pa
-
-    Esc - Close game
-
-    WASD - Moving
-
-    Space - Jump
-
-    E
-    - Pickup/Drop object
-
-    I - Open/Close inventory
-
-    LMB - Use instrument/Harvesting
-
-'
+  m_text: "v. 0.8.57pa\nEsc\tClose game\nWASD\tMoving\nSpace\tJump\nE\tPickup\n\tDrop
+    object\n\tInteraction\nI\tOpen inventory\n\tClose inventory\nLMB\tUse instrument\n\tHarvesting\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23497,6 +23483,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 937795824}
+        m_TargetAssemblyTypeName: PlayerInputSystem, Assembly-CSharp
+        m_MethodName: InteractionByEKey
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fd072215-d72d-4095-9104-d2a92db87293
     m_ActionName: Gameplay/GetObject[/Keyboard/e]
   - m_PersistentCalls:
@@ -23531,7 +23529,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 937795824}
         m_TargetAssemblyTypeName: PlayerInputSystem, Assembly-CSharp
-        m_MethodName: Interaction
+        m_MethodName: InteractionByLMB
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
