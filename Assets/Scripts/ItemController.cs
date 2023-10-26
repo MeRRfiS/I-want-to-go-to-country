@@ -11,6 +11,9 @@ public class ItemController : MonoBehaviour
     [SerializeField] private Item _item;
     private Item _itemObject;
 
+    [Header("FOR TESTING")]
+    [SerializeField] private bool _isDroped;
+
     private bool _isUpdating = false;
     [Header("Prefabs")]
     [SerializeField] private GameObject _objPrefab;
@@ -31,6 +34,8 @@ public class ItemController : MonoBehaviour
     private void Start()
     {
         InitializeItem();
+        if(!_itemObject._isDroped)
+            _itemObject._isDroped = _isDroped;
     }
 
     private void Update()
