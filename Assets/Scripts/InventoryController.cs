@@ -147,12 +147,23 @@ public class InventoryController : MonoBehaviour
                     ChestItems[_movedItemsModel.FirstIndex] = null;
                     break;
             }
+            dropItem.GetComponent<ItemController>().Item._isDroped = true;
             dropItem.transform.position = _hand.position;
             _movedItemsModel = null;
             UIController.GetInstance().UnpinItemFromMouse();
             UIController.GetInstance().RedrawInventories();
             ApplyActiveItem();
         }
+    }
+
+    public void DropItemFromInventory(Item item)
+    {
+        GameObject dropItem = null;
+        dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
+                                           (ItemIdsEnum)item._id));
+        dropItem.GetComponent<ItemController>().Item = item;
+        dropItem.GetComponent<ItemController>().Item._isDroped = true;
+        dropItem.transform.position = _hand.position;
     }
 
     public bool AddItemToMainInventory(Item item, int amount)

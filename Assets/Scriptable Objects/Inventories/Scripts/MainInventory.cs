@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "New Inventory Object", menuName = "Inventory System/Inventory/Main")]
 public class MainInventory : Inventory
@@ -46,8 +48,13 @@ public class MainInventory : Inventory
         while (amount > 0)
         {
             int index;
-            if (!GetEmptyCell(out index)) return false;
+            if (!GetEmptyCell(out index))
+            {
+                if(!item._isDroped) InventoryController.GetInstance().DropItemFromInventory(item);
+                return false;
+            }
 
+            item._isDroped = false;
             Container[index] = item;
             Container[index].Amount = amount > MechConstants.MAX_ITEM_IN_CELL ?
                                       MechConstants.MAX_ITEM_IN_CELL : amount;
@@ -68,8 +75,13 @@ public class MainInventory : Inventory
             case ItemTypeEnum.Instrument:
             case ItemTypeEnum.Fertilizers:
             case ItemTypeEnum.Building:
-                if (!GetEmptyCell(out index)) return false;
+                if (!GetEmptyCell(out index)) 
+                {
+                    if (!newItem.Item._isDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item);
+                    return false;
+                }
 
+                newItem.Item._isDroped = false;
                 Container[index] = newItem.Item;
                 break;
             case ItemTypeEnum.Seed:

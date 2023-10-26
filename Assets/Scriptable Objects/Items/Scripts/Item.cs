@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public bool _isCanSold;
+    [HideInInspector] public bool _isDroped = false;
     public int _id;
     public int _price;
     protected int _amount;
