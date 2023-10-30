@@ -30,4 +30,6 @@ public static class MechConstants
     public const int MAX_LEVEL_OF_BUILDING = 3;
     public const float DICREASE_MULTIPLER_FOR_CRAFT_LEVEL_2 = 0.25f;
     public const float DICREASE_MULTIPLER_FOR_CRAFT_LEVEL_3 = 0.5f;
+    public const float DISTANCE_TO_BUILDING = 3f;
+    public const float MAX_DISTANCE_FOR_FASTEN_BUILDING = 2.5f;
 }
