@@ -67,10 +67,18 @@ public class Building: Item
                 _buildingCheck = _itemObj.GetComponent<BuildChecking>();
                 _buildingObj = _itemObj.transform.GetChild(0).gameObject;
             }
-
-            _itemObj.transform.position = new Vector3(hit.point.x,
+            Vector3 point = Vector3.zero;
+            point = new Vector3(_buildingCheck.IsVerFasten ? _buildingCheck.FastenPos.x : hit.point.x,
+                                1,
+                                _buildingCheck.IsHorFasten ? _buildingCheck.FastenPos.z : hit.point.z);
+            if (Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_BUILDING)
+            {
+                _buildingCheck.ResetFastenChecking();
+                point = hit.point;
+            }
+            _itemObj.transform.position = new Vector3(point.x,
                                                       prefab.transform.position.y,
-                                                      hit.point.z);
+                                                      point.z);
 
             if (_buildingCheck && _buildingCheck.IsOnObject)
             {
