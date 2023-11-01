@@ -1269,6 +1269,7 @@ GameObject:
   - component: {fileID: 58332726}
   - component: {fileID: 58332725}
   - component: {fileID: 58332724}
+  - component: {fileID: 58332727}
   m_Layer: 0
   m_Name: Chest UI
   m_TagString: Untagged
@@ -1361,6 +1362,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &58332727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58332722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1223f31b89bb5aa48a79e22d4fd57425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &59860659
 GameObject:
   m_ObjectHideFlags: 0
@@ -25107,6 +25120,7 @@ GameObject:
   - component: {fileID: 1006701113}
   - component: {fileID: 1006701112}
   - component: {fileID: 1006701111}
+  - component: {fileID: 1006701114}
   m_Layer: 0
   m_Name: Quest UI
   m_TagString: Untagged
@@ -25200,6 +25214,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &1006701114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006701109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21e603cbb179824ab1f722149da95b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1010149637
 GameObject:
   m_ObjectHideFlags: 0
