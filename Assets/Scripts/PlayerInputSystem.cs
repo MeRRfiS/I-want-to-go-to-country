@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,15 @@ public class PlayerInputSystem : MonoBehaviour
     private float _rotationX;
     private float _rotationY;
     public static bool holdingLMB = false;
+
+    public static Func<bool> BlockInputSystem;
+
+    private bool BlockStatus()
+    {
+        if(BlockInputSystem == null) return false;
+
+        return BlockInputSystem.Invoke();
+    }
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -126,6 +136,7 @@ public class PlayerInputSystem : MonoBehaviour
     public void InteractionByEKey(InputAction.CallbackContext context)
     {
         if (!context.started) return;
+        if (BlockStatus()) return;
 
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
@@ -136,26 +147,18 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hitObject.tag)
             {
                 case TagConstants.SHOP:
-                    if (UIController.GetInstance().InventoryActiveSelf()) return;
-                    if (UIController.GetInstance().ShopActiveSelf()) return;
                     hitObject.GetComponent<ShopController>().LoadGoodsForSellingToUI();
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();
                     break;
                 case TagConstants.MAIL_BOX:
-                    if (UIController.GetInstance().InventoryActiveSelf()) return;
-                    if (UIController.GetInstance().QuestMenuActiveSelf()) return;
                     hitObject.GetComponent<QuestSystemController>().LoadDayQuestListToUI();
                     UIController.GetInstance().SwitchActiveQuestMenu();
                     break;
                 case TagConstants.BUILDING:
-                    if (UIController.GetInstance().InventoryActiveSelf()) return;
-                    if (UIController.GetInstance().CraftMenuActiveSelf()) return;
                     hitObject.GetComponent<BuildController>().LoadCraftsCollectionToUI();
                     break;
                 case TagConstants.CHEST:
-                    if (UIController.GetInstance().InventoryActiveSelf()) return;
-                    if (UIController.GetInstance().ChestMenuActiveSelf()) return;
                     hitObject.GetComponent<ChestController>().LoadChestInventoryToUI();
                     break;
             }
