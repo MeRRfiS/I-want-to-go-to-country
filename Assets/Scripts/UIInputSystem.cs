@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -14,13 +15,19 @@ public class UIInputSystem : MonoBehaviour
         Application.Quit();
     }
 
+    public static Func<bool> BlockInputSystem;
+
+    private bool BlockStatus()
+    {
+        if (BlockInputSystem == null) return false;
+
+        return BlockInputSystem.Invoke();
+    }
+
     public void Inventory(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (UIController.GetInstance().ShopActiveSelf()) return;
-        if (UIController.GetInstance().QuestMenuActiveSelf()) return;
-        if (UIController.GetInstance().CraftMenuActiveSelf()) return;
-        if (UIController.GetInstance().ChestMenuActiveSelf()) return;
+        if (BlockStatus()) return;
 
         UIController.GetInstance().SwitchActiveInventoryMenu();
     }

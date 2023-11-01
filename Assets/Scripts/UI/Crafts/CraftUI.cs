@@ -36,6 +36,19 @@ public class CraftUI : MonoBehaviour
     {
         set => _buildController = value;
     }
+    private bool BlockerInputSystem() => true;
+
+    private void OnEnable()
+    {
+        PlayerInputSystem.BlockInputSystem += BlockerInputSystem;
+        UIInputSystem.BlockInputSystem += BlockerInputSystem;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInputSystem.BlockInputSystem -= BlockerInputSystem;
+        UIInputSystem.BlockInputSystem -= BlockerInputSystem;
+    }
 
     private void RedrawLevelButton()
     {

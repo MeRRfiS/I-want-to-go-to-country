@@ -18,13 +18,30 @@ public class InventoryUI : MonoBehaviour
         get => _cells;
     }
 
+    private bool BlockerInputSystem() => true;
+
     private void OnEnable()
     {
-        if(_inventory == null || _inventory is ChestInventory) 
+        if(!(_inventory is PlayerInventory))
+        {
+            PlayerInputSystem.BlockInputSystem += BlockerInputSystem;
+        }
+        if (_inventory is ChestInventory)
+        {
+            UIInputSystem.BlockInputSystem += BlockerInputSystem;
+        }
+
+        if (_inventory == null || _inventory is ChestInventory) 
         {
             _inventory = InventoryController.GetInstance().ChestInventory;
             RedrawInventory();
         }
+    }
+
+    private void OnDisable()
+    {
+        PlayerInputSystem.BlockInputSystem -= BlockerInputSystem;
+        UIInputSystem.BlockInputSystem -= BlockerInputSystem;
     }
 
     public void RedrawInventory()
