@@ -9,6 +9,8 @@ public class Hoe : Instrument
     private GameObject patchObj;
     private PatchChecking patchCheck;
 
+    public int _timeWork;
+
     private bool IsPatchObjNull() => patchObj == null;
 
     public override void Init()
@@ -17,11 +19,8 @@ public class Hoe : Instrument
         _amount = 1;
     }
 
-    public override void UseItem()
+    private void MakePath()
     {
-        if (IsPatchObjNull()) return;
-        if (patchCheck.IsOnObject) return;
-
         _durability--;
         patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
@@ -29,6 +28,14 @@ public class Hoe : Instrument
         MonoBehaviour.Instantiate(patchObj);
         patchCheck = null;
         patchObj = null;
+    }
+
+    public override void UseItem()
+    {
+        if (IsPatchObjNull()) return;
+        if (patchCheck.IsOnObject) return;
+
+        UIController.GetInstance().ProgressBar(_timeWork, MakePath);
     }
 
     public override GameObject Updating(GameObject obj, GameObject prefab)
@@ -76,6 +83,7 @@ public class Hoe : Instrument
         else
         {
             patchObj = this.StopUpdating();
+            UIController.GetInstance().StopProgressBar();
         }
 
         return patchObj;
