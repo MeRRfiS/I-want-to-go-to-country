@@ -178,10 +178,13 @@ public class PlayerController : MonoBehaviour
         if (_heldItem != null) Destroy(_heldItem.gameObject);
         if (item == null) return;
 
-        GameObject heldItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id));
+        GameObject heldItemInfo = Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id);
+        GameObject heldItem = Instantiate(heldItemInfo);
+
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
+
         _heldItem = heldItem.GetComponent<ItemController>();
         _heldItem.Item = item;
         _heldItem.IsUpdating = true;
@@ -191,8 +194,8 @@ public class PlayerController : MonoBehaviour
         {
             _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
         }
-        _heldItem.transform.localPosition = Vector3.zero;
-        _heldItem.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        _heldItem.transform.localPosition = heldItemInfo.transform.position;
+        _heldItem.transform.localRotation = heldItemInfo.transform.rotation;
     }
 
     public void DropItem()
