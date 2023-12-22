@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -9,6 +10,7 @@ public class InventoryController : MonoBehaviour
     private static InventoryController instance;
 
     private bool _isCanChangeActiveItem = true;
+    private bool _isTimerChangeActiveItemWork = false;
     private int _activePlayerItemIndex = 0;
     private MovedItemsModel _movedItemsModel;
     private Inventory _chestInventory;
@@ -81,7 +83,6 @@ public class InventoryController : MonoBehaviour
 
         UIController.GetInstance().UnpinItemFromMouse();
         UIController.GetInstance().RedrawInventories();
-        _movedItemsModel = null;
     }
 
     private void ApplyActiveItem()
@@ -231,13 +232,35 @@ public class InventoryController : MonoBehaviour
             _movedItemsModel.SecondCellTypeEnum = type;
             _movedItemsModel.SecondIndex = index;
             MoveItemToOtherCell();
-            ApplyActiveItem();
+
+            switch (type)
+            {
+                case CellTypeEnum.Inventory:
+                case CellTypeEnum.Chest:
+                    if (_activePlayerItemIndex == _movedItemsModel.FirstIndex)
+                        ApplyActiveItem();
+                    break;
+                case CellTypeEnum.Player:
+                    if(_activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                        ApplyActiveItem();
+                    break;
+            }
+
+            _movedItemsModel = null;
         }
     }
 
     public void ChangeActiveItem(bool isPositiv = true, int index = -1)
     {
         if (!_isCanChangeActiveItem) return;
+        if (_isTimerChangeActiveItemWork)
+        {
+            return;
+        }
+        else
+        {
+            StartCoroutine(StartTimerToChangeActiveItem());
+        }
 
         int oldActivePlayerItemIndex = _activePlayerItemIndex;
         if (index == -1)
@@ -256,5 +279,14 @@ public class InventoryController : MonoBehaviour
     public void SetChestInventory(Inventory chestInventory)
     {
         _chestInventory = chestInventory;
+    }
+
+    private IEnumerator StartTimerToChangeActiveItem()
+    {
+        _isTimerChangeActiveItemWork = true;
+
+        yield return new WaitForSeconds(0.75f);
+
+        _isTimerChangeActiveItemWork = false;
     }
 }
