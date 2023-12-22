@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Hoe Level 2
   m_EditorClassIdentifier: 
   _isCanSold: 0
+  _isDroped: 0
   _id: 2
   _price: 200
   _type: 1
   _level: 2
   _maxDurability: 50
   _instrumentType: 1
+  _timeWork: 4

@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -24,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player object")]
     [SerializeField] private Transform _holdArea;
     [SerializeField] private Transform _hand;
+
+    [Header("Animator")]
+    public Animator _hands;
 
     public static PlayerController GetInstance() => instance;
     public bool HoldingObject() => _heldObject != null;
@@ -103,6 +108,8 @@ public class PlayerController : MonoBehaviour
         _direction.x = direction.x;
         _direction.z = direction.z; 
         _chController.Move(_direction * PlayerConstants.MOVEMENT_SPEED * Time.deltaTime);
+
+        _hands.SetBool(AnimPropConstants.IS_MOVING, _chController.velocity.x != 0 || _chController.velocity.y != 0);
     }
 
     private void ApplyRotation()
@@ -175,33 +182,24 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeActiveItemInHand(Item item)
     {
-        if (_heldItem != null) Destroy(_heldItem.gameObject);
-        if (item == null) return;
-
-        GameObject heldItemInfo = Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id);
-        GameObject heldItem = Instantiate(heldItemInfo);
-
-        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
-        _heldRigidbodyItem.isKinematic = true;
-        _heldRigidbodyItem.transform.parent = _hand;
-
-        _heldItem = heldItem.GetComponent<ItemController>();
-        _heldItem.Item = item;
-        _heldItem.IsUpdating = true;
-        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldItem.transform.childCount; i++)
+        if (_heldItem != null)
         {
-            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+            _hands.SetBool("_IsChangingInst", true);
         }
-        _heldItem.transform.localPosition = heldItemInfo.transform.position;
-        _heldItem.transform.localRotation = heldItemInfo.transform.rotation;
+        if (item == null) 
+        {
+            StartCoroutine(HideInstrument());
+            return;
+        }
+
+        StartCoroutine(ChangingInstrument(item));
     }
 
     public void DropItem()
     {
         if (_heldItem == null) return;
 
+        _hands.SetBool("_IsChangingInst", true);
         InventoryController.GetInstance().RemoveItem();
         _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
@@ -216,6 +214,8 @@ public class PlayerController : MonoBehaviour
         _heldItem.transform.parent = null;
         _heldRigidbodyItem = null;
         _heldItem = null;
+
+        StartCoroutine(HideInstrument());
     }
 
     public void UseItemInPlayerHand()
@@ -230,5 +230,54 @@ public class PlayerController : MonoBehaviour
         _isCanMoving = state;
         _isCanRotation = state;
         _isCanUsingItem = state;
+    }
+
+    private IEnumerator HideInstrument()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        _hands.SetBool("_IsChangingInst", false);
+        _hands.SetBool("_IsHoldInst", false);
+
+        if (_heldItem != null)
+        {
+            yield return new WaitForSeconds(0.45f);
+            Destroy(_heldItem.gameObject);
+            _heldItem = null;
+        }
+    }
+
+    private IEnumerator ChangingInstrument(Item item)
+    {
+        if (_heldItem != null)
+        {
+            yield return new WaitForSeconds(0.45f);
+            Destroy(_heldItem.gameObject);
+            _heldItem = null;
+        }
+
+        GameObject heldItemInfo = Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id);
+        GameObject heldItem = Instantiate(heldItemInfo);
+
+        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem.isKinematic = true;
+        _heldRigidbodyItem.transform.parent = _hand;
+
+        _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem.Item = item;
+        _heldItem.IsUpdating = true;
+        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
+        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
+        for (int i = 0; i < _heldItem.transform.childCount; i++)
+        {
+            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
+        }
+        _heldItem.transform.localPosition = heldItemInfo.transform.position;
+        _heldItem.transform.localRotation = heldItemInfo.transform.rotation;
+        _hands.SetBool("_IsHoldInst", true);
+
+        yield return new WaitForSeconds(0.1f);
+
+        _hands.SetBool("_IsChangingInst", false);
     }
 }

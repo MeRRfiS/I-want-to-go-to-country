@@ -22,6 +22,7 @@ public class Hoe : Instrument
     private void MakePath()
     {
         _durability--;
+        PlayerController.GetInstance()._hands.SetBool("IsUsingHoe", false);
         patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
         patchObj.GetComponent<Patch>().DestroyChecker();
@@ -34,6 +35,8 @@ public class Hoe : Instrument
     {
         if (IsPatchObjNull()) return;
         if (patchCheck.IsOnObject) return;
+
+        PlayerController.GetInstance()._hands.SetBool(AnimPropConstants.IS_USING_HOE, true);
 
         UIController.GetInstance().ProgressBar(_timeWork, MakePath);
     }
