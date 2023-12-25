@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
