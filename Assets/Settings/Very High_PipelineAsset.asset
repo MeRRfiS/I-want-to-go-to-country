@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
   m_Name: Very High_PipelineAsset
   m_EditorClassIdentifier: 
+  m_DefaultShader: {fileID: 0}
   k_AssetVersion: 11
   k_AssetPreviousVersion: 11
   m_RendererType: 1
@@ -79,9 +80,7 @@ MonoBehaviour:
   m_MaxPixelLights: 0
   m_ShadowAtlasResolution: 256
   m_VolumeFrameworkUpdateMode: 0
-  m_Textures:
-    blueNoise64LTex: {fileID: 0}
-    bayerMatrixTex: {fileID: 0}
+  m_Textures: {blueNoise64LTex: {fileID: 0}, bayerMatrixTex: {fileID: 0}}
   m_PrefilteringModeMainLightShadows: 3
   m_PrefilteringModeAdditionalLight: 3
   m_PrefilteringModeAdditionalLightShadows: 2
