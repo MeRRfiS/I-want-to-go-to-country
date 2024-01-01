@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
 
     [Header("Information")]
     [SerializeField] private TextMeshProUGUI _time;
+    [SerializeField] private TextMeshProUGUI _fps;
     [SerializeField] private TextMeshProUGUI _money;
 
     [Header("Inventory Menu")]
@@ -53,9 +54,12 @@ public class UIController : MonoBehaviour
 
     private bool _usingProgressBar = false;
     private int _timerMultiple = 1;
+    private int _frameCount = 0;
     private float _indicatorTimer = 0.0f;
     private float _maxIndicatorTimer = 1.0f;
+    private float _nextFPSUpdate;
     private string _timeTextFormat;
+    private string _fpsTextFormat;
     [Header("Other")]
     [SerializeField] private Image radialIndicatorUI;
     [SerializeField] private PinUpItemInfo _pinUp;
@@ -78,7 +82,9 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        _nextFPSUpdate = Time.time;
         _timeTextFormat = _time.text;
+        _fpsTextFormat = _fps.text;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -90,6 +96,7 @@ public class UIController : MonoBehaviour
         UpdateMoneyCountText();
         UpdateQuestAmountText();
         UpdateTimeText();
+        UpdateFPS();
     }
 
     private void UpdateMoneyCountText()
@@ -109,6 +116,22 @@ public class UIController : MonoBehaviour
         int minutes = (int)Math.Floor((timeValue - hours) * UIConstants.MINUTES_MULTIPLIER);
         string timeText = String.Format(_timeTextFormat, hours, minutes < 10 ? $"0{minutes}" : minutes);
         _time.text = timeText;
+    }
+
+    private void UpdateFPS()
+    {
+        _frameCount++;
+
+        if(Time.time > _nextFPSUpdate)
+        {
+            int fps = 0;
+            _nextFPSUpdate += 1f / 4f;
+            fps = _frameCount * 4;
+            _frameCount = 0;
+
+            string fpsText = String.Format(_fpsTextFormat, fps);
+            _fps.text = fpsText;
+        }
     }
 
     private void UpdateProgressBar()

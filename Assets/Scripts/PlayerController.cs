@@ -236,7 +236,17 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         _hands.SetBool("_IsChangingInst", false);
-        _hands.SetBool("_IsHoldInst", false);
+        if(_heldItem != null)
+        {
+            if (_heldItem.Item is Funnel)
+            {
+                _hands.SetBool("_IsHoldFunnel", false);
+            }
+            else
+            {
+                _hands.SetBool("_IsHoldInst", false);
+            }
+        }
 
         if (_heldItem != null)
         {
@@ -248,6 +258,17 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ChangingInstrument(Item item)
     {
+        if (item is Funnel)
+        {
+            _hands.SetBool("_IsHoldFunnel", true);
+            _hands.SetBool("_IsHoldInst", false);
+        }
+        else
+        {
+            _hands.SetBool("_IsHoldInst", true);
+            _hands.SetBool("_IsHoldFunnel", false);
+        }
+
         if (_heldItem != null)
         {
             yield return new WaitForSeconds(0.45f);
@@ -273,7 +294,16 @@ public class PlayerController : MonoBehaviour
         }
         _heldItem.transform.localPosition = heldItemInfo.transform.position;
         _heldItem.transform.localRotation = heldItemInfo.transform.rotation;
-        _hands.SetBool("_IsHoldInst", true);
+        if(_heldItem.Item is Funnel)
+        {
+            _hands.SetBool("_IsHoldFunnel", true);
+            _hands.SetBool("_IsHoldInst", false);
+        }
+        else
+        {
+            _hands.SetBool("_IsHoldInst", true);
+            _hands.SetBool("_IsHoldFunnel", false);
+        }
 
         yield return new WaitForSeconds(0.1f);
 

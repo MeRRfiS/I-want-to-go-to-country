@@ -241,7 +241,8 @@ public class InventoryController : MonoBehaviour
                         ApplyActiveItem();
                     break;
                 case CellTypeEnum.Player:
-                    if(_activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    if(_activePlayerItemIndex == _movedItemsModel.FirstIndex || 
+                       _activePlayerItemIndex == _movedItemsModel.SecondIndex)
                         ApplyActiveItem();
                     break;
             }
