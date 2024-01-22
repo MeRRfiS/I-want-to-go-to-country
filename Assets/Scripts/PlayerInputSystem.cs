@@ -93,7 +93,7 @@ public class PlayerInputSystem : MonoBehaviour
         }
     }
 
-    public void UseItem(InputAction.CallbackContext context)
+    public async void UseItem(InputAction.CallbackContext context)
     {
         if (context.started)
         {
