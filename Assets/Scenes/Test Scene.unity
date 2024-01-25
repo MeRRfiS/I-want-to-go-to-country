@@ -21912,7 +21912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "v. 0.9.67a\nEsc\tClose game\nWASD\tMoving\nSpace\tJump\nE\tPickup\n\tDrop
+  m_text: "v. 0.10.71a\nEsc\tClose game\nWASD\tMoving\nSpace\tJump\nE\tPickup\n\tDrop
     object\n\tInteraction\nI\tOpen inventory\n\tClose inventory\nLMB\tUse instrument\n\tHarvesting\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
