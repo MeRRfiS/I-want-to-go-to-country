@@ -12,7 +12,7 @@ public static class TagConstants
     public const string EARTH = "Earth";
     public const string PATCH = "Patch";
     public const string SEED = "Seed";
-    public const string PLANT = "Plant";
+    public const string SEEDBED = "Seedbed";
     public const string TREE = "Tree";
     public const string ITEM = "Item";
     public const string WELL = "Well";

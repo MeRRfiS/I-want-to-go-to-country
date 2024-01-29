@@ -7,7 +7,6 @@ TagManager:
   - Hold
   - Instrument
   - Earth
-  - Patch
   - Seed
   - Plant
   - Tree
@@ -17,6 +16,7 @@ TagManager:
   - Mail Box
   - Building
   - Chest
+  - Seedbed
   layers:
   - Default
   - TransparentFX
