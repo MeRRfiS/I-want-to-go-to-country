@@ -37,7 +37,7 @@ public class Funnel : Instrument
             GameObject hitObject = hit.collider.gameObject;
             switch (hitObject.tag)
             {
-                case TagConstants.PLANT:
+                case TagConstants.SEEDBED:
                 case TagConstants.TREE:
                     if (Usings == 0) return;
 

@@ -37,7 +37,7 @@ public class PlantController : MonoBehaviour
 
         switch (gameObject.tag)
         {
-            case TagConstants.PLANT:
+            case TagConstants.SEEDBED:
                 Renderer earth = transform.GetComponentInParent<Renderer>();
                 earth.material = _earthWithFertilize;
                 break;

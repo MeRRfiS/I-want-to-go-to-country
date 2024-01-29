@@ -123,7 +123,7 @@ public class PlayerInputSystem : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             switch (hitObject.tag)
             {
-                case TagConstants.PLANT:
+                case TagConstants.SEEDBED:
                     hitObject.GetComponent<PlantController>().PatchHarvesting();
                     break;
                 case TagConstants.TREE:
