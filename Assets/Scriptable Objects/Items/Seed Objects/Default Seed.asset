@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Default Seed
   m_EditorClassIdentifier: 
   _isCanSold: 0
+  _isDroped: 0
   _id: 16
   _price: 10
   _type: 2
   _plantRare: 100
+  _plant: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}
   _seedType: 1

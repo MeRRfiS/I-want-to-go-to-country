@@ -6,12 +6,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Hoe")]
 public class Hoe : Instrument
 {
-    private GameObject patchObj;
-    private PatchChecking patchCheck;
+    private const string OPACITY = "_OPACITY";
+    private const string BASE_COLOR = "_BASE_COLOR";
+
+    private GameObject _seedbedObj;
+    private SeedbedChecking _seedbedCheck;
+    private Renderer _seedbedRend;
 
     public int _timeWork;
 
-    private bool IsPatchObjNull() => patchObj == null;
+    private bool IsPatchObjNull() => _seedbedObj == null;
 
     public override void Init()
     {
@@ -23,18 +27,19 @@ public class Hoe : Instrument
     {
         _durability--;
         PlayerController.GetInstance()._hands.SetBool("IsUsingHoe", false);
-        patchObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 1);
-        patchObj.GetComponent<Patch>().DestroyChecker();
-        MonoBehaviour.Instantiate(patchObj);
-        patchCheck = null;
-        patchObj = null;
+        _seedbedObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        _seedbedRend.material.SetFloat(OPACITY, 1f);
+        _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
+        _seedbedObj.GetComponent<Seedbed>().DestroyChecker();
+        MonoBehaviour.Instantiate(_seedbedObj);
+        _seedbedCheck = null;
+        _seedbedObj = null;
     }
 
     public override void UseItem()
     {
         if (IsPatchObjNull()) return;
-        if (patchCheck.IsOnObject) return;
+        if (_seedbedCheck.IsOnObject) return;
 
         PlayerController.GetInstance()._hands.SetBool(AnimPropConstants.IS_USING_HOE, true);
 
@@ -43,61 +48,86 @@ public class Hoe : Instrument
 
     public override GameObject Updating(GameObject obj, GameObject prefab)
     {
-        patchObj = obj;
+        _seedbedObj = obj;
         if(!IsPatchObjNull())
         {
-            patchCheck = obj.GetComponent<Patch>().Checker;
+            _seedbedCheck = obj.GetComponent<Seedbed>().Checker;
         }
 
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, ItemConstants.MAX_DISTANCE_TO_EARTH) && 
-            hit.collider.CompareTag(TagConstants.EARTH))
+        if (Physics.Raycast(startPoint.position, 
+                            startPoint.forward, 
+                            out hit, 
+                            ItemConstants.MAX_DISTANCE_TO_EARTH) && hit.collider.CompareTag(TagConstants.EARTH))
         {
             if (IsPatchObjNull())
             {
-                patchObj = MonoBehaviour.Instantiate(prefab);
-                patchCheck = patchObj.GetComponent<Patch>().Checker;
+                _seedbedObj = MonoBehaviour.Instantiate(prefab);
+                _seedbedCheck = _seedbedObj.GetComponent<Seedbed>().Checker;
             }
 
             Vector3 point = Vector3.zero;
-            point = new Vector3(patchCheck.IsVerFasten ? patchCheck.FastenPos.x : hit.point.x,
+            point = new Vector3(_seedbedCheck.IsVerFasten ? _seedbedCheck.FastenPos.x : hit.point.x,
                                 1,
-                                patchCheck.IsHorFasten ? patchCheck.FastenPos.z : hit.point.z);
+                                _seedbedCheck.IsHorFasten ? _seedbedCheck.FastenPos.z : hit.point.z);
             if(Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
             {
-                patchCheck.ResetFastenChecking();
+                _seedbedCheck.ResetFastenChecking();
                 point = hit.point;
             }
-            patchObj.transform.position = new Vector3(point.x,
+            _seedbedObj.transform.position = new Vector3(point.x,
                                                       1,
                                                       point.z);
 
-            if (patchCheck && patchCheck.IsOnObject)
+            _seedbedRend = GetActiveLOD();
+            _seedbedRend.material.SetFloat(OPACITY, 0.8f);
+            if (_seedbedCheck && _seedbedCheck.IsOnObject)
             {
-                patchObj.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 0.5f);
+                _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0));
             }
-            else if(patchCheck)
+            else if(_seedbedCheck)
             {
-                patchObj.GetComponent<Renderer>().material.color = new Color(1, 1, 1, 0.5f);
+                _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
+            }
+
+            if (_seedbedCheck.IsOnObject)
+            {
+                UIController.GetInstance().StopProgressBar();
             }
         }
         else
         {
-            patchObj = this.StopUpdating();
+            _seedbedObj = this.StopUpdating();
             UIController.GetInstance().StopProgressBar();
         }
 
-        return patchObj;
+        return _seedbedObj;
+    }
+
+    private Renderer GetActiveLOD()
+    {
+        Renderer result = null;
+
+        LODGroup lodGroup = _seedbedObj.GetComponent<LODGroup>();
+        Transform lodTransform = lodGroup.transform;
+
+        foreach (Transform child in lodTransform)
+        {
+            result = child.GetComponent<Renderer>();
+            if (result != null && result.isVisible) break;
+        }
+
+        return result;
     }
 
     public override GameObject StopUpdating()
     {
-        if (!IsPatchObjNull()) MonoBehaviour.Destroy(patchObj);
-        patchObj = null;
+        if (!IsPatchObjNull()) MonoBehaviour.Destroy(_seedbedObj);
+        _seedbedObj = null;
 
-        return patchObj;
+        return _seedbedObj;
     }
 
     public override void Destruct()
