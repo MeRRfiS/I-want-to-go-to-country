@@ -226,4 +226,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 90feb0edcea63ec48adfe4b4e0517c16, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 8073833192983224627, guid: e89caef2c91d0c445aa174e498a2cf7a, type: 3}
+  _objPrefab: {fileID: 2579580012166879244, guid: a78987923da648648b20ac846d7225ea, type: 3}
