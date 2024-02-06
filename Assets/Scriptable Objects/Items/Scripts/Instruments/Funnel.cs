@@ -38,7 +38,6 @@ public class Funnel : Instrument
             switch (hitObject.tag)
             {
                 case TagConstants.PLANT:
-                case TagConstants.TREE:
                     if (Usings == 0) return;
 
                     PlantController plant = hitObject.GetComponent<PlantController>();
@@ -47,6 +46,16 @@ public class Funnel : Instrument
                     _durability--;
                     _usings--;
                     plant.Watering();
+                    break;
+                case TagConstants.TREE:
+                    if (Usings == 0) return;
+
+                    TreesController tree = hitObject.GetComponent<TreesController>();
+                    if (!tree.IsPlantNeedWater()) return;
+
+                    _durability--;
+                    _usings--;
+                    tree.WateringTree();
                     break;
                 case TagConstants.WELL:
                     _usings = _maxUsings;

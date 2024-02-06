@@ -38,7 +38,6 @@ public class Tree : Plant
         }
         _treeObj.GetComponent<Animator>().enabled = true;
         var tree = Instantiate(_saplingObj);
-        tree.GetComponent<PlantController>().SetTreeType(_treeType);
         Destroy(tree.GetComponent<TreeChecking>());
         _treeCheck = null;
         _treeObj = null;

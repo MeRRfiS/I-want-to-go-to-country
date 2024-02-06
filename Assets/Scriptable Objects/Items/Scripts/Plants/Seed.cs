@@ -7,7 +7,6 @@ using UnityEngine;
 public class Seed : Plant
 {
     public GameObject _plant;
-    public SeedTypeEnum _seedType;
 
     public override void UseItem()
     {
@@ -25,7 +24,6 @@ public class Seed : Plant
 
             _amount--;
             GameObject plantObj = MonoBehaviour.Instantiate(_plant, hitTransform);
-            plantObj.GetComponent<PlantController>().SetSeedType(_seedType);
             plantObj.transform.localPosition = new Vector3(0, 0.5f, 0);
         }
     }
