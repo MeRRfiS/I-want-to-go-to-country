@@ -13,8 +13,7 @@ public class PlantController : MonoBehaviour
     private bool _isNeedWater = false;
     private bool _isPlantDry = false;
     private bool _isPlantGrow = false;
-    private int _collectTimes = 0;
-    private int _chopTreeTime = 0;
+    private bool _isFertilized = false;
     private int _harvestAmount = 1;
 
     [Header("Materials")]
@@ -26,12 +25,9 @@ public class PlantController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private List<GameObject> _plantsLevel;
     [SerializeField] private Item _harvest;
-    [SerializeField] private Item _logs;
-    [SerializeField] private PlantsHandler _plant;
     [SerializeField] private GameObject _icon;
     [SerializeField] private PlayableDirector _player;
 
-    public bool IsCanChoppingTree() => _isPlantGrow || _isPlantDry;
     public bool IsPlantNeedWater() => _isNeedWater;
 
     private void Update()
@@ -47,7 +43,7 @@ public class PlantController : MonoBehaviour
 
     private void ApplyFertilize()
     {
-        if (!_plant.IsFertilized) return;
+        if (_isFertilized) return;
 
         //switch (gameObject.tag)
         //{
@@ -56,16 +52,6 @@ public class PlantController : MonoBehaviour
         //        earth.material = _earthWithFertilize;
         //        break;
         //}
-    }
-
-    public void SetSeedType(SeedTypeEnum seedType)
-    {
-        _plant.SeedType = seedType;
-    }
-
-    public void SetTreeType(TreeTypeEnum treeType)
-    {
-        _plant.TreeType = treeType;
     }
 
     public void PatchHarvesting()
@@ -82,27 +68,6 @@ public class PlantController : MonoBehaviour
         }
     }
 
-    public void TreeHarvesting()
-    {
-        if (_plant.IsFruitsGrow)
-        {
-            int fruitCount = Random.Range(MechConstants.MIN_TREE_HARVEST,
-                                          MechConstants.MAX_TREE_HARVEST);
-            switch (_plant.TreeType)
-            {
-                case TreeTypeEnum.None: break;
-                case TreeTypeEnum.Default:
-                    _collectTimes += _plant.CollectFruit();
-                    if (_collectTimes == MechConstants.MAX_COUNT_OF_HARVEST)
-                    {
-                        _plant.PlantDead();
-                    }
-                    break;
-            }
-            InventoryController.GetInstance().AddItemToMainInventory(_harvest.Copy(), fruitCount);
-        }
-    }
-
     public void Watering()
     {
         if (!_isNeedWater) return;
@@ -114,10 +79,6 @@ public class PlantController : MonoBehaviour
         if (!_isPlantGrow)
         {
             _player.Play();
-        }
-        else
-        {
-            _plant.WateringPlant();
         }
     }
 
@@ -147,30 +108,12 @@ public class PlantController : MonoBehaviour
                 break;
         }
 
-        _plant.FertilizeringPlant();
-    }
-
-    public void ChoppingTree(int hitCount)
-    {
-        _chopTreeTime++;
-        if(_chopTreeTime == hitCount)
-        {
-            int logCount = Random.Range(MechConstants.MIN_TREE_LOG,
-                                        MechConstants.MAX_TREE_LOG);
-            InventoryController.GetInstance().AddItemToMainInventory(_logs.Copy(), logCount);
-            Destroy(gameObject);
-        }
+        FertilizeringPlant();
     }
 
     public void PlantDead()
     {
         Destroy(_player);
-        //ToDo: https://trello.com/c/lJm6Kf9p/112-split-plantcontroller
-        //foreach (Fruit fruit in fruits)
-        //{
-        //    Destroy(fruit.gameObject);
-        //}
-        //fruits.Clear();
 
         var renderer = GetActiveLOD();
         renderer.material.shader = Shader.Find(SHADER_PATH);
@@ -217,6 +160,14 @@ public class PlantController : MonoBehaviour
         }
 
         return result;
+    }
+
+    private void FertilizeringPlant()
+    {
+        if (_isFertilized) return;
+        if (_isPlantGrow) return;
+
+        _isFertilized = true;
     }
 
     private IEnumerator WaitWater()
