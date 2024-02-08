@@ -33,7 +33,7 @@ public class ShopCellHandler : MonoBehaviour
 
     public void DrawCellInformation(GoodsModel goods, ShopController controller)
     {
-        _image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)goods.Goods._id);
+        _image.sprite = goods.Goods.Icon;
         _count.text = goods.Count.ToString();
         _price.text = goods.Price.ToString();
         _controller = controller;

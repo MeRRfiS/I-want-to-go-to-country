@@ -26,8 +26,7 @@ public class ShopController : MonoBehaviour
     {
         foreach (var itemSells in _itemsSells)
         {
-            ItemController itemController = (Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)itemSells._id))
-                                            .GetComponent<ItemController>();
+            ItemController itemController = itemSells.Object;
             itemController.InitializeItem();
             GoodsModel goodsModel = new GoodsModel()
             {

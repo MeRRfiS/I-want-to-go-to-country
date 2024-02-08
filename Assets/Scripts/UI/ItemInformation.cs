@@ -13,14 +13,14 @@ public class ItemInformation : MonoBehaviour
 
     public void DrawItemInformation(NeededItem questItem)
     {
-        _icon.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)questItem._item._id);
+        _icon.sprite = questItem._item.Icon;
         _name.text = ((ItemIdsEnum)questItem._item._id).ToString();
         _count.text = questItem._amount.ToString();
     }
 
     public void DrawItemInformation(NeededItem questItem, int amount)
     {
-        _icon.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)questItem._item._id);
+        _icon.sprite = questItem._item.Icon;
         _name.text = ((ItemIdsEnum)questItem._item._id).ToString();
         _count.text = amount.ToString();
     }

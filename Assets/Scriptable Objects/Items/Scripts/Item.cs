@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Item : ScriptableObject
 {
+    [field: SerializeField] public ItemController Object { get; private set; }
+    [field: SerializeField] public Sprite Icon { get; private set; }
+
     public bool _isCanSold;
     [HideInInspector] public bool _isDroped = false;
     public int _id;
