@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a70930291adbbb4c8f9c5bda43efc09, type: 3}
   m_Name: Axe Level 3
   m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 209345422462095526, guid: 952a82ba103d67d40bc6c60ed8497a5e, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 66af3015fdfaa374eb62de50d157de2d, type: 3}
   _isCanSold: 0
+  _isDroped: 0
   _id: 13
   _price: 500
   _type: 1

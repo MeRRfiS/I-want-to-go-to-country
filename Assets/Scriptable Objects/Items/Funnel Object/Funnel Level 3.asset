@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2937c4422b72d408b46e95b03d253b, type: 3}
   m_Name: Funnel Level 3
   m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 6381753766931851679, guid: 0ad25e97ab5502b408948860cca4146a, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 1a8fc8aa84c0c6e489bb898adc0b8754, type: 3}
   _isCanSold: 0
+  _isDroped: 0
   _id: 8
   _price: 400
   _type: 1

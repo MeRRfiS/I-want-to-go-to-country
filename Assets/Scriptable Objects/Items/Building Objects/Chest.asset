@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e24f646ba106a4aae0d544c1848bd9, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 4479490651113607156, guid: 96406808894f0b849a967602168b1d62, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: e45f554960bb85e43b1277ee0a5b0855, type: 3}
   _isCanSold: 0
+  _isDroped: 0
   _id: 39
   _price: 10
   _type: 6
