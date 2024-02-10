@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188bcd1f4b57a594c8cb573a6d34fe12, type: 3}
   m_Name: Default Seed
   m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 8647678562966139187, guid: 8a72db1501637aa42adcac91ea248b89, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4be545ddba4e0e740a2ab9dd1edc3482, type: 3}
   _isCanSold: 0
   _isDroped: 0
   _id: 16
@@ -19,4 +21,3 @@ MonoBehaviour:
   _type: 2
   _plantRare: 100
   _plant: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}
-  _seedType: 1

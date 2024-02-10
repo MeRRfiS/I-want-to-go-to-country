@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83918b797d9150b40826375ed7534c3e, type: 3}
   m_Name: Fertilizers Level 4
   m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 1524990143135345598, guid: 5b4654b8da8c03d4b8e00df317174a91, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 7e1023b9b99077a46af6eb4666271385, type: 3}
   _isCanSold: 0
+  _isDroped: 0
   _id: 26
   _price: 950
   _type: 5

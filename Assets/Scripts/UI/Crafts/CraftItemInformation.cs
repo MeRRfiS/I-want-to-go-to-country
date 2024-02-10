@@ -13,7 +13,7 @@ public class CraftItemInformation : MonoBehaviour
 
     public void DrawItemInformation(NeededItem item)
     {
-        _icon.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)item._item._id);
+        _icon.sprite = item._item.Icon;
         _name.text = ((ItemIdsEnum)item._item._id).ToString();
         _count.text = item._amount.ToString();
     }

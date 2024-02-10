@@ -276,14 +276,13 @@ public class PlayerController : MonoBehaviour
             _heldItem = null;
         }
 
-        GameObject heldItemInfo = Resources.Load<GameObject>(ResourceConstants.ITEMS + (ItemIdsEnum)item._id);
-        GameObject heldItem = Instantiate(heldItemInfo);
+        ItemController heldItem = Instantiate(item.Object);
 
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
 
-        _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem = heldItem;
         _heldItem.Item = item;
         _heldItem.IsUpdating = true;
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
@@ -292,8 +291,8 @@ public class PlayerController : MonoBehaviour
         {
             _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         }
-        _heldItem.transform.localPosition = heldItemInfo.transform.position;
-        _heldItem.transform.localRotation = heldItemInfo.transform.rotation;
+        _heldItem.transform.localPosition = item.Object.transform.position;
+        _heldItem.transform.localRotation = item.Object.transform.rotation;
         if(_heldItem.Item is Funnel)
         {
             _hands.SetBool("_IsHoldFunnel", true);
