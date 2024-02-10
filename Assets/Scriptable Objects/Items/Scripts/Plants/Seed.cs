@@ -6,23 +6,24 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Seed")]
 public class Seed : Plant
 {
-    public SeedTypeEnum _seedType;
+    public GameObject _plant;
 
     public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, MechConstants.MAX_DISTANCE_FOR_USING_ITEM))
+        if (Physics.Raycast(startPoint.position, 
+                            startPoint.forward, 
+                            out hit, 
+                            MechConstants.MAX_DISTANCE_FOR_USING_ITEM))
         {
             Transform hitTransform = hit.collider.gameObject.transform;
-            if (!hitTransform.CompareTag(TagConstants.PATCH)) return;
-            if (hitTransform.childCount > 0) return;
+            if (!hitTransform.CompareTag(TagConstants.SEEDBED)) return;
+            if (hitTransform.childCount > 3) return;
 
             _amount--;
-            GameObject plant = Resources.Load(ResourceConstants.PLANTS + ((int)_seedType).ToString()) as GameObject;
-            GameObject plantObj = MonoBehaviour.Instantiate(plant, hitTransform);
-            plantObj.GetComponent<PlantController>().SetSeedType(_seedType);
+            GameObject plantObj = MonoBehaviour.Instantiate(_plant, hitTransform);
             plantObj.transform.localPosition = new Vector3(0, 0.5f, 0);
         }
     }

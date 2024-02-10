@@ -126,29 +126,29 @@ public class InventoryController : MonoBehaviour
     {
         if (_movedItemsModel != null)
         {
-            GameObject dropItem = null;
+
+            ItemController dropItem = null;
+
+            void Drop(Item[] from)
+            {
+                dropItem = Instantiate(from[_movedItemsModel.FirstIndex].Object);
+                dropItem.Item = from[_movedItemsModel.FirstIndex];
+                from[_movedItemsModel.FirstIndex] = null;
+            }
+
             switch (_movedItemsModel.FirstCellTypeEnum)
             {
                 case CellTypeEnum.Inventory:
-                    dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)ItemsArray[_movedItemsModel.FirstIndex]._id));
-                    dropItem.GetComponent<ItemController>().Item = ItemsArray[_movedItemsModel.FirstIndex];
-                    ItemsArray[_movedItemsModel.FirstIndex] = null;
+                    Drop(ItemsArray);
                     break;
                 case CellTypeEnum.Player:
-                    dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)PlayerItems[_movedItemsModel.FirstIndex]._id));
-                    dropItem.GetComponent<ItemController>().Item = PlayerItems[_movedItemsModel.FirstIndex];
-                    PlayerItems[_movedItemsModel.FirstIndex] = null;
+                    Drop(PlayerItems);
                     break;
                 case CellTypeEnum.Chest:
-                    dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)ChestItems[_movedItemsModel.FirstIndex]._id));
-                    dropItem.GetComponent<ItemController>().Item = ChestItems[_movedItemsModel.FirstIndex];
-                    ChestItems[_movedItemsModel.FirstIndex] = null;
+                    Drop(ChestItems);
                     break;
             }
-            dropItem.GetComponent<ItemController>().Item._isDroped = true;
+            dropItem.Item._isDroped = true;
             dropItem.transform.position = _hand.position;
             _movedItemsModel = null;
             UIController.GetInstance().UnpinItemFromMouse();
@@ -159,11 +159,9 @@ public class InventoryController : MonoBehaviour
 
     public void DropItemFromInventory(Item item)
     {
-        GameObject dropItem = null;
-        dropItem = Instantiate(Resources.Load<GameObject>(ResourceConstants.ITEMS +
-                                           (ItemIdsEnum)item._id));
-        dropItem.GetComponent<ItemController>().Item = item;
-        dropItem.GetComponent<ItemController>().Item._isDroped = true;
+        ItemController dropItem = Instantiate(item.Object);
+        dropItem.Item = item;
+        dropItem.Item._isDroped = true;
         dropItem.transform.position = _hand.position;
     }
 

@@ -65,7 +65,7 @@ public class InventoryUI : MonoBehaviour
                 continue;
             }
 
-            image.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)items[i]._id);
+            image.sprite = items[i].Icon;
             image.gameObject.SetActive(true);
             waterSlider.gameObject.SetActive(false);
 

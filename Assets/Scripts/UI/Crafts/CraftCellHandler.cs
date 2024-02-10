@@ -24,6 +24,6 @@ public class CraftCellHandler : MonoBehaviour
         _craft = craft;
         _controller = controller;
         _name.text = craft._name;
-        _itemIcon.sprite = Resources.Load<Sprite>(ResourceConstants.ITEMS_ICON + (ItemIdsEnum)craft._creftedItem._id); 
+        _itemIcon.sprite = craft._creftedItem.Icon;
     }
 }

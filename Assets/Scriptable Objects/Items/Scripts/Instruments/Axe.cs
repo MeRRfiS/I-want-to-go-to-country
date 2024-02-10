@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Axe")]
 public class Axe : Instrument 
 {
-    private PlantController tree = null;
+    private TreesController _tree = null;
 
     public int _hitCount;
     public int _timeChop;
@@ -24,15 +24,15 @@ public class Axe : Instrument
 
     private void ChopTree()
     {
-        tree.ChoppingTree(_hitCount);
+        _tree.ChoppingTree(_hitCount);
         _durability--;
     }
 
     public override void UseItem()
     {
-        if (tree == null) return;
+        if (_tree == null) return;
 
-        if (tree.IsCanChoppingTree())
+        if (_tree.IsCanChoppingTree())
         {
             UIController.GetInstance().ProgressBar(_timeChop, ChopTree);
         }
@@ -52,17 +52,17 @@ public class Axe : Instrument
 
             if (hitObj.CompareTag(TagConstants.TREE))
             {
-                tree = hitObj.GetComponent<PlantController>();
+                _tree = hitObj.GetComponent<TreesController>();
             }
             else
             {
-                tree = null;
+                _tree = null;
                 UIController.GetInstance().StopProgressBar();
             }
         }
         else
         {
-            tree = null;
+            _tree = null;
             UIController.GetInstance().StopProgressBar();
         }
 

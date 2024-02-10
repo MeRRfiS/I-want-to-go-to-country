@@ -127,7 +127,7 @@ public class PlayerInputSystem : MonoBehaviour
                     hitObject.GetComponent<PlantController>().PatchHarvesting();
                     break;
                 case TagConstants.TREE:
-                    hitObject.GetComponent<PlantController>().TreeHarvesting();
+                    hitObject.GetComponent<TreesController>().TreeHarvesting();
                     break;
             }
         }
