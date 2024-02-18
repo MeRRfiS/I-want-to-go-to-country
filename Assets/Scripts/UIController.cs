@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 public class UIController : MonoBehaviour
 {
@@ -71,6 +72,14 @@ public class UIController : MonoBehaviour
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
     public bool CraftMenuActiveSelf() => _craftMenu.gameObject.activeSelf;
     public bool ChestMenuActiveSelf() => _chestMenu.activeSelf;
+
+    private IPlayerService _playerService;
+
+    [Inject]
+    private void Construct(IPlayerService playerManager)
+    {
+        _playerService = playerManager;
+    }
 
     private void Awake()
     {
@@ -207,7 +216,7 @@ public class UIController : MonoBehaviour
 
         _mainInventory.RedrawInventory();
         InventoryController.GetInstance().IsCanChangeActiveItem = !state;
-        PlayerController.GetInstance().SwitchActiveController(!state);
+        _playerService.SwitchActiveController(!state);
 
         _pinUp.gameObject.SetActive(state);
         SwitchActiveMouse(state);
@@ -218,7 +227,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_shop.activeSelf;
 
-        PlayerController.GetInstance().SwitchActiveController(!state);
+        _playerService.SwitchActiveController(!state);
 
         SwitchActiveMouse(state);
         if (!state)
@@ -235,7 +244,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_questMenu.activeSelf;
 
-        PlayerController.GetInstance().SwitchActiveController(!state);
+        _playerService.SwitchActiveController(!state);
 
         CloseQuestInformation();
         _dayQuestObject.SetActive(state);
@@ -248,7 +257,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_craftMenu.gameObject.activeSelf;
 
-        PlayerController.GetInstance().SwitchActiveController(!state);
+        _playerService.SwitchActiveController(!state);
 
         CloseCraftInformation();
         SwitchActiveMouse(state);
@@ -261,7 +270,7 @@ public class UIController : MonoBehaviour
         bool state = !_chestMenu.activeSelf;
 
         InventoryController.GetInstance().IsCanChangeActiveItem = !state;
-        PlayerController.GetInstance().SwitchActiveController(!state);
+        _playerService.SwitchActiveController(!state);
         _chestMainInventory.RedrawInventory();
 
         _pinUp.gameObject.SetActive(state);

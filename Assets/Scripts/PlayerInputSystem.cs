@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class PlayerInputSystem : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class PlayerInputSystem : MonoBehaviour
     public static bool holdingLMB = false;
 
     public static Func<bool> BlockInputSystem;
+
+    private IPlayerService _playerService;
+
+    [Inject]
+    private void Construct(IPlayerService playerManager)
+    {
+        _playerService = playerManager;
+    }
 
     private bool BlockStatus()
     {
@@ -21,36 +30,36 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (!PlayerController.GetInstance().IsCanMoving) return;
+        if (!_playerService.IsCanMoving()) return;
 
-        PlayerController.GetInstance().ChangeMovement(context.ReadValue<Vector2>());
+        _playerService.ChangeMovement(context.ReadValue<Vector2>());
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!PlayerController.GetInstance().IsCanMoving) return;
+        if (!_playerService.IsCanMoving()) return;
         if (!context.started) return;
 
-        PlayerController.GetInstance().ChangeVelocity();
+        _playerService.ChangeVelocity();
     }
 
     public void RotationX(InputAction.CallbackContext context)
     {
-        if (!PlayerController.GetInstance().IsCanRotation) return;
+        if (!_playerService.IsCanRotation()) return;
 
         _rotationY += context.ReadValue<float>() * PlayerConstants.SENSITIVITY_HOR;
-        PlayerController.GetInstance().ChangeRotation(rotationPlayer: _rotationY);
+        _playerService.ChangeRotation(rotationPlayer: _rotationY);
     }
 
     public void RotationY(InputAction.CallbackContext context)
     {
-        if (!PlayerController.GetInstance().IsCanRotation) return;
+        if (!_playerService.IsCanRotation()) return;
 
         _rotationX -= context.ReadValue<float>() * PlayerConstants.SENSITIVITY_VERT;
         _rotationX = Mathf.Clamp(_rotationX,
                                  PlayerConstants.MINIMUM_VERT,
                                  PlayerConstants.MAXIMUM_VERT);
-        PlayerController.GetInstance().ChangeRotation(rotationCamera: _rotationX);
+        _playerService.ChangeRotation(rotationCamera: _rotationX);
     }
 
     public void GetObject(InputAction.CallbackContext context)
@@ -65,13 +74,13 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hit.collider.tag)
             {
                 case TagConstants.HOLD:
-                    if (!PlayerController.GetInstance().HoldingObject())
+                    if (!_playerService.HoldingObject())
                     {
-                        PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
+                        _playerService.PickupObject(hit.collider.gameObject);
                     }
                     else
                     {
-                        PlayerController.GetInstance().DropObject();
+                        _playerService.DropObject();
                     }
                     break;
                 case TagConstants.INSTRUMENT:
@@ -87,19 +96,19 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (PlayerController.GetInstance().HoldingItem())
+        if (_playerService.HoldingItem())
         {
             PlayerController.GetInstance().DropItem();
         }
     }
 
-    public async void UseItem(InputAction.CallbackContext context)
+    public void UseItem(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            if (!PlayerController.GetInstance().HoldingItem()) return;
+            if (!_playerService.HoldingItem()) return;
 
-            PlayerController.GetInstance().UseItemInPlayerHand();
+            _playerService.UseItemInPlayerHand();
         }
         else if(context.performed)
         {

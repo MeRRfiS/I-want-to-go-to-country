@@ -86,4 +86,9 @@ public class ItemController : MonoBehaviour
     {
         _itemObject.Destruct();
     }
+
+    public void DestroyItem()
+    {
+        Destroy(gameObject);
+    }
 }
