@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animator")]
     public Animator _hands;
+
+    public ItemController HeldItem { get { return _heldItem; } }
 
     public static PlayerController GetInstance() => instance;
 
@@ -87,11 +90,6 @@ public class PlayerController : MonoBehaviour
         _heldItem.IsUpdating = false;
         _heldItem.ApplyItemDisable();
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldItem.transform.childCount; i++)
-        {
-            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        }
         _heldItem.transform.parent = null;
         _heldRigidbodyItem = null;
         _heldItem = null;
@@ -124,9 +122,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangingInstrument(Item item)
+    public void ClearHeldInstrument()
     {
-        if (item is Funnel)
+        if (_heldItem != null)
+        {
+            _heldItem.DestroyItem();
+            _heldItem = null;
+        }
+    }
+
+    private IEnumerator ChangingInstrument(Item newItem)
+    {
+        if (newItem is Funnel)
         {
             _hands.SetBool("_IsHoldFunnel", true);
             _hands.SetBool("_IsHoldInst", false);
@@ -144,34 +151,28 @@ public class PlayerController : MonoBehaviour
             _heldItem = null;
         }
 
-        ItemController heldItemInfo = Instantiate(item.Object);
-        GameObject heldItem = _itemFactory.Create(heldItemInfo.gameObject);
+        GameObject heldItem = _itemFactory.Create(newItem.Object.gameObject);
 
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
 
-        _heldItem = heldItem;
-        _heldItem.Item = item;
+        _heldItem = heldItem.GetComponent<ItemController>();
+        _heldItem.Item = newItem;
         _heldItem.IsUpdating = true;
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
-        //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldItem.transform.childCount; i++)
-        {
-            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
-        }
-        _heldItem.transform.localPosition = item.Object.transform.position;
-        _heldItem.transform.localRotation = item.Object.transform.rotation;
-        if(_heldItem.Item is Funnel)
-        {
-            _hands.SetBool("_IsHoldFunnel", true);
-            _hands.SetBool("_IsHoldInst", false);
-        }
-        else
-        {
-            _hands.SetBool("_IsHoldInst", true);
-            _hands.SetBool("_IsHoldFunnel", false);
-        }
+        _heldItem.transform.localPosition = newItem.Object.transform.localPosition;
+        _heldItem.transform.localRotation = newItem.Object.transform.localRotation;
+        //if(_heldItem.Item is Funnel)
+        //{
+        //    _hands.SetBool("_IsHoldFunnel", true);
+        //    _hands.SetBool("_IsHoldInst", false);
+        //}
+        //else
+        //{
+        //    _hands.SetBool("_IsHoldInst", true);
+        //    _hands.SetBool("_IsHoldFunnel", false);
+        //}
 
         yield return new WaitForSeconds(0.1f);
 

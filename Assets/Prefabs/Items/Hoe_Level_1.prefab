@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2717960012818705473}
   - component: {fileID: 9079016637072138884}
   - component: {fileID: 102975312608340596}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hoe Level 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1887338921893334962}
   - component: {fileID: 5801237508013492769}
   - component: {fileID: 7612194092418062662}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hoe_Level_1
   m_TagString: Instrument
   m_Icon: {fileID: 0}
