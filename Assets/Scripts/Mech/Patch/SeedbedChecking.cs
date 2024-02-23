@@ -60,7 +60,8 @@ public class SeedbedChecking : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == TagConstants.EARTH) return;
+        if (other.tag == TagConstants.EARTH ||
+            other.tag == TagConstants.INSTRUMENT) return;
 
         isInObject = true;
     }

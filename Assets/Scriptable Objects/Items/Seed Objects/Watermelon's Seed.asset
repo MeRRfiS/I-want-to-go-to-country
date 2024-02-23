@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188bcd1f4b57a594c8cb573a6d34fe12, type: 3}
+  m_Name: Watermelon's Seed
+  m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 3937745078187853401, guid: 14b14010c176ac54a939b04cc98a67b1, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 1f25265104c7d974eae982d4d0c2925d, type: 3}
+  _isCanSold: 0
+  _isDroped: 0
+  _id: 20
+  _price: 150
+  _type: 2
+  _plantRare: 5
+  _plant: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}

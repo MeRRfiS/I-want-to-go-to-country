@@ -80,7 +80,7 @@ public class ShopController : MonoBehaviour
 
         foreach (var g in _goods)
         {
-            if(g.Goods._type != ItemTypeEnum.Tree && g.Goods._type != ItemTypeEnum.Seed)
+            if (g.Goods._type != ItemTypeEnum.Tree && g.Goods._type != ItemTypeEnum.Seed)
             {
                 _goodsForDay.Add(g);
                 continue;
@@ -91,10 +91,10 @@ public class ShopController : MonoBehaviour
         }
         if (_goodsForDay.Count > 0) return;
 
-        while (_goodsForDay.Count() != 2) 
-        { 
+        while (_goodsForDay.Count() != 2)
+        {
             int index = Random.Range(0, _goods.Count);
-            if(_goods[index].Goods is Plant)
+            if (_goods[index].Goods is Plant)
             {
                 Plant plant = (Plant)_goods[index].Goods;
                 int chance = Random.Range(1, 101);
