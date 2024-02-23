@@ -9,7 +9,7 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField] private Item _item;
-    private Item _itemObject;
+    private Item _itemObject = null;
 
     [Header("FOR TESTING")]
     [SerializeField] private bool _isDroped;

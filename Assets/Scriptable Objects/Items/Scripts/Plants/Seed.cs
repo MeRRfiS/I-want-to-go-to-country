@@ -24,7 +24,7 @@ public class Seed : Plant
 
             _amount--;
             GameObject plantObj = MonoBehaviour.Instantiate(_plant, hitTransform);
-            plantObj.transform.localPosition = new Vector3(0, 0.5f, 0);
+            plantObj.transform.localPosition = new Vector3(0, 0.0f, 0);
         }
     }
 }

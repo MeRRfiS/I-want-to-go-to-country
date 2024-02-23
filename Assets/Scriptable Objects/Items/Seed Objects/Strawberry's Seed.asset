@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188bcd1f4b57a594c8cb573a6d34fe12, type: 3}
+  m_Name: Strawberry's Seed
+  m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 8577099730414830649, guid: 93dabd9c6a83b3c499cf2b37a18d1fe3, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: f25a497930f363e4e92b3df63da00e5a, type: 3}
+  _isCanSold: 0
+  _isDroped: 0
+  _id: 19
+  _price: 75
+  _type: 2
+  _plantRare: 25
+  _plant: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}
