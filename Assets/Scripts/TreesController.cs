@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TreesController : MonoBehaviour
 {
