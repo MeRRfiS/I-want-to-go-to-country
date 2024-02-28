@@ -16,6 +16,8 @@ public class PlantController : MonoBehaviour
     private bool _isFertilized = false;
     private int _harvestAmount = 1;
 
+    [SerializeField] private Item _harvest;
+
     [Header("Materials")]
     [SerializeField] private Material _earthWithFertilize;
 
@@ -24,7 +26,6 @@ public class PlantController : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private List<GameObject> _plantsLevel;
-    [SerializeField] private Item _harvest;
     [SerializeField] private GameObject _icon;
     [SerializeField] private PlayableDirector _player;
 
