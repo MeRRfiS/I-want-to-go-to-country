@@ -20,4 +20,4 @@ MonoBehaviour:
   _price: 45
   _type: 2
   _plantRare: 50
-  _plant: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}
+  _plant: {fileID: 2837587778943838051, guid: e2ba07383f72b2d49ae2cbf01f1794ca, type: 3}
