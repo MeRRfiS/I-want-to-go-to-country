@@ -8,11 +8,11 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Tree")]
 public class Tree : Plant
 {
+    [field: SerializeField] public TreeTypeEnum TreeType { get; private set; }
     private GameObject _saplingObj;
     private GameObject _treeObj;
     private List<Material> _materials;
     private TreeChecking _treeCheck;
-    public TreeTypeEnum _treeType;
 
     private bool IsSaplingObjNull() => _saplingObj == null;
 
@@ -26,7 +26,7 @@ public class Tree : Plant
         if (IsSaplingObjNull()) return;
         if (_treeCheck.IsOnObject || _treeCheck.IsNearTree) return;
 
-        _amount--;
+        Amount--;
         _saplingObj.layer = LayerMask.NameToLayer(LayerConstants.TREE);
         for (int i = 0; i < _treeObj.GetComponent<Renderer>().materials.Length; i++)
         {

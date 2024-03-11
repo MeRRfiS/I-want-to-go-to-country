@@ -69,18 +69,18 @@ public class InventoryUI : MonoBehaviour
             image.gameObject.SetActive(true);
             waterSlider.gameObject.SetActive(false);
 
-            switch (items[i]._type)
+            switch (items[i].Type)
             {
                 case ItemTypeEnum.Instrument:
                     Instrument instrument = items[i] as Instrument;
                     if (instrument is Funnel)
                     {
                         Funnel funnel = items[i] as Funnel;
-                        waterSlider.maxValue = funnel._maxUsings;
+                        waterSlider.maxValue = funnel.MaxUsings;
                         waterSlider.value = funnel.Usings;
                         waterSlider.gameObject.SetActive(true);
                     }
-                    slider.maxValue = instrument._maxDurability;
+                    slider.maxValue = instrument.MaxDurability;
                     slider.value = instrument.Durability;
                     slider.gameObject.SetActive(true);
                     text.gameObject.SetActive(false);

@@ -92,7 +92,7 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         UpdateProgressBar();
-        ApplyMovementPinUpTransform();
+        //ApplyMovementPinUpTransform();
         UpdateMoneyCountText();
         UpdateQuestAmountText();
         UpdateTimeText();

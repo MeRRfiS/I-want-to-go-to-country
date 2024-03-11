@@ -1,30 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Axe")]
 public class Axe : Instrument 
 {
     private TreesController _tree = null;
 
-    public int _hitCount;
-    public int _timeChop;
+    [field: SerializeField] public int HitCount { get; private set; }
+    [field: SerializeField] public int TimeChop { get; private set; }
 
     public override void Init()
     {
         if (_durability == 0)
         {
-            _durability = _maxDurability;
+            _durability = MaxDurability;
         }
-        _amount = 1;
+        Amount = 1;
     }
 
     private void ChopTree()
     {
-        _tree.ChoppingTree(_hitCount);
+        _tree.ChoppingTree(HitCount);
         _durability--;
     }
 
@@ -34,7 +29,7 @@ public class Axe : Instrument
 
         if (_tree.IsCanChoppingTree())
         {
-            UIController.GetInstance().ProgressBar(_timeChop, ChopTree);
+            UIController.GetInstance().ProgressBar(TimeChop, ChopTree);
         }
     }
 

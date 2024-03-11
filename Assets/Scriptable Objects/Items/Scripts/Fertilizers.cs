@@ -2,9 +2,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Fertilizers Object", menuName = "Inventory System/Items/Fertilizers")]
-public class Fertilizers: Item
+public class Fertilizers : Item
 {
-    public int _level;
+    [field: SerializeField] public int Level { get; private set; }
     private int _usings;
 
     public int Usings
@@ -36,7 +36,7 @@ public class Fertilizers: Item
 
             _usings--;
             PlantController plant = hitTransform.GetComponent<PlantController>();
-            plant.Fertilizering(_level);
+            plant.Fertilizering(Level);
         }
     }
 }

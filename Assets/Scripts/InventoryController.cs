@@ -148,7 +148,7 @@ public class InventoryController : MonoBehaviour
                     Drop(ChestItems);
                     break;
             }
-            dropItem.Item._isDroped = true;
+            dropItem.Item.IsDroped = true;
             dropItem.transform.position = _hand.position;
             _movedItemsModel = null;
             UIController.GetInstance().UnpinItemFromMouse();
@@ -161,7 +161,7 @@ public class InventoryController : MonoBehaviour
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
-        dropItem.Item._isDroped = true;
+        dropItem.Item.IsDroped = true;
         dropItem.transform.position = _hand.position;
     }
 
