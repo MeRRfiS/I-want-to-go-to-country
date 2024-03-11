@@ -19,17 +19,17 @@ MonoBehaviour:
     _active: 0
   - _name: Level 2
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
-      _amount: 10
+    - _item: {fileID: 11400000, guid: f212b3825d79346489ec25db5f989a2a, type: 2}
+      _amount: 5
     - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
-      _amount: 10
-    _price: 10
+      _amount: 20
+    _price: 1000
     _active: 0
   - _name: Level 3
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
-      _amount: 20
+    - _item: {fileID: 11400000, guid: f212b3825d79346489ec25db5f989a2a, type: 2}
+      _amount: 10
     - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
-      _amount: 20
-    _price: 20
+      _amount: 40
+    _price: 2500
     _active: 0

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
+[RequireComponent(typeof(PlayableDirector))]
+[RequireComponent(typeof(SignalReceiver))]
+[RequireComponent(typeof(BoxCollider))]
 public class PlantController : MonoBehaviour
 {
     private const string WAIT_WATER_COR = "WaitWater";
-    private const string SHADER_PATH = "HDRP/Autodesk Interactive/AutodeskInteractive";
-    private const string USE_COLOR_MAP = "_UseColorMap";
+    private const string SHADER_COLOR_VAR = "BaseColor";
 
     private bool _isNeedWater = false;
     private bool _isPlantDry = false;
@@ -115,9 +118,29 @@ public class PlantController : MonoBehaviour
     {
         Destroy(_player);
 
-        var renderer = GetActiveLOD();
-        renderer.material.shader = Shader.Find(SHADER_PATH);
-        renderer.material.SetInt(USE_COLOR_MAP, 0);
+        GameObject activeLevel = null;
+
+        foreach (GameObject tree in _plantsLevel)
+        {
+            if (tree.activeSelf)
+            {
+                activeLevel = tree;
+                break;
+            }
+        }
+
+        LODGroup lodGroup = activeLevel.GetComponent<LODGroup>();
+        Transform lodTransform = lodGroup.transform;
+
+        foreach (Transform child in lodTransform)
+        {
+            var renderer = child.GetComponent<Renderer>();
+            foreach (Material material in renderer.materials)
+            {
+                material.color = Color.black;
+                material.SetColor(SHADER_COLOR_VAR, Color.black);
+            }
+        }
 
         _isNeedWater = false;
         _isPlantDry = true;
@@ -134,32 +157,6 @@ public class PlantController : MonoBehaviour
     {
         _isPlantGrow = true;
         _player.Pause();
-    }
-
-    private Renderer GetActiveLOD()
-    {
-        Renderer result = null;
-        GameObject activeLevel = null;
-
-        foreach (GameObject plant in _plantsLevel)
-        {
-            if (plant.activeSelf)
-            {
-                activeLevel = plant;
-                break;
-            }
-        }
-
-        LODGroup lodGroup = activeLevel.GetComponent<LODGroup>();
-        Transform lodTransform = lodGroup.transform;
-
-        foreach (Transform child in lodTransform)
-        {
-            result = child.GetComponent<Renderer>();
-            if (result != null && result.isVisible) break;
-        }
-
-        return result;
     }
 
     private void FertilizeringPlant()

@@ -139,6 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2c531fa9039ab48a795766a2020b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _item: {fileID: 0}
+  _item: {fileID: 11400000, guid: 07f3b2728c46e714a8e90bf694077fb6, type: 2}
   _isDroped: 0
   _objPrefab: {fileID: 0}

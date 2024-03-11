@@ -15,11 +15,11 @@ MonoBehaviour:
   _craftedItemsList:
   - _name: Apple Juice
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: 8f049b42732c9eb458be52ca8ad6c7b1, type: 2}
       _amount: 10
     _creftedItem: {fileID: 11400000, guid: 3906d8bc788ae8f4c95838ee08377980, type: 2}
   - _name: Strawberry Juice
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: 53452f041369c6e4f909069c97599edd, type: 2}
       _amount: 10
     _creftedItem: {fileID: 11400000, guid: 52cb02b315fb7404b92b64592a14875e, type: 2}

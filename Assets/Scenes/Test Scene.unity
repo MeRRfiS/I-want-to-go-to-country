@@ -4278,6 +4278,10 @@ MonoBehaviour:
   _itemsSells:
   - {fileID: 11400000, guid: 1fd8f510205ee194bb14ffe995650a3c, type: 2}
   - {fileID: 11400000, guid: 498fa80a17b9ef944b1f4a9520dd8c0c, type: 2}
+  - {fileID: 11400000, guid: 07f3b2728c46e714a8e90bf694077fb6, type: 2}
+  - {fileID: 11400000, guid: 07a849883b060b044863a29e14d0e4b9, type: 2}
+  - {fileID: 11400000, guid: e6461b34b815b934f908bd1b7fab8e80, type: 2}
+  - {fileID: 11400000, guid: 9345a085161009f4da376e23803bfa56, type: 2}
 --- !u!1 &157640085
 GameObject:
   m_ObjectHideFlags: 0
