@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _heldRigidbodyItem;
     private ItemController _heldItem;
     private CharacterController _chController;
+    private EventInstance _eventInstance;
 
     [Header("Player object")]
     [SerializeField] private Transform _holdArea;
@@ -69,12 +72,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chController = GetComponent<CharacterController>();
+        _eventInstance = AudioController.GetInstance().CreateInstance(FMODEvents.GetInstance().WalkOnGrass);
     }
 
     private void Update()
     {
         ApplyGravity();
         ApplyMovement();
+        UpdateSound();
         ApplyRotation();
         ApplyMovementObject();
     }
@@ -125,6 +130,25 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirectionObject = (_holdArea.position - _heldObject.transform.position);
         _heldRigidbody.AddForce(moveDirectionObject * PlayerConstants.PICKUP_FORCE);
+    }
+
+    private void UpdateSound()
+    {
+        if((_chController.velocity.x != 0 || _chController.velocity.y != 0) && IsGrounded())
+        {
+            PLAYBACK_STATE playbackState;
+            _eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+            _eventInstance.getPlaybackState(out playbackState);
+
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _eventInstance.start();
+            }
+        }
+        else
+        {
+            _eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     public void ChangeMovement(Vector2 movement)
