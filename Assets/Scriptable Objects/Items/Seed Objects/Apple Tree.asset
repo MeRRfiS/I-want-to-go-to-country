@@ -19,4 +19,5 @@ MonoBehaviour:
   <Price>k__BackingField: 10
   <Type>k__BackingField: 3
   <PlantRare>k__BackingField: 50
-  <TreeType>k__BackingField: 1
+  _treeVisualizationObj: {fileID: 281045285250427027, guid: c04af48a57f66654ab84ebeb4552c911, type: 3}
+  _treePrefab: {fileID: 7942591199453428746, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
