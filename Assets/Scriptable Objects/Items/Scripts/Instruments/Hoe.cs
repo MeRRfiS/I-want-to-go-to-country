@@ -28,6 +28,10 @@ public class Hoe : Instrument
         _durability--;
         PlayerController.GetInstance()._hands.SetBool("IsUsingHoe", false);
         _seedbedObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        foreach (Transform seedbedLOD in _seedbedObj.transform)
+        {
+            seedbedLOD.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        }
         _seedbedRend.material.SetFloat(OPACITY, 1f);
         _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
         _seedbedObj.GetComponent<Seedbed>().DestroyChecker();
@@ -49,7 +53,7 @@ public class Hoe : Instrument
     public override GameObject Updating(GameObject obj, GameObject prefab)
     {
         _seedbedObj = obj;
-        if(!IsPatchObjNull())
+        if (!IsPatchObjNull())
         {
             _seedbedCheck = obj.GetComponent<Seedbed>().Checker;
         }
@@ -57,9 +61,9 @@ public class Hoe : Instrument
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
-        if (Physics.Raycast(startPoint.position, 
-                            startPoint.forward, 
-                            out hit, 
+        if (Physics.Raycast(startPoint.position,
+                            startPoint.forward,
+                            out hit,
                             ItemConstants.MAX_DISTANCE_TO_EARTH) && hit.collider.CompareTag(TagConstants.EARTH))
         {
             if (IsPatchObjNull())
@@ -72,7 +76,7 @@ public class Hoe : Instrument
             point = new Vector3(_seedbedCheck.IsVerFasten ? _seedbedCheck.FastenPos.x : hit.point.x,
                                 1,
                                 _seedbedCheck.IsHorFasten ? _seedbedCheck.FastenPos.z : hit.point.z);
-            if(Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
+            if (Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
             {
                 _seedbedCheck.ResetFastenChecking();
                 point = hit.point;
@@ -87,7 +91,7 @@ public class Hoe : Instrument
             {
                 _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0));
             }
-            else if(_seedbedCheck)
+            else if (_seedbedCheck)
             {
                 _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
             }

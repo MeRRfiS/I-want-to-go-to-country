@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66584b6d3a0bbd34da1cc339f4814db9, type: 3}
+  m_Name: Harvest Wheat
+  m_EditorClassIdentifier: 
+  <Object>k__BackingField: {fileID: 5790875115010876827, guid: d4e69b49c7881f145abcdd213411e713, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 42ae4dc3aee551c41b08fa574f3c4809, type: 3}
+  _isCanSold: 1
+  _isDroped: 0
+  _id: 28
+  _price: 20
+  _type: 4
