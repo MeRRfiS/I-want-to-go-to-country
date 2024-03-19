@@ -19,6 +19,6 @@ MonoBehaviour:
   <Price>k__BackingField: 150
   <Type>k__BackingField: 1
   <Level>k__BackingField: 2
-  <MaxDurability>k__BackingField: 130
+  <MaxDurability>k__BackingField: 150
   <InstrumentType>k__BackingField: 3
   MaxUsings: 4
