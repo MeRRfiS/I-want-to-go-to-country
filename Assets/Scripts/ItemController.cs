@@ -34,8 +34,8 @@ public class ItemController : MonoBehaviour
     private void Start()
     {
         InitializeItem();
-        if(!_itemObject._isDroped)
-            _itemObject._isDroped = _isDroped;
+        if(!_itemObject.IsDroped)
+            _itemObject.IsDroped = _isDroped;
     }
 
     private void Update()

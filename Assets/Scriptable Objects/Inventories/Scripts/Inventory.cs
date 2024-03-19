@@ -22,7 +22,7 @@ public class Inventory : ScriptableObject
         for (int i = 0; i < Container.Length; i++)
         {
             if (Container[i] == null) continue;
-            if (Container[i]._id == removeItem._id)
+            if (Container[i].Id == removeItem.Id)
             {
                 int itemsAmount = Container[i].Amount;
                 Container[i].Amount -= amount;
@@ -45,7 +45,7 @@ public class Inventory : ScriptableObject
         if (toInventory.Container[secondIndex] == null)
             return false;
 
-        if (toInventory.Container[secondIndex]._id != Container[firstIndex]._id)
+        if (toInventory.Container[secondIndex].Id != Container[firstIndex].Id)
             return false;
 
         if (toInventory.Container[secondIndex].Amount + Container[firstIndex].Amount >

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Funnel")]
 public class Funnel : Instrument
 {
-    public int _maxUsings;
+    [field: SerializeField] public int MaxUsings;
     private int _usings;
 
     public int Usings
@@ -18,13 +18,13 @@ public class Funnel : Instrument
     {
         if (_usings == 0)
         {
-            _usings = _maxUsings;
+            _usings = MaxUsings;
         }
         if (_durability == 0)
         {
-            _durability = _maxDurability;
+            _durability = MaxDurability;
         }
-        _amount = 1;
+        Amount = 1;
     }
 
     public override void UseItem()
@@ -58,7 +58,7 @@ public class Funnel : Instrument
                     tree.WateringTree();
                     break;
                 case TagConstants.WELL:
-                    _usings = _maxUsings;
+                    _usings = MaxUsings;
                     break;
             }
         }

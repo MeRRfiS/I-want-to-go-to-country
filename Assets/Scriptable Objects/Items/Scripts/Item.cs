@@ -1,24 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Item : ScriptableObject
 {
     [field: SerializeField] public ItemController Object { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
-
-    public bool _isCanSold;
-    [HideInInspector] public bool _isDroped = false;
-    public int _id;
-    public int _price;
-    protected int _amount;
-    public ItemTypeEnum _type;
-
-    public int Amount
-    {
-        get => _amount;
-        set => _amount = value;
-    }
+    [field: SerializeField] public bool IsCanSold { get; private set; }
+    [field: SerializeField] public int Id { get; private set; }
+    [field: SerializeField] public int Price { get; private set; }
+    [field: SerializeField] public ItemTypeEnum Type { get; private set; }
+    [HideInInspector] public bool IsDroped { get; set; } = false;
+    public int Amount { get; set; }
 
     public virtual void UseItem() { }
 
@@ -37,10 +31,10 @@ public class Item : ScriptableObject
     public Item Copy()
     {
         Item clone = (Item) this.MemberwiseClone();
-        clone._id = _id;
-        clone._price = _price;
-        clone._amount = Amount;
-        clone._type = _type;
+        clone.Id = Id;
+        clone.Price = Price;
+        clone.Amount = Amount;
+        clone.Type = Type;
 
         return clone;
     }

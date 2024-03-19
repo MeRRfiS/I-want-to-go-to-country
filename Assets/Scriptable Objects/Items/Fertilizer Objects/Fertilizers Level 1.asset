@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 1524990143135345598, guid: ae44be13165c5064cacd639a0499b781, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 8b8382d9dbc21dd489f03cf9594bac38, type: 3}
-  _isCanSold: 0
-  _isDroped: 0
-  _id: 23
-  _price: 250
-  _type: 5
-  _level: 1
+  <IsCanSold>k__BackingField: 0
+  <Id>k__BackingField: 23
+  <Price>k__BackingField: 250
+  <Type>k__BackingField: 5
+  <Level>k__BackingField: 1
