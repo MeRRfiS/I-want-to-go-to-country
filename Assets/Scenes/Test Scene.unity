@@ -20815,7 +20815,6 @@ MonoBehaviour:
   m_Script: {fileID: 792459846}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Entries: []
 --- !u!4 &791228430
 Transform:
   m_ObjectHideFlags: 19
@@ -50164,6 +50163,10 @@ PrefabInstance:
       propertyPath: _isDroped
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6927633689608570861, guid: 22002221aa08dbb419f88ddb32df3ae3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4788878699526891414, guid: 3b9e983108f7cde4480a4d3c2890f468, type: 3}
     - target: {fileID: 7881095781990339522, guid: 22002221aa08dbb419f88ddb32df3ae3, type: 3}
       propertyPath: m_RootOrder
       value: 19
