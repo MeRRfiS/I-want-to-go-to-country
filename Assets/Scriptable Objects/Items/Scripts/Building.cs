@@ -9,9 +9,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Build Object", menuName = "Inventory System/Items/Build")]
 public class Building: Item
 {
+    [Header("Building Prefabs")]
+    [SerializeField] private GameObject _buildingVisualizationObj;
+    [SerializeField] private GameObject _buildingPrefab;
 
     private GameObject _itemObj;
-    private GameObject _buildingObj;
+    private Renderer _buildingRenderer;
+    private List<Material> _materials;
     private BuildChecking _buildingCheck;
 
     private bool IsItemObjNull() => _itemObj == null;
@@ -19,6 +23,7 @@ public class Building: Item
     public override void Init()
     {
         Amount = 1;
+        _materials = new List<Material>();
     }
 
     public override void UseItem()
@@ -27,29 +32,21 @@ public class Building: Item
         if (_buildingCheck.IsOnObject) return;
 
         Amount = 0;
-        _itemObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
-        {
-            _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                       1,
-                                       1,
-                                       1,
-                                       1);
-        }
-        var build = Instantiate(_itemObj);
-        Destroy(build.GetComponent<BuildChecking>());
+        var build = Instantiate(_buildingPrefab);
+        build.transform.position = new Vector3(_itemObj.transform.position.x,
+                                               1.1f,
+                                               _itemObj.transform.position.z);
+        Destroy(_itemObj);
+
         _buildingCheck = null;
-        _buildingObj = null;
         _itemObj = null;
     }
 
     public override GameObject Updating(GameObject obj, GameObject prefab)
     {
-        _itemObj = obj;
         if (!IsItemObjNull())
         {
-            _buildingCheck = obj.GetComponent<BuildChecking>();
-            _buildingObj = obj.transform.GetChild(0).gameObject;
+            _buildingCheck = _itemObj.GetComponent<BuildChecking>();
         }
 
         Transform startPoint = Camera.main.transform;
@@ -63,10 +60,15 @@ public class Building: Item
         {
             if (IsItemObjNull())
             {
-                _itemObj = Instantiate(prefab);
+                _itemObj = Instantiate(_buildingVisualizationObj);
                 _buildingCheck = _itemObj.GetComponent<BuildChecking>();
-                _buildingObj = _itemObj.transform.GetChild(0).gameObject;
+                _buildingRenderer = _itemObj.GetComponent<Renderer>();
+                for (int i = 0; i < _buildingRenderer.materials.Length; i++)
+                {
+                    _materials.Add(new Material(_buildingRenderer.materials[i]));
+                }
             }
+
             Vector3 point = Vector3.zero;
             point = new Vector3(_buildingCheck.IsVerFasten ? _buildingCheck.FastenPos.x : hit.point.x,
                                 1,
@@ -77,29 +79,27 @@ public class Building: Item
                 point = hit.point;
             }
             _itemObj.transform.position = new Vector3(point.x,
-                                                      prefab.transform.position.y,
+                                                      1.1f,
                                                       point.z);
 
             if (_buildingCheck && _buildingCheck.IsOnObject)
             {
-                for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
+                for (int i = 0; i < _buildingRenderer.materials.Length; i++)
                 {
-                    _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                               1,
-                                               0,
-                                               0,
-                                               0.5f);
+                    _buildingRenderer.materials[i].color = new Color(1,
+                                                                     _materials[i].color.g,
+                                                                     _materials[i].color.b,
+                                                                     0.5f);
                 }
             }
             else if (_buildingCheck)
             {
-                for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
+                for (int i = 0; i < _buildingRenderer.materials.Length; i++)
                 {
-                    _buildingObj.GetComponent<Renderer>().materials[i].color = new Color(
-                                               1,
-                                               1,
-                                               1,
-                                               0.5f);
+                    _buildingRenderer.materials[i].color = new Color(_materials[i].color.r,
+                                                                     _materials[i].color.g,
+                                                                     _materials[i].color.b,
+                                                                     0.5f);
                 }
             }
         }
