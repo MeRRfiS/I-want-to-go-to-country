@@ -8,7 +8,7 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Tree")]
 public class Tree : Plant
 {
-    [Header("Tree Prefab")]
+    [Header("Tree Prefabs")]
     [SerializeField] private GameObject _treeVisualizationObj;
     [SerializeField] private GameObject _treePrefab;
 
