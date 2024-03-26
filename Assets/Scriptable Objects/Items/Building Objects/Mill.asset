@@ -18,5 +18,5 @@ MonoBehaviour:
   <Id>k__BackingField: 35
   <Price>k__BackingField: 10
   <Type>k__BackingField: 6
-  _buildingVisualizationObj: {fileID: 6563509623994468133, guid: b634f0537bcdc3a40bc420e8844d305d, type: 3}
+  _buildingVisualizationObj: {fileID: 7523814496740004194, guid: 2da6beb893d516844854d97e9d16cc6e, type: 3}
   _buildingPrefab: {fileID: 8738858992774469766, guid: 50e0a7bbe64374748b3a5bd4093c630e, type: 3}

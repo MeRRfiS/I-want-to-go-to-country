@@ -118,7 +118,7 @@ public class SeedbedChecking : MonoBehaviour
 
     private void ApplyDebugRays()
     {
-        float distance = MechConstants.DISTANCE_TO_PATCH;
+        float distance = MechConstants.DISTANCE_TO_BUILDING;
         Vector3 forward = transform.forward * distance;
         Vector3 back = -transform.forward * distance;
         Vector3 right = transform.right * distance;
