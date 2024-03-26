@@ -13,6 +13,8 @@ public class BuildChecking : MonoBehaviour
     private RaycastHit hitHor;
     private RaycastHit hitVer;
 
+    [SerializeField] private Transform _rayStart;
+
     public bool IsOnObject
     {
         get => isInObject;
@@ -53,7 +55,7 @@ public class BuildChecking : MonoBehaviour
             if (hitHor.collider == hitVer.collider) return false;
         }
 
-        hitHor = GetHit(transform.right);
+        hitHor = GetHit(_rayStart.right);
         if (hitHor.collider != null)
         {
             fastenZPos = hitHor.collider.transform.position.z;
@@ -74,14 +76,17 @@ public class BuildChecking : MonoBehaviour
         RaycastHit hitSideOne;
         RaycastHit hitSideTwo;
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, side, out hitSideTwo, MechConstants.DISTANCE_TO_BUILDING))
+        if (Physics.Raycast(_rayStart.position, side, out hitSideTwo, MechConstants.DISTANCE_TO_BUILDING))
         {
             if (hitSideTwo.collider.CompareTag(TagConstants.BUILDING))
             {
                 hit = hitSideTwo;
             }
         }
-        else if (Physics.Raycast(transform.position, -side, out hitSideOne, MechConstants.DISTANCE_TO_BUILDING))
+
+        if(hit.collider != null) return hit;
+
+        if (Physics.Raycast(_rayStart.position, -side, out hitSideOne, MechConstants.DISTANCE_TO_BUILDING))
         {
             if (hitSideOne.collider.CompareTag(TagConstants.BUILDING))
             {
@@ -94,6 +99,7 @@ public class BuildChecking : MonoBehaviour
 
     private void Update()
     {
+        ApplyDebugRays();
         isHorFasten = CheckingHorizontal();
         isVerFasten = CheckingVertical();
     }
@@ -105,7 +111,7 @@ public class BuildChecking : MonoBehaviour
             if (hitHor.collider == hitVer.collider) return false;
         }
 
-        hitVer = GetHit(transform.forward);
+        hitVer = GetHit(_rayStart.forward);
         if (hitVer.collider != null)
         {
             fastenXPos = hitVer.collider.transform.position.x;
@@ -115,6 +121,20 @@ public class BuildChecking : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void ApplyDebugRays()
+    {
+        float distance = MechConstants.DISTANCE_TO_BUILDING;
+        Vector3 forward = _rayStart.forward * distance;
+        Vector3 back = -_rayStart.forward * distance;
+        Vector3 right = _rayStart.right * distance;
+        Vector3 left = -_rayStart.right * distance;
+
+        Debug.DrawRay(_rayStart.position, forward, Color.red);
+        Debug.DrawRay(_rayStart.position, back, Color.red);
+        Debug.DrawRay(_rayStart.position, right, Color.red);
+        Debug.DrawRay(_rayStart.position, left, Color.red);
     }
 
     public void ResetFastenChecking()

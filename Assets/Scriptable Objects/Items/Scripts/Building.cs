@@ -62,7 +62,7 @@ public class Building: Item
             {
                 _itemObj = Instantiate(_buildingVisualizationObj);
                 _buildingCheck = _itemObj.GetComponent<BuildChecking>();
-                _buildingRenderer = _itemObj.GetComponent<Renderer>();
+                _buildingRenderer = _itemObj.transform.GetChild(0).GetComponent<Renderer>();
                 for (int i = 0; i < _buildingRenderer.materials.Length; i++)
                 {
                     _materials.Add(new Material(_buildingRenderer.materials[i]));
