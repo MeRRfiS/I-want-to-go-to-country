@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1249.7661, g: 1311.3514, b: 1692.937, a: 1}
+  m_IndirectSpecularColor: {r: 3324.4924, g: 2458.1262, b: 2367.5825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -37692,7 +37692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 5a70dcdfb8f86c543b0876092c078a85, type: 2}
   m_StaticLightingSkyUniqueID: 4
-  m_StaticLightingCloudsUniqueID: 0
+  m_StaticLightingCloudsUniqueID: 1
   m_StaticLightingVolumetricClouds: 0
 --- !u!4 &1341222469
 Transform:
