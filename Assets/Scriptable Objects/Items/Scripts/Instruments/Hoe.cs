@@ -26,7 +26,6 @@ public class Hoe : Instrument
     private void MakePath()
     {
         _durability--;
-        PlayerController.GetInstance()._hands.SetBool("IsUsingHoe", false);
         _seedbedObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         foreach (Transform seedbedLOD in _seedbedObj.transform)
         {
@@ -44,8 +43,6 @@ public class Hoe : Instrument
     {
         if (IsPatchObjNull()) return;
         if (_seedbedCheck.IsOnObject) return;
-
-        PlayerController.GetInstance()._hands.SetBool(AnimPropConstants.IS_USING_HOE, true);
 
         UIController.GetInstance().ProgressBar(TimeWork, MakePath);
     }
