@@ -23,6 +23,9 @@ public class TreeChecking : MonoBehaviour
     {
         if (other.tag == TagConstants.EARTH) return;
         if (other.tag == TagConstants.PLAYER) return;
+        if (other.tag == TagConstants.ITEM) return;
+
+        Debug.Log(other.gameObject);
 
         isInObject = true;
     }

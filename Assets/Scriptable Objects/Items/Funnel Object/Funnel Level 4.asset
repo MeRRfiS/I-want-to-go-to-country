@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 6381753766931851679, guid: c77799542c60f3f46bf541e99db282ce, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: b30d88019d5b22e49b086708536eb9a4, type: 3}
-  _isCanSold: 0
-  _isDroped: 0
-  _id: 9
-  _price: 800
-  _type: 1
-  _level: 4
-  _maxDurability: 300
-  _instrumentType: 3
-  _maxUsings: 10
+  <IsCanSold>k__BackingField: 0
+  <Id>k__BackingField: 9
+  <Price>k__BackingField: 800
+  <Type>k__BackingField: 1
+  <Level>k__BackingField: 4
+  <MaxDurability>k__BackingField: 300
+  <InstrumentType>k__BackingField: 3
+  MaxUsings: 10

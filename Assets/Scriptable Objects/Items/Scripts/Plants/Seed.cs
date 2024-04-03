@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Seed")]
 public class Seed : Plant
 {
-    public GameObject _plant;
+    [field: SerializeField] public GameObject Plant { get; private set; }
 
     public override void UseItem()
     {
@@ -22,9 +22,9 @@ public class Seed : Plant
             if (!hitTransform.CompareTag(TagConstants.SEEDBED)) return;
             if (hitTransform.childCount > 3) return;
 
-            _amount--;
-            GameObject plantObj = MonoBehaviour.Instantiate(_plant, hitTransform);
-            plantObj.transform.localPosition = new Vector3(0, 0.5f, 0);
+            Amount--;
+            GameObject plantObj = MonoBehaviour.Instantiate(Plant, hitTransform);
+            plantObj.transform.localPosition = new Vector3(0, 0.0f, 0);
         }
     }
 }

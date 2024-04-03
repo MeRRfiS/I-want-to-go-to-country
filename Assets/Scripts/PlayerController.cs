@@ -1,5 +1,6 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -16,23 +17,26 @@ public class PlayerController : MonoBehaviour
     private Vector3 _direction;
     private Vector3 _rotationCamera;
     private Vector3 _rotationPlayer;
+    private Item _newItem;
     private GameObject _heldObject;
     private Rigidbody _heldRigidbody;
     private Rigidbody _heldRigidbodyItem;
     private ItemController _heldItem;
     private CharacterController _chController;
+    private EventInstance _eventInstance;
 
     [Header("Player object")]
     [SerializeField] private Transform _holdArea;
     [SerializeField] private Transform _hand;
 
     [Header("Animator")]
-    public Animator _hands;
+    [SerializeField] private HandsAnimationManager _handsAnimManager;
 
     public static PlayerController GetInstance() => instance;
     public bool HoldingObject() => _heldObject != null;
     public bool HoldingItem() => _heldItem != null;
     private bool IsGrounded() => _chController.isGrounded;
+    private ItemController CurrentItem() => _heldItem;
 
     public bool IsCanMoving
     {
@@ -69,12 +73,16 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chController = GetComponent<CharacterController>();
+        _eventInstance = AudioController.GetInstance().CreateInstance(FMODEvents.GetInstance().WalkOnGrass);
+
+        _handsAnimManager.OnHideItem += GetNewItem;
     }
 
     private void Update()
     {
         ApplyGravity();
         ApplyMovement();
+        UpdateSound();
         ApplyRotation();
         ApplyMovementObject();
     }
@@ -108,7 +116,7 @@ public class PlayerController : MonoBehaviour
         _direction.z = direction.z; 
         _chController.Move(_direction * PlayerConstants.MOVEMENT_SPEED * Time.deltaTime);
 
-        _hands.SetBool(AnimPropConstants.IS_MOVING, _chController.velocity.x != 0 || _chController.velocity.y != 0);
+        _handsAnimManager.IsMoving(_chController.velocity.x != 0 || _chController.velocity.y != 0);
     }
 
     private void ApplyRotation()
@@ -125,6 +133,25 @@ public class PlayerController : MonoBehaviour
 
         Vector3 moveDirectionObject = (_holdArea.position - _heldObject.transform.position);
         _heldRigidbody.AddForce(moveDirectionObject * PlayerConstants.PICKUP_FORCE);
+    }
+
+    private void UpdateSound()
+    {
+        if((_chController.velocity.x != 0 || _chController.velocity.y != 0) && IsGrounded())
+        {
+            PLAYBACK_STATE playbackState;
+            _eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+            _eventInstance.getPlaybackState(out playbackState);
+
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _eventInstance.start();
+            }
+        }
+        else
+        {
+            _eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     public void ChangeMovement(Vector2 movement)
@@ -183,22 +210,28 @@ public class PlayerController : MonoBehaviour
     {
         if (_heldItem != null)
         {
-            _hands.SetBool("_IsChangingInst", true);
+            _handsAnimManager.IsChangeItem = item != null;
+            _handsAnimManager.IsChangingInst(true);
         }
-        if (item == null) 
-        {
-            StartCoroutine(HideInstrument());
-            return;
-        }
+        if (item == null) return;
 
-        StartCoroutine(ChangingInstrument(item));
+        _newItem = item;
+        if (_newItem is Funnel)
+        {
+            _handsAnimManager.IsHoldFunnel(true);
+        }
+        else
+        {
+            _handsAnimManager.IsHoldInst(true);
+        }
+        _handsAnimManager.OnChangeItem += ChangingInstrument;
     }
 
     public void DropItem()
     {
         if (_heldItem == null) return;
 
-        _hands.SetBool("_IsChangingInst", true);
+        _handsAnimManager.IsChangingInst(true);
         InventoryController.GetInstance().RemoveItem();
         _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
@@ -213,8 +246,6 @@ public class PlayerController : MonoBehaviour
         _heldItem.transform.parent = null;
         _heldRigidbodyItem = null;
         _heldItem = null;
-
-        StartCoroutine(HideInstrument());
     }
 
     public void UseItemInPlayerHand()
@@ -231,59 +262,22 @@ public class PlayerController : MonoBehaviour
         _isCanUsingItem = state;
     }
 
-    private IEnumerator HideInstrument()
+    private void ChangingInstrument()
     {
-        yield return new WaitForSeconds(0.1f);
+        ItemController heldItem = Instantiate(_newItem.Object);
 
-        _hands.SetBool("_IsChangingInst", false);
-        if(_heldItem != null)
-        {
-            if (_heldItem.Item is Funnel)
-            {
-                _hands.SetBool("_IsHoldFunnel", false);
-            }
-            else
-            {
-                _hands.SetBool("_IsHoldInst", false);
-            }
-        }
+        SetUpItemRigidbody(heldItem);
+        SetUpNewItem(heldItem);
 
-        if (_heldItem != null)
-        {
-            yield return new WaitForSeconds(0.45f);
-            Destroy(_heldItem.gameObject);
-            _heldItem = null;
-        }
+        _handsAnimManager.OnChangeItem -= ChangingInstrument;
+        _newItem = null;
     }
 
-    private IEnumerator ChangingInstrument(Item item)
+    private void SetUpNewItem(ItemController heldItem)
     {
-        if (item is Funnel)
-        {
-            _hands.SetBool("_IsHoldFunnel", true);
-            _hands.SetBool("_IsHoldInst", false);
-        }
-        else
-        {
-            _hands.SetBool("_IsHoldInst", true);
-            _hands.SetBool("_IsHoldFunnel", false);
-        }
-
-        if (_heldItem != null)
-        {
-            yield return new WaitForSeconds(0.45f);
-            Destroy(_heldItem.gameObject);
-            _heldItem = null;
-        }
-
-        ItemController heldItem = Instantiate(item.Object);
-
-        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
-        _heldRigidbodyItem.isKinematic = true;
-        _heldRigidbodyItem.transform.parent = _hand;
-
         _heldItem = heldItem;
-        _heldItem.Item = item;
+        _heldItem.OnItemBroke += HoldItemBroken;
+        _heldItem.Item = _newItem;
         _heldItem.IsUpdating = true;
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
@@ -291,21 +285,43 @@ public class PlayerController : MonoBehaviour
         {
             _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         }
-        _heldItem.transform.localPosition = item.Object.transform.position;
-        _heldItem.transform.localRotation = item.Object.transform.rotation;
-        if(_heldItem.Item is Funnel)
+        _heldItem.transform.localPosition = _newItem.Object.transform.position;
+        _heldItem.transform.localRotation = _newItem.Object.transform.rotation;
+    }
+
+    private void SetUpItemRigidbody(ItemController heldItem)
+    {
+        _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem.isKinematic = true;
+        _heldRigidbodyItem.transform.parent = _hand;
+    }
+
+    private void GetNewItem()
+    {
+        if (_heldItem != null)
         {
-            _hands.SetBool("_IsHoldFunnel", true);
-            _hands.SetBool("_IsHoldInst", false);
-        }
-        else
-        {
-            _hands.SetBool("_IsHoldInst", true);
-            _hands.SetBool("_IsHoldFunnel", false);
+            Destroy(_heldItem.gameObject);
+            _heldItem.OnItemBroke -= HoldItemBroken;
+            _heldItem = null;
         }
 
-        yield return new WaitForSeconds(0.1f);
+        if(_newItem != null)
+        {
+            if (_newItem is Funnel)
+            {
+                _handsAnimManager.IsHoldFunnel(true);
+            }
+            else
+            {
+                _handsAnimManager.IsHoldInst(true);
+            }
+        }
+    }
 
-        _hands.SetBool("_IsChangingInst", false);
+    private void HoldItemBroken()
+    {
+        _handsAnimManager.IsChangingInst(true);
+        _heldItem.OnItemBroke -= HoldItemBroken;
+        _heldItem = null;
     }
 }

@@ -15,7 +15,7 @@ public class MainInventory : Inventory
         for (int i = 0; i < MechConstants.MAX_ITEMS_IN_INVENTORY; i++)
         {
             if (Container[i] == null) continue;
-            if (Container[i]._id == item._id && Container[i].Amount != MechConstants.MAX_ITEM_IN_CELL)
+            if (Container[i].Id == item.Id && Container[i].Amount != MechConstants.MAX_ITEM_IN_CELL)
             {
                 index = i;
                 return true;
@@ -48,11 +48,11 @@ public class MainInventory : Inventory
             int index;
             if (!GetEmptyCell(out index))
             {
-                if(!item._isDroped) InventoryController.GetInstance().DropItemFromInventory(item);
+                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item);
                 return false;
             }
 
-            item._isDroped = false;
+            item.IsDroped = false;
             Container[index] = item;
             Container[index].Amount = amount > MechConstants.MAX_ITEM_IN_CELL ?
                                       MechConstants.MAX_ITEM_IN_CELL : amount;
@@ -66,7 +66,7 @@ public class MainInventory : Inventory
     public override bool AddItem(InventorySlot newItem)
     {
         int index;
-        switch (newItem.Item._type)
+        switch (newItem.Item.Type)
         {
             case ItemTypeEnum.None:
                 return false;
@@ -75,11 +75,11 @@ public class MainInventory : Inventory
             case ItemTypeEnum.Building:
                 if (!GetEmptyCell(out index)) 
                 {
-                    if (!newItem.Item._isDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item);
+                    if (!newItem.Item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item);
                     return false;
                 }
 
-                newItem.Item._isDroped = false;
+                newItem.Item.IsDroped = false;
                 Container[index] = newItem.Item;
                 break;
             case ItemTypeEnum.Seed:

@@ -9,7 +9,7 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField] private Item _item;
-    private Item _itemObject;
+    private Item _itemObject = null;
 
     [Header("FOR TESTING")]
     [SerializeField] private bool _isDroped;
@@ -18,6 +18,8 @@ public class ItemController : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private GameObject _objPrefab;
     private GameObject _obj;
+
+    public event Action OnItemBroke;
 
     public bool IsUpdating
     {
@@ -34,8 +36,8 @@ public class ItemController : MonoBehaviour
     private void Start()
     {
         InitializeItem();
-        if(!_itemObject._isDroped)
-            _itemObject._isDroped = _isDroped;
+        if(!_itemObject.IsDroped)
+            _itemObject.IsDroped = _isDroped;
     }
 
     private void Update()
@@ -59,6 +61,7 @@ public class ItemController : MonoBehaviour
         if (!_itemObject.IsItemCountZero()) return;
 
         InventoryController.GetInstance().RemoveItem();
+        OnItemBroke?.Invoke();
         Destroy(gameObject);
     }
 

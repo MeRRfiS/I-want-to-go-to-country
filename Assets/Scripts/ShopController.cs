@@ -32,7 +32,7 @@ public class ShopController : MonoBehaviour
             {
                 Goods = itemController.Item,
                 Count = 99,
-                Price = itemSells._price
+                Price = itemSells.Price
             };
             _goods.Add(goodsModel);
         }
@@ -43,11 +43,11 @@ public class ShopController : MonoBehaviour
         foreach (var item in items)
         {
             if (item == null) continue;
-            if (!item._isCanSold) continue;
+            if (!item.IsCanSold) continue;
 
-            if (_sellingItems.ContainsKey(item._id))
+            if (_sellingItems.ContainsKey(item.Id))
             {
-                _sellingItems[item._id].Count += item.Amount;
+                _sellingItems[item.Id].Count += item.Amount;
             }
             else
             {
@@ -55,9 +55,9 @@ public class ShopController : MonoBehaviour
                 {
                     Goods = item,
                     Count = item.Amount,
-                    Price = item._price
+                    Price = item.Price
                 };
-                _sellingItems.Add(item._id, goods);
+                _sellingItems.Add(item.Id, goods);
             }
         }
     }
@@ -80,7 +80,7 @@ public class ShopController : MonoBehaviour
 
         foreach (var g in _goods)
         {
-            if(g.Goods._type != ItemTypeEnum.Tree && g.Goods._type != ItemTypeEnum.Seed)
+            if(g.Goods.Type != ItemTypeEnum.Tree && g.Goods.Type != ItemTypeEnum.Seed)
             {
                 _goodsForDay.Add(g);
                 continue;
@@ -91,16 +91,16 @@ public class ShopController : MonoBehaviour
         }
         if (_goodsForDay.Count > 0) return;
 
-        while (_goodsForDay.Count() != 2) 
-        { 
+        while (_goodsForDay.Count() != 2)
+        {
             int index = Random.Range(0, _goods.Count);
-            if(_goods[index].Goods is Plant)
+            if (_goods[index].Goods is Plant)
             {
                 Plant plant = (Plant)_goods[index].Goods;
                 int chance = Random.Range(1, 101);
-                if (chance > (int)plant._plantRare) continue;
+                if (chance > (int)plant.PlantRare) continue;
             }
-            var existGoods = _goodsForDay.Where(g => g.Goods._id == _goods[index].Goods._id);
+            var existGoods = _goodsForDay.Where(g => g.Goods.Id == _goods[index].Goods.Id);
             if (existGoods.Count() != 0) continue;
 
             _goodsForDay.Add(_goods[index]);

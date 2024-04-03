@@ -18,7 +18,7 @@ public class Building: Item
 
     public override void Init()
     {
-        _amount = 1;
+        Amount = 1;
     }
 
     public override void UseItem()
@@ -26,7 +26,7 @@ public class Building: Item
         if (IsItemObjNull()) return;
         if (_buildingCheck.IsOnObject) return;
 
-        _amount = 0;
+        Amount = 0;
         _itemObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         for (int i = 0; i < _buildingObj.GetComponent<Renderer>().materials.Length; i++)
         {
