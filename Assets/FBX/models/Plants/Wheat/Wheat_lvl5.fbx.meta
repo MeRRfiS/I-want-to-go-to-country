@@ -3,7 +3,17 @@ guid: 8dc982dab2ef46e40af71c2f0e7f98b2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_2s_wheed_lvl5
+    second: {fileID: 2100000, guid: 0381573b0a47dcb449627c48bb852041, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_wheed_lvl5
+    second: {fileID: 2100000, guid: 28a1950619d649f448a7f8914ffdf8b8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -37,6 +47,7 @@ ModelImporter:
     lODScreenPercentages:
     - 0.25
     - 0.125
+    - 0.0625
     - 0.01
     globalScale: 1
     meshCompression: 0
