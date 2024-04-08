@@ -11,13 +11,13 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1994276428271379092}
-    m_Position: {x: -40, y: 170, z: 0}
+    m_Position: {x: -40, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4886298104687681305}
     m_Position: {x: 280, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -569966225662611597}
-    m_Position: {x: 810, y: 210, z: 0}
+    m_Position: {x: 810, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3348565027602583037}
     m_Position: {x: 690, y: 470, z: 0}
@@ -47,7 +47,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 10, y: -40, z: 0}
-  m_EntryPosition: {x: -200, y: 390, z: 0}
+  m_EntryPosition: {x: 240, y: 100, z: 0}
   m_ExitPosition: {x: 1090, y: 60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4886298104687681305}
@@ -290,7 +290,7 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: _IsHoldInst
     m_EventTreshold: 0
   - m_ConditionMode: 1
@@ -371,36 +371,30 @@ AnimatorController:
   m_Name: Hands
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: _IsUsingHoe
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: _IsMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: _IsHoldInst
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: _IsChangingInst
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: _IsHoldFunnel
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

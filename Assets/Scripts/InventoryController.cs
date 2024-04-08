@@ -231,17 +231,20 @@ public class InventoryController : MonoBehaviour
             _movedItemsModel.SecondIndex = index;
             MoveItemToOtherCell();
 
+            bool activeItemIsCarry = _activePlayerItemIndex == _movedItemsModel.FirstIndex &&
+                                    _movedItemsModel.FirstCellTypeEnum == CellTypeEnum.Player;
+
             switch (type)
             {
                 case CellTypeEnum.Inventory:
                 case CellTypeEnum.Chest:
-                    if (_activePlayerItemIndex == _movedItemsModel.FirstIndex)
-                        ApplyActiveItem();
+                    if (activeItemIsCarry) ApplyActiveItem();
                     break;
                 case CellTypeEnum.Player:
-                    if(_activePlayerItemIndex == _movedItemsModel.FirstIndex || 
-                       _activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    if(activeItemIsCarry || _activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    {
                         ApplyActiveItem();
+                    }
                     break;
             }
 

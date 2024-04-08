@@ -19,6 +19,8 @@ public class ItemController : MonoBehaviour
     [SerializeField] private GameObject _objPrefab;
     private GameObject _obj;
 
+    public event Action OnItemBroke;
+
     public bool IsUpdating
     {
         set => _isUpdating = value;
@@ -59,6 +61,7 @@ public class ItemController : MonoBehaviour
         if (!_itemObject.IsItemCountZero()) return;
 
         InventoryController.GetInstance().RemoveItem();
+        OnItemBroke?.Invoke();
         Destroy(gameObject);
     }
 

@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 9098892315502723841, guid: 1f5cb09b810a4734ba01ad960e8377c2, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 778d597e28e7b6a4f87e2d04226dbef4, type: 3}
-  _isCanSold: 0
-  _isDroped: 0
-  _id: 17
-  _price: 13
-  _type: 2
-  _plantRare: 100
-  _plant: {fileID: 7466416180723959882, guid: 2ba25a77febfba549b85a4b6a7281f7f, type: 3}
+  <IsCanSold>k__BackingField: 0
+  <Id>k__BackingField: 17
+  <Price>k__BackingField: 8
+  <Type>k__BackingField: 2
+  <PlantRare>k__BackingField: 100
+  <Plant>k__BackingField: {fileID: 7466416180723959882, guid: 2ba25a77febfba549b85a4b6a7281f7f, type: 3}
