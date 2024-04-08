@@ -73,9 +73,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chController = GetComponent<CharacterController>();
+        _handsAnimManager.OnHideItem += GetNewItem;
+
         _eventInstance = AudioController.GetInstance().CreateInstance(FMODEvents.GetInstance().WalkOnGrass);
 
-        _handsAnimManager.OnHideItem += GetNewItem;
     }
 
     private void Update()
