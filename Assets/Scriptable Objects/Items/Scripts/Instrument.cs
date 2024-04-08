@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Instrument: Item
 {
-    public int _level;
-    public int _maxDurability;
+    [field: SerializeField] public int Level { get; private set; }
+    [field: SerializeField] public int MaxDurability { get; private set; }
+    [field: SerializeField] public InstrumentTypeEnum InstrumentType { get; private set; }
+
     protected int _durability = 0;
-    public InstrumentTypeEnum _instrumentType;
 
     public int Durability
     {

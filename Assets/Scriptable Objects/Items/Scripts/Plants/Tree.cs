@@ -8,8 +8,6 @@ using UnityEngine.Rendering;
 [CreateAssetMenu(fileName = "New Seed Object", menuName = "Inventory System/Items/Tree")]
 public class Tree : Plant
 {
-    public TreeTypeEnum _treeType;
-
     [Header("Tree Prefab")]
     [SerializeField] private GameObject _treeVisualizationObj;
     [SerializeField] private GameObject _treePrefab;
@@ -31,7 +29,7 @@ public class Tree : Plant
         if (IsSaplingObjNull()) return;
         if (_treeCheck.IsOnObject || _treeCheck.IsNearTree) return;
 
-        _amount--;
+        Amount--;
         var tree = Instantiate(_treePrefab);
         tree.transform.position = new Vector3(_saplingObj.transform.position.x,
                                               0.55f,

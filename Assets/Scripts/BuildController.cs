@@ -44,7 +44,7 @@ public class BuildController : MonoBehaviour
             List<Item> neededItems = items.Where(item =>
             {
                 if (item == null) return false;
-                if (item._id != neededItem._item._id) return false;
+                if (item.Id != neededItem._item.Id) return false;
 
                 return true;
             }).ToList();

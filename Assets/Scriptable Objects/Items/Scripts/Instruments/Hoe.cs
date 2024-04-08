@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Hoe")]
 public class Hoe : Instrument
 {
+    [field: SerializeField] public int TimeWork { get; private set; }
+
     private const string OPACITY = "_OPACITY";
     private const string BASE_COLOR = "_BASE_COLOR";
 
@@ -13,20 +15,17 @@ public class Hoe : Instrument
     private SeedbedChecking _seedbedCheck;
     private Renderer _seedbedRend;
 
-    public int _timeWork;
-
     private bool IsPatchObjNull() => _seedbedObj == null;
 
     public override void Init()
     {
-        _durability = _maxDurability;
-        _amount = 1;
+        _durability = MaxDurability;
+        Amount = 1;
     }
 
     private void MakePath()
     {
         _durability--;
-        PlayerController.GetInstance()._hands.SetBool("IsUsingHoe", false);
         _seedbedObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         foreach (Transform seedbedLOD in _seedbedObj.transform)
         {
@@ -45,9 +44,7 @@ public class Hoe : Instrument
         if (IsPatchObjNull()) return;
         if (_seedbedCheck.IsOnObject) return;
 
-        PlayerController.GetInstance()._hands.SetBool(AnimPropConstants.IS_USING_HOE, true);
-
-        UIController.GetInstance().ProgressBar(_timeWork, MakePath);
+        UIController.GetInstance().ProgressBar(TimeWork, MakePath);
     }
 
     public override GameObject Updating(GameObject obj, GameObject prefab)

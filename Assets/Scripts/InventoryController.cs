@@ -148,7 +148,7 @@ public class InventoryController : MonoBehaviour
                     Drop(ChestItems);
                     break;
             }
-            dropItem.Item._isDroped = true;
+            dropItem.Item.IsDroped = true;
             dropItem.transform.position = _hand.position;
             _movedItemsModel = null;
             UIController.GetInstance().UnpinItemFromMouse();
@@ -161,7 +161,7 @@ public class InventoryController : MonoBehaviour
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
-        dropItem.Item._isDroped = true;
+        dropItem.Item.IsDroped = true;
         dropItem.transform.position = _hand.position;
     }
 
@@ -231,17 +231,20 @@ public class InventoryController : MonoBehaviour
             _movedItemsModel.SecondIndex = index;
             MoveItemToOtherCell();
 
+            bool activeItemIsCarry = _activePlayerItemIndex == _movedItemsModel.FirstIndex &&
+                                    _movedItemsModel.FirstCellTypeEnum == CellTypeEnum.Player;
+
             switch (type)
             {
                 case CellTypeEnum.Inventory:
                 case CellTypeEnum.Chest:
-                    if (_activePlayerItemIndex == _movedItemsModel.FirstIndex)
-                        ApplyActiveItem();
+                    if (activeItemIsCarry) ApplyActiveItem();
                     break;
                 case CellTypeEnum.Player:
-                    if(_activePlayerItemIndex == _movedItemsModel.FirstIndex || 
-                       _activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    if(activeItemIsCarry || _activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    {
                         ApplyActiveItem();
+                    }
                     break;
             }
 

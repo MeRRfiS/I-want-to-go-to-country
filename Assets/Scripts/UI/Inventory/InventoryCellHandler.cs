@@ -82,13 +82,13 @@ public class InventoryCellHandler : MonoBehaviour, IPointerClickHandler
 
         if (item == null) return;
 
-        switch (item._type)
+        switch (item.Type)
         {
             case ItemTypeEnum.None:
                 break;
             case ItemTypeEnum.Instrument:
                 Instrument instrument = item as Instrument;
-                if (instrument._instrumentType == InstrumentTypeEnum.Funnel)
+                if (instrument.InstrumentType == InstrumentTypeEnum.Funnel)
                 {
                     Funnel funnel = item as Funnel;
                     _waterSlider.value = funnel.Usings;

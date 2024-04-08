@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using UnityEngine;
 
 public class Plant: Item
 {
-    public PlantTypeEnum _plantRare;
+    [field: SerializeField] public PlantTypeEnum PlantRare { get; private set; }
 }
