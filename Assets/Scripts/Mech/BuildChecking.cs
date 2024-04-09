@@ -78,7 +78,8 @@ public class BuildChecking : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(_rayStart.position, side, out hitSideTwo, MechConstants.DISTANCE_TO_BUILDING))
         {
-            if (hitSideTwo.collider.CompareTag(TagConstants.BUILDING))
+            if (hitSideTwo.collider.CompareTag(TagConstants.BUILDING) ||
+                hitSideTwo.collider.CompareTag(TagConstants.CHEST))
             {
                 hit = hitSideTwo;
             }
@@ -88,7 +89,8 @@ public class BuildChecking : MonoBehaviour
 
         if (Physics.Raycast(_rayStart.position, -side, out hitSideOne, MechConstants.DISTANCE_TO_BUILDING))
         {
-            if (hitSideOne.collider.CompareTag(TagConstants.BUILDING))
+            if (hitSideOne.collider.CompareTag(TagConstants.BUILDING) ||
+                hitSideOne.collider.CompareTag(TagConstants.CHEST))
             {
                 hit = hitSideOne;
             }
