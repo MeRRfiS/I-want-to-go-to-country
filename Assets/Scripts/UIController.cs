@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _time;
     [SerializeField] private TextMeshProUGUI _fps;
     [SerializeField] private TextMeshProUGUI _money;
+    [SerializeField] private GameObject _buildInfo;
 
     [Header("Inventory Menu")]
     [SerializeField] private InventoryUI _mainInventory;
@@ -66,6 +67,7 @@ public class UIController : MonoBehaviour
     private UnityEvent eventProgressBar = new UnityEvent();
 
     public static UIController GetInstance() => instance;
+    public void ChangeBuildInfoActive(bool active) => _buildInfo.SetActive(active);
     public bool InventoryActiveSelf() => _mainInventory.gameObject.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;

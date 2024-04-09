@@ -1,0 +1,54 @@
+{
+    "name": "Build Input",
+    "maps": [
+        {
+            "name": "Rotation",
+            "id": "6ad52dc2-807c-4770-a5dd-20c9ecce2a87",
+            "actions": [
+                {
+                    "name": "Rotation Left",
+                    "type": "Button",
+                    "id": "6fca1ece-3c3e-416e-a39f-7f02075408d1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Rotation Right",
+                    "type": "Button",
+                    "id": "20dad058-ee65-4728-acdf-c103087ccec1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fb6dd392-7a5e-4fc7-953d-267e62f49288",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a3b329a-7dc5-407d-a5c1-9745235b5077",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
