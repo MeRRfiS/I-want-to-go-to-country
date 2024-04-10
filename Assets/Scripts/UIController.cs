@@ -15,6 +15,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _money;
     [SerializeField] private GameObject _buildInfo;
 
+    [Header("Game Menu")]
+    [SerializeField] private GameMenuUIManager _gameMenu;
+
     [Header("Inventory Menu")]
     [SerializeField] private InventoryUI _mainInventory;
     [SerializeField] private InventoryUI _playerInventory;
@@ -68,6 +71,7 @@ public class UIController : MonoBehaviour
 
     public static UIController GetInstance() => instance;
     public void ChangeBuildInfoActive(bool active) => _buildInfo.SetActive(active);
+    public bool GameMenuActiveSelf() => _gameMenu.gameObject.activeSelf;
     public bool InventoryActiveSelf() => _mainInventory.gameObject.activeSelf;
     public bool ShopActiveSelf() => _shop.activeSelf;
     public bool QuestMenuActiveSelf() => _questMenu.activeSelf;
@@ -201,6 +205,17 @@ public class UIController : MonoBehaviour
     {
         eventProgressBar.RemoveAllListeners();
         _usingProgressBar = false;
+    }
+
+    public void SwitchActiveGameMenu()
+    {
+        bool state = !_gameMenu.gameObject.activeSelf;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        PlayerController.GetInstance().SwitchActiveController(!state);
+
+        SwitchActiveMouse(state);
+        _gameMenu.gameObject.SetActive(state);
     }
 
     public void SwitchActiveInventoryMenu()

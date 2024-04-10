@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ChestUI : MonoBehaviour
 {
-    private bool BlockerInputSystem() => true;
+    private bool BlockerPlayerInputSystem() => true;
+    private BlockUIEnum BlockerUIInputSystem() => BlockUIEnum.ChestMenu;
 
     private void OnEnable()
     {
-        PlayerInputSystem.BlockInputSystem += BlockerInputSystem;
+        PlayerInputSystem.BlockInputSystem += BlockerPlayerInputSystem;
+        UIInputSystem.BlockInputSystem += BlockerUIInputSystem;
     }
 
     private void OnDisable()
     {
-        PlayerInputSystem.BlockInputSystem -= BlockerInputSystem;
+        PlayerInputSystem.BlockInputSystem -= BlockerPlayerInputSystem;
+        UIInputSystem.BlockInputSystem -= BlockerUIInputSystem;
     }
 }
