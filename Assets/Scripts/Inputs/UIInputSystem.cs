@@ -8,26 +8,28 @@ using UnityEngine.InputSystem;
 
 public class UIInputSystem : MonoBehaviour
 {
-    public void CloseGame(InputAction.CallbackContext context)
-    {
-        if (!context.started) return;
+    public static Func<BlockUIEnum> BlockInputSystem;
 
-        Application.Quit();
-    }
-
-    public static Func<bool> BlockInputSystem;
-
-    private bool BlockStatus()
+    private bool IsBlocked(BlockUIEnum status)
     {
         if (BlockInputSystem == null) return false;
 
-        return BlockInputSystem.Invoke();
+        return BlockInputSystem.Invoke() != status;
+    }
+
+    public void CloseGame(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if (IsBlocked(BlockUIEnum.GameMenu)) return;
+        if (UIController.GetInstance().GameMenuActiveSelf()) return;
+
+        UIController.GetInstance().SwitchActiveGameMenu();
     }
 
     public void Inventory(InputAction.CallbackContext context)
     {
         if (!context.started) return;
-        if (BlockStatus()) return;
+        if (IsBlocked(BlockUIEnum.InventoryMenu)) return;
 
         UIController.GetInstance().SwitchActiveInventoryMenu();
     }

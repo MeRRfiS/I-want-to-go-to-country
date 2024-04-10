@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class QuestUI : MonoBehaviour
 {
-    private bool BlockerInputSystem() => true;
+    private bool BlockerPlayerInputSystem() => true;
+    private BlockUIEnum BlockerUIInputSystem() => BlockUIEnum.QuestMenu;
 
     private void OnEnable()
     {
-        PlayerInputSystem.BlockInputSystem += BlockerInputSystem; 
-        UIInputSystem.BlockInputSystem += BlockerInputSystem;
+        PlayerInputSystem.BlockInputSystem += BlockerPlayerInputSystem; 
+        UIInputSystem.BlockInputSystem += BlockerUIInputSystem;
     }
 
     private void OnDisable()
     {
-        PlayerInputSystem.BlockInputSystem -= BlockerInputSystem;
-        UIInputSystem.BlockInputSystem -= BlockerInputSystem;
+        PlayerInputSystem.BlockInputSystem -= BlockerPlayerInputSystem;
+        UIInputSystem.BlockInputSystem -= BlockerUIInputSystem;
     }
 }
