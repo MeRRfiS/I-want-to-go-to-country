@@ -85,8 +85,11 @@ public class PlantController : MonoBehaviour
         }
     }
 
-    public void Fertilizering(int level)
+    public void Fertilizering(int level, Material material)
     {
+        if (_isFertilized) return;
+        if (_isPlantGrow) return;
+
         switch (_type)
         {
             case PlantTypeEnum.Normal:
@@ -111,7 +114,8 @@ public class PlantController : MonoBehaviour
                 break;
         }
 
-        FertilizeringPlant();
+        transform.GetComponentInParent<Seedbed>().ChangeMaterial(material);
+        _isFertilized = true;
     }
 
     public void PlantDead()
@@ -157,14 +161,6 @@ public class PlantController : MonoBehaviour
     {
         _isPlantGrow = true;
         _player.Pause();
-    }
-
-    private void FertilizeringPlant()
-    {
-        if (_isFertilized) return;
-        if (_isPlantGrow) return;
-
-        _isFertilized = true;
     }
 
     private IEnumerator WaitWater()

@@ -7,6 +7,8 @@ public class Fertilizers : Item
     [field: SerializeField] public int Level { get; private set; }
     private int _usings;
 
+    [SerializeField] private Material _materialOfEarth;
+
     public int Usings
     {
         get => _usings;
@@ -36,7 +38,7 @@ public class Fertilizers : Item
 
             _usings--;
             PlantController plant = hitTransform.GetComponent<PlantController>();
-            plant.Fertilizering(Level);
+            plant.Fertilizering(Level, _materialOfEarth);
         }
     }
 }

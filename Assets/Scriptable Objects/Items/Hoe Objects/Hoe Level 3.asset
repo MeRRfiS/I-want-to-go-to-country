@@ -22,3 +22,5 @@ MonoBehaviour:
   <MaxDurability>k__BackingField: 75
   <InstrumentType>k__BackingField: 1
   <TimeWork>k__BackingField: 3
+  _seedbedPrefab: {fileID: 2579580012166879244, guid: a78987923da648648b20ac846d7225ea, type: 3}
+  _seedbedVisualization: {fileID: 3921868736323924646, guid: 826df539963fcd34c91414a4762afac0, type: 3}

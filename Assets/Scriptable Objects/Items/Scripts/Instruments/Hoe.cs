@@ -8,6 +8,10 @@ public class Hoe : Instrument
 {
     [field: SerializeField] public int TimeWork { get; private set; }
 
+    [Header("Hoe's prefabs")]
+    [SerializeField] private GameObject _seedbedPrefab;
+    [SerializeField] private GameObject _seedbedVisualization;
+
     private const string OPACITY = "_OPACITY";
     private const string BASE_COLOR = "_BASE_COLOR";
 
@@ -26,15 +30,11 @@ public class Hoe : Instrument
     private void MakePath()
     {
         _durability--;
-        _seedbedObj.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        foreach (Transform seedbedLOD in _seedbedObj.transform)
-        {
-            seedbedLOD.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-        }
-        _seedbedRend.material.SetFloat(OPACITY, 1f);
-        _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
-        _seedbedObj.GetComponent<Seedbed>().DestroyChecker();
-        MonoBehaviour.Instantiate(_seedbedObj);
+        var seedbed = Instantiate(_seedbedPrefab);
+        seedbed.transform.position = _seedbedObj.transform.position;
+        Destroy(_seedbedObj);
+
+        UIController.GetInstance().StopProgressBar();
         _seedbedCheck = null;
         _seedbedObj = null;
     }
@@ -49,12 +49,6 @@ public class Hoe : Instrument
 
     public override GameObject Updating(GameObject obj, GameObject prefab)
     {
-        _seedbedObj = obj;
-        if (!IsPatchObjNull())
-        {
-            _seedbedCheck = obj.GetComponent<Seedbed>().Checker;
-        }
-
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -63,40 +57,9 @@ public class Hoe : Instrument
                             out hit,
                             ItemConstants.MAX_DISTANCE_TO_EARTH) && hit.collider.CompareTag(TagConstants.EARTH))
         {
-            if (IsPatchObjNull())
-            {
-                _seedbedObj = MonoBehaviour.Instantiate(prefab);
-                _seedbedCheck = _seedbedObj.GetComponent<Seedbed>().Checker;
-            }
-
-            Vector3 point = Vector3.zero;
-            point = new Vector3(_seedbedCheck.IsVerFasten ? _seedbedCheck.FastenPos.x : hit.point.x,
-                                1,
-                                _seedbedCheck.IsHorFasten ? _seedbedCheck.FastenPos.z : hit.point.z);
-            if (Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
-            {
-                _seedbedCheck.ResetFastenChecking();
-                point = hit.point;
-            }
-            _seedbedObj.transform.position = new Vector3(point.x,
-                                                      1,
-                                                      point.z);
-
-            _seedbedRend = GetActiveLOD();
-            _seedbedRend.material.SetFloat(OPACITY, 0.8f);
-            if (_seedbedCheck && _seedbedCheck.IsOnObject)
-            {
-                _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0));
-            }
-            else if (_seedbedCheck)
-            {
-                _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
-            }
-
-            if (_seedbedCheck.IsOnObject)
-            {
-                UIController.GetInstance().StopProgressBar();
-            }
+            InstantiateVisual();
+            SetPosition(hit);
+            CheckPosition();
         }
         else
         {
@@ -107,20 +70,48 @@ public class Hoe : Instrument
         return _seedbedObj;
     }
 
-    private Renderer GetActiveLOD()
+    private void CheckPosition()
     {
-        Renderer result = null;
-
-        LODGroup lodGroup = _seedbedObj.GetComponent<LODGroup>();
-        Transform lodTransform = lodGroup.transform;
-
-        foreach (Transform child in lodTransform)
+        _seedbedRend.material.SetFloat(OPACITY, 0.6f);
+        if (_seedbedCheck && _seedbedCheck.IsOnObject)
         {
-            result = child.GetComponent<Renderer>();
-            if (result != null && result.isVisible) break;
+            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0));
+        }
+        else if (_seedbedCheck)
+        {
+            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
         }
 
-        return result;
+        if (_seedbedCheck.IsOnObject)
+        {
+            UIController.GetInstance().StopProgressBar();
+        }
+    }
+
+    private void SetPosition(RaycastHit hit)
+    {
+        Vector3 point = Vector3.zero;
+        point = new Vector3(_seedbedCheck.IsVerFasten ? _seedbedCheck.FastenPos.x : hit.point.x,
+                            1,
+                            _seedbedCheck.IsHorFasten ? _seedbedCheck.FastenPos.z : hit.point.z);
+        if (Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
+        {
+            _seedbedCheck.ResetFastenChecking();
+            point = hit.point;
+        }
+        _seedbedObj.transform.position = new Vector3(point.x,
+                                                     1,
+                                                     point.z);
+    }
+
+    private void InstantiateVisual()
+    {
+        if (IsPatchObjNull())
+        {
+            _seedbedObj = Instantiate(_seedbedVisualization);
+            _seedbedRend = _seedbedObj.transform.GetComponentInChildren<Renderer>();
+            _seedbedCheck = _seedbedObj.GetComponent<SeedbedChecking>();
+        }
     }
 
     public override GameObject StopUpdating()

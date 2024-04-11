@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Seedbed : MonoBehaviour
 {
-    [SerializeField] private SeedbedChecking checker;
+    [SerializeField] private List<Renderer> _seedbadLods;
 
-    public SeedbedChecking Checker
+    public void ChangeMaterial(Material material)
     {
-        get => checker;
-    }
+        if (material == null) return;
 
-    public void DestroyChecker()
-    {
-        Destroy(checker);
-        checker = null;
+        foreach(var lod in _seedbadLods)
+        {
+            lod.material = material;
+        }
     }
 }
