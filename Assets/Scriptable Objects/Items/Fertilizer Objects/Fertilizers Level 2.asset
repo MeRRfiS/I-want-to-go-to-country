@@ -16,6 +16,7 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 24425f5e45ad59c4781900901155e31e, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 24
-  <Price>k__BackingField: 450
+  <Price>k__BackingField: 10
   <Type>k__BackingField: 5
   <Level>k__BackingField: 2
+  _materialOfEarth: {fileID: 2100000, guid: d6c212d1bb36ff042a11dd72c703528f, type: 2}
