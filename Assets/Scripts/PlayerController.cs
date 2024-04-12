@@ -30,9 +30,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _hand;
 
     public static PlayerController GetInstance() => instance;
-    public bool HoldingObject() => _heldObject != null;
-    public bool HoldingItem() => _heldItem != null;
+    public bool IsHoldingObject() => _heldObject != null;
+    public bool IsHoldingItem() 
+    {
+        var result = _heldItem != null;
+
+        if (result) return result;
+        else if (_hand.childCount != 0) return true;
+        else return false;
+    }
     private bool IsGrounded() => _chController.isGrounded;
+    private ItemController HeldItem()
+    {
+        if (_heldItem != null) return _heldItem;
+        else if (_hand.childCount != 0) return _hand.GetComponentInChildren<ItemController>();
+        else return null;
+    }
 
     public bool IsCanMoving
     {
@@ -205,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeActiveItemInHand(Item item)
     {
-        if (_heldItem != null)
+        if (HeldItem() != null)
         {
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
             HandsAnimationManager.GetInstance().IsChangingInst(true);
@@ -216,31 +229,33 @@ public class PlayerController : MonoBehaviour
         if (_newItem is Funnel)
         {
             HandsAnimationManager.GetInstance().IsHoldFunnel(true);
+            HandsAnimationManager.GetInstance().IsHoldInst(false);
         }
         else
         {
             HandsAnimationManager.GetInstance().IsHoldInst(true);
+            HandsAnimationManager.GetInstance().IsHoldFunnel(false);
         }
         HandsAnimationManager.GetInstance().OnChangeItem += ChangingInstrument;
     }
 
     public void DropItem()
     {
-        if (_heldItem == null) return;
+        if (HeldItem() == null) return;
 
         HandsAnimationManager.GetInstance().IsChangingInst(true);
         InventoryController.GetInstance().RemoveItem();
-        _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
+        _heldRigidbodyItem = HeldItem().GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
-        _heldItem.IsUpdating = false;
-        _heldItem.ApplyItemDisable();
-        _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+        HeldItem().IsUpdating = false;
+        HeldItem().ApplyItemDisable();
+        HeldItem().gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
         for (int i = 0; i < _heldItem.transform.childCount; i++)
         {
-            _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
+            HeldItem().transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
         }
-        _heldItem.transform.parent = null;
+        HeldItem().transform.parent = null;
         _heldRigidbodyItem = null;
         _heldItem = null;
     }
@@ -249,7 +264,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!_isCanUsingItem) return;
 
-        _heldItem.Item.UseItem();
+        HeldItem().Item.UseItem();
     }
 
     public void SwitchActiveController(bool state)
@@ -262,6 +277,9 @@ public class PlayerController : MonoBehaviour
 
     private void ChangingInstrument()
     {
+        if (_newItem == null) return;
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = false;
         ItemController heldItem = Instantiate(_newItem.Object);
 
         SetUpItemRigidbody(heldItem);
@@ -279,7 +297,7 @@ public class PlayerController : MonoBehaviour
         _heldItem.IsUpdating = true;
         _heldItem.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         //ToDo: Remove after create whole objects (https://trello.com/c/d3sKzxu6/26-remove-cycle)
-        for (int i = 0; i < _heldItem.transform.childCount; i++)
+        for (int i = 0; i < HeldItem().transform.childCount; i++)
         {
             _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         }
@@ -296,10 +314,10 @@ public class PlayerController : MonoBehaviour
 
     private void GetNewItem()
     {
-        if (_heldItem != null)
+        if (HeldItem() != null)
         {
-            Destroy(_heldItem.gameObject);
-            _heldItem.OnItemBroke -= HoldItemBroken;
+            Destroy(HeldItem().gameObject);
+            HeldItem().OnItemBroke -= HoldItemBroken;
             _heldItem = null;
         }
 
@@ -308,18 +326,24 @@ public class PlayerController : MonoBehaviour
             if (_newItem is Funnel)
             {
                 HandsAnimationManager.GetInstance().IsHoldFunnel(true);
+                HandsAnimationManager.GetInstance().IsHoldInst(false);
             }
             else
             {
                 HandsAnimationManager.GetInstance().IsHoldInst(true);
+                HandsAnimationManager.GetInstance().IsHoldFunnel(false);
             }
+        }
+        else
+        {
+            InventoryController.GetInstance().IsCanChangeActiveItem = true;
         }
     }
 
     private void HoldItemBroken()
     {
         HandsAnimationManager.GetInstance().IsChangingInst(true);
-        _heldItem.OnItemBroke -= HoldItemBroken;
+        HeldItem().OnItemBroke -= HoldItemBroken;
         _heldItem = null;
     }
 }

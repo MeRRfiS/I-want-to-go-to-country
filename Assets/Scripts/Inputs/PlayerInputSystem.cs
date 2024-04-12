@@ -57,7 +57,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (PlayerController.GetInstance().HoldingObject())
+        if (PlayerController.GetInstance().IsHoldingObject())
         {
             PlayerController.GetInstance().DropObject();
             return;
@@ -86,7 +86,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (!context.started) return;
 
-        if (PlayerController.GetInstance().HoldingItem())
+        if (PlayerController.GetInstance().IsHoldingItem())
         {
             PlayerController.GetInstance().DropItem();
         }
@@ -96,7 +96,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (context.started)
         {
-            if (!PlayerController.GetInstance().HoldingItem()) return;
+            if (!PlayerController.GetInstance().IsHoldingItem()) return;
 
             PlayerController.GetInstance().UseItemInPlayerHand();
         }
