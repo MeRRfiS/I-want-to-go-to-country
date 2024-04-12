@@ -57,6 +57,12 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (!context.started) return;
 
+        if (PlayerController.GetInstance().HoldingObject())
+        {
+            PlayerController.GetInstance().DropObject();
+            return;
+        }
+
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -65,14 +71,7 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hit.collider.tag)
             {
                 case TagConstants.HOLD:
-                    if (!PlayerController.GetInstance().HoldingObject())
-                    {
-                        PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
-                    }
-                    else
-                    {
-                        PlayerController.GetInstance().DropObject();
-                    }
+                    PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
                     break;
                 case TagConstants.INSTRUMENT:
                 case TagConstants.SEED:
