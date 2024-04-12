@@ -29,14 +29,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _holdArea;
     [SerializeField] private Transform _hand;
 
-    [Header("Animator")]
-    [SerializeField] private HandsAnimationManager _handsAnimManager;
-
     public static PlayerController GetInstance() => instance;
     public bool HoldingObject() => _heldObject != null;
     public bool HoldingItem() => _heldItem != null;
     private bool IsGrounded() => _chController.isGrounded;
-    private ItemController CurrentItem() => _heldItem;
 
     public bool IsCanMoving
     {
@@ -73,7 +69,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chController = GetComponent<CharacterController>();
-        _handsAnimManager.OnHideItem += GetNewItem;
+        HandsAnimationManager.GetInstance().OnHideItem += GetNewItem;
 
         _eventInstance = AudioController.GetInstance().CreateInstance(FMODEvents.GetInstance().WalkOnGrass);
 
@@ -117,7 +113,7 @@ public class PlayerController : MonoBehaviour
         _direction.z = direction.z; 
         _chController.Move(_direction * PlayerConstants.MOVEMENT_SPEED * Time.deltaTime);
 
-        _handsAnimManager.IsMoving(_chController.velocity.x != 0 || _chController.velocity.y != 0);
+        HandsAnimationManager.GetInstance().IsMoving(_chController.velocity.x != 0 || _chController.velocity.y != 0);
     }
 
     private void ApplyRotation()
@@ -211,28 +207,28 @@ public class PlayerController : MonoBehaviour
     {
         if (_heldItem != null)
         {
-            _handsAnimManager.IsChangeItem = item != null;
-            _handsAnimManager.IsChangingInst(true);
+            HandsAnimationManager.GetInstance().IsChangeItem = item != null;
+            HandsAnimationManager.GetInstance().IsChangingInst(true);
         }
         if (item == null) return;
 
         _newItem = item;
         if (_newItem is Funnel)
         {
-            _handsAnimManager.IsHoldFunnel(true);
+            HandsAnimationManager.GetInstance().IsHoldFunnel(true);
         }
         else
         {
-            _handsAnimManager.IsHoldInst(true);
+            HandsAnimationManager.GetInstance().IsHoldInst(true);
         }
-        _handsAnimManager.OnChangeItem += ChangingInstrument;
+        HandsAnimationManager.GetInstance().OnChangeItem += ChangingInstrument;
     }
 
     public void DropItem()
     {
         if (_heldItem == null) return;
 
-        _handsAnimManager.IsChangingInst(true);
+        HandsAnimationManager.GetInstance().IsChangingInst(true);
         InventoryController.GetInstance().RemoveItem();
         _heldRigidbodyItem = _heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
@@ -261,6 +257,7 @@ public class PlayerController : MonoBehaviour
         _isCanMoving = state;
         _isCanRotation = state;
         _isCanUsingItem = state;
+        HandsAnimationManager.GetInstance().IsMoving(false);
     }
 
     private void ChangingInstrument()
@@ -270,7 +267,7 @@ public class PlayerController : MonoBehaviour
         SetUpItemRigidbody(heldItem);
         SetUpNewItem(heldItem);
 
-        _handsAnimManager.OnChangeItem -= ChangingInstrument;
+        HandsAnimationManager.GetInstance().OnChangeItem -= ChangingInstrument;
         _newItem = null;
     }
 
@@ -310,18 +307,18 @@ public class PlayerController : MonoBehaviour
         {
             if (_newItem is Funnel)
             {
-                _handsAnimManager.IsHoldFunnel(true);
+                HandsAnimationManager.GetInstance().IsHoldFunnel(true);
             }
             else
             {
-                _handsAnimManager.IsHoldInst(true);
+                HandsAnimationManager.GetInstance().IsHoldInst(true);
             }
         }
     }
 
     private void HoldItemBroken()
     {
-        _handsAnimManager.IsChangingInst(true);
+        HandsAnimationManager.GetInstance().IsChangingInst(true);
         _heldItem.OnItemBroke -= HoldItemBroken;
         _heldItem = null;
     }
