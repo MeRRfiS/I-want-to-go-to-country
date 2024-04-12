@@ -255,14 +255,6 @@ public class InventoryController : MonoBehaviour
     public void ChangeActiveItem(bool isPositiv = true, int index = -1)
     {
         if (!_isCanChangeActiveItem) return;
-        if (_isTimerChangeActiveItemWork)
-        {
-            return;
-        }
-        else
-        {
-            StartCoroutine(StartTimerToChangeActiveItem());
-        }
 
         int oldActivePlayerItemIndex = _activePlayerItemIndex;
         if (index == -1)
@@ -283,12 +275,12 @@ public class InventoryController : MonoBehaviour
         _chestInventory = chestInventory;
     }
 
-    private IEnumerator StartTimerToChangeActiveItem()
-    {
-        _isTimerChangeActiveItemWork = true;
+    //private IEnumerator StartTimerToChangeActiveItem()
+    //{
+    //    _isTimerChangeActiveItemWork = true;
 
-        yield return new WaitForSeconds(0.75f);
+    //    yield return new WaitForSeconds(0.75f);
 
-        _isTimerChangeActiveItemWork = false;
-    }
+    //    _isTimerChangeActiveItemWork = false;
+    //}
 }
