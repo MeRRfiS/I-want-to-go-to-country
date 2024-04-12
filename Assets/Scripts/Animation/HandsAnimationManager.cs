@@ -12,6 +12,7 @@ public class HandsAnimationManager : MonoBehaviour
     public bool IsChangeItem { private get; set; }
 
     public event Action OnHideItem;
+    public event Action OnNewItem;
     public event Action OnChangeItem;
 
     public static HandsAnimationManager GetInstance() => _instance;
@@ -41,20 +42,20 @@ public class HandsAnimationManager : MonoBehaviour
 
     public void InstrumentHideStart()
     {
-2        if (!IsChangeItem)
+        InventoryController.GetInstance().IsCanChangeActiveItem = false;
+        if (!IsChangeItem)
         {
             IsChangingInst(false);
         }
 
         IsHoldFunnel(false);
         IsHoldInst(false);
-
-        InventoryController.GetInstance().IsCanChangeActiveItem = false;
     }
 
     public void InstrumentHideFinish()
     {
         OnHideItem?.Invoke();
+        OnNewItem?.Invoke();
     }
 
     public void ItemChangeStart()

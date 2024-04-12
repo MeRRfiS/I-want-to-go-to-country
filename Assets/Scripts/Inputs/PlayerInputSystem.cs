@@ -151,7 +151,16 @@ public class PlayerInputSystem : MonoBehaviour
                     UIController.GetInstance().SwitchActiveShopMenu();
                     break;
                 case TagConstants.MAIL_BOX:
-                    hitObject.GetComponent<QuestSystemController>().LoadDayQuestListToUI();
+                    QuestSystemController questSystem;
+                    if (!hitObject.GetComponent<QuestSystemController>())
+                    {
+                        questSystem = hitObject.transform.GetComponentInParent<QuestSystemController>();
+                    }
+                    else
+                    {
+                        questSystem = hitObject.GetComponent<QuestSystemController>();
+                    }
+                    questSystem.LoadDayQuestListToUI();
                     UIController.GetInstance().SwitchActiveQuestMenu();
                     break;
                 case TagConstants.BUILDING:

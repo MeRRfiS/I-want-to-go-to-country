@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _chController = GetComponent<CharacterController>();
-        HandsAnimationManager.GetInstance().OnHideItem += GetNewItem;
+        HandsAnimationManager.GetInstance().OnHideItem += RemoveHeldItem;
 
         _eventInstance = AudioController.GetInstance().CreateInstance(FMODEvents.GetInstance().WalkOnGrass);
 
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateSound()
     {
-        if((_chController.velocity.x != 0 || _chController.velocity.y != 0) && IsGrounded())
+        if ((_chController.velocity.x != 0 || _chController.velocity.y != 0) && IsGrounded() && _isCanMoving)
         {
             PLAYBACK_STATE playbackState;
             _eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
@@ -223,7 +223,14 @@ public class PlayerController : MonoBehaviour
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
             HandsAnimationManager.GetInstance().IsChangingInst(true);
         }
-        if (item == null) return;
+        if (item == null)
+        {
+            HandsAnimationManager.GetInstance().OnChangeItem -= ChangingInstrument;
+            HandsAnimationManager.GetInstance().OnNewItem -= GetNewItem;
+            _newItem = null;
+
+            return;
+        }
 
         _newItem = item;
         if (_newItem is Funnel)
@@ -236,6 +243,7 @@ public class PlayerController : MonoBehaviour
             HandsAnimationManager.GetInstance().IsHoldInst(true);
             HandsAnimationManager.GetInstance().IsHoldFunnel(false);
         }
+        HandsAnimationManager.GetInstance().OnNewItem += GetNewItem;
         HandsAnimationManager.GetInstance().OnChangeItem += ChangingInstrument;
     }
 
@@ -245,6 +253,7 @@ public class PlayerController : MonoBehaviour
 
         HandsAnimationManager.GetInstance().IsChangingInst(true);
         InventoryController.GetInstance().RemoveItem();
+        UIController.GetInstance().StopProgressBar();
         _heldRigidbodyItem = HeldItem().GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = false;
         HeldItem().IsUpdating = false;
@@ -279,7 +288,6 @@ public class PlayerController : MonoBehaviour
     {
         if (_newItem == null) return;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = false;
         ItemController heldItem = Instantiate(_newItem.Object);
 
         SetUpItemRigidbody(heldItem);
@@ -312,7 +320,7 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyItem.transform.parent = _hand;
     }
 
-    private void GetNewItem()
+    private void RemoveHeldItem()
     {
         if (HeldItem() != null)
         {
@@ -320,8 +328,11 @@ public class PlayerController : MonoBehaviour
             HeldItem().OnItemBroke -= HoldItemBroken;
             _heldItem = null;
         }
+    }
 
-        if(_newItem != null)
+    private void GetNewItem()
+    {
+        if (_newItem != null)
         {
             if (_newItem is Funnel)
             {
@@ -333,10 +344,6 @@ public class PlayerController : MonoBehaviour
                 HandsAnimationManager.GetInstance().IsHoldInst(true);
                 HandsAnimationManager.GetInstance().IsHoldFunnel(false);
             }
-        }
-        else
-        {
-            InventoryController.GetInstance().IsCanChangeActiveItem = true;
         }
     }
 
