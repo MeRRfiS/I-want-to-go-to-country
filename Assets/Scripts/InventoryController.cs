@@ -268,11 +268,6 @@ public class InventoryController : MonoBehaviour
         }
         _activePlayerItemIndex = Mathf.Clamp(_activePlayerItemIndex, 
                                              0, MechConstants.MAX_ITEMS_IN_PLAYER - 1);
-        if (_activePlayerItemIndex == 0)
-        {
-            _activePlayerItemIndex = 0;
-            Debug.Log("1");
-        }
 
         if(_activePlayerItemIndex != oldActivePlayerItemIndex) ApplyActiveItem();
     }
