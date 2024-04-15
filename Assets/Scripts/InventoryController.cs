@@ -276,13 +276,4 @@ public class InventoryController : MonoBehaviour
     {
         _chestInventory = chestInventory;
     }
-
-    //private IEnumerator StartTimerToChangeActiveItem()
-    //{
-    //    _isTimerChangeActiveItemWork = true;
-
-    //    yield return new WaitForSeconds(0.75f);
-
-    //    _isTimerChangeActiveItemWork = false;
-    //}
 }
