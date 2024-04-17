@@ -10,7 +10,7 @@ public class InventoryController : MonoBehaviour
     private static InventoryController instance;
 
     private bool _isCanChangeActiveItem = true;
-    private bool _isTimerChangeActiveItemWork = false;
+    private bool _isOpenUI = false;
     private int _activePlayerItemIndex = 0;
     private MovedItemsModel _movedItemsModel;
     private Inventory _chestInventory;
@@ -27,6 +27,11 @@ public class InventoryController : MonoBehaviour
     public bool IsCanChangeActiveItem
     {
         set => _isCanChangeActiveItem = value;
+    }
+
+    public bool IsOpenUI
+    {
+        set => _isOpenUI = value;
     }
 
     public Item[] ItemsArray
@@ -255,6 +260,7 @@ public class InventoryController : MonoBehaviour
 
     public void ChangeActiveItem(bool isPositiv = true, int index = -1)
     {
+        if (_isOpenUI) return;
         if (!_isCanChangeActiveItem) return;
 
         int oldActivePlayerItemIndex = _activePlayerItemIndex;

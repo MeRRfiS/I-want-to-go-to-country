@@ -211,7 +211,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_gameMenu.gameObject.activeSelf;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        InventoryController.GetInstance().IsOpenUI = state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         SwitchActiveMouse(state);
@@ -223,7 +223,7 @@ public class UIController : MonoBehaviour
         bool state = !_mainInventory.gameObject.activeSelf;
 
         _mainInventory.RedrawInventory();
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        InventoryController.GetInstance().IsOpenUI = state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         _pinUp.gameObject.SetActive(state);
@@ -265,6 +265,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_craftMenu.gameObject.activeSelf;
 
+        InventoryController.GetInstance().IsOpenUI = state;
         PlayerController.GetInstance().SwitchActiveController(!state);
 
         CloseCraftInformation();
@@ -277,7 +278,7 @@ public class UIController : MonoBehaviour
     {
         bool state = !_chestMenu.activeSelf;
 
-        InventoryController.GetInstance().IsCanChangeActiveItem = !state;
+        InventoryController.GetInstance().IsOpenUI = state;
         PlayerController.GetInstance().SwitchActiveController(!state);
         _chestMainInventory.RedrawInventory();
 

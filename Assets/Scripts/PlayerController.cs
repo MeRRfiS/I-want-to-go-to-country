@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            _eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //_eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
@@ -220,6 +220,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() != null)
         {
+            Debug.Log($"{HeldItem()}: change item");
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
             HandsAnimationManager.GetInstance().IsChangingInst(true);
         }
