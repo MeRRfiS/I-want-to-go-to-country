@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66584b6d3a0bbd34da1cc339f4814db9, type: 3}
   m_Name: Flour
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 4766830021356505238, guid: f5e87a865edb01242bf74c18a5e5ffa1, type: 3}
+  <Object>k__BackingField: {fileID: 1990340260407891089, guid: 523d89e511c378d40be74f7a58f6caeb, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 43df179629c5cc943a7fee4c0246f0a0, type: 3}
   <IsCanSold>k__BackingField: 1
   <Id>k__BackingField: 40

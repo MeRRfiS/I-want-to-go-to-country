@@ -57,7 +57,11 @@ PrefabInstance:
       value: Wheat's Seed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8753862577869368807, guid: f734217a44856014ebeb928ff958eb95, type: 3}
+    - {fileID: 2556477992291368173, guid: f734217a44856014ebeb928ff958eb95, type: 3}
+    - {fileID: -1557681690532974319, guid: f734217a44856014ebeb928ff958eb95, type: 3}
+    - {fileID: 8985177396641931695, guid: f734217a44856014ebeb928ff958eb95, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f734217a44856014ebeb928ff958eb95, type: 3}
