@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8076655132376392480
 Transform:
@@ -117,6 +117,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4536328816644918611, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -4513656830763701894, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -2313841234142166303, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
       propertyPath: m_Name
       value: Bakery Obj
@@ -124,6 +136,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
       propertyPath: m_TagString
       value: Building
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697565049609618839, guid: 2dd12453b2bc55b4d8d4babe5b80b81e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
