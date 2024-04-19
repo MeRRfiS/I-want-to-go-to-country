@@ -3,7 +3,12 @@ guid: aa271cac36df2634590aa3b5c7890a79
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_2s_wheed_lvl5
+    second: {fileID: 2100000, guid: 90962469f492d4b41bc4791a952d323e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
