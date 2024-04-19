@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b738058385ef6ea49a75ebb2aa87b440, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6dde2ed3fb091842880a9947aecb0d0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: b738058385ef6ea49a75ebb2aa87b440, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 87fd4ab1177ef4643b00e9c08be9347b, type: 2}
     - target: {fileID: 919132149155446097, guid: b738058385ef6ea49a75ebb2aa87b440, type: 3}
       propertyPath: m_Name
       value: Jar_apple

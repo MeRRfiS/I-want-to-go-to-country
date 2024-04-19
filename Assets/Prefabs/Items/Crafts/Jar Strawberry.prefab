@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: efcdbcc27e7f83341a9f1a92e8d443cd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ea2ae6ddf6c71f94c8aa7d6381e29df0, type: 2}
+    - target: {fileID: -7511558181221131132, guid: efcdbcc27e7f83341a9f1a92e8d443cd, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d9d5e4896815ae4a9cdf93261d47f63, type: 2}
     - target: {fileID: 919132149155446097, guid: efcdbcc27e7f83341a9f1a92e8d443cd, type: 3}
       propertyPath: m_Name
       value: Jar_straw
