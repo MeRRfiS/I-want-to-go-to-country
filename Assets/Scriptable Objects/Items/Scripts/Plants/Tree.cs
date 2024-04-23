@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ public class Tree : Plant
         tree.transform.position = new Vector3(_saplingObj.transform.position.x,
                                               0.55f,
                                               _saplingObj.transform.position.z);
+        RuntimeManager.PlayOneShot(FMODEvents.instance.SeedPlant, tree.transform.position);
 
         Destroy(_saplingObj);
         _treeCheck = null;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{a83dc6b6-d1be-4f74-bd1a-ac066781b4e2}">
+	<object class="AudioFile" id="{0c656538-ac10-4f57-abf0-0402212a2c2a}">
 		<property name="assetPath">
-			<value>SFX/Walk/Grass/walk_grass_1.ogg</value>
+			<value>SFX/Axe/сокира 1.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.53333333333333333</value>
+			<value>0.52244897959183678</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{743bcdd0-3743-454a-8d9e-32e4a87e0a30}</destination>

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,6 +63,7 @@ public class ItemController : MonoBehaviour
 
         InventoryController.GetInstance().RemoveItem();
         OnItemBroke?.Invoke();
+        RuntimeManager.PlayOneShot(FMODEvents.instance.ItemBroke, transform.position);
         Destroy(gameObject);
     }
 
