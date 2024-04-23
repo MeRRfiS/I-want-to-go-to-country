@@ -21,4 +21,11 @@ public class Instrument: Item
 
         return false;
     }
+
+    public override void GetItemInHand()
+    {
+        HandsAnimationManager.GetInstance().IsHoldInst(true);
+        HandsAnimationManager.GetInstance().IsHoldFunnel(false);
+        HandsAnimationManager.GetInstance().IsHoldStaf(false);
+    }
 }

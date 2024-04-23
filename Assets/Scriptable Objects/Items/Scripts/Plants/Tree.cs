@@ -23,6 +23,7 @@ public class Tree : Plant
     public override void Init()
     {
         _materials = new List<Material>();
+        Amount = 5;
     }
 
     public override void UseItem()

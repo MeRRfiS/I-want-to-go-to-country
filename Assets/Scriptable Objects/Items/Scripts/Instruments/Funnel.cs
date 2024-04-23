@@ -27,6 +27,13 @@ public class Funnel : Instrument
         Amount = 1;
     }
 
+    public override void GetItemInHand()
+    {
+        HandsAnimationManager.GetInstance().IsHoldInst(false);
+        HandsAnimationManager.GetInstance().IsHoldFunnel(true);
+        HandsAnimationManager.GetInstance().IsHoldStaf(false);
+    }
+
     public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;

@@ -74,7 +74,6 @@ public class PlayerInputSystem : MonoBehaviour
                     PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
                     break;
                 case TagConstants.INSTRUMENT:
-                case TagConstants.SEED:
                 case TagConstants.ITEM:
                     PlayerController.GetInstance().PickupItem(hit.collider.gameObject);
                     break;
