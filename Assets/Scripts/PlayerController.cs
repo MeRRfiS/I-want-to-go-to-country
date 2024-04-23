@@ -220,9 +220,8 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() != null)
         {
-            Debug.Log($"{HeldItem()}: change item");
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
-            HandsAnimationManager.GetInstance().IsChangingInst(true);
+            HandsAnimationManager.GetInstance().IsChangingItem(true);
         }
         if (item == null)
         {
@@ -234,16 +233,8 @@ public class PlayerController : MonoBehaviour
         }
 
         _newItem = item;
-        if (_newItem is Funnel)
-        {
-            HandsAnimationManager.GetInstance().IsHoldFunnel(true);
-            HandsAnimationManager.GetInstance().IsHoldInst(false);
-        }
-        else
-        {
-            HandsAnimationManager.GetInstance().IsHoldInst(true);
-            HandsAnimationManager.GetInstance().IsHoldFunnel(false);
-        }
+        _newItem.GetItemInHand();
+
         HandsAnimationManager.GetInstance().OnNewItem += GetNewItem;
         HandsAnimationManager.GetInstance().OnChangeItem += ChangingInstrument;
     }
@@ -252,7 +243,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() == null) return;
 
-        HandsAnimationManager.GetInstance().IsChangingInst(true);
+        HandsAnimationManager.GetInstance().IsChangingItem(true);
         InventoryController.GetInstance().RemoveItem();
         UIController.GetInstance().StopProgressBar();
         _heldRigidbodyItem = HeldItem().GetComponent<Rigidbody>();
@@ -273,7 +264,8 @@ public class PlayerController : MonoBehaviour
     public void UseItemInPlayerHand()
     {
         if (!_isCanUsingItem) return;
-
+        if(HeldItem() == null) return;
+        
         HeldItem().Item.UseItem();
     }
 
@@ -335,22 +327,13 @@ public class PlayerController : MonoBehaviour
     {
         if (_newItem != null)
         {
-            if (_newItem is Funnel)
-            {
-                HandsAnimationManager.GetInstance().IsHoldFunnel(true);
-                HandsAnimationManager.GetInstance().IsHoldInst(false);
-            }
-            else
-            {
-                HandsAnimationManager.GetInstance().IsHoldInst(true);
-                HandsAnimationManager.GetInstance().IsHoldFunnel(false);
-            }
+            _newItem.GetItemInHand();
         }
     }
 
     private void HoldItemBroken()
     {
-        HandsAnimationManager.GetInstance().IsChangingInst(true);
+        HandsAnimationManager.GetInstance().IsChangingItem(true);
         HeldItem().OnItemBroke -= HoldItemBroken;
         _heldItem = null;
     }

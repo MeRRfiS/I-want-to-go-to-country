@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class HandsAnimationManager : MonoBehaviour
 {
+    private const string CHANGING_ITEM = "_IsChangingItem";
+    private const string HOLD_INTRUMENT = "_IsHoldInst";
+    private const string HOLD_FUNNEL = "_IsHoldFunnel";
+    private const string HOLD_STUF = "_IsHoldStuf";
+    private const string MOVING = "_IsMoving";
+
     [SerializeField] private Animator _hands;
 
     private static HandsAnimationManager _instance;
@@ -16,30 +22,36 @@ public class HandsAnimationManager : MonoBehaviour
     public event Action OnChangeItem;
 
     public static HandsAnimationManager GetInstance() => _instance;
-    public void IsChangingInst(bool status) 
+    public void IsChangingItem(bool status) 
     {
-        if (_hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_funel_pick") && status)
+        if(IsCanChangeItem())
         {
-            Debug.Log("1");
-        }
-
-        if(_hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_instrument_idle") ||
-           _hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_funel_idle") ||
-           _hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_Armature_Hands_Instrument_walk") ||
-           _hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_Armature_Hands_funel_walk"))
-        {
-            _hands.SetBool("_IsChangingInst", status);
-            Debug.Log("Yes, I`m change");
+            _hands.SetBool(CHANGING_ITEM, status);
         }
         else
         {
-            _hands.SetBool("_IsChangingInst", false);
-            Debug.Log($"No, I don't change: {_hands.GetCurrentAnimatorStateInfo(0).IsName("Hands_funel_pick")}");
+            _hands.SetBool(CHANGING_ITEM, false);
         }
-    } 
-    public void IsHoldFunnel(bool status) => _hands.SetBool("_IsHoldFunnel", status);
-    public void IsHoldInst(bool status) => _hands.SetBool("_IsHoldInst", status);
-    public void IsMoving(bool status) => _hands.SetBool("_IsMoving", status);
+    }
+    public void IsHoldInst(bool status) => _hands.SetBool(HOLD_INTRUMENT, status);
+    public void IsHoldFunnel(bool status) => _hands.SetBool(HOLD_FUNNEL, status);
+    public void IsHoldStaf(bool status) => _hands.SetBool(HOLD_STUF, status);
+    public void IsMoving(bool status) => _hands.SetBool(MOVING, status);
+
+    private bool IsCurrentAnimState(string state)
+    {
+        return _hands.GetCurrentAnimatorStateInfo(0).IsName(state);
+    }
+
+    private bool IsCanChangeItem()
+    {
+        return IsCurrentAnimState("Idle (Instruments)") ||
+           IsCurrentAnimState("Idle (Funnel)") ||
+           IsCurrentAnimState("Idle (Stuf)") ||
+           IsCurrentAnimState("Walk (Instruments)") ||
+           IsCurrentAnimState("Walk (Funnel)") ||
+           IsCurrentAnimState("Walk (Stuf)");
+    }
 
     private void Awake()
     {
@@ -54,11 +66,12 @@ public class HandsAnimationManager : MonoBehaviour
         InventoryController.GetInstance().IsCanChangeActiveItem = false;
         if (!IsChangeItem)
         {
-            IsChangingInst(false);
+            IsChangingItem(false);
         }
 
-        IsHoldFunnel(false);
         IsHoldInst(false);
+        IsHoldFunnel(false);
+        IsHoldStaf(false);
     }
 
     public void InstrumentHideFinish()
@@ -75,7 +88,7 @@ public class HandsAnimationManager : MonoBehaviour
 
     public void ItemChangeFinish()
     {
-        IsChangingInst(false);
+        IsChangingItem(false);
     }
 
     public void UnblockChangeItem()

@@ -16,6 +16,13 @@ public class Item : ScriptableObject
 
     public virtual void UseItem() { }
 
+    public virtual void GetItemInHand() 
+    {
+        HandsAnimationManager.GetInstance().IsHoldInst(false);
+        HandsAnimationManager.GetInstance().IsHoldFunnel(false);
+        HandsAnimationManager.GetInstance().IsHoldStaf(true);
+    }
+
     public virtual bool IsItemCountZero()
     {
         if (Amount == 0) return true;
