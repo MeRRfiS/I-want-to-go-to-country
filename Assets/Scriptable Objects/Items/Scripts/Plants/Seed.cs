@@ -8,6 +8,11 @@ public class Seed : Plant
 {
     [field: SerializeField] public GameObject Plant { get; private set; }
 
+    public override void Init()
+    {
+        Amount = 5;
+    }
+
     public override void UseItem()
     {
         Transform startPoint = Camera.main.transform;
