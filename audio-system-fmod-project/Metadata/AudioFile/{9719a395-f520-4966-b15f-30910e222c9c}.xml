@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9719a395-f520-4966-b15f-30910e222c9c}">
+		<property name="assetPath">
+			<value>SFX/Axe/axe_chopping.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.49328798185941042</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{743bcdd0-3743-454a-8d9e-32e4a87e0a30}</destination>
+		</relationship>
+	</object>
+</objects>

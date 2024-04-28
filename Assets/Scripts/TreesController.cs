@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,6 +85,7 @@ public class TreesController : MonoBehaviour
     public void ChoppingTree(int hitCount)
     {
         _chopTreeTime++;
+        RuntimeManager.PlayOneShot(FMODEvents.instance.TreeChop, transform.position);
         if (_chopTreeTime == hitCount)
         {
             int logCount = Random.Range(MechConstants.MIN_TREE_LOG,
