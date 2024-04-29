@@ -1,0 +1,494 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf1dab834d4ec34195b920ea7bbf9ec, type: 3}
+  m_Name: Asset
+  m_EditorClassIdentifier: 
+  m_RenderPipelineSettings:
+    supportShadowMask: 1
+    supportSSR: 0
+    supportSSRTransparent: 0
+    supportSSAO: 1
+    supportSSGI: 0
+    supportSubsurfaceScattering: 0
+    sssSampleBudget:
+      m_Values: 000000000000000000000000
+      m_SchemaId:
+        m_Id: With3Levels
+    supportVolumetrics: 0
+    supportVolumetricClouds: 0
+    supportLightLayers: 0
+    supportWater: 0
+    waterSimulationResolution: 64
+    waterCPUSimulation: 0
+    supportDistortion: 0
+    supportTransparentBackface: 0
+    supportTransparentDepthPrepass: 0
+    supportTransparentDepthPostpass: 0
+    colorBufferFormat: 74
+    supportCustomPass: 1
+    customBufferFormat: 8
+    supportedLitShaderMode: 1
+    planarReflectionResolution:
+      m_Values: 400000004000000040000000
+      m_SchemaId:
+        m_Id: With3Levels
+    cubeReflectionResolution:
+      m_Values: 800000008000000080000000
+      m_SchemaId:
+        m_Id: With3Levels
+    supportDecals: 0
+    supportDecalLayers: 0
+    supportSurfaceGradient: 0
+    decalNormalBufferHP: 0
+    msaaSampleCount: 1
+    supportMotionVectors: 0
+    supportDataDrivenLensFlare: 1
+    supportRuntimeAOVAPI: 0
+    supportDitheringCrossFade: 0
+    supportTerrainHole: 0
+    lightProbeSystem: 0
+    probeVolumeMemoryBudget: 1024
+    probeVolumeBlendingMemoryBudget: 128
+    supportProbeVolumeStreaming: 0
+    probeVolumeSHBands: 1
+    supportRayTracing: 0
+    supportedRayTracingMode: 1
+    lightLoopSettings:
+      cookieAtlasSize: 64
+      cookieFormat: 74
+      cookieAtlasLastValidMip: 0
+      cookieTexArraySize: 1
+      planarReflectionAtlasSize: 0
+      reflectionProbeCacheSize: 0
+      reflectionCubemapSize: 0
+      maxEnvLightsOnScreen: 0
+      reflectionCacheCompressed: 0
+      reflectionProbeFormat: 74
+      reflectionProbeTexCacheSize: 512
+      reflectionProbeTexLastValidCubeMip: 0
+      reflectionProbeTexLastValidPlanarMip: 0
+      reflectionProbeDecreaseResToFit: 0
+      skyReflectionSize: 128
+      skyLightingOverrideLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+      supportFabricConvolution: 0
+      maxDirectionalLightsOnScreen: 1
+      maxPunctualLightsOnScreen: 1
+      maxAreaLightsOnScreen: 1
+      maxCubeReflectionOnScreen: 1
+      maxPlanarReflectionOnScreen: 1
+      maxDecalsOnScreen: 1
+      maxLightsPerClusterCell: 1
+      maxLocalVolumetricFogSize: 0
+      maxLocalVolumetricFogOnScreen: 1
+    hdShadowInitParams:
+      maxShadowRequests: 8
+      directionalShadowsDepthBits: 16
+      shadowFilteringQuality: 0
+      areaShadowFilteringQuality: 0
+      punctualLightShadowAtlas:
+        shadowAtlasResolution: 128
+        shadowAtlasDepthBits: 16
+        useDynamicViewportRescale: 0
+      areaLightShadowAtlas:
+        shadowAtlasResolution: 4096
+        shadowAtlasDepthBits: 32
+        useDynamicViewportRescale: 1
+      cachedPunctualLightShadowAtlas: 128
+      cachedAreaLightShadowAtlas: 1024
+      allowDirectionalMixedCachedShadows: 0
+      shadowResolutionDirectional:
+        m_Values: 00000000000000000000000000000000
+        m_SchemaId:
+          m_Id: With4Levels
+      shadowResolutionPunctual:
+        m_Values: 00000000000000000000000000000000
+        m_SchemaId:
+          m_Id: With4Levels
+      shadowResolutionArea:
+        m_Values: 00010000000200000004000000080000
+        m_SchemaId:
+          m_Id: With4Levels
+      maxDirectionalShadowMapResolution: 1024
+      maxPunctualShadowMapResolution: 1
+      maxAreaShadowMapResolution: 2048
+      supportScreenSpaceShadows: 0
+      maxScreenSpaceShadowSlots: 4
+      screenSpaceShadowBufferFormat: 8
+    decalSettings:
+      drawDistance: 0
+      atlasWidth: 0
+      atlasHeight: 0
+      perChannelMask: 0
+    postProcessSettings:
+      m_LutSize: 32
+      lutFormat: 74
+      bufferFormat: 74
+    dynamicResolutionSettings:
+      enabled: 0
+      useMipBias: 0
+      enableDLSS: 0
+      DLSSPerfQualitySetting: 0
+      DLSSInjectionPoint: 0
+      DLSSUseOptimalSettings: 1
+      DLSSSharpness: 0.5
+      fsrOverrideSharpness: 0
+      fsrSharpness: 0.92
+      maxPercentage: 0
+      minPercentage: 0
+      dynResType: 0
+      upsampleFilter: 1
+      forceResolution: 0
+      forcedPercentage: 100
+      lowResTransparencyMinimumThreshold: 0
+      rayTracingHalfResThreshold: 0
+    lowresTransparentSettings:
+      enabled: 0
+      checkerboardDepthBuffer: 1
+      upsampleType: 1
+    xrSettings:
+      singlePass: 0
+      occlusionMesh: 0
+      cameraJitter: 0
+      allowMotionBlur: 0
+    postProcessQualitySettings:
+      NearBlurSampleCount: 030000000300000003000000
+      NearBlurMaxRadius:
+      - 0
+      - 0
+      - 0
+      FarBlurSampleCount: 030000000300000003000000
+      FarBlurMaxRadius:
+      - 0
+      - 0
+      - 0
+      DoFResolution: 040000000400000004000000
+      DoFHighQualityFiltering: 000000
+      DoFPhysicallyBased: 000000
+      LimitManualRangeNearBlur: 000000
+      MotionBlurSampleCount: 020000000200000002000000
+      BloomRes: 040000000400000004000000
+      BloomHighQualityFiltering: 000000
+      BloomHighQualityPrefiltering: 000000
+      ChromaticAberrationMaxSamples: 030000000300000003000000
+    lightSettings:
+      useContactShadow:
+        m_Values: 000000
+        m_SchemaId:
+          m_Id: With3Levels
+    maximumLODLevel:
+      m_Values: 000000000000000000000000
+      m_SchemaId:
+        m_Id: With3Levels
+    lodBias:
+      m_Values:
+      - 1
+      - 1
+      - 1
+      m_SchemaId:
+        m_Id: With3Levels
+    lightingQualitySettings:
+      AOStepCount: 020000000200000002000000
+      AOFullRes: 000000
+      AOMaximumRadiusPixels: 100000001000000010000000
+      AOBilateralUpsample: 000000
+      AODirectionCount: 010000000100000001000000
+      ContactShadowSampleCount: 040000000400000004000000
+      SSRMaxRaySteps: 000000000000000000000000
+      SSGIRaySteps: 000000000000000000000000
+      SSGIDenoise: 000000
+      SSGIHalfResDenoise: 000000
+      SSGIDenoiserRadius:
+      - 0
+      - 0
+      - 0
+      SSGISecondDenoise: 000000
+      RTAORayLength:
+      - 0.01
+      - 0.01
+      - 0.01
+      RTAOSampleCount: 010000000100000001000000
+      RTAODenoise: 000000
+      RTAODenoiserRadius:
+      - 0.001
+      - 0.001
+      - 0.001
+      RTGIRayLength:
+      - 0.01
+      - 0.01
+      - 0.01
+      RTGIFullResolution: 000000
+      RTGIClampValue:
+      - 0.001
+      - 0.001
+      - 0.001
+      RTGIRaySteps: 000000000000000000000000
+      RTGIDenoise: 000000
+      RTGIHalfResDenoise: 000000
+      RTGIDenoiserRadius:
+      - 0.001
+      - 0.001
+      - 0.001
+      RTGISecondDenoise: 000100
+      RTRMinSmoothness:
+      - 0
+      - 0
+      - 0
+      RTRSmoothnessFadeStart:
+      - 0
+      - 0
+      - 0
+      RTRRayLength:
+      - 0.01
+      - 0.01
+      - 0.01
+      RTRClampValue:
+      - 0.001
+      - 0.001
+      - 0.001
+      RTRFullResolution: 000000
+      RTRRayMaxIterations: 000000000000000000000000
+      RTRDenoise: 000000
+      RTRDenoiserRadius: 010000000100000001000000
+      RTRSmoothDenoising: 000000
+      Fog_ControlMode: 000000000000000000000000
+      Fog_Budget:
+      - 0
+      - 0
+      - 0
+      Fog_DepthRatio:
+      - 0
+      - 0
+      - 0
+    m_ObsoleteLightLayerName0: 
+    m_ObsoleteLightLayerName1: 
+    m_ObsoleteLightLayerName2: 
+    m_ObsoleteLightLayerName3: 
+    m_ObsoleteLightLayerName4: 
+    m_ObsoleteLightLayerName5: 
+    m_ObsoleteLightLayerName6: 
+    m_ObsoleteLightLayerName7: 
+    m_ObsoleteDecalLayerName0: 
+    m_ObsoleteDecalLayerName1: 
+    m_ObsoleteDecalLayerName2: 
+    m_ObsoleteDecalLayerName3: 
+    m_ObsoleteDecalLayerName4: 
+    m_ObsoleteDecalLayerName5: 
+    m_ObsoleteDecalLayerName6: 
+    m_ObsoleteDecalLayerName7: 
+    m_ObsoleteSupportRuntimeDebugDisplay: 0
+  allowShaderVariantStripping: 1
+  enableSRPBatcher: 1
+  availableMaterialQualityLevels: 0
+  m_DefaultMaterialQualityLevel: 1
+  diffusionProfileSettings: {fileID: 0}
+  virtualTexturingSettings:
+    streamingCpuCacheSizeInMegaBytes: 256
+    streamingMipPreloadTexturesPerFrame: 0
+    streamingPreloadMipCount: 1
+    streamingGpuCacheSettings:
+    - format: 0
+      sizeInMegaBytes: 128
+  m_UseRenderGraph: 1
+  m_Version: 22
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+  m_ObsoleteBakedOrCustomReflectionFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+  m_ObsoleteRealtimeReflectionFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
+  m_ObsoleteDefaultVolumeProfile: {fileID: 0}
+  m_ObsoleteDefaultLookDevProfile: {fileID: 0}
+  m_ObsoleteFrameSettingsMovedToDefaultSettings:
+    bitDatas:
+      data1: 0
+      data2: 0
+    lodBias: 0
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 0
+    msaaMode: 0
+    materialQuality: 0
+  m_ObsoleteBakedOrCustomReflectionFrameSettingsMovedToDefaultSettings:
+    bitDatas:
+      data1: 0
+      data2: 0
+    lodBias: 0
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 0
+    msaaMode: 0
+    materialQuality: 0
+  m_ObsoleteRealtimeReflectionFrameSettingsMovedToDefaultSettings:
+    bitDatas:
+      data1: 0
+      data2: 0
+    lodBias: 0
+    lodBiasMode: 0
+    lodBiasQualityLevel: 0
+    maximumLODLevel: 0
+    maximumLODLevelMode: 0
+    maximumLODLevelQualityLevel: 0
+    sssQualityMode: 0
+    sssQualityLevel: 0
+    sssCustomSampleBudget: 0
+    msaaMode: 0
+    materialQuality: 0
+  m_ObsoleteRenderPipelineResources: {fileID: 0}
+  m_ObsoleteRenderPipelineRayTracingResources: {fileID: 0}
+  m_ObsoleteBeforeTransparentCustomPostProcesses: []
+  m_ObsoleteBeforePostProcessCustomPostProcesses: []
+  m_ObsoleteAfterPostProcessCustomPostProcesses: []
+  m_ObsoleteBeforeTAACustomPostProcesses: []
+  m_ObsoleteShaderVariantLogLevel: 0
+  m_ObsoleteLensAttenuation: 0
+  m_ObsoleteDiffusionProfileSettingsList: []

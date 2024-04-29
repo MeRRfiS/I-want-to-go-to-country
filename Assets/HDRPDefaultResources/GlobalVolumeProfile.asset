@@ -24,7 +24,7 @@ MonoBehaviour:
     m_Value: 0
   resolution:
     m_OverrideState: 1
-    m_Value: 4096
+    m_Value: 1024
   shadowMultiplier:
     m_OverrideState: 1
     m_Value: 0
@@ -95,8 +95,8 @@ MonoBehaviour:
       m_OverrideState: 0
       m_Value: 0.5
     ambientProbeDimmer:
-      m_OverrideState: 0
-      m_Value: 1
+      m_OverrideState: 1
+      m_Value: 0
     castShadows:
       m_OverrideState: 0
       m_Value: 0
@@ -202,13 +202,13 @@ MonoBehaviour:
     m_Value: 0
   m_Resolution:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   m_HighQualityPrefiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_HighQualityFiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &-6705090281680366732
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -577,7 +577,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 20000
   updateMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   updatePeriod:
     m_OverrideState: 0
@@ -587,7 +587,7 @@ MonoBehaviour:
     m_Value: 1
   type:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   sphericalMode:
     m_OverrideState: 0
     m_Value: 1
@@ -628,8 +628,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0
   groundTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.4, g: 0.25, b: 0.15, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -643,11 +643,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
   spaceEmissionTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 8900000, guid: 7659947706e294d97a22faa1d4011724, type: 3}
   spaceEmissionMultiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 10
   spaceRotation:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
@@ -750,5 +750,5 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 50
   tint:
-    m_OverrideState: 1
-    m_Value: 25
+    m_OverrideState: 0
+    m_Value: 0
