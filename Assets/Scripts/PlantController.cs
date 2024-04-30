@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(SignalReceiver))]
 [RequireComponent(typeof(BoxCollider))]
 public class PlantController : MonoBehaviour
