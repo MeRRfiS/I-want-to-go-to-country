@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 6405.005, g: 3927.9165, b: 2884.7385, a: 1}
+  m_IndirectSpecularColor: {r: 6403.9404, g: 3927.233, b: 2884.3596, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -101890,6 +101890,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[9]
       value: 
       objectReference: {fileID: -524885071961334181, guid: 8b21ff0c09aa12b49807494c0671b760, type: 3}
+    - target: {fileID: -9145386247172035837, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
+      propertyPath: m_Materials.Array.data[17]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60fbaf6819c2e254493484da28c47520, type: 2}
     - target: {fileID: -8679921383154817045, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.99
@@ -101934,10 +101938,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[10]
       value: 
       objectReference: {fileID: -524885071961334181, guid: 8b21ff0c09aa12b49807494c0671b760, type: 3}
+    - target: {fileID: -7242181493793587771, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
+      propertyPath: m_Materials.Array.data[17]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60fbaf6819c2e254493484da28c47520, type: 2}
     - target: {fileID: -409681038864910937, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: -524885071961334181, guid: 8b21ff0c09aa12b49807494c0671b760, type: 3}
+    - target: {fileID: -409681038864910937, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
+      propertyPath: m_Materials.Array.data[17]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60fbaf6819c2e254493484da28c47520, type: 2}
     - target: {fileID: 919132149155446097, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
       propertyPath: m_Name
       value: MC_house
@@ -101946,6 +101958,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[10]
       value: 
       objectReference: {fileID: -524885071961334181, guid: 8b21ff0c09aa12b49807494c0671b760, type: 3}
+    - target: {fileID: 3119180376779342025, guid: 380d68d02c0ab1b49b9644952de6e35d, type: 3}
+      propertyPath: m_Materials.Array.data[17]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60fbaf6819c2e254493484da28c47520, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
