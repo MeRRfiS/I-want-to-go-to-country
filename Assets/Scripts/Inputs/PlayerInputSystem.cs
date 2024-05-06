@@ -63,6 +63,12 @@ public class PlayerInputSystem : MonoBehaviour
             return;
         }
 
+        if (PlayerController.GetInstance().IsHoldingNPC())
+        {
+            PlayerController.GetInstance().DropNPC();
+            return;
+        }
+
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -72,6 +78,9 @@ public class PlayerInputSystem : MonoBehaviour
             {
                 case TagConstants.HOLD:
                     PlayerController.GetInstance().PickupObject(hit.collider.gameObject);
+                    break;
+                case TagConstants.NPC:
+                    PlayerController.GetInstance().PickupNPC(hit.collider.GetComponent<NPCController>());
                     break;
                 case TagConstants.INSTRUMENT:
                 case TagConstants.ITEM:

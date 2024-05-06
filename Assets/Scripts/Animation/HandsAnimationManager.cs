@@ -9,6 +9,7 @@ public class HandsAnimationManager : MonoBehaviour
     private const string HOLD_INTRUMENT = "_IsHoldInst";
     private const string HOLD_FUNNEL = "_IsHoldFunnel";
     private const string HOLD_STUF = "_IsHoldStuf";
+    private const string HOLD_NPC = "_IsHoldNPC";
     private const string MOVING = "_IsMoving";
 
     [SerializeField] private Animator _hands;
@@ -26,6 +27,7 @@ public class HandsAnimationManager : MonoBehaviour
     public void IsHoldInst(bool status) => _hands.SetBool(HOLD_INTRUMENT, status);
     public void IsHoldFunnel(bool status) => _hands.SetBool(HOLD_FUNNEL, status);
     public void IsHoldStaf(bool status) => _hands.SetBool(HOLD_STUF, status);
+    public void IsHoldNPC(bool status) => _hands.SetBool(HOLD_NPC, status);
     public void IsMoving(bool status) => _hands.SetBool(MOVING, status);
 
     private void Awake()
