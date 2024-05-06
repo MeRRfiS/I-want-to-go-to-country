@@ -17,6 +17,7 @@ TagManager:
   - Building
   - Chest
   - Seedbed
+  - NPC
   layers:
   - Default
   - TransparentFX
