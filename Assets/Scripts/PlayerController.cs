@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _rotationPlayer;
     private Item _newItem;
     private GameObject _heldObject;
+    private NPCController _heldNPC;
     private Rigidbody _heldRigidbody;
     private Rigidbody _heldRigidbodyItem;
     private ItemController _heldItem;
@@ -28,9 +29,12 @@ public class PlayerController : MonoBehaviour
     [Header("Player object")]
     [SerializeField] private Transform _holdArea;
     [SerializeField] private Transform _hand;
+    [SerializeField] private Transform _npcHand;
 
     public static PlayerController GetInstance() => instance;
+    //TODO: Need to do better checking of holding
     public bool IsHoldingObject() => _heldObject != null;
+    public bool IsHoldingNPC() => _heldNPC != null;
     public bool IsHoldingItem() 
     {
         var result = _heldItem != null;
@@ -195,6 +199,39 @@ public class PlayerController : MonoBehaviour
         _heldRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         _heldRigidbody.transform.parent = _holdArea;
         _heldObject = heldObject;
+    }
+
+    public void PickupNPC(NPCController npc)
+    {
+        npc.GettingToHand();
+        Transform npcTransform = npc.transform;
+        npcTransform.parent = _npcHand;
+        npcTransform.localPosition = new Vector3(0, -0.003f, -0.001f);
+        npcTransform.localRotation = Quaternion.identity;
+
+        if (HeldItem() != null)
+        {
+            HeldItem().gameObject.SetActive(false);
+        }
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = false;
+
+        _heldNPC = npc;
+    }
+
+    public void DropNPC()
+    {
+        _heldNPC.GettingToHand();
+        _heldNPC.transform.parent = null;
+
+        if (HeldItem() != null)
+        {
+            HeldItem().gameObject.SetActive(true);
+        }
+
+        InventoryController.GetInstance().IsCanChangeActiveItem = true;
+
+        _heldNPC = null;
     }
 
     public void DropObject()

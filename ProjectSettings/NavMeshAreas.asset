@@ -11,9 +11,9 @@ NavMeshProjectSettings:
     cost: 1
   - name: Jump
     cost: 2
-  - name: 
-    cost: 1
-  - name: 
+  - name: Grass
+    cost: 5
+  - name: Road
     cost: 1
   - name: 
     cost: 1
@@ -73,9 +73,9 @@ NavMeshProjectSettings:
   m_Settings:
   - serializedVersion: 3
     agentTypeID: 0
-    agentRadius: 0.2
+    agentRadius: 0.185
     agentHeight: 0.5
-    agentSlope: 25
+    agentSlope: 30
     agentClimb: 0.75
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0

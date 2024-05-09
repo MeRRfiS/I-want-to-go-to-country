@@ -9,6 +9,7 @@ public class HandsAnimationManager : MonoBehaviour
     private const string HOLD_INTRUMENT = "_IsHoldInst";
     private const string HOLD_FUNNEL = "_IsHoldFunnel";
     private const string HOLD_STUF = "_IsHoldStuf";
+    private const string HOLD_NPC = "_IsHoldNPC";
     private const string MOVING = "_IsMoving";
 
     [SerializeField] private Animator _hands;
@@ -22,36 +23,12 @@ public class HandsAnimationManager : MonoBehaviour
     public event Action OnChangeItem;
 
     public static HandsAnimationManager GetInstance() => _instance;
-    public void IsChangingItem(bool status) 
-    {
-        if(IsCanChangeItem())
-        {
-            _hands.SetBool(CHANGING_ITEM, status);
-        }
-        else
-        {
-            _hands.SetBool(CHANGING_ITEM, false);
-        }
-    }
+    public void IsChangingItem(bool status) => _hands.SetBool(CHANGING_ITEM, status);
     public void IsHoldInst(bool status) => _hands.SetBool(HOLD_INTRUMENT, status);
     public void IsHoldFunnel(bool status) => _hands.SetBool(HOLD_FUNNEL, status);
     public void IsHoldStaf(bool status) => _hands.SetBool(HOLD_STUF, status);
+    public void IsHoldNPC(bool status) => _hands.SetBool(HOLD_NPC, status);
     public void IsMoving(bool status) => _hands.SetBool(MOVING, status);
-
-    private bool IsCurrentAnimState(string state)
-    {
-        return _hands.GetCurrentAnimatorStateInfo(0).IsName(state);
-    }
-
-    private bool IsCanChangeItem()
-    {
-        return IsCurrentAnimState("Idle (Instruments)") ||
-           IsCurrentAnimState("Idle (Funnel)") ||
-           IsCurrentAnimState("Idle (Stuf)") ||
-           IsCurrentAnimState("Walk (Instruments)") ||
-           IsCurrentAnimState("Walk (Funnel)") ||
-           IsCurrentAnimState("Walk (Stuf)");
-    }
 
     private void Awake()
     {

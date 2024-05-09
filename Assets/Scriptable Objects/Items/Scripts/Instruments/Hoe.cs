@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ public class Hoe : Instrument
         _durability--;
         var seedbed = Instantiate(_seedbedPrefab);
         seedbed.transform.position = _seedbedObj.transform.position;
+        RuntimeManager.PlayOneShot(FMODEvents.instance.SeedbedDig, seedbed.transform.position);
         Destroy(_seedbedObj);
 
         UIController.GetInstance().StopProgressBar();

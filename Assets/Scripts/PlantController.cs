@@ -1,10 +1,10 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[RequireComponent(typeof(PlayableDirector))]
 [RequireComponent(typeof(SignalReceiver))]
 [RequireComponent(typeof(BoxCollider))]
 public class PlantController : MonoBehaviour
@@ -61,6 +61,7 @@ public class PlantController : MonoBehaviour
     {
         if (_isPlantGrow)
         {
+            RuntimeManager.PlayOneShot(FMODEvents.instance.Harvest, transform.position);
             InventoryController.GetInstance().AddItemToMainInventory(_harvest.Copy(), _harvestAmount);
 
             Destroy(transform.parent.gameObject);
