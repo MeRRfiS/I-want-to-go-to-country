@@ -7330,7 +7330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 161243748}
-  _agentSetting: {fileID: 0}
   _surface: {fileID: 0}
   _npcObject: {fileID: 0}
   _face: {fileID: 0}
@@ -24059,7 +24058,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.526978
@@ -37324,7 +37323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 729300045}
-  _agentSetting: {fileID: 0}
   _surface: {fileID: 0}
   _npcObject: {fileID: 0}
   _face: {fileID: 0}
@@ -39761,7 +39759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "v. 0.13.92a\nEsc\tOpen game menu\nWASD\tMoving\nSpace\tJump\nQ\tDrop object\nE\tPickup\n\tInteraction\nI\tOpen
+  m_text: "v. 0.13.99a\nEsc\tOpen game menu\nWASD\tMoving\nSpace\tJump\nQ\tDrop object\nE\tPickup\n\tInteraction\nI\tOpen
     inventory\n\tClose inventory\nLMB\tUse instrument\n\tHarvesting\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -43590,7 +43588,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.904297
@@ -46749,7 +46747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 962679836}
-  _agentSetting: {fileID: 0}
   _surface: {fileID: 0}
   _npcObject: {fileID: 0}
   _face: {fileID: 0}
@@ -48105,7 +48102,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.949364
@@ -51552,7 +51549,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.848304
@@ -52894,7 +52891,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.9226427
@@ -57331,7 +57328,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.8246565
@@ -57377,60 +57374,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25300a297ef380640b1e98086793bc62, type: 3}
---- !u!1 &1266598867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1266598869}
-  - component: {fileID: 1266598868}
-  m_Layer: 0
-  m_Name: Agent Setting
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!195 &1266598868
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266598867}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
---- !u!4 &1266598869
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266598867}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1267310271
 GameObject:
   m_ObjectHideFlags: 0
@@ -62981,7 +62924,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d105fc85148620d4fac64ab338ec3b47, type: 2}
+  - {fileID: 2100000, guid: 9925b482639a5c04eb62889ad1117807, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65780,7 +65723,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.858487
@@ -88036,7 +87979,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 7570746730652259354, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.554092
@@ -95554,7 +95497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1985297549}
-  _agentSetting: {fileID: 0}
   _surface: {fileID: 0}
   _npcObject: {fileID: 0}
   _face: {fileID: 0}
@@ -102668,7 +102610,7 @@ PrefabInstance:
     - target: {fileID: 4057627284423270163, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: _agentSetting
       value: 
-      objectReference: {fileID: 1266598868}
+      objectReference: {fileID: 0}
     - target: {fileID: 4923995352746688232, guid: 25300a297ef380640b1e98086793bc62, type: 3}
       propertyPath: m_AutoRepath
       value: 1
@@ -102756,4 +102698,3 @@ SceneRoots:
   - {fileID: 909266927}
   - {fileID: 1191656812}
   - {fileID: 1265262134}
-  - {fileID: 1266598869}

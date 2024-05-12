@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e24f646ba106a4aae0d544c1848bd9, type: 3}
   m_Name: Jam Maker
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 6832698831866541353, guid: a869ba7d7bf68c84db1deae7aefcf155, type: 3}
+  <Object>k__BackingField: {fileID: 5000393412875446697, guid: 39f23ebd04fa6c347a03e18d99c06107, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: b9daf70abc901044db1ceecf06ff5233, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 38

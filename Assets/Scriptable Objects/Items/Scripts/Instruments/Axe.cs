@@ -33,7 +33,7 @@ public class Axe : Instrument
         }
     }
 
-    public override GameObject Updating(GameObject obj, GameObject prefab)
+    public override void Updating()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
@@ -61,7 +61,7 @@ public class Axe : Instrument
             UIController.GetInstance().StopProgressBar();
         }
 
-        return base.Updating(obj, prefab);
+        base.Updating();
     }
 
     public override void Destruct()
