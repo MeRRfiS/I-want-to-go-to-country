@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e24f646ba106a4aae0d544c1848bd9, type: 3}
   m_Name: Mill
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 1492587046927832317, guid: f8b4c6cab45943243b7eab59c2b0e9e6, type: 3}
+  <Object>k__BackingField: {fileID: 7149362736211485934, guid: a3b59dfb19bc7aa4aa30876cb5537d55, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 26022b34657707446b4f2fb6fdb9fea8, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 35

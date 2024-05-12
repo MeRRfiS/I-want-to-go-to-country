@@ -20,7 +20,7 @@ public class Item : ScriptableObject
     {
         HandsAnimationManager.GetInstance().IsHoldInst(false);
         HandsAnimationManager.GetInstance().IsHoldFunnel(false);
-        HandsAnimationManager.GetInstance().IsHoldStaf(true);
+        HandsAnimationManager.GetInstance().IsHoldStaf(false);
     }
 
     public virtual bool IsItemCountZero()
@@ -32,7 +32,7 @@ public class Item : ScriptableObject
 
     public virtual void Init() { }
     public virtual void Destruct() { }
-    public virtual GameObject Updating(GameObject obj, GameObject prefab) => null;
+    public virtual void Updating() { }
     public virtual GameObject StopUpdating() => null;
 
     public Item Copy()

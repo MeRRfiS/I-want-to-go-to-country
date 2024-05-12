@@ -49,7 +49,7 @@ public class Building: Item
         _itemObj = null;
     }
 
-    public override GameObject Updating(GameObject obj, GameObject prefab)
+    public override void Updating()
     {
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
@@ -69,8 +69,6 @@ public class Building: Item
         {
             _itemObj = this.StopUpdating();
         }
-
-        return _itemObj;
     }
 
     private void SetRotation()
@@ -154,5 +152,12 @@ public class Building: Item
         UIController.GetInstance().ChangeBuildInfoActive(false);
 
         return _itemObj;
+    }
+
+    public override void GetItemInHand()
+    {
+        HandsAnimationManager.GetInstance().IsHoldInst(false);
+        HandsAnimationManager.GetInstance().IsHoldFunnel(false);
+        HandsAnimationManager.GetInstance().IsHoldStaf(true);
     }
 }
