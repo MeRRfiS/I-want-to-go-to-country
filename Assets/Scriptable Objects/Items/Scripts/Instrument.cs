@@ -24,6 +24,7 @@ public class Instrument: Item
 
     public override void GetItemInHand()
     {
+        IsInHand = true;
         HandsAnimationManager.GetInstance().IsHoldInst(true);
         HandsAnimationManager.GetInstance().IsHoldFunnel(false);
         HandsAnimationManager.GetInstance().IsHoldStaf(false);

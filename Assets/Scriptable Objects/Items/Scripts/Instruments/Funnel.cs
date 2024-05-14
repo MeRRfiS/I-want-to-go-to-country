@@ -29,6 +29,7 @@ public class Funnel : Instrument
 
     public override void GetItemInHand()
     {
+        IsInHand = true;
         HandsAnimationManager.GetInstance().IsHoldInst(false);
         HandsAnimationManager.GetInstance().IsHoldFunnel(true);
         HandsAnimationManager.GetInstance().IsHoldStaf(false);
