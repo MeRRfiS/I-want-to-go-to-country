@@ -45,6 +45,12 @@ public class Tree : Plant
 
     public override void Updating()
     {
+        if (!IsInHand)
+        {
+            StopUpdating();
+            return;
+        }
+
         if (!IsSaplingObjNull())
         {
             _treeCheck = _saplingObj.GetComponent<TreeChecking>();

@@ -14,13 +14,16 @@ public class Item : ScriptableObject
     [HideInInspector] public bool IsDroped { get; set; } = false;
     public int Amount { get; set; }
 
+    public bool IsInHand { get; set; }
+
     public virtual void UseItem() { }
 
     public virtual void GetItemInHand() 
     {
+        IsInHand = true;
         HandsAnimationManager.GetInstance().IsHoldInst(false);
         HandsAnimationManager.GetInstance().IsHoldFunnel(false);
-        HandsAnimationManager.GetInstance().IsHoldStaf(false);
+        HandsAnimationManager.GetInstance().IsHoldStaf(true);
     }
 
     public virtual bool IsItemCountZero()

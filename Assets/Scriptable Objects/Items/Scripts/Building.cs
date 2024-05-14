@@ -51,6 +51,12 @@ public class Building: Item
 
     public override void Updating()
     {
+        if (!IsInHand)
+        {
+            StopUpdating();
+            return;
+        }
+
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -152,12 +158,5 @@ public class Building: Item
         UIController.GetInstance().ChangeBuildInfoActive(false);
 
         return _itemObj;
-    }
-
-    public override void GetItemInHand()
-    {
-        HandsAnimationManager.GetInstance().IsHoldInst(false);
-        HandsAnimationManager.GetInstance().IsHoldFunnel(false);
-        HandsAnimationManager.GetInstance().IsHoldStaf(true);
     }
 }

@@ -256,6 +256,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() != null)
         {
+            HeldItem().Item.IsInHand = false;
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
             HandsAnimationManager.GetInstance().IsChangingItem(true);
         }
@@ -282,6 +283,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() == null) return;
 
+        HandsAnimationManager.GetInstance().IsChangeItem = false;
         HandsAnimationManager.GetInstance().IsChangingItem(true);
         InventoryController.GetInstance().RemoveItem();
         UIController.GetInstance().StopProgressBar();
