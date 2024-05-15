@@ -23,7 +23,8 @@ public class WorldController : MonoBehaviour
     private void UpdateLighting(float timePercent)
     {
         RenderSettings.ambientLight = _preset._ambientColor.Evaluate(timePercent);
-        RenderSettings.fogColor = _preset._forColor.Evaluate(timePercent);
+        Camera.main.backgroundColor = _preset._forColor.Evaluate(timePercent);
+        //RenderSettings.fogColor = _preset._forColor.Evaluate(timePercent);
 
         if(_directionalLight != null)
         {
