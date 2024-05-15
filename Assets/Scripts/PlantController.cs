@@ -32,6 +32,7 @@ public class PlantController : MonoBehaviour
     [SerializeField] private PlayableDirector _player;
 
     public bool IsPlantNeedWater() => _isNeedWater;
+    public bool IsFertilized { get { return  _isFertilized; } }
 
     private void Update()
     {
