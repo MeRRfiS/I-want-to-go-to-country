@@ -20,7 +20,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Player hold NPC on hand
 --- !u!114 &-8440285817257193899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Player hold NPC on hand
 --- !u!114 &-1756746760580961525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Move to shop
   _typeWalk: 2
 --- !u!114 &-1153267585447240700
 MonoBehaviour:
@@ -163,7 +163,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: When player hold NPC, it can't move on map
   Children:
   - {fileID: 3078731191243840400}
   - {fileID: -3455525985655284850}
@@ -231,7 +231,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: If NPC moving or player hold it, then NPC not trade
   Children:
   - {fileID: 8941038338734412599}
   - {fileID: 8814235690866381339}
@@ -255,7 +255,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Timetable
   Children:
   - {fileID: -8440285817257193899}
   - {fileID: -1153267585447240700}
@@ -279,7 +279,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Repeat day
   Child: {fileID: 4936345559343876999}
 --- !u!114 &8814235690866381339
 MonoBehaviour:
@@ -301,7 +301,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: When running, NPC trading
 --- !u!114 &8941038338734412599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: When player hold NPC, it can't move on map
   Children:
   - {fileID: -8665481195136089954}
   - {fileID: -1756746760580961525}

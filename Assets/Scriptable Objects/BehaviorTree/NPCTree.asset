@@ -66,7 +66,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Player hold NPC on hand
 --- !u!114 &-3229259785455766439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,12 +82,12 @@ MonoBehaviour:
   State: 0
   Started: 0
   guid: 0c80298df57eeef4fa27385ddb08ea85
-  Position: {x: 10.527687, y: 630.3999}
+  Position: {x: 10.900007, y: 630}
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Player hold NPC on hand
 --- !u!114 &-1153267585447240700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,12 +156,12 @@ MonoBehaviour:
   State: 0
   Started: 0
   guid: da77a3f07b89a724689489c60a5a2ef1
-  Position: {x: 483.2167, y: 494.4}
+  Position: {x: 483.99997, y: 494}
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: When player hold NPC, it can't move on map
   Children:
   - {fileID: 3078731191243840400}
   - {fileID: -3455525985655284850}
@@ -229,7 +229,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: When player hold NPC, it can't move on map
   Children:
   - {fileID: -7540930527014333819}
   - {fileID: -3229259785455766439}
@@ -253,7 +253,7 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Timetable
   Children:
   - {fileID: -8440285817257193899}
   - {fileID: -1153267585447240700}
@@ -277,5 +277,5 @@ MonoBehaviour:
     Road: {fileID: 0}
     Surface: {fileID: 0}
   NPC: {fileID: 0}
-  Description: 
+  Description: Repeat day
   Child: {fileID: 4936345559343876999}
