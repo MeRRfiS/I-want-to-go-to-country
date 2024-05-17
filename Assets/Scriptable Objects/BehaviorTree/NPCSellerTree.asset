@@ -1,0 +1,328 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8665481195136089954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e983a0060450674f80ad0a992cb399b, type: 3}
+  m_Name: HoldingNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: f70327d84d6c3664da63e4bc77e8d605
+  Position: {x: -393.03, y: 830.06506}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+--- !u!114 &-8440285817257193899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50519fed819375c4c998634d8fd1d271, type: 3}
+  m_Name: TimeNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 31a97a43ec50e3240bc2df16e1d566ac
+  Position: {x: -101.47233, y: 342.3999}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: From 8 am to 20 pm
+  Child: {fileID: 4475300022083010864}
+  _hour: 20
+  _minute: 0
+--- !u!114 &-3455525985655284850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e983a0060450674f80ad0a992cb399b, type: 3}
+  m_Name: HoldingNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 5a78401d8b5baca4b917036ac46608d0
+  Position: {x: 601.6167, y: 638.4}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+--- !u!114 &-1756746760580961525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de72e479ee525994e9d91aeb96f0d72e, type: 3}
+  m_Name: LocationNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: d294b24d450458047941c840a754f186
+  Position: {x: -167.99994, y: 838.0001}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  _typeWalk: 2
+--- !u!114 &-1153267585447240700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50519fed819375c4c998634d8fd1d271, type: 3}
+  m_Name: TimeNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 8e06589ac0fe3604998eb14cde1f66bd
+  Position: {x: 476.0166, y: 350.40002}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: From 20 pm to 8 am
+  Child: {fileID: 1903532756395994747}
+  _hour: 8
+  _minute: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a841c47149587f4a9359a657b9eb3cb, type: 3}
+  m_Name: NPCSellerTree
+  m_EditorClassIdentifier: 
+  RootNode: {fileID: 3595158268325382497}
+  TreeState: 0
+  Nodes:
+  - {fileID: 3595158268325382497}
+  - {fileID: -8440285817257193899}
+  - {fileID: -1153267585447240700}
+  - {fileID: 4936345559343876999}
+  - {fileID: 5739746522959236089}
+  - {fileID: 3078731191243840400}
+  - {fileID: 4475300022083010864}
+  - {fileID: 1903532756395994747}
+  - {fileID: -3455525985655284850}
+  - {fileID: 8814235690866381339}
+  - {fileID: 8941038338734412599}
+  - {fileID: -1756746760580961525}
+  - {fileID: -8665481195136089954}
+  Blackboard:
+    Road: {fileID: 1425183789699570435, guid: 149ae97338f9c4047838e57d20d51e7e, type: 3}
+    Surface: {fileID: 3288522418062184097, guid: 0e7f1afa2d49ba84e9c044d5bc59f428, type: 3}
+--- !u!114 &1903532756395994747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415c7ebbbd725f5408aa95e61ecafe52, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: da77a3f07b89a724689489c60a5a2ef1
+  Position: {x: 483.2167, y: 494.4}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  Children:
+  - {fileID: 3078731191243840400}
+  - {fileID: -3455525985655284850}
+--- !u!114 &3078731191243840400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de72e479ee525994e9d91aeb96f0d72e, type: 3}
+  m_Name: LocationNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 2555fe5b35b207c4092ab7c82d971f2e
+  Position: {x: 408.81668, y: 638.4}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: Move to home
+  _typeWalk: 1
+--- !u!114 &3595158268325382497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c0986333cbf544daab14e80b183308, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: d8b9a6b0cc1cc8a4fb5eba19e657a22c
+  Position: {x: 188.80002, y: -113.99839}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: Start node
+  Child: {fileID: 5739746522959236089}
+--- !u!114 &4475300022083010864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415c7ebbbd725f5408aa95e61ecafe52, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 552eed5813207994298b39f8a132383b
+  Position: {x: -103.0723, y: 485.5999}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  Children:
+  - {fileID: 8941038338734412599}
+  - {fileID: 8814235690866381339}
+--- !u!114 &4936345559343876999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415c7ebbbd725f5408aa95e61ecafe52, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 09d986ea04cd46a4f9f1fadf9b863552
+  Position: {x: 196.80003, y: 160.19446}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  Children:
+  - {fileID: -8440285817257193899}
+  - {fileID: -1153267585447240700}
+--- !u!114 &5739746522959236089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665621db87c66304483c1a6f8c3ea814, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: b479dcfada7b7d6418e160603f5f0e77
+  Position: {x: 188.8, y: 10.798443}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  Child: {fileID: 4936345559343876999}
+--- !u!114 &8814235690866381339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1c4f66ff121434c9b02fefe9bb89f4, type: 3}
+  m_Name: TradeNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: edaf3c5fc0fc34848b6344c2af8ccf13
+  Position: {x: 47.00002, y: 658}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+--- !u!114 &8941038338734412599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415c7ebbbd725f5408aa95e61ecafe52, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: f58cb53caf9cba74dbcf0d354e598128
+  Position: {x: -275.60135, y: 645.99994}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
+  Children:
+  - {fileID: -8665481195136089954}
+  - {fileID: -1756746760580961525}

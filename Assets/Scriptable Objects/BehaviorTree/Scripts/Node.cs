@@ -38,6 +38,13 @@ public abstract class Node : ScriptableObject
         return State;
     }
 
+    public void Stop()
+    {
+        OnStop();
+        State = StateEnum.Success;
+        Started = false;
+    }
+
     public virtual Node Clone()
     {
         return Instantiate(this);

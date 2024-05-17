@@ -13,7 +13,10 @@ public class SequencerNode : CompositeNode
 
     protected override void OnStop()
     {
-        
+        foreach (var child in Children)
+        {
+            child.Stop();
+        }
     }
 
     protected override StateEnum OnUpdate()

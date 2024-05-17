@@ -7,60 +7,21 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCController : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private NavMeshSurface _surface;
-    [SerializeField] private GameObject _npcObject;
-    [SerializeField] private NPCFace _face;
-    [SerializeField] private Transform _road;
+    [field: Header("Components")]
+    [field: SerializeField] public NPCFace Face { get; private set; }
+    [field: SerializeField] public GameObject NpcObject { get; private set; }
+    [field: SerializeField] public NavMeshAgent Agent { get; private set; }
+    [field: SerializeField] public ShopController Shop { get; private set; }
 
-    private bool _isOnHand = false;
+    [field: Header("Settings")]
+    [field: SerializeField] public Transform HomePosition { get; private set; }
+    [field: SerializeField] public Transform ShopPosition { get; private set; }
 
-    private void Update()
+    public bool IsHold { get; set; }
+
+    public void DropFromHand()
     {
-        SetNewDestination();
-    }
-
-    private void SetNewDestination()
-    {
-        if (_agent.remainingDistance <= _agent.stoppingDistance)
-        {
-            Vector3 point = GetNewRandomPoint();
-            _agent.SetDestination(point);
-        }
-    }
-
-    private Vector3 GetNewRandomPoint()
-    {
-        Vector3 randomPos = Random.insideUnitSphere * 50 + _road.position;
-
-        NavMeshHit hit;
-        NavMesh.SamplePosition(randomPos, out hit, 50, new NavMeshQueryFilter { agentTypeID = _surface.agentTypeID, areaMask = 1 });
-
-        return hit.position;
-    }
-
-    public void GettingToHand()
-    {
-        //TODO: Change when was created behavior tree
-        if(!_isOnHand)
-        {
-            _agent.enabled = false;
-            _isOnHand = true;
-            _npcObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-            enabled = false;
-            _face.AngryFace();
-            HandsAnimationManager.GetInstance().IsHoldNPC(true);
-        }
-        else
-        {
-            _agent.enabled = true;
-            _isOnHand = false;
-            _npcObject.layer = LayerMask.NameToLayer(LayerConstants.DEFAULT);
-            enabled = true;
-            _face.NormalFace();
-            GetNewRandomPoint();
-            HandsAnimationManager.GetInstance().IsHoldNPC(false);
-        }
+        IsHold = false;
+        HandsAnimationManager.GetInstance().IsHoldNPC(false);
     }
 }
