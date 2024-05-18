@@ -55,6 +55,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void GetObject(InputAction.CallbackContext context)
     {
+        if (BlockStatus()) return;
         if (!context.started) return;
 
         if (PlayerController.GetInstance().IsHoldingObject())
@@ -92,6 +93,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void DropObject(InputAction.CallbackContext context)
     {
+        if (BlockStatus()) return;
         if (!context.started) return;
 
         if (PlayerController.GetInstance().IsHoldingItem())
@@ -102,6 +104,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
+        if (BlockStatus()) return;
         if (context.started)
         {
             if (!PlayerController.GetInstance().IsHoldingItem()) return;
@@ -120,6 +123,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void InteractionByLMB(InputAction.CallbackContext context)
     {
+        if (BlockStatus()) return;
         if (!context.started) return;
 
         Transform startPoint = Camera.main.transform;
@@ -154,6 +158,8 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hitObject.tag)
             {
                 case TagConstants.SHOP:
+                    if (!hitObject.GetComponent<ShopController>().enabled) return;
+
                     hitObject.GetComponent<ShopController>().LoadGoodsForSellingToUI();
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();

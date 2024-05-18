@@ -16,9 +16,6 @@ public class ItemController : MonoBehaviour
     [SerializeField] private bool _isDroped;
 
     private bool _isUpdating = false;
-    [Header("Prefabs")]
-    [SerializeField] private GameObject _objPrefab;
-    private GameObject _obj;
 
     public event Action OnItemBroke;
 
@@ -71,7 +68,7 @@ public class ItemController : MonoBehaviour
     {
         if (!_isUpdating) return;
 
-        _obj = _itemObject.Updating(_obj, _objPrefab);
+        _itemObject.Updating();
     }
 
     public void InitializeItem()
@@ -84,7 +81,7 @@ public class ItemController : MonoBehaviour
 
     public void ApplyItemDisable()
     {
-        _obj = _itemObject.StopUpdating();
+        _itemObject.StopUpdating();
     }
 
     public void ApplyItemDestruct()

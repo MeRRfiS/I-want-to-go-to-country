@@ -1,6 +1,5 @@
 using FMOD.Studio;
 using FMODUnity;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool _isCanMoving = true;
     private bool _isCanRotation = true;
     private bool _isCanUsingItem = true;
-    private int _money = 300;
+    private int _money = 10000;
     private float _velocity;
     private Vector2 _inputMovement;
     private Vector3 _direction;
@@ -203,11 +202,11 @@ public class PlayerController : MonoBehaviour
 
     public void PickupNPC(NPCController npc)
     {
-        npc.GettingToHand();
+        npc.IsHold = true;
         Transform npcTransform = npc.transform;
         npcTransform.parent = _npcHand;
-        npcTransform.localPosition = new Vector3(0, -0.003f, -0.001f);
-        npcTransform.localRotation = Quaternion.identity;
+        //npcTransform.localPosition = new Vector3(0, -0.003f, -0.001f);
+        //npcTransform.localRotation = Quaternion.identity;
 
         if (HeldItem() != null)
         {
@@ -221,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     public void DropNPC()
     {
-        _heldNPC.GettingToHand();
+        _heldNPC.DropFromHand();
         _heldNPC.transform.parent = null;
 
         if (HeldItem() != null)
@@ -257,6 +256,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() != null)
         {
+            HeldItem().Item.IsInHand = false;
             HandsAnimationManager.GetInstance().IsChangeItem = item != null;
             HandsAnimationManager.GetInstance().IsChangingItem(true);
         }
@@ -264,6 +264,9 @@ public class PlayerController : MonoBehaviour
         {
             HandsAnimationManager.GetInstance().OnChangeItem -= ChangingInstrument;
             HandsAnimationManager.GetInstance().OnNewItem -= GetNewItem;
+            HandsAnimationManager.GetInstance().IsHoldInst(false);
+            HandsAnimationManager.GetInstance().IsHoldFunnel(false);
+            HandsAnimationManager.GetInstance().IsHoldStaf(false);
             _newItem = null;
 
             return;
@@ -280,6 +283,7 @@ public class PlayerController : MonoBehaviour
     {
         if (HeldItem() == null) return;
 
+        HandsAnimationManager.GetInstance().IsChangeItem = false;
         HandsAnimationManager.GetInstance().IsChangingItem(true);
         InventoryController.GetInstance().RemoveItem();
         UIController.GetInstance().StopProgressBar();
@@ -370,6 +374,7 @@ public class PlayerController : MonoBehaviour
 
     private void HoldItemBroken()
     {
+        HandsAnimationManager.GetInstance().IsChangeItem = false;
         HandsAnimationManager.GetInstance().IsChangingItem(true);
         HeldItem().OnItemBroke -= HoldItemBroken;
         _heldItem = null;

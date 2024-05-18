@@ -117,9 +117,8 @@ public class UIController : MonoBehaviour
 
     private void UpdateTimeText()
     {
-        float timeValue = WorldController.GetInstance().TimeOfDay;
-        int hours = (int)Math.Truncate(timeValue);
-        int minutes = (int)Math.Floor((timeValue - hours) * UIConstants.MINUTES_MULTIPLIER);
+        int hours = WorldController.GetInstance().HourOfDay;
+        int minutes = WorldController.GetInstance().MinuteOfDay;
         string timeText = String.Format(_timeTextFormat, hours, minutes < 10 ? $"0{minutes}" : minutes);
         _time.text = timeText;
     }

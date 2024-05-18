@@ -49,8 +49,14 @@ public class Hoe : Instrument
         UIController.GetInstance().ProgressBar(TimeWork, MakePath);
     }
 
-    public override GameObject Updating(GameObject obj, GameObject prefab)
+    public override void Updating()
     {
+        if (!IsInHand)
+        {
+            StopUpdating();
+            return;
+        }
+
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -68,8 +74,6 @@ public class Hoe : Instrument
             _seedbedObj = this.StopUpdating();
             UIController.GetInstance().StopProgressBar();
         }
-
-        return _seedbedObj;
     }
 
     private void CheckPosition()

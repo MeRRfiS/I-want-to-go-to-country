@@ -43,8 +43,14 @@ public class Tree : Plant
         _saplingObj = null;
     }
 
-    public override GameObject Updating(GameObject obj, GameObject prefab)
+    public override void Updating()
     {
+        if (!IsInHand)
+        {
+            StopUpdating();
+            return;
+        }
+
         if (!IsSaplingObjNull())
         {
             _treeCheck = _saplingObj.GetComponent<TreeChecking>();
@@ -101,8 +107,6 @@ public class Tree : Plant
         {
             _saplingObj = this.StopUpdating();
         }
-
-        return _saplingObj;
     }
 
     public override GameObject StopUpdating()

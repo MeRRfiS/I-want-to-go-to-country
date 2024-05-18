@@ -49,8 +49,14 @@ public class Building: Item
         _itemObj = null;
     }
 
-    public override GameObject Updating(GameObject obj, GameObject prefab)
+    public override void Updating()
     {
+        if (!IsInHand)
+        {
+            StopUpdating();
+            return;
+        }
+
         Transform startPoint = Camera.main.transform;
         RaycastHit hit;
 
@@ -69,8 +75,6 @@ public class Building: Item
         {
             _itemObj = this.StopUpdating();
         }
-
-        return _itemObj;
     }
 
     private void SetRotation()

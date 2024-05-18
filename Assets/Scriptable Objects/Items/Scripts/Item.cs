@@ -14,10 +14,13 @@ public class Item : ScriptableObject
     [HideInInspector] public bool IsDroped { get; set; } = false;
     public int Amount { get; set; }
 
+    public bool IsInHand { get; set; }
+
     public virtual void UseItem() { }
 
     public virtual void GetItemInHand() 
     {
+        IsInHand = true;
         HandsAnimationManager.GetInstance().IsHoldInst(false);
         HandsAnimationManager.GetInstance().IsHoldFunnel(false);
         HandsAnimationManager.GetInstance().IsHoldStaf(true);
@@ -32,7 +35,7 @@ public class Item : ScriptableObject
 
     public virtual void Init() { }
     public virtual void Destruct() { }
-    public virtual GameObject Updating(GameObject obj, GameObject prefab) => null;
+    public virtual void Updating() { }
     public virtual GameObject StopUpdating() => null;
 
     public Item Copy()

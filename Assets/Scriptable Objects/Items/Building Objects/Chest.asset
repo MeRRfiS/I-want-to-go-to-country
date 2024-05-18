@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e24f646ba106a4aae0d544c1848bd9, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 4479490651113607156, guid: 96406808894f0b849a967602168b1d62, type: 3}
+  <Object>k__BackingField: {fileID: 3681720034074239527, guid: 3ef07e6c258053f4595230b526195b51, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: e45f554960bb85e43b1277ee0a5b0855, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 39

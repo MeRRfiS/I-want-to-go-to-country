@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e24f646ba106a4aae0d544c1848bd9, type: 3}
   m_Name: Squeezer
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 4905465876705201364, guid: 0c797848590d4d7428e8c6da555ea35e, type: 3}
+  <Object>k__BackingField: {fileID: 7505807709667974676, guid: ae332a043117ccd47bea436db910db94, type: 3}
   <Icon>k__BackingField: {fileID: 21300000, guid: 98de051df09b7314a8829a38adc45e4b, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 37
