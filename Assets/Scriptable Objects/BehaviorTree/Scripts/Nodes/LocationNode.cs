@@ -16,7 +16,7 @@ public class LocationNode : ActionNode
 
     [SerializeField] private TypeWalk _typeWalk;
 
-    private const float RADIUS = 50;
+    private const float RADIUS = 75;
 
     protected override void OnStart()
     {

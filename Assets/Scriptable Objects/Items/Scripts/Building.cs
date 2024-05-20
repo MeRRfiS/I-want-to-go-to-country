@@ -38,7 +38,7 @@ public class Building: Item
         Amount = 0;
         var build = Instantiate(_buildingPrefab);
         build.transform.position = new Vector3(_itemObj.transform.position.x,
-                                               1.1f,
+                                               _itemObj.transform.position.y,
                                                _itemObj.transform.position.z);
         build.transform.rotation = _itemObj.transform.GetChild(0).rotation;
         Destroy(_itemObj);
@@ -127,7 +127,7 @@ public class Building: Item
             point = hit.point;
         }
         _itemObj.transform.position = new Vector3(point.x,
-                                                  1.1f,
+                                                  point.y,
                                                   point.z);
     }
 

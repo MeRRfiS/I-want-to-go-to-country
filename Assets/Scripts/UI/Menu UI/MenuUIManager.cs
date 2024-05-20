@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuUIManager : MonoBehaviour
 {
     //ToDo: change scene after made a map
-    private const string PLAY_SCENE = "Test Scene";
+    private const string PLAY_SCENE = "Game Scene";
 
     public void PlayButton()
     {

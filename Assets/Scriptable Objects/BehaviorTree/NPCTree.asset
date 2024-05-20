@@ -139,8 +139,8 @@ MonoBehaviour:
   - {fileID: 1903532756395994747}
   - {fileID: -3455525985655284850}
   Blackboard:
-    Road: {fileID: 1425183789699570435, guid: 149ae97338f9c4047838e57d20d51e7e, type: 3}
-    Surface: {fileID: 3288522418062184097, guid: 0e7f1afa2d49ba84e9c044d5bc59f428, type: 3}
+    Road: {fileID: 3944654468898537088, guid: 9653a5f571ad0fb4dbd407f40cc8f91f, type: 3}
+    Surface: {fileID: 3468874027106021148, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
 --- !u!114 &1903532756395994747
 MonoBehaviour:
   m_ObjectHideFlags: 0
