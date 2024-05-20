@@ -22,6 +22,7 @@ public class BehaviorTree : ScriptableObject
         return TreeState;
     }
 
+#if UNITY_EDITOR
     public Node CreateNode(System.Type type)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
@@ -108,6 +109,8 @@ public class BehaviorTree : ScriptableObject
         }
     }
 
+#endif
+
     public List<Node> GetChildren(Node parent)
     {
         List<Node> children = new List<Node>();
@@ -132,6 +135,7 @@ public class BehaviorTree : ScriptableObject
 
         return children;
     }
+
 
     public void Traverse(Node node, Action<Node> visiter)
     {

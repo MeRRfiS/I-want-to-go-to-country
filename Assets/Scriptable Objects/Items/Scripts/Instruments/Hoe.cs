@@ -98,7 +98,7 @@ public class Hoe : Instrument
     {
         Vector3 point = Vector3.zero;
         point = new Vector3(_seedbedCheck.IsVerFasten ? _seedbedCheck.FastenPos.x : hit.point.x,
-                            1,
+                            hit.point.y,
                             _seedbedCheck.IsHorFasten ? _seedbedCheck.FastenPos.z : hit.point.z);
         if (Vector3.Distance(point, hit.point) >= MechConstants.MAX_DISTANCE_FOR_FASTEN_PATCH)
         {
@@ -106,7 +106,7 @@ public class Hoe : Instrument
             point = hit.point;
         }
         _seedbedObj.transform.position = new Vector3(point.x,
-                                                     1,
+                                                     hit.point.y,
                                                      point.z);
     }
 

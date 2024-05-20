@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 7348662305780073512}
   - component: {fileID: 2856505317186370283}
   - component: {fileID: 5387998379155192353}
-  - component: {fileID: 7154922380338311237}
   - component: {fileID: 2192149689825565315}
   - component: {fileID: 5472364228549056456}
   m_Layer: 0
   m_Name: NPC Seller
-  m_TagString: Shop
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +51,7 @@ MonoBehaviour:
   <Face>k__BackingField: {fileID: 5685047036707454565}
   <NpcObject>k__BackingField: {fileID: 1443105248179436226}
   <Agent>k__BackingField: {fileID: 5387998379155192353}
-  <Shop>k__BackingField: {fileID: 7154922380338311237}
+  <Shop>k__BackingField: {fileID: 0}
   <HomePosition>k__BackingField: {fileID: 0}
   <ShopPosition>k__BackingField: {fileID: 0}
 --- !u!195 &5387998379155192353
@@ -77,24 +76,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7154922380338311237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299524165276495756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16222da8cc26a3a4485b33c108639c46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isEverydayUpdating: 0
-  _itemsSells:
-  - {fileID: 11400000, guid: 589c3edb689f6a2469959e8e60a52b6a, type: 2}
-  - {fileID: 11400000, guid: 896d231e904a15f44965be1467c86f26, type: 2}
-  - {fileID: 11400000, guid: 0aefe679bc363e24fa86d31eccf0f70a, type: 2}
-  - {fileID: 11400000, guid: 972ed4de858457f4ea728e3d44ab6371, type: 2}
 --- !u!65 &2192149689825565315
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class PlayerInputSystem : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        Debug.Log("1");
         if (!PlayerController.GetInstance().IsCanMoving) return;
 
         PlayerController.GetInstance().ChangeMovement(context.ReadValue<Vector2>());

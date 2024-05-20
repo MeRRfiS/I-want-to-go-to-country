@@ -34,7 +34,7 @@ public class Tree : Plant
         Amount--;
         var tree = Instantiate(_treePrefab);
         tree.transform.position = new Vector3(_saplingObj.transform.position.x,
-                                              0.55f,
+                                              _saplingObj.transform.position.y,
                                               _saplingObj.transform.position.z);
         RuntimeManager.PlayOneShot(FMODEvents.instance.SeedPlant, tree.transform.position);
 
@@ -77,7 +77,7 @@ public class Tree : Plant
             }
 
             _saplingObj.transform.position = new Vector3(hit.point.x,
-                                                        1.1f,
+                                                        hit.point.y,
                                                         hit.point.z);
 
             if (_treeCheck && (_treeCheck.IsOnObject || _treeCheck.IsNearTree))
