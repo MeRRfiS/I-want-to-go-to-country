@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fertilizers : Item
 {
     [field: SerializeField] public int Level { get; private set; }
-    private int _usings;
+    private int _usings = 10;
 
     [SerializeField] private Material _materialOfEarth;
 

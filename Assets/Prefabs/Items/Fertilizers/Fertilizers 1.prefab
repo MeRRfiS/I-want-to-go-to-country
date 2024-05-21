@@ -97,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 589c3edb689f6a2469959e8e60a52b6a, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 0}
 --- !u!1 &3502159354412925501
 GameObject:
   m_ObjectHideFlags: 0

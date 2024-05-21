@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using TarasK8.SaveSystem;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+public class InventoryController : MonoBehaviour, ISaveable
 {
     private static InventoryController instance;
 
@@ -37,6 +38,7 @@ public class InventoryController : MonoBehaviour
     public Item[] ItemsArray
     {
         get => _mainInventory.Container;
+        set => _mainInventory.Container = value;
     }
 
     public Item[] PlayerItems
@@ -281,5 +283,15 @@ public class InventoryController : MonoBehaviour
     public void SetChestInventory(Inventory chestInventory)
     {
         _chestInventory = chestInventory;
+    }
+
+    public void OnSave(SFile file)
+    {
+        file.Write("Main Inventory", ItemsArray);
+    }
+
+    public void OnLoad(SFile file)
+    {
+        ItemsArray = file.Read<Item[]>("Main Inventory");
     }
 }
