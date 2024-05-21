@@ -1,9 +1,10 @@
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
+using TarasK8.SaveSystem;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISaveable
 {
     public static PlayerController instance;
 
@@ -322,7 +323,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_newItem == null) return;
 
-        ItemController heldItem = Instantiate(_newItem.Object);
+        ItemController heldItem = Instantiate(_newItem.Object.GetComponent<ItemController>());
 
         SetUpItemRigidbody(heldItem);
         SetUpNewItem(heldItem);
@@ -378,5 +379,18 @@ public class PlayerController : MonoBehaviour
         HandsAnimationManager.GetInstance().IsChangingItem(true);
         HeldItem().OnItemBroke -= HoldItemBroken;
         _heldItem = null;
+    }
+
+    public void OnSave(SFile file)
+    {
+        file.Write("Player Position", transform.position);
+    }
+
+    public void OnLoad(SFile file)
+    {
+        if (file.HasKey("Player Position"))
+        {
+            transform.position = file.Read<Vector3>("Player Position");
+        }
     }
 }

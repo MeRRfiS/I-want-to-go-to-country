@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4955.682, g: 3555.0396, b: 3253.1255, a: 1}
+  m_IndirectSpecularColor: {r: 4955.6978, g: 3555.0552, b: 3253.141, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2398,6 +2398,69 @@ MonoBehaviour:
   m_DefaultActionMap: Interface
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &1873417265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873417267}
+  - component: {fileID: 1873417266}
+  m_Layer: 0
+  m_Name: Save System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1873417266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873417265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439634012e3abd941a03a8b0a3b8568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fileName: Saves/save.json
+  _path: 1
+  _customPath: 
+  _initializeOnAwake: 1
+  _collectSaveablesEverySave: 0
+  _useEncryption: 0
+  _encryptionPassword: password
+  _autoSaving: 1
+  _savePeriod: 60
+  _enableDefaultFile: 0
+  _defaultFileType: 0
+  _defaultFileObject: {fileID: 0}
+  _defaultFile: {fileID: 0}
+  OnSave:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1873417267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873417265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.188362, y: 36.703396, z: 1.0302852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1880969002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2865,3 +2928,4 @@ SceneRoots:
   - {fileID: 1303917634}
   - {fileID: 535186653}
   - {fileID: 833879731}
+  - {fileID: 1873417267}
