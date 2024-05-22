@@ -24,6 +24,11 @@ public class ItemController : MonoBehaviour
         set => _isUpdating = value;
     }
 
+    public Item ItemInfo
+    {
+        get => _item;
+    }
+
     public Item Item
     {
         get => _itemObject;

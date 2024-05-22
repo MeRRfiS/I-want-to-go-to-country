@@ -26,7 +26,7 @@ public class ShopController : MonoBehaviour
     {
         foreach (var itemSells in _itemsSells)
         {
-            ItemController itemController = itemSells.Object;
+            ItemController itemController = ItemsStorage.GetInstance().GetItem(itemSells.Id);
             itemController.InitializeItem();
             GoodsModel goodsModel = new GoodsModel()
             {

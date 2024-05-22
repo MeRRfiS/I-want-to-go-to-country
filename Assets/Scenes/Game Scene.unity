@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4955.6978, g: 3555.0552, b: 3253.141, a: 1}
+  m_IndirectSpecularColor: {r: 4955.682, g: 3555.0396, b: 3253.1255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -739,6 +739,74 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6717873375842968015, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
   m_PrefabInstance: {fileID: 4638916479632940818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &770672995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5641221784987800969, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+  m_PrefabInstance: {fileID: 1592976013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &770672999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770672995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43039217f9818c743974c30f32d3d45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 1600646568677084960, guid: 1982e2963937079498d5f7aab3a6e6b7, type: 3}
+  - {fileID: 6683994707254970909, guid: c91e83832e9942e43a22b2353c18f276, type: 3}
+  - {fileID: 3681720034074239527, guid: 3ef07e6c258053f4595230b526195b51, type: 3}
+  - {fileID: 5000393412875446697, guid: 39f23ebd04fa6c347a03e18d99c06107, type: 3}
+  - {fileID: 7505807709667974676, guid: ae332a043117ccd47bea436db910db94, type: 3}
+  - {fileID: 7149362736211485934, guid: a3b59dfb19bc7aa4aa30876cb5537d55, type: 3}
+  - {fileID: 1990340260407891089, guid: 523d89e511c378d40be74f7a58f6caeb, type: 3}
+  - {fileID: 4533681223378587736, guid: b2a5f4b663d9ba242aeba24e642087e2, type: 3}
+  - {fileID: 3177704565383842522, guid: d6cf863f95b23e043b8bacdbd25b8cca, type: 3}
+  - {fileID: 8594503525339388722, guid: 79fe92bc7dc757149b625cc21959181f, type: 3}
+  - {fileID: 4850925355110621156, guid: 769c824f1d5a7d641a8e545767de43f3, type: 3}
+  - {fileID: 6919191763310478828, guid: ebe57890f6254cb4e98c742a2725cecb, type: 3}
+  - {fileID: 4911918741516280360, guid: e9104fe10ec798e4b834748eb247d2b0, type: 3}
+  - {fileID: 7251101620594619722, guid: b3b1dbd7b4ecbc94aaf261f13a8c7f9c, type: 3}
+  - {fileID: 2356123584329079375, guid: 8d573e8e1cfa31b41b0d70ac3ad98425, type: 3}
+  - {fileID: 3714574829516930220, guid: 0ce73125bbb6e87428d6efdc7488f73a, type: 3}
+  - {fileID: 3585860703148889285, guid: 1d50199172e2dc1439c74a215b71ad86, type: 3}
+  - {fileID: 7909070108710223610, guid: 446128ff4e01ca5439903a0cd344e916, type: 3}
+  - {fileID: 3485921244236951792, guid: de11ec8a7dec90a40bfe1bf65e213fd7, type: 3}
+  - {fileID: 1960203732528988437, guid: 0c0817cb710f9eb4296f4507f879551f, type: 3}
+  - {fileID: 3983167306395445087, guid: 61d11a50e78067544a5d21d900f23ec0, type: 3}
+  - {fileID: 7125598286348587577, guid: 8cab01a433ac0584a8124572aeb9f092, type: 3}
+  - {fileID: 7839361617528153103, guid: 9a8842b47312b91408ad217a7c07eeea, type: 3}
+  - {fileID: 688362408113574076, guid: 9af4d9bdd33f97c45bc54b67d8b58403, type: 3}
+  - {fileID: 209345422462095526, guid: fc89aa8d0da39954ea84e4e9351a1eff, type: 3}
+  - {fileID: 209345422462095526, guid: 4154ee6d1190e004fb7e735f0f51559e, type: 3}
+  - {fileID: 209345422462095526, guid: 952a82ba103d67d40bc6c60ed8497a5e, type: 3}
+  - {fileID: 209345422462095526, guid: e67a22f4c0181f4498971595a0bffe6c, type: 3}
+  - {fileID: 209345422462095526, guid: ac52386d6b3aab646820148944cb9cbb, type: 3}
+  - {fileID: 6381753766931851679, guid: 22002221aa08dbb419f88ddb32df3ae3, type: 3}
+  - {fileID: 6381753766931851679, guid: 4812151f4c4288f4d82b82bf3eb5aece, type: 3}
+  - {fileID: 6381753766931851679, guid: 0ad25e97ab5502b408948860cca4146a, type: 3}
+  - {fileID: 6381753766931851679, guid: c77799542c60f3f46bf541e99db282ce, type: 3}
+  - {fileID: 6381753766931851679, guid: f1e8b842fb0eed440954798cf4ae8644, type: 3}
+  - {fileID: 7612194092418062662, guid: a09440fb95163b74aad084d17f0fdd8d, type: 3}
+  - {fileID: 7612194092418062662, guid: 824843614d0a3c046819f8f45fd5616e, type: 3}
+  - {fileID: 7612194092418062662, guid: 38a5495e5292a684ea163c3fa1a5d44e, type: 3}
+  - {fileID: 7612194092418062662, guid: f60178dcf6dd5654cac740fcb6fc79de, type: 3}
+  - {fileID: 7612194092418062662, guid: 127594f0341d30143ba9d0ba9167b005, type: 3}
+  - {fileID: 9098892315502723841, guid: 1f5cb09b810a4734ba01ad960e8377c2, type: 3}
+  - {fileID: 7341467116559473879, guid: d4a853d98e095b14ea675907d2202bab, type: 3}
+  - {fileID: 7360662635015985916, guid: 96b8ae8ade48d9c428d92ef5156f1eb6, type: 3}
+  - {fileID: 8577099730414830649, guid: 93dabd9c6a83b3c499cf2b37a18d1fe3, type: 3}
+  - {fileID: 3937745078187853401, guid: 14b14010c176ac54a939b04cc98a67b1, type: 3}
+  - {fileID: 8969859297246132322, guid: 8f75c91b4f8758e4da893e51be140db1, type: 3}
+--- !u!4 &805596062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6312927852852996835, guid: 4dfd4a595d7919841a66ff4fbb171ab4, type: 3}
+  m_PrefabInstance: {fileID: 1538927246}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &833879731
 PrefabInstance:
@@ -1740,6 +1808,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6021709127401594578, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+      propertyPath: _hand
+      value: 
+      objectReference: {fileID: 805596062}
     - target: {fileID: 9001681903933013655, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1759,7 +1831,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5641221784987800969, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 770672999}
   m_SourcePrefab: {fileID: 100100000, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
 --- !u!4 &1612449621 stripped
 Transform:
@@ -2435,7 +2510,7 @@ MonoBehaviour:
   _useEncryption: 0
   _encryptionPassword: password
   _autoSaving: 1
-  _savePeriod: 60
+  _savePeriod: 2
   _enableDefaultFile: 0
   _defaultFileType: 0
   _defaultFileObject: {fileID: 0}

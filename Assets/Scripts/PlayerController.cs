@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour, ISaveable
     {
         if (_newItem == null) return;
 
-        ItemController heldItem = Instantiate(_newItem.Object.GetComponent<ItemController>());
+        ItemController heldItem = Instantiate(ItemsStorage.GetInstance().GetItem(_newItem.Id));
 
         SetUpItemRigidbody(heldItem);
         SetUpNewItem(heldItem);
@@ -344,8 +344,9 @@ public class PlayerController : MonoBehaviour, ISaveable
         {
             _heldItem.transform.GetChild(i).gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
         }
-        _heldItem.transform.localPosition = _newItem.Object.transform.position;
-        _heldItem.transform.localRotation = _newItem.Object.transform.rotation;
+        var itemObject = ItemsStorage.GetInstance().GetItem(_newItem.Id);
+        _heldItem.transform.localPosition = itemObject.transform.position;
+        _heldItem.transform.localRotation = itemObject.transform.rotation;
     }
 
     private void SetUpItemRigidbody(ItemController heldItem)

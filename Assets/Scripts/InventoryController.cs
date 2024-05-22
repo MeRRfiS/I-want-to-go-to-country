@@ -139,7 +139,7 @@ public class InventoryController : MonoBehaviour, ISaveable
 
             void Drop(Item[] from)
             {
-                dropItem = Instantiate(from[_movedItemsModel.FirstIndex].Object);
+                dropItem = Instantiate(ItemsStorage.GetInstance().GetItem(from[_movedItemsModel.FirstIndex].Id));
                 dropItem.Item = from[_movedItemsModel.FirstIndex];
                 from[_movedItemsModel.FirstIndex] = null;
             }
@@ -167,7 +167,7 @@ public class InventoryController : MonoBehaviour, ISaveable
 
     public void DropItemFromInventory(Item item)
     {
-        ItemController dropItem = Instantiate(item.Object);
+        ItemController dropItem = Instantiate(ItemsStorage.GetInstance().GetItem(item.Id));
         dropItem.Item = item;
         dropItem.Item.IsDroped = true;
         dropItem.transform.position = _hand.position;
@@ -292,6 +292,7 @@ public class InventoryController : MonoBehaviour, ISaveable
 
     public void OnLoad(SFile file)
     {
+        var a = file.Read<Item[]>("Main Inventory")[0];
         ItemsArray = file.Read<Item[]>("Main Inventory");
     }
 }

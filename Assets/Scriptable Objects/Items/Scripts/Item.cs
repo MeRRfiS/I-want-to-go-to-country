@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 public class Item : ScriptableObject
 {
-    [field: SerializeField] public ItemController Object { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public bool IsCanSold { get; private set; }
     [field: SerializeField] public int Id { get; private set; }
