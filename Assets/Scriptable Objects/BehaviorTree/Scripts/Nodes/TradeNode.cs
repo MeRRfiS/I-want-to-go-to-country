@@ -9,12 +9,16 @@ public class TradeNode : ActionNode
     protected override void OnStart()
     {
         NPC.Shop.enabled = true;
+        NPC.Shop.OnBuyItem += OnBuyItem;
+        NPC.Animation.OnStopHappy += MakeNormalFace;
         _state = StateEnum.Running;
     }
 
     protected override void OnStop()
     {
         NPC.Shop.enabled = false;
+        NPC.Shop.OnBuyItem -= OnBuyItem;
+        NPC.Animation.OnStopHappy -= MakeNormalFace;
     }
 
     protected override StateEnum OnUpdate()
@@ -22,5 +26,16 @@ public class TradeNode : ActionNode
         if (NPC.IsHold) _state = StateEnum.Success;
 
         return _state;
+    }
+
+    private void OnBuyItem()
+    {
+        NPC.Animation.IsHappy(true);
+        NPC.Face.HappyFace();
+    }
+
+    private void MakeNormalFace()
+    {
+        NPC.Face.NormalFace();
     }
 }

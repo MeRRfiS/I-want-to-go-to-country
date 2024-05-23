@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ public class ShopController : MonoBehaviour
     private List<GoodsModel> _goods = new List<GoodsModel>();
     private List<GoodsModel> _goodsForDay = new List<GoodsModel>();
     private Dictionary<int, GoodsModel> _sellingItems;
+
+    public event Action OnBuyItem;
 
     public bool IsEverydayUpdating
     {
@@ -93,11 +96,11 @@ public class ShopController : MonoBehaviour
 
         while (_goodsForDay.Count() != 2)
         {
-            int index = Random.Range(0, _goods.Count);
+            int index = UnityEngine.Random.Range(0, _goods.Count);
             if (_goods[index].Goods is Plant)
             {
                 Plant plant = (Plant)_goods[index].Goods;
-                int chance = Random.Range(1, 101);
+                int chance = UnityEngine.Random.Range(1, 101);
                 if (chance > (int)plant.PlantRare) continue;
             }
             var existGoods = _goodsForDay.Where(g => g.Goods.Id == _goods[index].Goods.Id);
@@ -124,6 +127,7 @@ public class ShopController : MonoBehaviour
         if (PlayerController.GetInstance().Money < _goodsForDay[index].Price) return;
 
         _goodsForDay[index].Count--;
+        OnBuyItem?.Invoke();
         PlayerController.GetInstance().Money -= _goodsForDay[index].Price;
         Item soldGoods = _goodsForDay[index].Goods.Copy();
         soldGoods.Init();
