@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4955.6294, g: 3555.0005, b: 3253.1802, a: 1}
+  m_IndirectSpecularColor: {r: 4955.682, g: 3555.0396, b: 3253.1255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4829,6 +4829,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 107137368f2f28a448d84ede74a9d506, type: 2}
+    - target: {fileID: 6883400760834137875, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
+      propertyPath: m_TreeDistance
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883400760834137875, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
+      propertyPath: m_DetailObjectDistance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7135012879719720500, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
       propertyPath: m_IsActive
       value: 1
