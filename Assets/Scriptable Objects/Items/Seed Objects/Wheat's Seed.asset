@@ -16,7 +16,9 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 781c3086b39aa614989067a249c05c9c, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 16
-  <Price>k__BackingField: 10
+  <MinPrice>k__BackingField: 5
+  <MaxPrice>k__BackingField: 10
+  <SoldPrice>k__BackingField: 0
   <Type>k__BackingField: 2
   <PlantRare>k__BackingField: 100
   <Plant>k__BackingField: {fileID: 4412948399611333916, guid: a1567f7127150f4439af18994cda9420, type: 3}
