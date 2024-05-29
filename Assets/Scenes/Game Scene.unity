@@ -4829,6 +4829,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 107137368f2f28a448d84ede74a9d506, type: 2}
+    - target: {fileID: 6883400760834137875, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
+      propertyPath: m_TreeDistance
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883400760834137875, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
+      propertyPath: m_DetailObjectDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7135012879719720500, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
       propertyPath: m_IsActive
       value: 1
