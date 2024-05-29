@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopController : MonoBehaviour
@@ -31,11 +32,17 @@ public class ShopController : MonoBehaviour
         {
             ItemController itemController = itemSells.Object;
             itemController.InitializeItem();
+            int count = 0;
+            if (itemController.Item is Instrument) count = 5;
+            else if (itemController.Item is Seed) count = 20;
+            else if (itemController.Item is Tree) count = 5;
+            else if (itemController.Item is Fertilizers) count = 5;
+            else if (itemController.Item is Building) count = 1;
             GoodsModel goodsModel = new GoodsModel()
             {
                 Goods = itemController.Item,
-                Count = 99,
-                Price = itemSells.Price
+                Count = count,
+                Price = UnityEngine.Random.Range(itemSells.MinPrice, itemSells.MaxPrice)
             };
             _goods.Add(goodsModel);
         }
@@ -58,7 +65,7 @@ public class ShopController : MonoBehaviour
                 {
                     Goods = item,
                     Count = item.Amount,
-                    Price = item.Price
+                    Price = item.SoldPrice
                 };
                 _sellingItems.Add(item.Id, goods);
             }
@@ -85,7 +92,7 @@ public class ShopController : MonoBehaviour
         {
             if(g.Goods.Type != ItemTypeEnum.Tree && g.Goods.Type != ItemTypeEnum.Seed)
             {
-                _goodsForDay.Add(g);
+                _goodsForDay.Add(g.Clone());
                 continue;
             }
 
@@ -106,7 +113,7 @@ public class ShopController : MonoBehaviour
             var existGoods = _goodsForDay.Where(g => g.Goods.Id == _goods[index].Goods.Id);
             if (existGoods.Count() != 0) continue;
 
-            _goodsForDay.Add(_goods[index]);
+            _goodsForDay.Add(_goods[index].Clone());
             if (_goods.Count == 1) break;
         }
     }

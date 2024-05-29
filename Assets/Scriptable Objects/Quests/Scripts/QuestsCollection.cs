@@ -16,6 +16,14 @@ public class QuestsCollection : ScriptableObject
 [System.Serializable]
 public class QuestModel: InformationModel
 {
+    public enum QuestType
+    {
+        Easy = 1,
+        Normal,
+        Hard
+    }
+
     public int _id;
     public int _reward;
+    public QuestType _type;
 }
