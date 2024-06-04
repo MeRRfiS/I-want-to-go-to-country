@@ -8,6 +8,7 @@ public class CraftHandler : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Transform _itemList;
+    [SerializeField] private Image _resultItemIcon;
 
     [Header("Prefab")]
     [SerializeField] private GameObject _itemInfo;
@@ -32,6 +33,7 @@ public class CraftHandler : MonoBehaviour
 
     public void DrawCraftInformation(CraftModel craft, BuildController controller)
     {
+        _resultItemIcon.sprite = craft._creftedItem.Icon;
         _amountOfItems.Clear();
         for (int i = 0; i < _itemList.childCount; i++)
         {

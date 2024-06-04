@@ -13,25 +13,28 @@ MonoBehaviour:
   m_Name: Quests Collection
   m_EditorClassIdentifier: 
   _quests:
-  - _id: 0
-    _name: Quest 1
+  - _name: Quest 1
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: 498fa80a17b9ef944b1f4a9520dd8c0c, type: 2}
       _amount: 1
+    _robotIcon: {fileID: 21300000, guid: 7bc22d5ce7a94884fb749b3f1cd2badd, type: 3}
+    _id: 0
     _reward: 15
-  - _id: 1
-    _name: Quest 2
+  - _name: Quest 2
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: 3ca74c65950188e44bb4fb2e9d46add1, type: 2}
       _amount: 5
     - _item: {fileID: 11400000, guid: 917ca5314a1e1eb4386d33697989f341, type: 2}
       _amount: 1
+    _robotIcon: {fileID: 21300000, guid: d079df020efe3414cad4f3472ce978b4, type: 3}
+    _id: 1
     _reward: 140
-  - _id: 2
-    _name: Quest 3
+  - _name: Quest 3
     _neededItems:
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: 8560316648ebdf74c9be2a2508367e68, type: 2}
       _amount: 4
-    - _item: {fileID: 11400000, guid: 94b991bc6c3f651489948b8cf6ac7ed1, type: 2}
+    - _item: {fileID: 11400000, guid: f208f5c618bec7e45b946de77769a592, type: 2}
       _amount: 6
+    _robotIcon: {fileID: 21300000, guid: 1ef0029b2a13c3446ae8b79cf83edc19, type: 3}
+    _id: 2
     _reward: 160

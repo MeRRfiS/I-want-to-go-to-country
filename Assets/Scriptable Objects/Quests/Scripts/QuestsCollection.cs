@@ -16,6 +16,7 @@ public class QuestsCollection : ScriptableObject
 [System.Serializable]
 public class QuestModel: InformationModel
 {
+    public Sprite _robotIcon;
     public int _id;
     public int _reward;
 }

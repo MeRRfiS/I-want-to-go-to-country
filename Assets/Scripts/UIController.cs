@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour
     private float _nextFPSUpdate;
     private string _timeTextFormat;
     private string _fpsTextFormat;
+    private string _moneyTextFormat;
     [Header("Other")]
     [SerializeField] private Image radialIndicatorUI;
     [SerializeField] private PinUpItemInfo _pinUp;
@@ -91,6 +92,7 @@ public class UIController : MonoBehaviour
         _nextFPSUpdate = Time.time;
         _timeTextFormat = _time.text;
         _fpsTextFormat = _fps.text;
+        _moneyTextFormat = _money.text;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
@@ -107,7 +109,8 @@ public class UIController : MonoBehaviour
 
     private void UpdateMoneyCountText()
     {
-        _money.text = PlayerController.GetInstance().Money.ToString();
+        //_money.text = $"{ShopCellHandler.COIN_SPRITE} {PlayerController.GetInstance().Money}";
+        _money.text = string.Format(_moneyTextFormat, PlayerController.GetInstance().Money);
     }
 
     private void UpdateQuestAmountText()

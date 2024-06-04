@@ -143,4 +143,9 @@ public class ShopController : MonoBehaviour
 
         LoadGoodsForSellingToUI();
     }
+
+    public int GetItemCount(GoodsModel item)
+    {
+        return _sellingItems.Values.Where(x => x == item).First().Count;
+    }
 }

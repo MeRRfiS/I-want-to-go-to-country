@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Harvest Apple
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 7909070108710223610, guid: 446128ff4e01ca5439903a0cd344e916, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: cb2182f2a39627f4a94c886926945593, type: 3}
+  <Icon>k__BackingField: {fileID: 1987525723, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 1
   <Id>k__BackingField: 30
   <Price>k__BackingField: 12

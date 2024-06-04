@@ -140,9 +140,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 264
-        y: 512
-        width: 512
-        height: 512
+        y: 684
+        width: 340
+        height: 340
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 132, y: 132, z: 132, w: 132}
@@ -333,8 +333,8 @@ TextureImporter:
         width: 300
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 132, y: 0, z: 132, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 132, y: 16, z: 132, w: 169}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -354,14 +354,56 @@ TextureImporter:
         width: 300
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 132, y: 0, z: 132, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 132, y: 170, z: 132, w: 16}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 56ec5ffd4a5c27241a8b73076328826d
       internalID: -1698147114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_0
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 704
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac3b5481083cfb4983e0d029b901169
+      internalID: -701160421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Cursor
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 335
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a8eabf1e5d3424eaa7519102b696f5
+      internalID: -1579091280
       vertices: []
       indices: 
       edges: []
@@ -377,12 +419,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      UI_0: -701160421
       UI_Background Panel: -1560225825
       UI_Button Panel: 1981430078
       UI_Card Panel: -465886346
       UI_Cell: -991139175
       UI_Cell Mask: 1438379390
       UI_Circle: 1158286060
+      UI_Cursor: -1579091280
       UI_Footer: -1698147114
       UI_Header: 208431966
       UI_Need: -1586857097
