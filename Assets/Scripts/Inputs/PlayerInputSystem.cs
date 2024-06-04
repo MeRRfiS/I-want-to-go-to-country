@@ -158,6 +158,8 @@ public class PlayerInputSystem : MonoBehaviour
             switch (hitObject.tag)
             {
                 case TagConstants.SHOP:
+                    if (!hitObject.GetComponent<ShopController>().enabled) return;
+
                     hitObject.GetComponent<ShopController>().LoadGoodsForSellingToUI();
                     hitObject.GetComponent<ShopController>().LoadGoodsForDayToUI();
                     UIController.GetInstance().SwitchActiveShopMenu();

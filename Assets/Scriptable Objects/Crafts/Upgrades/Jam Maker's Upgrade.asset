@@ -27,7 +27,7 @@ MonoBehaviour:
       _amount: 5
     - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
       _amount: 20
-    _price: 1000
+    _price: 11000
     _active: 0
   - _name: Level 3
     _neededItems:
@@ -39,5 +39,5 @@ MonoBehaviour:
       _amount: 10
     - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
       _amount: 40
-    _price: 2500
+    _price: 22000
     _active: 0

@@ -68,6 +68,19 @@ public class QuestSystemController : MonoBehaviour
             while (!questIsAdded)
             {
                 int indexQuest = Random.Range(0, _collection.Quests.Count);
+                int chance = Random.Range(0, 101);
+                switch (chance)
+                {
+                    case <= 60:
+                        if (_collection.Quests[indexQuest]._type != QuestModel.QuestType.Easy) continue;
+                        break;
+                    case var n when (n > 60 && n <= 90):
+                        if (_collection.Quests[indexQuest]._type != QuestModel.QuestType.Normal) continue;
+                        break;
+                    case > 90:
+                        if (_collection.Quests[indexQuest]._type != QuestModel.QuestType.Hard) continue;
+                        break;
+                }
                 questIsAdded = _dayContainer.AddQuest(_collection.Quests[indexQuest]);
             }
         }

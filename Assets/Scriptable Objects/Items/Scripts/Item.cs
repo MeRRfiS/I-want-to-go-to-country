@@ -9,7 +9,9 @@ public class Item : ScriptableObject
     [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public bool IsCanSold { get; private set; }
     [field: SerializeField] public int Id { get; private set; }
-    [field: SerializeField] public int Price { get; private set; }
+    [field: SerializeField] public int MinPrice { get; private set; }
+    [field: SerializeField] public int MaxPrice { get; private set; }
+    [field: SerializeField] public int SoldPrice { get; private set; }
     [field: SerializeField] public ItemTypeEnum Type { get; private set; }
     [HideInInspector] public bool IsDroped { get; set; } = false;
     public int Amount { get; set; }
@@ -42,7 +44,8 @@ public class Item : ScriptableObject
     {
         Item clone = (Item) this.MemberwiseClone();
         clone.Id = Id;
-        clone.Price = Price;
+        clone.MinPrice = MinPrice;
+        clone.MaxPrice = MaxPrice;
         clone.Amount = Amount;
         clone.Type = Type;
 

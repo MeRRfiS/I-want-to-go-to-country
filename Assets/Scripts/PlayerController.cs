@@ -202,11 +202,11 @@ public class PlayerController : MonoBehaviour
 
     public void PickupNPC(NPCController npc)
     {
-        npc.GettingToHand();
+        npc.IsHold = true;
         Transform npcTransform = npc.transform;
         npcTransform.parent = _npcHand;
-        npcTransform.localPosition = new Vector3(0, -0.003f, -0.001f);
-        npcTransform.localRotation = Quaternion.identity;
+        //npcTransform.localPosition = new Vector3(0, -0.003f, -0.001f);
+        //npcTransform.localRotation = Quaternion.identity;
 
         if (HeldItem() != null)
         {
@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     public void DropNPC()
     {
-        _heldNPC.GettingToHand();
+        _heldNPC.DropFromHand();
         _heldNPC.transform.parent = null;
 
         if (HeldItem() != null)

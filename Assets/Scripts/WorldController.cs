@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
+using UnityEngine.UIElements;
 
 [ExecuteAlways]
 public class WorldController : MonoBehaviour
@@ -15,9 +18,21 @@ public class WorldController : MonoBehaviour
 
     public static WorldController GetInstance() => instance;
 
+    public const float MINUTES_MULTIPLIER = 60f;
+
     public float TimeOfDay
     {
         get => _timeOfDay;
+    }
+
+    public int HourOfDay
+    {
+        get => (int)Math.Truncate(_timeOfDay);
+    }
+
+    public int MinuteOfDay
+    {
+        get => (int)Math.Floor((_timeOfDay - HourOfDay) * MINUTES_MULTIPLIER);
     }
 
     private void UpdateLighting(float timePercent)
