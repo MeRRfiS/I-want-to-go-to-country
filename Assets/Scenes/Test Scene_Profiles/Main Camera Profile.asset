@@ -63,7 +63,7 @@ MonoBehaviour:
     value: 0.25
   quality:
     overrideState: 1
-    value: 2
+    value: 3
 --- !u!114 &2328517971957857515
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -117,7 +117,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 35
+    value: 25
   tint:
     overrideState: 1
     value: 15
@@ -128,14 +128,14 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   saturation:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -25
   brightness:
     overrideState: 1
     value: 0
   postExposure:
     overrideState: 1
-    value: 1.15
+    value: 1
   contrast:
     overrideState: 0
     value: 0
