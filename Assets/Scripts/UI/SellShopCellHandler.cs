@@ -10,8 +10,8 @@ public class SellShopCellHandler : ShopCellHandler
     public override void DrawCellInformation(GoodsModel goods, ShopController controller)
     {
         base.DrawCellInformation(goods, controller);
-        _sellOneText.text = $"1 = {COIN_SPRITE}{goods.Goods.Price}";
-        _sellTenText.text = $"10 = {COIN_SPRITE}{goods.Goods.Price * 10}";
-        _sellAllText.text = $"All = {COIN_SPRITE}{goods.Goods.Price * controller.GetItemCount(goods)}";
+        _sellOneText.text = $"1 = {COIN_SPRITE}{goods.Goods.SoldPrice}";
+        _sellTenText.text = $"10 = {COIN_SPRITE}{goods.Goods.SoldPrice * 10}";
+        _sellAllText.text = $"All = {COIN_SPRITE}{goods.Goods.SoldPrice * controller.GetItemCount(goods)}";
     }
 }
