@@ -16,7 +16,9 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: -223705404, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 39
-  <Price>k__BackingField: 10
+  <MinPrice>k__BackingField: 500
+  <MaxPrice>k__BackingField: 500
+  <SoldPrice>k__BackingField: 0
   <Type>k__BackingField: 6
   _buildingVisualizationObj: {fileID: 2712531875954162493, guid: a18ef4f2dba410a4b87dae1304fbb08a, type: 3}
   _buildingPrefab: {fileID: 8972468029688470871, guid: 9e7266a301740a34abe0207e154efb2c, type: 3}

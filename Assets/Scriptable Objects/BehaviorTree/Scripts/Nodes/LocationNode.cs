@@ -36,6 +36,7 @@ public class LocationNode : ActionNode
         switch (_typeWalk)
         {
             case TypeWalk.Free:
+                NPC.Agent.stoppingDistance = 3;
                 if (NPC.Agent.remainingDistance <= NPC.Agent.stoppingDistance)
                 {
                     NPC.Agent.SetDestination(GetNewRandomPoint());
@@ -49,6 +50,7 @@ public class LocationNode : ActionNode
                 break;
             case TypeWalk.Home:
                 NPC.Agent.SetDestination(NPC.HomePosition.position);
+                NPC.Agent.stoppingDistance = 0;
                 if (!NPC.Agent.pathPending)
                 {
                     if (NPC.Agent.remainingDistance <= NPC.Agent.stoppingDistance)

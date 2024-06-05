@@ -17,6 +17,14 @@ public class QuestsCollection : ScriptableObject
 public class QuestModel: InformationModel
 {
     public Sprite _robotIcon;
+    public enum QuestType
+    {
+        Easy = 1,
+        Normal,
+        Hard
+    }
+
     public int _id;
     public int _reward;
+    public QuestType _type;
 }

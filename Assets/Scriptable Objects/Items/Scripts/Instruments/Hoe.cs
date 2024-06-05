@@ -20,6 +20,8 @@ public class Hoe : Instrument
     private SeedbedChecking _seedbedCheck;
     private Renderer _seedbedRend;
 
+    private Terrain _terrain;
+
     private bool IsPatchObjNull() => _seedbedObj == null;
 
     public override void Init()
@@ -33,12 +35,69 @@ public class Hoe : Instrument
         _durability--;
         var seedbed = Instantiate(_seedbedPrefab);
         seedbed.transform.position = _seedbedObj.transform.position;
+        _terrain = FindObjectOfType<Terrain>();
+        RemoveGrassAt(_seedbedObj.transform.position);
         RuntimeManager.PlayOneShot(FMODEvents.instance.SeedbedDig, seedbed.transform.position);
         Destroy(_seedbedObj);
 
         UIController.GetInstance().StopProgressBar();
         _seedbedCheck = null;
         _seedbedObj = null;
+    }
+
+    private void RemoveGrassAt(Vector3 worldPosition)
+    {
+        if (_terrain == null)
+        {
+            Debug.LogError("Terrain not assigned.");
+            return;
+        }
+
+        // Перетворити світові координати у координати терену
+        Vector3 terrainPosition = worldPosition - _terrain.transform.position;
+
+        // Отримати розмір терену
+        TerrainData terrainData = _terrain.terrainData;
+        int terrainWidth = terrainData.detailWidth;
+        int terrainHeight = terrainData.detailHeight;
+
+        // Перетворити координати терену в координати масиву трави
+        float relativeX = terrainPosition.x / terrainData.size.x;
+        float relativeZ = terrainPosition.z / terrainData.size.z;
+        int detailX = Mathf.FloorToInt(relativeX * terrainWidth);
+        int detailZ = Mathf.FloorToInt(relativeZ * terrainHeight);
+
+        // Радіус в координатах масиву трави
+        int detailRadius = Mathf.FloorToInt(1 * (terrainWidth / terrainData.size.x));
+
+        // Пройтися по всіх шарах трави
+        int detailLayerCount = terrainData.detailPrototypes.Length;
+        for (int layer = 0; layer < detailLayerCount; layer++)
+        {
+            // Отримати дані про траву для поточного шару
+            int[,] details = terrainData.GetDetailLayer(0, 0, terrainWidth, terrainHeight, layer);
+
+            // Очистити область навколо заданої позиції
+            for (int y = -detailRadius; y <= detailRadius; y++)
+            {
+                for (int x = -detailRadius; x <= detailRadius; x++)
+                {
+                    int posX = detailX + x;
+                    int posY = detailZ + y;
+
+                    // Перевірка, чи координати не виходять за межі масиву
+                    if (posX >= 0 && posX < terrainWidth && posY >= 0 && posY < terrainHeight)
+                    {
+                        details[posY, posX] = 0;
+                    }
+                }
+            }
+
+            // Застосувати зміни до шару трави
+            terrainData.SetDetailLayer(0, 0, layer, details);
+        }
+
+        Debug.Log("Grass removed at specified position.");
     }
 
     public override void UseItem()
