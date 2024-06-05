@@ -163,17 +163,21 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void DropItemFromInventory(Item item)
+    public void DropItemFromInventory(Item item, Vector3? dropPosition = null)
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
         dropItem.Item.IsDroped = true;
-        dropItem.transform.position = _hand.position;
+        Debug.Log(dropPosition.HasValue);
+        if (dropPosition.HasValue)
+            dropItem.transform.position = dropPosition.GetValueOrDefault();
+        else
+            dropItem.transform.position = _hand.position;
     }
 
-    public bool AddItemToMainInventory(Item item, int amount)
+    public bool AddItemToMainInventory(Item item, int amount, Vector3? possibleDropPosition = null)
     {
-        return _mainInventory.AddItem(new InventorySlot(item, amount));
+        return _mainInventory.AddItem(new InventorySlot(item, amount), possibleDropPosition);
     }
 
     public void RemoveItem()

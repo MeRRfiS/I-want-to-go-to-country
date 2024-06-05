@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3873175492555104560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4682078097643549676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353323763847664354}
+  m_Layer: 0
+  m_Name: Drop Position
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353323763847664354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4682078097643549676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.66, y: 1.17, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3873175492555104560}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7713379022947930337
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 981f50823a43648499b93ed73e52af1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4876847057727214753}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 981f50823a43648499b93ed73e52af1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1353323763847664354}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 981f50823a43648499b93ed73e52af1c, type: 3}
       insertIndex: -1
@@ -349,3 +383,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c26bfbb1d3d9ae049ad2b560809b3f59, type: 2}
   - {fileID: 11400000, guid: e8191c1db6d98cb40873fd37bde80ff1, type: 2}
   - {fileID: 11400000, guid: cf3dd47e9d567db4cb984727a9aa5c5c, type: 2}
+  _possibleDropPosition: {fileID: 1353323763847664354}

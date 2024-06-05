@@ -9,6 +9,7 @@ public class ShopController : MonoBehaviour
 {
     [SerializeField] private bool _isEverydayUpdating;
     [SerializeField] private List<Item> _itemsSells;
+    [SerializeField] private Transform _possibleDropPosition;
     private List<GoodsModel> _goods = new List<GoodsModel>();
     private List<GoodsModel> _goodsForDay = new List<GoodsModel>();
     private Dictionary<int, GoodsModel> _sellingItems;
@@ -138,7 +139,7 @@ public class ShopController : MonoBehaviour
         PlayerController.GetInstance().Money -= _goodsForDay[index].Price;
         Item soldGoods = _goodsForDay[index].Goods.Copy();
         soldGoods.Init();
-        InventoryController.GetInstance().AddItemToMainInventory(soldGoods, 1);
+        InventoryController.GetInstance().AddItemToMainInventory(soldGoods, 1, _possibleDropPosition.position);
         if (_goodsForDay[index].Count == 0) _goodsForDay[index] = null;
 
         LoadGoodsForDayToUI();
