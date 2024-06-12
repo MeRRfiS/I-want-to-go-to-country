@@ -1,5 +1,6 @@
 using FMOD.Studio;
 using FMODUnity;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -25,10 +26,13 @@ public class PlayerController : MonoBehaviour
     private CharacterController _chController;
     private EventInstance _eventInstance;
 
+    [SerializeField] private float _waterLevel = 4.4f;
+
     [Header("Player object")]
     [SerializeField] private Transform _holdArea;
     [SerializeField] private Transform _hand;
     [SerializeField] private Transform _npcHand;
+    [SerializeField] private UnderwaterEffect _waterEffect;
 
     public static PlayerController GetInstance() => instance;
     //TODO: Need to do better checking of holding
@@ -95,9 +99,28 @@ public class PlayerController : MonoBehaviour
     {
         ApplyGravity();
         ApplyMovement();
+        AppleWaterEffect();
         UpdateSound();
         ApplyRotation();
         ApplyMovementObject();
+    }
+
+    private void AppleWaterEffect()
+    {
+        if (Camera.main.transform.position.y < _waterLevel)
+        {
+            if (_waterEffect != null)
+            {
+                _waterEffect.enabled = true;
+            }
+        }
+        else
+        {
+            if (_waterEffect != null)
+            {
+                _waterEffect.enabled = false;
+            }
+        }
     }
 
     private void ApplyGravity()
@@ -129,7 +152,7 @@ public class PlayerController : MonoBehaviour
         _direction.z = direction.z; 
         _chController.Move(_direction * PlayerConstants.MOVEMENT_SPEED * Time.deltaTime);
 
-        HandsAnimationManager.GetInstance().IsMoving(_chController.velocity.x != 0 || _chController.velocity.y != 0);
+        HandsAnimationManager.GetInstance().IsMoving(_chController.velocity.x != 0 || _chController.velocity.z != 0);
     }
 
     private void ApplyRotation()
@@ -150,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateSound()
     {
-        if ((_chController.velocity.x != 0 || _chController.velocity.y != 0) && IsGrounded() && _isCanMoving)
+        if ((_chController.velocity.x != 0 || _chController.velocity.z != 0) && IsGrounded() && _isCanMoving)
         {
             PLAYBACK_STATE playbackState;
             _eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
@@ -202,6 +225,8 @@ public class PlayerController : MonoBehaviour
 
     public void PickupNPC(NPCController npc)
     {
+        if (npc.IsDead) return;
+
         npc.IsHold = true;
         Transform npcTransform = npc.transform;
         npcTransform.parent = _npcHand;

@@ -24,6 +24,7 @@ public class TradeNode : ActionNode
     protected override StateEnum OnUpdate()
     {
         if (NPC.IsHold) _state = StateEnum.Success;
+        if (Vector3.Distance(NPC.transform.position, NPC.ShopPosition.position) > 2f) _state = StateEnum.Success;
 
         return _state;
     }
