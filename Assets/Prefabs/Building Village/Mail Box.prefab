@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6727643558010146444}
   - component: {fileID: 3027479952977981247}
   - component: {fileID: 3428413680004321475}
+  - component: {fileID: -7991946052083770135}
   m_Layer: 0
   m_Name: Mail Box
   m_TagString: Mail Box
@@ -70,6 +71,20 @@ MonoBehaviour:
   _collection: {fileID: 11400000, guid: 326f6a4ce4c2ab348b9dcbc3856a16be, type: 2}
   _playerContainer: {fileID: 11400000, guid: 9847981823775fc42809469ae797fae6, type: 2}
   _dayContainer: {fileID: 11400000, guid: 60263aab4438edc4ba9eac12fe61d1a6, type: 2}
+--- !u!114 &-7991946052083770135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043703449167886421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903031ece58a8e4689f6d601f2a6afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e77020b3240841e41a301fff6d2f9dca, type: 2}
+  _building: {fileID: 4043703449167886421}
 --- !u!1001 &2704730027380206300
 PrefabInstance:
   m_ObjectHideFlags: 0

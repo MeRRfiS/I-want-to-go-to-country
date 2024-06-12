@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5387998379155192353}
   - component: {fileID: 2192149689825565315}
   - component: {fileID: 5472364228549056456}
+  - component: {fileID: -4790853729444747910}
   m_Layer: 0
   m_Name: NPC Seller
   m_TagString: NPC
@@ -111,6 +112,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tree: {fileID: 11400000, guid: a96b9dc6ee3aa9147825a34e82353966, type: 2}
+--- !u!114 &-4790853729444747910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299524165276495756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c24799dd1763e458ad496a4c6a1117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 137c35078bd781748a3eb8eb4e6cb36e, type: 2}
 --- !u!1001 &1785564286814357395
 PrefabInstance:
   m_ObjectHideFlags: 0

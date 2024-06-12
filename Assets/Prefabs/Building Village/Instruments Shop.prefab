@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91509c538d49f65439dbbf5e44e65667, type: 3}
       propertyPath: m_Name
-      value: Instruments_shop
+      value: Instruments Shop
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 91509c538d49f65439dbbf5e44e65667, type: 3}
       propertyPath: m_TagString
@@ -209,6 +209,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91509c538d49f65439dbbf5e44e65667, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7569265265459744526}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91509c538d49f65439dbbf5e44e65667, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4144560125822955666}
   m_SourcePrefab: {fileID: 100100000, guid: 91509c538d49f65439dbbf5e44e65667, type: 3}
 --- !u!4 &4996521180911597300 stripped
 Transform:
@@ -374,3 +377,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f08b2c940f9d561439c2326e64f5a575, type: 2}
   - {fileID: 11400000, guid: 66dac59720acd6245950551717d74c2b, type: 2}
   _possibleDropPosition: {fileID: 7830930200080092795}
+--- !u!114 &-4144560125822955666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628625585917078606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903031ece58a8e4689f6d601f2a6afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e77020b3240841e41a301fff6d2f9dca, type: 2}
+  _building: {fileID: 5628625585917078606}

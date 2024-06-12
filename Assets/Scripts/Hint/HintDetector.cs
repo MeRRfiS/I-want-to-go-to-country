@@ -15,7 +15,7 @@ public class HintDetector : MonoBehaviour
     {
         Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
 
-        if (Physics.Raycast(ray, out var hit) && hit.transform.TryGetComponent<Hint>(out var hint))
+        if (Physics.Raycast(ray, out var hit, PlayerConstants.DISTANCE_TO_OBJECT) && hit.transform.TryGetComponent<HintBase>(out var hint))
         {
             _hintDisplay.Show(hint);
         }

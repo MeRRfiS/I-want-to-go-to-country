@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hint : MonoBehaviour
+public class HintBase : MonoBehaviour
 {
     [SerializeField] protected HintData _data;
 
