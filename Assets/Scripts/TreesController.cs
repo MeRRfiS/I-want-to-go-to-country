@@ -25,6 +25,9 @@ public class TreesController : MonoBehaviour
     [SerializeField] private PlayableDirector _applePlayer;
     [SerializeField] private GameObject _icon;
 
+    public Item ResultItem => _harvest;
+
+    public bool IsCanHarvestApple() => _isFruitGrow;
     public bool IsCanChoppingTree() => _isTreeGrow || _isTreeDry; 
     public bool IsPlantNeedWater() => _isNeedWater;
 

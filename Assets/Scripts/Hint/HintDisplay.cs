@@ -11,7 +11,7 @@ public class HintDisplay : MonoBehaviour
 
     public void Show(HintBase hint)
     {
-        if (hint == _currentHint && _visible == true) return;
+        if (hint == _currentHint && _visible == true && hint.IsAlwaysUpdate() == false) return;
         
         _text.text = hint.GetText();
         _panel.SetActive(true);

@@ -696,7 +696,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 435
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9452,6 +9452,67 @@ MonoBehaviour:
       Data3: -927719283
       Data4: 992866686
     Path: event:/Harvest
+--- !u!1001 &880173888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5117114162010992689, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_InitialTime
+      value: 149
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.553669
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.723
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.532598
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072822551248026977, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942591199453428746, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
+      propertyPath: m_Name
+      value: Apple Tree
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cf0edb7a9a5b5e41a9612e5ee92cc3d, type: 3}
 --- !u!43 &880961385
 Mesh:
   m_ObjectHideFlags: 0
@@ -19945,7 +20006,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 68
@@ -23017,6 +23078,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 6830367400895023852, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6877123691963111069, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -23971,3 +24036,4 @@ SceneRoots:
   - {fileID: 579685001}
   - {fileID: 1704379511}
   - {fileID: 129008683}
+  - {fileID: 880173888}

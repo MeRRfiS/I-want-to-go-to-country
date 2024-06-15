@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HintDetector : MonoBehaviour
@@ -5,6 +6,7 @@ public class HintDetector : MonoBehaviour
     [SerializeField] private HintDisplay _hintDisplay;
 
     private Transform _cameraTransform;
+    private List<HintBase> _hints = new();
 
     private void Awake()
     {
@@ -13,15 +15,23 @@ public class HintDetector : MonoBehaviour
 
     private void LateUpdate()
     {
-        Ray ray = new Ray(_cameraTransform.position, _cameraTransform.forward);
+        if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out var hit, PlayerConstants.DISTANCE_TO_OBJECT))
+        {
+            hit.transform.GetComponentsInChildren(_hints);
+            Debug.Log(_hints.Count);
 
-        if (Physics.Raycast(ray, out var hit, PlayerConstants.DISTANCE_TO_OBJECT) && hit.transform.TryGetComponent<HintBase>(out var hint))
-        {
-            _hintDisplay.Show(hint);
         }
-        else
+
+        foreach (var hint in _hints)
         {
-            _hintDisplay.Hide();
+            if (hint.IsActive())
+            {
+                _hintDisplay.Show(hint);
+                _hints.Clear();
+                return;
+            }
         }
+
+        _hintDisplay.Hide();
     }
 }

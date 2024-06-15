@@ -51,7 +51,10 @@ public class GameSettings : MonoBehaviour
     {
         value = Mathf.Clamp(value, _fovSlider.minValue, _fovSlider.maxValue);
         PlayerPrefs.SetFloat(FOV_KEY, value);
-        Camera.main.fieldOfView = value;
+        foreach (var camera in Camera.main.GetComponentsInChildren<Camera>())
+        {
+            camera.fieldOfView = value;
+        }
     }
 
     public void Apply()
@@ -62,6 +65,9 @@ public class GameSettings : MonoBehaviour
         float sentivity = PlayerPrefs.GetFloat(SENSITIVITY_KEY);
         PlayerConstants.SENSITIVITY_HOR = sentivity;
         PlayerConstants.SENSITIVITY_VERT = sentivity;
-        Camera.main.fieldOfView = PlayerPrefs.GetFloat(FOV_KEY);
+        foreach (var camera in Camera.main.GetComponentsInChildren<Camera>())
+        {
+            camera.fieldOfView = PlayerPrefs.GetFloat(FOV_KEY);
+        }
     }
 }

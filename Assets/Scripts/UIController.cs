@@ -169,6 +169,7 @@ public class UIController : MonoBehaviour
 
     private void ApplyMovementPinUpTransform()
     {
+        if (Input.mousePosition.x == Mathf.Infinity) return;
         _pinUp.transform.position = Input.mousePosition;
     }
 
