@@ -18,8 +18,6 @@ public class HintDetector : MonoBehaviour
         if (Physics.Raycast(_cameraTransform.position, _cameraTransform.forward, out var hit, PlayerConstants.DISTANCE_TO_OBJECT))
         {
             hit.transform.GetComponentsInChildren(_hints);
-            Debug.Log(_hints.Count);
-
         }
 
         foreach (var hint in _hints)
