@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Strawberry's Seed
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 8577099730414830649, guid: 93dabd9c6a83b3c499cf2b37a18d1fe3, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: f25a497930f363e4e92b3df63da00e5a, type: 3}
+  <Icon>k__BackingField: {fileID: 1132611057, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 19
   <MinPrice>k__BackingField: 60

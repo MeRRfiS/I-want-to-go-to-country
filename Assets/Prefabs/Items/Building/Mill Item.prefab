@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5608768827948303706}
   - component: {fileID: 3369201855477494684}
   - component: {fileID: 7149362736211485934}
+  - component: {fileID: -3274873459019679874}
   m_Layer: 0
   m_Name: Mill Item
   m_TagString: Item
@@ -97,6 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 26804865b45e0b04c99181ab22a19b6b, type: 2}
   _isDroped: 0
+--- !u!114 &-3274873459019679874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138115706287338435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 7149362736211485934}
 --- !u!1 &2259993237146920629
 GameObject:
   m_ObjectHideFlags: 0

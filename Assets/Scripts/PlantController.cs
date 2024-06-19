@@ -31,6 +31,8 @@ public class PlantController : MonoBehaviour
     [SerializeField] private GameObject _icon;
     [SerializeField] private PlayableDirector _player;
 
+    public Item ResultItem => _harvest;
+    public bool IsComplate() => _isPlantGrow;
     public bool IsPlantNeedWater() => _isNeedWater;
 
     private void Update()

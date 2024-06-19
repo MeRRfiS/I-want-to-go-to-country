@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Carrot's Seed
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 7341467116559473879, guid: d4a853d98e095b14ea675907d2202bab, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: ba00aacf85d3b024fb5bf79816305fe9, type: 3}
+  <Icon>k__BackingField: {fileID: -1747747848, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 18
   <MinPrice>k__BackingField: 40

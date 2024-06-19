@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4946223227186109569}
   - component: {fileID: 560101160229163581}
   - component: {fileID: 5000393412875446697}
+  - component: {fileID: 2839662595953935703}
   m_Layer: 0
   m_Name: Jam Maker Item
   m_TagString: Item
@@ -97,6 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: e8191c1db6d98cb40873fd37bde80ff1, type: 2}
   _isDroped: 0
+--- !u!114 &2839662595953935703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396375707197713889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 5000393412875446697}
 --- !u!1 &6093333655689543599
 GameObject:
   m_ObjectHideFlags: 0

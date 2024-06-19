@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5202385173169572441}
   - component: {fileID: 1052864796626783059}
   - component: {fileID: 1960203732528988437}
+  - component: {fileID: -1018715261520852169}
   m_Layer: 0
   m_Name: Carrot Crop
   m_TagString: Item
@@ -97,7 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: ef5eaca51973c5c43a5e9bfb3be4d0f1, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 0}
+--- !u!114 &-1018715261520852169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515881139347776412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 1960203732528988437}
 --- !u!1001 &7660517026287320595
 PrefabInstance:
   m_ObjectHideFlags: 0

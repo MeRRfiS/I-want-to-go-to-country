@@ -7,7 +7,7 @@ public class Inventory : ScriptableObject
     public Item[] Container { get; set; }
 
     public virtual void Init() { }
-    public virtual bool AddItem(InventorySlot newItem) => false;
+    public virtual bool AddItem(InventorySlot newItem, Vector3? possibleDropPostion) => false;
 
 
     public void MoveItem(int firstIndex, int secondIndex, Inventory toInventory)

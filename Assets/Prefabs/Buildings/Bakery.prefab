@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8076655132376392480}
   - component: {fileID: 6058279759382535359}
   - component: {fileID: 1108281521746784899}
+  - component: {fileID: -6130674599029517534}
   m_Layer: 0
   m_Name: Bakery
   m_TagString: Building
@@ -69,6 +70,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftCollection: {fileID: 11400000, guid: c4890dadc18c38c408cd1898aa200bf6, type: 2}
   _upgradeCollection: {fileID: 11400000, guid: d2e283aba8bfd7746ac7f4098438f37f, type: 2}
+--- !u!114 &-6130674599029517534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058417561180771342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903031ece58a8e4689f6d601f2a6afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e77020b3240841e41a301fff6d2f9dca, type: 2}
+  _building: {fileID: 5058417561180771342}
 --- !u!1001 &2491150961755884335
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bakary
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 6683994707254970909, guid: c91e83832e9942e43a22b2353c18f276, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: dc0f259566339d944b1908033e15dea8, type: 3}
+  <Icon>k__BackingField: {fileID: -1546901903, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 36
   <MinPrice>k__BackingField: 3500
