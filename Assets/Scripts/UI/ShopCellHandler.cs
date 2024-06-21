@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopCellHandler : MonoBehaviour
 {
+    public const string COIN_SPRITE = "<sprite=44>";
     private int _index;
 
     [Header("Components")]
     [SerializeField] private Image _image;
     [SerializeField] private TextMeshProUGUI _count;
     [SerializeField] private TextMeshProUGUI _price;
-    [SerializeField] private Button _button;
     private ShopController _controller;
 
     public int Index
@@ -31,11 +29,11 @@ public class ShopCellHandler : MonoBehaviour
         _controller.SellItemToShop(_index, count);
     }
 
-    public void DrawCellInformation(GoodsModel goods, ShopController controller)
+    public virtual void DrawCellInformation(GoodsModel goods, ShopController controller)
     {
         _image.sprite = goods.Goods.Icon;
         _count.text = goods.Count.ToString();
-        _price.text = goods.Price.ToString();
+        _price.text = $"{COIN_SPRITE}{goods.Price}";
         _controller = controller;
     }
 }

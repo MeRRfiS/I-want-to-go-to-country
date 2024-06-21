@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 2439801713034335065}
   - component: {fileID: 1105088634939910478}
   - component: {fileID: 6096344038974031499}
+  - component: {fileID: 310704972505038620}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Plant
@@ -268,6 +269,27 @@ MonoBehaviour:
   - {fileID: 3439357756365960464}
   _icon: {fileID: 5350150891676406716}
   _player: {fileID: 4301469574652729671}
+--- !u!114 &310704972505038620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8403440915909911925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812ea0d79e363354e9ffd90df9698f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 45afaf06d861a6c40a50ffa9470a0f49, type: 2}
+  _requireditems:
+  - {fileID: 11400000, guid: d182181e934019346b6f9c2a69807c46, type: 2}
+  - {fileID: 11400000, guid: 7dd895acfd5c26f4aa1c187ac4fa1e9d, type: 2}
+  - {fileID: 11400000, guid: 9babc6065b5817e4ca09ee6d6a145514, type: 2}
+  - {fileID: 11400000, guid: 00c53fb1ad689334b93dada1f26c3b88, type: 2}
+  - {fileID: 11400000, guid: c78a67fa34f16af4bb984846116ddec0, type: 2}
+  _harvestData: {fileID: 11400000, guid: 9dd9264a7df92a444b077470ee64bff5, type: 2}
+  _plant: {fileID: 6096344038974031499}
 --- !u!1001 &2556466212823386177
 PrefabInstance:
   m_ObjectHideFlags: 0

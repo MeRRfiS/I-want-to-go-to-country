@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5821043306125620723}
   - component: {fileID: 3946882478834099884}
   - component: {fileID: 7909070108710223610}
+  - component: {fileID: -3998698077356660918}
   m_Layer: 0
   m_Name: Apple Crop
   m_TagString: Item
@@ -97,7 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 8f049b42732c9eb458be52ca8ad6c7b1, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 0}
+--- !u!114 &-3998698077356660918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5230865661210981629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 7909070108710223610}
 --- !u!1001 &6205778993381434745
 PrefabInstance:
   m_ObjectHideFlags: 0

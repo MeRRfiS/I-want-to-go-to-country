@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5257110174643665313}
   - component: {fileID: 8394479130171113642}
   - component: {fileID: 7267879826718128185}
+  - component: {fileID: -757355162448988519}
   m_Layer: 0
   m_Name: Mill
   m_TagString: Building
@@ -69,6 +70,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftCollection: {fileID: 11400000, guid: 2df36f8e02191ad4e96f01d03e02f3f3, type: 2}
   _upgradeCollection: {fileID: 11400000, guid: 855e16e9808b2824f831e8dc9cafafe2, type: 2}
+--- !u!114 &-757355162448988519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738858992774469766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903031ece58a8e4689f6d601f2a6afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e77020b3240841e41a301fff6d2f9dca, type: 2}
+  _building: {fileID: 8738858992774469766}
 --- !u!1001 &1100548715102442071
 PrefabInstance:
   m_ObjectHideFlags: 0

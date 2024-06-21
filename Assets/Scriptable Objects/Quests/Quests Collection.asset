@@ -17,6 +17,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: ba540f437bb293042bdb7ca4d7f19e19, type: 2}
       _amount: 5
+    _robotIcon: {fileID: 21300000, guid: 7bc22d5ce7a94884fb749b3f1cd2badd, type: 3}
     _id: 1
     _reward: 110
     _type: 1
@@ -24,6 +25,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: ba540f437bb293042bdb7ca4d7f19e19, type: 2}
       _amount: 25
+    _robotIcon: {fileID: 21300000, guid: a296642cf909ffe4284e1d27f2ea8016, type: 3}
     _id: 2
     _reward: 550
     _type: 2
@@ -31,6 +33,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: fd2b050452874bb47845149f9fd8d83c, type: 2}
       _amount: 5
+    _robotIcon: {fileID: 21300000, guid: d079df020efe3414cad4f3472ce978b4, type: 3}
     _id: 3
     _reward: 132
     _type: 1
@@ -38,6 +41,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: ef5eaca51973c5c43a5e9bfb3be4d0f1, type: 2}
       _amount: 5
+    _robotIcon: {fileID: 21300000, guid: 1ef0029b2a13c3446ae8b79cf83edc19, type: 3}
     _id: 4
     _reward: 358
     _type: 1
@@ -47,6 +51,7 @@ MonoBehaviour:
       _amount: 10
     - _item: {fileID: 11400000, guid: ba540f437bb293042bdb7ca4d7f19e19, type: 2}
       _amount: 15
+    _robotIcon: {fileID: 21300000, guid: 6bfa2a96d139d7d4a83c1236822cbc3d, type: 3}
     _id: 5
     _reward: 594
     _type: 2
@@ -56,6 +61,7 @@ MonoBehaviour:
       _amount: 20
     - _item: {fileID: 11400000, guid: ef5eaca51973c5c43a5e9bfb3be4d0f1, type: 2}
       _amount: 10
+    _robotIcon: {fileID: 21300000, guid: 6bfa2a96d139d7d4a83c1236822cbc3d, type: 3}
     _id: 6
     _reward: 1243
     _type: 2
@@ -63,6 +69,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: 53452f041369c6e4f909069c97599edd, type: 2}
       _amount: 5
+    _robotIcon: {fileID: 21300000, guid: 7bc22d5ce7a94884fb749b3f1cd2badd, type: 3}
     _id: 7
     _reward: 550
     _type: 1
@@ -72,6 +79,7 @@ MonoBehaviour:
       _amount: 50
     - _item: {fileID: 11400000, guid: bede4fd09b4e9cc4cb21d07e28223fa2, type: 2}
       _amount: 15
+    _robotIcon: {fileID: 21300000, guid: d079df020efe3414cad4f3472ce978b4, type: 3}
     _id: 8
     _reward: 743
     _type: 1
@@ -79,6 +87,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: f208f5c618bec7e45b946de77769a592, type: 2}
       _amount: 3
+    _robotIcon: {fileID: 21300000, guid: a296642cf909ffe4284e1d27f2ea8016, type: 3}
     _id: 10
     _reward: 363
     _type: 2
@@ -86,6 +95,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: f2132d5c456738e41ab1d7537c4cc358, type: 2}
       _amount: 5
+    _robotIcon: {fileID: 21300000, guid: 7bc22d5ce7a94884fb749b3f1cd2badd, type: 3}
     _id: 9
     _reward: 963
     _type: 1
@@ -93,6 +103,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: f212b3825d79346489ec25db5f989a2a, type: 2}
       _amount: 3
+    _robotIcon: {fileID: 21300000, guid: 1ef0029b2a13c3446ae8b79cf83edc19, type: 3}
     _id: 11
     _reward: 1090
     _type: 2
@@ -100,6 +111,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: f212b3825d79346489ec25db5f989a2a, type: 2}
       _amount: 10
+    _robotIcon: {fileID: 21300000, guid: d079df020efe3414cad4f3472ce978b4, type: 3}
     _id: 12
     _reward: 4000
     _type: 3
@@ -109,6 +121,7 @@ MonoBehaviour:
       _amount: 2
     - _item: {fileID: 11400000, guid: 52cb02b315fb7404b92b64592a14875e, type: 2}
       _amount: 2
+    _robotIcon: {fileID: 21300000, guid: a296642cf909ffe4284e1d27f2ea8016, type: 3}
     _id: 14
     _reward: 2710
     _type: 3
@@ -116,6 +129,7 @@ MonoBehaviour:
     _neededItems:
     - _item: {fileID: 11400000, guid: eb5f977b28046454a8382f92a7dab414, type: 2}
       _amount: 10
+    _robotIcon: {fileID: 21300000, guid: d079df020efe3414cad4f3472ce978b4, type: 3}
     _id: 13
     _reward: 1452
     _type: 2
@@ -127,6 +141,7 @@ MonoBehaviour:
       _amount: 2
     - _item: {fileID: 11400000, guid: 8560316648ebdf74c9be2a2508367e68, type: 2}
       _amount: 2
+    _robotIcon: {fileID: 21300000, guid: a296642cf909ffe4284e1d27f2ea8016, type: 3}
     _id: 15
     _reward: 7161
     _type: 3

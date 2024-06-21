@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fertilizers Level 3
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 3714574829516930220, guid: 0ce73125bbb6e87428d6efdc7488f73a, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: 60d114c31e258dc4796b830608733f87, type: 3}
+  <Icon>k__BackingField: {fileID: -1090706591, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 35
   <MinPrice>k__BackingField: 350

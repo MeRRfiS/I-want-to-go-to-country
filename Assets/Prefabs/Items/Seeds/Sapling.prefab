@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8668453138576680015}
   - component: {fileID: 4943570008295297502}
   - component: {fileID: 7360662635015985916}
+  - component: {fileID: 8394631701209011395}
   m_Layer: 0
   m_Name: Sapling
   m_TagString: Item
@@ -97,7 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 498fa80a17b9ef944b1f4a9520dd8c0c, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 8917473772584949530, guid: 9c305e1c22fe4b049870c2a420400bda, type: 3}
+--- !u!114 &8394631701209011395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073769986291296437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 7360662635015985916}
 --- !u!1001 &2443626622066250057
 PrefabInstance:
   m_ObjectHideFlags: 0

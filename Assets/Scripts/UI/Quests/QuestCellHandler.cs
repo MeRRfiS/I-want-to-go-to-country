@@ -28,6 +28,7 @@ public class QuestCellHandler : MonoBehaviour
     public void DrawCellInformation(QuestModel quest)
     {
         _quest = quest;
+        _robotIcon.sprite = _quest._robotIcon;
         _name.text = _quest._name;
     }
 }

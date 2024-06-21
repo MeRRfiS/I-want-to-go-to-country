@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4438025002319540853}
   - component: {fileID: 4477625455057395813}
   - component: {fileID: 209345422462095526}
+  - component: {fileID: 3478374770665662500}
   m_Layer: 0
   m_Name: Axe_Level_5
   m_TagString: Instrument
@@ -97,7 +98,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: 66dac59720acd6245950551717d74c2b, type: 2}
   _isDroped: 0
-  _objPrefab: {fileID: 0}
+--- !u!114 &3478374770665662500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23064735372801786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 209345422462095526}
 --- !u!1 &7791483421876248536
 GameObject:
   m_ObjectHideFlags: 0
