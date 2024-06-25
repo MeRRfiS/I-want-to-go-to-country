@@ -14,12 +14,39 @@ public class GameSettings : MonoBehaviour
 
     private void Awake()
     {
-        _volumeSlider.value = PlayerPrefs.GetFloat(VOLUME_KEY);
         _volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
-        _sensitivitySlider.value = PlayerPrefs.GetFloat(SENSITIVITY_KEY);
         _sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
-        _fovSlider.value = PlayerPrefs.GetFloat(FOV_KEY);
         _fovSlider.onValueChanged.AddListener(OnFovChanged);
+
+        if (PlayerPrefs.HasKey(VOLUME_KEY))
+        {
+            _volumeSlider.value = PlayerPrefs.GetFloat(VOLUME_KEY);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat(VOLUME_KEY, 1);
+            _volumeSlider.value = 1;
+        }
+
+        if(PlayerPrefs.HasKey(SENSITIVITY_KEY))
+        {
+            _sensitivitySlider.value = PlayerPrefs.GetFloat(SENSITIVITY_KEY);
+        }
+        else 
+        {
+            PlayerPrefs.SetFloat(SENSITIVITY_KEY, 0.25f);
+            _sensitivitySlider.value = 0.25f;
+        }
+
+        if(PlayerPrefs.HasKey(FOV_KEY))
+        {
+            _fovSlider.value = PlayerPrefs.GetFloat(FOV_KEY);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat(SENSITIVITY_KEY, 75);
+            _sensitivitySlider.value = 75;
+        }
     }
 
     private void Start()
