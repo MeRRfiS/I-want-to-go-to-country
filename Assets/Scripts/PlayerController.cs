@@ -352,6 +352,11 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
+
+        if(_hand.childCount > 1)
+        {
+            Destroy(_hand.GetChild(0).gameObject);
+        }
     }
 
     private void RemoveHeldItem()

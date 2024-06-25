@@ -24,6 +24,9 @@ public class TradeNode : ActionNode
     protected override StateEnum OnUpdate()
     {
         if (NPC.IsHold) _state = StateEnum.Success;
+        else NPC.transform.rotation = Quaternion.Lerp(NPC.transform.rotation,
+                                                      Quaternion.Euler(0, NPC.RotationInShop, 0),
+                                                      0.1f);
 
         return _state;
     }

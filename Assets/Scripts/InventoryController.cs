@@ -163,10 +163,11 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void DropItemFromInventory(Item item)
+    public void DropItemFromInventory(Item item, int amount = 0)
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
+        dropItem.Item.Amount = amount;
         dropItem.Item.IsDroped = true;
         dropItem.transform.position = _hand.position;
     }

@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -54,6 +55,7 @@ public class Funnel : Instrument
                     _durability--;
                     _usings--;
                     plant.Watering();
+                    RuntimeManager.PlayOneShot(FMODEvents.instance.Water);
                     break;
                 case TagConstants.TREE:
                     if (Usings == 0) return;
@@ -64,6 +66,7 @@ public class Funnel : Instrument
                     _durability--;
                     _usings--;
                     tree.WateringTree();
+                    RuntimeManager.PlayOneShot(FMODEvents.instance.Water);
                     break;
                 case TagConstants.WELL:
                     _usings = MaxUsings;

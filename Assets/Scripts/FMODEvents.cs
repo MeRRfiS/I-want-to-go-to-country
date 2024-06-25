@@ -17,6 +17,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference TreeChop { get; private set; }
     [field: SerializeField] public EventReference SeedbedDig { get; private set; }
     [field: SerializeField] public EventReference Harvest { get; private set; }
+    [field: SerializeField] public EventReference Water { get; private set; }
 
     private void Awake()
     {

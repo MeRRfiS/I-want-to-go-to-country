@@ -17,6 +17,7 @@ public class NPCController : MonoBehaviour
     [field: Header("Settings")]
     [field: SerializeField] public Transform HomePosition { get; private set; }
     [field: SerializeField] public Transform ShopPosition { get; private set; }
+    [field: SerializeField] public float RotationInShop { get; private set; }
 
     public bool IsHold { get; set; }
 

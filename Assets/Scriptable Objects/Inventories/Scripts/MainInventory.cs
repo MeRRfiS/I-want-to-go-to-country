@@ -48,7 +48,7 @@ public class MainInventory : Inventory
             int index;
             if (!GetEmptyCell(out index))
             {
-                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item);
+                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item, amount);
                 return false;
             }
 

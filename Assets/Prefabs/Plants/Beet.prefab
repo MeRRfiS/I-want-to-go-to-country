@@ -387,6 +387,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beet_lvl1
       objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: fe1771bee0c1a634a8028aa172256a7d, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.11240953
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: fe1771bee0c1a634a8028aa172256a7d, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.05634882
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: fe1771bee0c1a634a8028aa172256a7d, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.02029579
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: fe1771bee0c1a634a8028aa172256a7d, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0.010372445
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -453,6 +469,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: abbcf96a80ee42b408cf1f30e97be4c1, type: 3}
       propertyPath: m_Name
       value: Beet_lvl2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: abbcf96a80ee42b408cf1f30e97be4c1, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.12938246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: abbcf96a80ee42b408cf1f30e97be4c1, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.0656596
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
