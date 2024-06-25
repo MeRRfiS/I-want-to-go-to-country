@@ -25,6 +25,6 @@ public class NPCFace : MonoBehaviour
 
     private void Update()
     {
-        _renderer.materials[5].SetTexture("_BaseColorMap", _faces[(int)_face]);
+        _renderer.materials[5].SetTexture("_MainTex", _faces[(int)_face]);
     }
 }

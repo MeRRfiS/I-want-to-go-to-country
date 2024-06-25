@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Editor/UI Environment.unity.meta
+guid: 23449ddd56f659d4286deb3ad72cb0ea
+========
 guid: c6761d6e92c0c16448fce8661999f81a
 folderAsset: yes
+>>>>>>>> main:Assets/Animations/NPC.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

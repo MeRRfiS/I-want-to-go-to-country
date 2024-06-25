@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 5869684197356870845}
   - component: {fileID: 4997388802932787385}
   - component: {fileID: 7505807709667974676}
+  - component: {fileID: -8991037475939184984}
   m_Layer: 0
   m_Name: Juicer Item
   m_TagString: Item
@@ -215,3 +216,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 11400000, guid: c26bfbb1d3d9ae049ad2b560809b3f59, type: 2}
   _isDroped: 0
+--- !u!114 &-8991037475939184984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670661115599072587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b1fc6bd240ad045b6be32f88aa5749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ecbc776a5fdf6ff41bc64cb7e06b95a2, type: 2}
+  _item: {fileID: 7505807709667974676}

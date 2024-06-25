@@ -36,8 +36,10 @@ public class Fertilizers : Item
             Transform hitTransform = hit.collider.gameObject.transform;
             if (!hitTransform.CompareTag(TagConstants.PLANT)) return;
 
-            _usings--;
             PlantController plant = hitTransform.GetComponent<PlantController>();
+            if (plant.IsFertilized) return;
+
+            _usings--;
             plant.Fertilizering(Level, _materialOfEarth);
         }
     }

@@ -41,14 +41,14 @@ public class MainInventory : Inventory
         return false;
     }
 
-    private bool AddNewValuesToArray(Item item, int amount)
+    private bool AddNewValuesToArray(Item item, int amount, Vector3? possibleDropPosition)
     {
         while (amount > 0)
         {
             int index;
             if (!GetEmptyCell(out index))
             {
-                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item, amount);
+                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item, possibleDropPosition);
                 return false;
             }
 
@@ -63,7 +63,7 @@ public class MainInventory : Inventory
         return true;
     }
 
-    public override bool AddItem(InventorySlot newItem)
+    public override bool AddItem(InventorySlot newItem, Vector3? possibleDropPosition = null)
     {
         int index;
         switch (newItem.Item.Type)
@@ -75,7 +75,7 @@ public class MainInventory : Inventory
             case ItemTypeEnum.Building:
                 if (!GetEmptyCell(out index)) 
                 {
-                    if (!newItem.Item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item);
+                    if (!newItem.Item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item, possibleDropPosition);
                     return false;
                 }
 
@@ -91,7 +91,7 @@ public class MainInventory : Inventory
                     {
                         newItem.Amount -= MechConstants.MAX_ITEM_IN_CELL - Container[index].Amount;
                         Container[index].Amount = MechConstants.MAX_ITEM_IN_CELL;
-                        if (!AddNewValuesToArray(newItem.Item, newItem.Amount)) return false;
+                        if (!AddNewValuesToArray(newItem.Item, newItem.Amount, possibleDropPosition)) return false;
                     }
                     else
                     {
@@ -100,7 +100,7 @@ public class MainInventory : Inventory
                 }
                 else
                 {
-                    if (!AddNewValuesToArray(newItem.Item, newItem.Amount)) return false;
+                    if (!AddNewValuesToArray(newItem.Item, newItem.Amount, possibleDropPosition)) return false;
                 }
                 break;
         }

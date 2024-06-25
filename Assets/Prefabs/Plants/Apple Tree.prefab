@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 6236497381088597771}
   - component: {fileID: 7271790251581344685}
   - component: {fileID: 9183984573688191333}
+  - component: {fileID: -8083872825610541720}
   m_Layer: 7
   m_Name: Apple Tree
   m_TagString: Tree
@@ -610,6 +611,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &-8083872825610541720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942591199453428746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75164761f7b27c42a5ac80ca6ccb770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 45afaf06d861a6c40a50ffa9470a0f49, type: 2}
+  _requireditems:
+  - {fileID: 11400000, guid: d182181e934019346b6f9c2a69807c46, type: 2}
+  - {fileID: 11400000, guid: 7dd895acfd5c26f4aa1c187ac4fa1e9d, type: 2}
+  - {fileID: 11400000, guid: 9babc6065b5817e4ca09ee6d6a145514, type: 2}
+  - {fileID: 11400000, guid: 00c53fb1ad689334b93dada1f26c3b88, type: 2}
+  - {fileID: 11400000, guid: c78a67fa34f16af4bb984846116ddec0, type: 2}
+  _chopData: {fileID: 11400000, guid: 370c5814c083c4245b2d829b9d199702, type: 2}
+  _harvestData: {fileID: 11400000, guid: 9dd9264a7df92a444b077470ee64bff5, type: 2}
+  _tree: {fileID: 2203124298849473254}
+  _choppingRequiredItem:
+  - {fileID: 11400000, guid: fdfc130c4ad32774cbb19cb4ce9be9c4, type: 2}
+  - {fileID: 11400000, guid: 470cdc4a4f486b3489cb44cde27f982f, type: 2}
+  - {fileID: 11400000, guid: ac2a3fbeff9e37b4488c25091f27f8c5, type: 2}
+  - {fileID: 11400000, guid: f08b2c940f9d561439c2326e64f5a575, type: 2}
+  - {fileID: 11400000, guid: 66dac59720acd6245950551717d74c2b, type: 2}
 --- !u!1 &8157254232858462527
 GameObject:
   m_ObjectHideFlags: 0

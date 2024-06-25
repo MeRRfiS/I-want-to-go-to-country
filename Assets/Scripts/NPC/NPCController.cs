@@ -21,6 +21,8 @@ public class NPCController : MonoBehaviour
 
     public bool IsHold { get; set; }
 
+    public bool IsDead { get; set; }
+
     public void DropFromHand()
     {
         IsHold = false;

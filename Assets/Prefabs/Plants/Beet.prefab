@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 1340493554215444185}
   - component: {fileID: 3904866570097449488}
   - component: {fileID: 2607981434845637509}
+  - component: {fileID: -6851605431402185869}
   m_Layer: 0
   m_Name: Beet
   m_TagString: Plant
@@ -268,6 +269,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &-6851605431402185869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466416180723959882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812ea0d79e363354e9ffd90df9698f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 45afaf06d861a6c40a50ffa9470a0f49, type: 2}
+  _requireditems:
+  - {fileID: 11400000, guid: d182181e934019346b6f9c2a69807c46, type: 2}
+  - {fileID: 11400000, guid: 7dd895acfd5c26f4aa1c187ac4fa1e9d, type: 2}
+  - {fileID: 11400000, guid: 9babc6065b5817e4ca09ee6d6a145514, type: 2}
+  - {fileID: 11400000, guid: 00c53fb1ad689334b93dada1f26c3b88, type: 2}
+  - {fileID: 11400000, guid: c78a67fa34f16af4bb984846116ddec0, type: 2}
+  _harvestData: {fileID: 11400000, guid: 9dd9264a7df92a444b077470ee64bff5, type: 2}
+  _plant: {fileID: 6713796950190367926}
 --- !u!1001 &1239732301121664788
 PrefabInstance:
   m_ObjectHideFlags: 0

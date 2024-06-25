@@ -14,7 +14,7 @@ public class Hoe : Instrument
     [SerializeField] private GameObject _seedbedVisualization;
 
     private const string OPACITY = "_OPACITY";
-    private const string BASE_COLOR = "_BASE_COLOR";
+    private const string BASE_COLOR = "_Color";
 
     private GameObject _seedbedObj;
     private SeedbedChecking _seedbedCheck;
@@ -137,14 +137,13 @@ public class Hoe : Instrument
 
     private void CheckPosition()
     {
-        _seedbedRend.material.SetFloat(OPACITY, 0.6f);
         if (_seedbedCheck && _seedbedCheck.IsOnObject)
         {
-            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0));
+            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 0, 0, 0.95f));
         }
         else if (_seedbedCheck)
         {
-            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1));
+            _seedbedRend.material.SetColor(BASE_COLOR, new Color(1, 1, 1, 0.95f));
         }
 
         if (_seedbedCheck.IsOnObject)

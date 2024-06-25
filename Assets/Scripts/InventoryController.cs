@@ -11,7 +11,6 @@ public class InventoryController : MonoBehaviour
 
     private bool _isCanChangeActiveItem = true;
     private bool _isOpenUI = false;
-    private int _activePlayerItemIndex = 0;
     private MovedItemsModel _movedItemsModel;
     private Inventory _chestInventory;
 
@@ -22,6 +21,7 @@ public class InventoryController : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Transform _hand;
 
+    public int ActivePlayerItemIndex { get; private set; } = 0;
     public static InventoryController GetInstance() => instance;
 
     public bool IsCanChangeActiveItem
@@ -92,8 +92,8 @@ public class InventoryController : MonoBehaviour
 
     private void ApplyActiveItem()
     {
-        PlayerController.GetInstance().ChangeActiveItemInHand(PlayerItems[_activePlayerItemIndex]);
-        UIController.GetInstance().SelectingPlayerCell(_activePlayerItemIndex);
+        PlayerController.GetInstance().ChangeActiveItemInHand(PlayerItems[ActivePlayerItemIndex]);
+        UIController.GetInstance().SelectingPlayerCell(ActivePlayerItemIndex);
         UIController.GetInstance().StopProgressBar();
     }
 
@@ -163,25 +163,29 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void DropItemFromInventory(Item item, int amount = 0)
+    public void DropItemFromInventory(Item item, int amount = 0, Vector3? dropPosition = null)
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
         dropItem.Item.Amount = amount;
         dropItem.Item.IsDroped = true;
-        dropItem.transform.position = _hand.position;
+        Debug.Log(dropPosition.HasValue);
+        if (dropPosition.HasValue)
+            dropItem.transform.position = dropPosition.GetValueOrDefault();
+        else
+            dropItem.transform.position = _hand.position;
     }
 
-    public bool AddItemToMainInventory(Item item, int amount)
+    public bool AddItemToMainInventory(Item item, int amount, Vector3? possibleDropPosition = null)
     {
-        return _mainInventory.AddItem(new InventorySlot(item, amount));
+        return _mainInventory.AddItem(new InventorySlot(item, amount), possibleDropPosition);
     }
 
     public void RemoveItem()
     {
         if (_movedItemsModel == null)
         {
-            PlayerItems[_activePlayerItemIndex] = null;
+            PlayerItems[ActivePlayerItemIndex] = null;
         }
 
         UIController.GetInstance().RedrawInventories();
@@ -238,7 +242,7 @@ public class InventoryController : MonoBehaviour
             _movedItemsModel.SecondIndex = index;
             MoveItemToOtherCell();
 
-            bool activeItemIsCarry = _activePlayerItemIndex == _movedItemsModel.FirstIndex &&
+            bool activeItemIsCarry = ActivePlayerItemIndex == _movedItemsModel.FirstIndex &&
                                     _movedItemsModel.FirstCellTypeEnum == CellTypeEnum.Player;
 
             switch (type)
@@ -248,7 +252,7 @@ public class InventoryController : MonoBehaviour
                     if (activeItemIsCarry) ApplyActiveItem();
                     break;
                 case CellTypeEnum.Player:
-                    if(activeItemIsCarry || _activePlayerItemIndex == _movedItemsModel.SecondIndex)
+                    if(activeItemIsCarry || ActivePlayerItemIndex == _movedItemsModel.SecondIndex)
                     {
                         ApplyActiveItem();
                     }
@@ -264,19 +268,19 @@ public class InventoryController : MonoBehaviour
         if (_isOpenUI) return;
         if (!_isCanChangeActiveItem) return;
 
-        int oldActivePlayerItemIndex = _activePlayerItemIndex;
+        int oldActivePlayerItemIndex = ActivePlayerItemIndex;
         if (index == -1)
         {
-            _activePlayerItemIndex += isPositiv ? 1 : -1;
+            ActivePlayerItemIndex += isPositiv ? 1 : -1;
         }
         else
         {
-            _activePlayerItemIndex = index;
+            ActivePlayerItemIndex = index;
         }
-        _activePlayerItemIndex = Mathf.Clamp(_activePlayerItemIndex, 
+        ActivePlayerItemIndex = Mathf.Clamp(ActivePlayerItemIndex, 
                                              0, MechConstants.MAX_ITEMS_IN_PLAYER - 1);
 
-        if(_activePlayerItemIndex != oldActivePlayerItemIndex) ApplyActiveItem();
+        if(ActivePlayerItemIndex != oldActivePlayerItemIndex) ApplyActiveItem();
     }
 
     public void SetChestInventory(Inventory chestInventory)

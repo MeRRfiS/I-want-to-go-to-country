@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hoe Level 4
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 7612194092418062662, guid: f60178dcf6dd5654cac740fcb6fc79de, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: 0851fbe53fc3e3542b152b1c9ef87827, type: 3}
+  <Icon>k__BackingField: {fileID: 293861905, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 4
   <MinPrice>k__BackingField: 900

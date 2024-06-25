@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wheat's Seed
   m_EditorClassIdentifier: 
   <Object>k__BackingField: {fileID: 8969859297246132322, guid: 8f75c91b4f8758e4da893e51be140db1, type: 3}
-  <Icon>k__BackingField: {fileID: 21300000, guid: 781c3086b39aa614989067a249c05c9c, type: 3}
+  <Icon>k__BackingField: {fileID: 1563391045, guid: e3bc0a189d6426a4abb6177b7175dfd1, type: 3}
   <IsCanSold>k__BackingField: 0
   <Id>k__BackingField: 16
   <MinPrice>k__BackingField: 5

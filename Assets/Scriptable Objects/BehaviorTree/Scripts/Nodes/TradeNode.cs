@@ -27,6 +27,7 @@ public class TradeNode : ActionNode
         else NPC.transform.rotation = Quaternion.Lerp(NPC.transform.rotation,
                                                       Quaternion.Euler(0, NPC.RotationInShop, 0),
                                                       0.1f);
+        if (Vector3.Distance(NPC.transform.position, NPC.ShopPosition.position) > 2f) _state = StateEnum.Success;
 
         return _state;
     }

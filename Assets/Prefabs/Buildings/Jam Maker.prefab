@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5960951769699020900}
   - component: {fileID: 3542533457397228883}
   - component: {fileID: 1427090344328560470}
+  - component: {fileID: -289386539284409864}
   m_Layer: 0
   m_Name: Jam Maker
   m_TagString: Building
@@ -69,6 +70,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _craftCollection: {fileID: 11400000, guid: 4df27249a30b8b749b8afbbc3ed67f73, type: 2}
   _upgradeCollection: {fileID: 11400000, guid: b2840e812510a944d8f9a47114e30b00, type: 2}
+--- !u!114 &-289386539284409864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003458849571470395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b903031ece58a8e4689f6d601f2a6afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: e77020b3240841e41a301fff6d2f9dca, type: 2}
+  _building: {fileID: 1003458849571470395}
 --- !u!1001 &5755181551154949553
 PrefabInstance:
   m_ObjectHideFlags: 0
