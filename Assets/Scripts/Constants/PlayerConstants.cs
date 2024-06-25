@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class PlayerConstants
 {
-    public const float MOVEMENT_SPEED = 5f;
-    public const float JUMP_SPEED = 4f;
+    public const float MOVEMENT_SPEED = 6.5f;
+    public const float JUMP_SPEED = 3f;
 
     public const float MINIMUM_VERT = -45.0f;
     public const float MAXIMUM_VERT = 80.0f;

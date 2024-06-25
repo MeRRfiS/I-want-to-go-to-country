@@ -34,6 +34,7 @@ public class PlantController : MonoBehaviour
     public Item ResultItem => _harvest;
     public bool IsComplate() => _isPlantGrow;
     public bool IsPlantNeedWater() => _isNeedWater;
+    public bool IsFertilized { get { return  _isFertilized; } }
 
     private void Update()
     {
