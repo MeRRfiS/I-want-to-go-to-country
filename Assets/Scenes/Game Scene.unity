@@ -334,11 +334,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!4 &9146307 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4559395476449884930, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
-  m_PrefabInstance: {fileID: 4638916479632940818}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &16002148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,6 +843,13 @@ MonoBehaviour:
       Data3: -737717609
       Data4: -1611865770
     Path: event:/Water
+  <BackroundMusic>k__BackingField:
+    Guid:
+      Data1: -300515472
+      Data2: 1208370459
+      Data3: 1805870255
+      Data4: -1159793298
+    Path: event:/BackgroundMusic
 --- !u!1001 &87396670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1075,7 +1077,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 719947007}
+  - {fileID: 1433557016}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1686,7 +1688,7 @@ PrefabInstance:
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <ShopPosition>k__BackingField
       value: 
-      objectReference: {fileID: 450659034}
+      objectReference: {fileID: 1428178702}
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <RotationInShop>k__BackingField
       value: -135
@@ -4402,97 +4404,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!21 &719947007
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Water (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance)
-  m_Shader: {fileID: 4800000, guid: e1090cf97a230a541a9c2126bccf6f0f, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b24ef05a073c25845a909993c6a8df9e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _BumpScale: 1
-    - _Cutoff: 0.5
-    - _DetailNormalMapScale: 1
-    - _DstBlend: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _Metallic: 0
-    - _Mode: 0
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _UVSec: 0
-    - _WaveHeight: 0.01
-    - _WaveSpeed: 1
-    - _ZWrite: 1
-    m_Colors:
-    - _Color: {r: 0, g: 0.053121984, b: 0.08683401, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 0, g: 0.7836544, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &731827595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6043,9 +5954,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7d49fc7caecf6a488ba17d0765831b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 880702381}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7d49fc7caecf6a488ba17d0765831b4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 880702384}
   m_SourcePrefab: {fileID: 100100000, guid: e7d49fc7caecf6a488ba17d0765831b4, type: 3}
 --- !u!4 &880702379 stripped
 Transform:
@@ -11344,6 +11252,98 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2902447973423285557, guid: 2f813d3ff209b2d4993cd8ecc3c9d1db, type: 3}
   m_PrefabInstance: {fileID: 1543106791}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1433557016
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Water (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance)
+  m_Shader: {fileID: 4800000, guid: e1090cf97a230a541a9c2126bccf6f0f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: b24ef05a073c25845a909993c6a8df9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _WaveHeight: 0.01
+    - _WaveSpeed: 1
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0, g: 0.053121984, b: 0.08683401, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TintColor: {r: 0, g: 0.7836544, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1440094749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11627,7 +11627,7 @@ PrefabInstance:
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <ShopPosition>k__BackingField
       value: 
-      objectReference: {fileID: 1182511897}
+      objectReference: {fileID: 700984319}
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <RotationInShop>k__BackingField
       value: 135
@@ -11956,6 +11956,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8514614255505447249, guid: 4dfd4a595d7919841a66ff4fbb171ab4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1612449625}
+    - targetCorrespondingSourceObject: {fileID: 8514614255505447249, guid: 4dfd4a595d7919841a66ff4fbb171ab4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1612449626}
   m_SourcePrefab: {fileID: 100100000, guid: 4dfd4a595d7919841a66ff4fbb171ab4, type: 3}
 --- !u!1001 &1543106791
 PrefabInstance:
@@ -12284,6 +12287,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+--- !u!114 &1592976014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734221936797753057, guid: 07fd3c6c9cd37d946b1bbe2aeb3fad53, type: 3}
+  m_PrefabInstance: {fileID: 1592976013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d7faab298204f40bc3a5db6764281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1612449621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1312459310354636328, guid: 4dfd4a595d7919841a66ff4fbb171ab4, type: 3}
@@ -12302,6 +12316,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   underwaterShader: {fileID: 4800000, guid: d04aca70743634141a67a49f17ddb6d6, type: 3}
+--- !u!114 &1612449626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149029332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8ade6bfdcfb7340b5aebf289df6db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hintDisplay: {fileID: 1592976014}
 --- !u!114 &1627715721 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7417080086960436154, guid: 2f813d3ff209b2d4993cd8ecc3c9d1db, type: 3}
@@ -12504,9 +12531,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 334a9c066aab30f4ea8264058b371a2a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1633509266}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 334a9c066aab30f4ea8264058b371a2a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1633509269}
   m_SourcePrefab: {fileID: 100100000, guid: 334a9c066aab30f4ea8264058b371a2a, type: 3}
 --- !u!4 &1633509264 stripped
 Transform:
@@ -12537,12 +12561,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!64 &1633509269
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1691214839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14150,7 +14168,7 @@ PrefabInstance:
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <ShopPosition>k__BackingField
       value: 
-      objectReference: {fileID: 1931462600}
+      objectReference: {fileID: 1196824213}
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <RotationInShop>k__BackingField
       value: -45
@@ -15219,7 +15237,7 @@ PrefabInstance:
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <ShopPosition>k__BackingField
       value: 
-      objectReference: {fileID: 581429394}
+      objectReference: {fileID: 1206535454}
     - target: {fileID: 2856505317186370283, guid: b8384a01c939cb147a6f7a5426bc2c39, type: 3}
       propertyPath: <RotationInShop>k__BackingField
       value: 45

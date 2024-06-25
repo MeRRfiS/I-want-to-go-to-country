@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using Unity.VisualScripting;
 
 public class AudioController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class AudioController : MonoBehaviour
     public static AudioController instance;
 
     public static AudioController GetInstance() => instance;
+
+    private EventInstance _music;
 
     private void Awake()
     {
@@ -26,6 +29,9 @@ public class AudioController : MonoBehaviour
 
         // Отримання головної групи каналів (master channel group)
         coreSystem.getMasterChannelGroup(out masterChannelGroup);
+
+        _music = CreateInstance(FMODEvents.instance.BackroundMusic);
+        _music.start();
     }
 
     public EventInstance CreateInstance(EventReference eventReference)
@@ -39,5 +45,11 @@ public class AudioController : MonoBehaviour
     {
         // Встановлення гучності головної групи каналів
         masterChannelGroup.setVolume(volume);
+    }
+
+    private void OnDestroy()
+    {
+        _music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        _music.release();
     }
 }
