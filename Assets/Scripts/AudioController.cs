@@ -10,6 +10,8 @@ public class AudioController : MonoBehaviour
     private FMOD.Studio.System studioSystem;
     private FMOD.System coreSystem;
     private FMOD.ChannelGroup masterChannelGroup;
+    private Bus musicBus;
+    private Bus sfxBus;
 
     public static AudioController instance;
 
@@ -30,6 +32,10 @@ public class AudioController : MonoBehaviour
         // Отримання головної групи каналів (master channel group)
         coreSystem.getMasterChannelGroup(out masterChannelGroup);
 
+        // Отримання шини музики та звукових ефектів
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
+
         _music = CreateInstance(FMODEvents.instance.BackroundMusic);
         _music.start();
     }
@@ -45,6 +51,18 @@ public class AudioController : MonoBehaviour
     {
         // Встановлення гучності головної групи каналів
         masterChannelGroup.setVolume(volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        // Встановлення гучності групи каналів для музики
+        musicBus.setVolume(volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        // Встановлення гучності групи каналів для звукових ефектів
+        sfxBus.setVolume(volume);
     }
 
     private void OnDestroy()
