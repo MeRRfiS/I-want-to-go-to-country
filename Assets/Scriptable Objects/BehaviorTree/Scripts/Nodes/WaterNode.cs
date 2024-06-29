@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class WaterNode : ActionNode
 
     private void BecomeDead()
     {
+        RuntimeManager.PlayOneShot(FMODEvents.instance.Explosion, NPC.NpcObject.transform.position);
         Instantiate(Blackboard.Explosion, NPC.transform.position, Quaternion.identity);
         NPC.Agent.Warp(NPC.HomePosition.position);
         NPC.IsDead = false;

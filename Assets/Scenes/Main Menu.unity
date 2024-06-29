@@ -643,6 +643,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6714473227298307945, guid: 3c3187ca0ae32284289540ae6f63be27, type: 3}
   m_PrefabInstance: {fileID: 160541121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &208483211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734949270493386738, guid: c88588820f06bca4aa4c9efce06056c1, type: 3}
+  m_PrefabInstance: {fileID: 1882421298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &223153450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,6 +2848,13 @@ MonoBehaviour:
       Data3: -737717609
       Data4: -1611865770
     Path: event:/Water
+  <Explosion>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   <BackroundMusic>k__BackingField:
     Guid:
       Data1: -300515472
@@ -3742,6 +3760,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6554019141113783728, guid: 9c1553ead17164848bc1890ec1152909, type: 3}
   m_PrefabInstance: {fileID: 2029633167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031897404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6709045948082692640, guid: c88588820f06bca4aa4c9efce06056c1, type: 3}
+  m_PrefabInstance: {fileID: 1882421298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067490728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,9 +3832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInMenu: 1
-  _volumeSlider: {fileID: 1882421301}
+  _masterVolumeSlider: {fileID: 1882421301}
+  _musicVolumeSlider: {fileID: 208483211}
+  _sfxVolumeSlider: {fileID: 2031897404}
   _sensitivitySlider: {fileID: 1882421299}
   _fovSlider: {fileID: 1882421303}
+  _settingsUI: {fileID: 1882421302}
 --- !u!1001 &2093786209
 PrefabInstance:
   m_ObjectHideFlags: 0

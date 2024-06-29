@@ -19,6 +19,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference SeedbedDig { get; private set; }
     [field: SerializeField] public EventReference Harvest { get; private set; }
     [field: SerializeField] public EventReference Water { get; private set; }
+    [field: SerializeField] public EventReference Explosion { get; private set; }
 
     [field: Header("Music")]
     [field: SerializeField] public EventReference BackroundMusic { get; private set; }

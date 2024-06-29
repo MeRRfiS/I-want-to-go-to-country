@@ -21,12 +21,19 @@ public class GameSettings : MonoBehaviour
 
     private void Awake()
     {
+        // Audio
+        _masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
+        _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+        _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+        // Gameplay
+        _sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        _fovSlider.onValueChanged.AddListener(OnFovChanged);
+
         // Default master volume
         if (PlayerPrefs.HasKey(MASTER_VOLUME_KEY))
         {
             float volume = PlayerPrefs.GetFloat(MASTER_VOLUME_KEY);
-            Debug.Log($"Volume: {_masterVolumeSlider.value}");
-            _masterVolumeSlider.value = volume; // <- тут помилка
+            _masterVolumeSlider.value = volume;
         }
         else
         {
@@ -77,21 +84,11 @@ public class GameSettings : MonoBehaviour
             PlayerPrefs.SetFloat(SENSITIVITY_KEY, 75);
             _fovSlider.value = 75;
         }
-
-        // Audio
-        _masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
-        _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
-        _sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
-        // Gameplay
-        _sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
-        _fovSlider.onValueChanged.AddListener(OnFovChanged);
     }
 
     private void Start()
     {
-        Debug.Log("fds");
         Apply();
-        Debug.Log("fdsfdsf");
     }
 
     private void OnDestroy()

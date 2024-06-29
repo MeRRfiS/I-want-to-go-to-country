@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnderwaterEffect _waterEffect;
 
     public static PlayerController GetInstance() => instance;
-    //TODO: Need to do better checking of holding
+    
     public bool IsHoldingObject() => _heldObject != null;
     public bool IsHoldingNPC() => _heldNPC != null;
     public bool IsHoldingItem() 
