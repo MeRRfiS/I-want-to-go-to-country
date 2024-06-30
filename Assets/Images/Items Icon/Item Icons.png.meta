@@ -1089,7 +1089,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1097,6 +1097,27 @@ TextureImporter:
       bones: []
       spriteID: dbc2f7d3b7383bf469c882be5ee2eaa0
       internalID: 1890324121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Item Icons_Log
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 208
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0df15322bab974bb08374d4980272a
+      internalID: 2045964935
       vertices: []
       indices: 
       edges: []
@@ -1148,6 +1169,7 @@ TextureImporter:
       Item Icons_Jam Strawberry: -1223751414
       Item Icons_Juice Apple: 647295694
       Item Icons_Juice Strawberry: 74203194
+      Item Icons_Log: 2045964935
       Item Icons_Seed Beet: 1780930310
       Item Icons_Seed Carrot: -1747747848
       Item Icons_Seed Strawberry: 1132611057
