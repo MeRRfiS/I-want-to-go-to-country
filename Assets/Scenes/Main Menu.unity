@@ -643,6 +643,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6714473227298307945, guid: 3c3187ca0ae32284289540ae6f63be27, type: 3}
   m_PrefabInstance: {fileID: 160541121}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &208483211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1734949270493386738, guid: c88588820f06bca4aa4c9efce06056c1, type: 3}
+  m_PrefabInstance: {fileID: 1882421298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &223153450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,6 +2755,158 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432020979}
   m_CullTransparentMesh: 1
+--- !u!1 &1462315499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462315500}
+  - component: {fileID: 1462315501}
+  m_Layer: 0
+  m_Name: FMOD Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1462315500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462315499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1579198568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1462315501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462315499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1556b7791d37db4cb5477a54d484990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <WalkOnGrass>k__BackingField:
+    Guid:
+      Data1: 1294870803
+      Data2: 1149931247
+      Data3: -1872884086
+      Data4: -1147559729
+    Path: event:/WalkOnGrass
+  <SeedPlant>k__BackingField:
+    Guid:
+      Data1: -1522632280
+      Data2: 1200623299
+      Data3: -1901783395
+      Data4: -296775285
+    Path: event:/SeedPlant
+  <ItemBroke>k__BackingField:
+    Guid:
+      Data1: -1370270863
+      Data2: 1326104850
+      Data3: 1444284058
+      Data4: 1200099660
+    Path: event:/ItemBroke
+  <TreeChop>k__BackingField:
+    Guid:
+      Data1: -1006131123
+      Data2: 1254494549
+      Data3: 1575698056
+      Data4: -1904741080
+    Path: event:/TreeChop
+  <SeedbedDig>k__BackingField:
+    Guid:
+      Data1: -599155677
+      Data2: 1131076080
+      Data3: -2040169543
+      Data4: -667590703
+    Path: event:/SeedbedDig
+  <Harvest>k__BackingField:
+    Guid:
+      Data1: 1458846984
+      Data2: 1094750660
+      Data3: -927719283
+      Data4: 992866686
+    Path: event:/Harvest
+  <Water>k__BackingField:
+    Guid:
+      Data1: 65288347
+      Data2: 1172724865
+      Data3: -737717609
+      Data4: -1611865770
+    Path: event:/Water
+  <Explosion>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <BackroundMusic>k__BackingField:
+    Guid:
+      Data1: -300515472
+      Data2: 1208370459
+      Data3: 1805870255
+      Data4: -1159793298
+    Path: event:/BackgroundMusic
+--- !u!1 &1579198566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1579198568}
+  - component: {fileID: 1579198567}
+  m_Layer: 0
+  m_Name: Audio Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1579198567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579198566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c87dd7ac123c8942989504529273f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1579198568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579198566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.841426, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1462315500}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1591297209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,6 +3760,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6554019141113783728, guid: 9c1553ead17164848bc1890ec1152909, type: 3}
   m_PrefabInstance: {fileID: 2029633167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031897404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6709045948082692640, guid: c88588820f06bca4aa4c9efce06056c1, type: 3}
+  m_PrefabInstance: {fileID: 1882421298}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067490728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,9 +3832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInMenu: 1
-  _volumeSlider: {fileID: 1882421301}
+  _masterVolumeSlider: {fileID: 1882421301}
+  _musicVolumeSlider: {fileID: 208483211}
+  _sfxVolumeSlider: {fileID: 2031897404}
   _sensitivitySlider: {fileID: 1882421299}
   _fovSlider: {fileID: 1882421303}
+  _settingsUI: {fileID: 1882421302}
 --- !u!1001 &2093786209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4048,3 +4225,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 2067490729}
   - {fileID: 1780467683}
+  - {fileID: 1579198568}

@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnderwaterEffect _waterEffect;
 
     public static PlayerController GetInstance() => instance;
-    //TODO: Need to do better checking of holding
+    
     public bool IsHoldingObject() => _heldObject != null;
     public bool IsHoldingNPC() => _heldNPC != null;
     public bool IsHoldingItem() 
@@ -377,6 +377,11 @@ public class PlayerController : MonoBehaviour
         _heldRigidbodyItem = heldItem.GetComponent<Rigidbody>();
         _heldRigidbodyItem.isKinematic = true;
         _heldRigidbodyItem.transform.parent = _hand;
+
+        if(_hand.childCount > 1)
+        {
+            Destroy(_hand.GetChild(0).gameObject);
+        }
     }
 
     private void RemoveHeldItem()

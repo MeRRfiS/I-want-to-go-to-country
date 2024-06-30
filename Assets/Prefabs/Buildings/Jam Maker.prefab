@@ -136,6 +136,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jam Maker Obj
       objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: ca1a0d92cb2f4ae40ac97cbcbc532863, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.16382532
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: ca1a0d92cb2f4ae40ac97cbcbc532863, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.066629164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: ca1a0d92cb2f4ae40ac97cbcbc532863, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.033306368
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

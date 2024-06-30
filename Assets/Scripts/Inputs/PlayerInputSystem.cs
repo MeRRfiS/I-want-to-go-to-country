@@ -121,29 +121,6 @@ public class PlayerInputSystem : MonoBehaviour
         }
     }
 
-    public void InteractionByLMB(InputAction.CallbackContext context)
-    {
-        if (BlockStatus()) return;
-        if (!context.started) return;
-
-        Transform startPoint = Camera.main.transform;
-        RaycastHit hit;
-
-        if (Physics.Raycast(startPoint.position, startPoint.forward, out hit, PlayerConstants.DISTANCE_TO_OBJECT))
-        {
-            GameObject hitObject = hit.collider.gameObject;
-            switch (hitObject.tag)
-            {
-                case TagConstants.PLANT:
-                    hitObject.GetComponent<PlantController>().PatchHarvesting();
-                    break;
-                case TagConstants.TREE:
-                    hitObject.GetComponent<TreesController>().TreeHarvesting();
-                    break;
-            }
-        }
-    }
-
     public void InteractionByEKey(InputAction.CallbackContext context)
     {
         if (!context.started) return;
@@ -182,6 +159,12 @@ public class PlayerInputSystem : MonoBehaviour
                     break;
                 case TagConstants.CHEST:
                     hitObject.GetComponent<ChestController>().LoadChestInventoryToUI();
+                    break;
+                case TagConstants.PLANT:
+                    hitObject.GetComponent<PlantController>().PatchHarvesting();
+                    break;
+                case TagConstants.TREE:
+                    hitObject.GetComponent<TreesController>().TreeHarvesting();
                     break;
             }
         }

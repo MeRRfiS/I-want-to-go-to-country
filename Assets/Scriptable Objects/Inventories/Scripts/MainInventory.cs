@@ -48,7 +48,7 @@ public class MainInventory : Inventory
             int index;
             if (!GetEmptyCell(out index))
             {
-                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item, possibleDropPosition);
+                if(!item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(item, amount, possibleDropPosition);
                 return false;
             }
 
@@ -75,7 +75,7 @@ public class MainInventory : Inventory
             case ItemTypeEnum.Building:
                 if (!GetEmptyCell(out index)) 
                 {
-                    if (!newItem.Item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item, possibleDropPosition);
+                    if (!newItem.Item.IsDroped) InventoryController.GetInstance().DropItemFromInventory(newItem.Item, dropPosition: possibleDropPosition);
                     return false;
                 }
 

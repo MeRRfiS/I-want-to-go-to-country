@@ -163,10 +163,11 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    public void DropItemFromInventory(Item item, Vector3? dropPosition = null)
+    public void DropItemFromInventory(Item item, int amount = 0, Vector3? dropPosition = null)
     {
         ItemController dropItem = Instantiate(item.Object);
         dropItem.Item = item;
+        dropItem.Item.Amount = amount;
         dropItem.Item.IsDroped = true;
         Debug.Log(dropPosition.HasValue);
         if (dropPosition.HasValue)
