@@ -3,10 +3,15 @@ using UnityEngine;
 public class PlantHint : ItemUseHint
 {
     [SerializeField] private HintData _harvestData;
+    [SerializeField] private HintData _deadData;
     [SerializeField] private PlantController _plant;
 
     public override bool IsActive()
     {
+        if (_plant.IsDead)
+        {
+            return true;
+        }
         if (_plant.IsPlantNeedWater())
         {
             return true;
@@ -19,6 +24,10 @@ public class PlantHint : ItemUseHint
 
     public override string GetText()
     {
+        if (_plant.IsDead)
+        {
+            return _deadData.GetText();
+        }
         if (_plant.IsPlantNeedWater())
         {
             if (base.IsActive())

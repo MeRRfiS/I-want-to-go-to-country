@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2936e100632106b48b1341187154ae29, type: 3}
-  m_Name: Harvest
+  m_Name: Dead Plant
   m_EditorClassIdentifier: 
-  <HintText>k__BackingField: '[E] {0}'
+  <HintText>k__BackingField: '[E] Clear dead plant'

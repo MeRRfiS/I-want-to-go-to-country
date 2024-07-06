@@ -183,6 +183,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00c53fb1ad689334b93dada1f26c3b88, type: 2}
   - {fileID: 11400000, guid: c78a67fa34f16af4bb984846116ddec0, type: 2}
   _harvestData: {fileID: 11400000, guid: 9dd9264a7df92a444b077470ee64bff5, type: 2}
+  _deadData: {fileID: 11400000, guid: 17740006eb26d3e47b49e4375c1f628d, type: 2}
   _plant: {fileID: 1734836026134120626}
 --- !u!1 &7979917019680535906
 GameObject:
