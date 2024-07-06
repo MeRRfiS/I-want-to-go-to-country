@@ -35,7 +35,7 @@ public class ShopController : MonoBehaviour
             itemController.InitializeItem();
             int count = 0;
             if (itemController.Item is Instrument) count = 5;
-            else if (itemController.Item is Seed) count = 20;
+            else if (itemController.Item is Seed) count = 50;
             else if (itemController.Item is Tree) count = 5;
             else if (itemController.Item is Fertilizers) count = 5;
             else if (itemController.Item is Building) count = 1;
