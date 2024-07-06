@@ -27,6 +27,7 @@ public class TreesController : MonoBehaviour
 
     public Item ResultItem => _harvest;
 
+    public bool IsDead => _isTreeDry;
     public bool IsCanHarvestApple() => _isFruitGrow;
     public bool IsCanChoppingTree() => _isTreeGrow || _isTreeDry; 
     public bool IsPlantNeedWater() => _isNeedWater;
