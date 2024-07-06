@@ -420,6 +420,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c78a67fa34f16af4bb984846116ddec0, type: 2}
   _chopData: {fileID: 11400000, guid: 370c5814c083c4245b2d829b9d199702, type: 2}
   _harvestData: {fileID: 11400000, guid: 9dd9264a7df92a444b077470ee64bff5, type: 2}
+  _deadData: {fileID: 11400000, guid: 17740006eb26d3e47b49e4375c1f628d, type: 2}
   _tree: {fileID: 2203124298849473254}
   _choppingRequiredItem:
   - {fileID: 11400000, guid: fdfc130c4ad32774cbb19cb4ce9be9c4, type: 2}

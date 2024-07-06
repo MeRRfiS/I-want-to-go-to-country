@@ -4,11 +4,16 @@ public class TreeHint : ItemUseHint
 {
     [SerializeField] private HintData _chopData;
     [SerializeField] private HintData _harvestData;
+    [SerializeField] private HintData _deadData;
     [SerializeField] private TreesController _tree;
     [SerializeField] private Item[] _choppingRequiredItem;
 
     public override bool IsActive()
     {
+        if (_tree.IsDead)
+        {
+            return true;
+        }
         if (_tree.IsPlantNeedWater())
         {
             return true;
@@ -26,6 +31,10 @@ public class TreeHint : ItemUseHint
 
     public override string GetText()
     {
+        if (_tree.IsDead)
+        {
+            return CombineWithApple(_deadData.GetText());
+        }
         if (_tree.IsPlantNeedWater())
         {
             if (base.IsActive())
