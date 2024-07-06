@@ -1002,6 +1002,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_house
       objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 1b60c25398b0f604c9c30fe6e80a4b6c, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.17150846
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 1b60c25398b0f604c9c30fe6e80a4b6c, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.06858934
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 1b60c25398b0f604c9c30fe6e80a4b6c, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.034002945
+      objectReference: {fileID: 0}
     - target: {fileID: 7121485578662732949, guid: 1b60c25398b0f604c9c30fe6e80a4b6c, type: 3}
       propertyPath: m_Materials.Array.data[8]
       value: 

@@ -12,6 +12,7 @@ public class WorldController : MonoBehaviour
     [SerializeField, Range(GlobalConstants.MIN_TIME_VALUE, GlobalConstants.MAX_TIME_VALUE)] 
     private float _timeOfDay;
     [SerializeField] private Light _directionalLight;
+    [SerializeField] private Renderer _water;
     [SerializeField] private LightingPreset _preset;
 
     private static WorldController instance;
@@ -38,9 +39,11 @@ public class WorldController : MonoBehaviour
     private void UpdateLighting(float timePercent)
     {
         RenderSettings.ambientLight = _preset._ambientColor.Evaluate(timePercent);
-        RenderSettings.fogColor = _preset._forColor.Evaluate(timePercent);
+        Camera.main.backgroundColor = _preset._forColor.Evaluate(timePercent);
+        _water.material.SetColor("_TintColor", _preset._waterColor.Evaluate(timePercent));
+        //RenderSettings.fogColor = _preset._forColor.Evaluate(timePercent);
 
-        if(_directionalLight != null)
+        if (_directionalLight != null)
         {
             _directionalLight.color = _preset._directionalColor.Evaluate(timePercent);
             _directionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 100f,

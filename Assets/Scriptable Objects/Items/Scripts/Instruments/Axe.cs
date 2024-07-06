@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Instrument Object", menuName = "Inventory System/Items/Axe")]

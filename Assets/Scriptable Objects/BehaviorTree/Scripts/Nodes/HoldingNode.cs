@@ -24,8 +24,8 @@ public class HoldingNode : ActionNode
         {
             _state = StateEnum.Running;
             NPC.Agent.enabled = false;
-            NPC.gameObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
-            NPC.NpcObject.layer = LayerMask.NameToLayer(LayerConstants.ITEM);
+            NPC.gameObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
+            NPC.NpcObject.layer = LayerMask.NameToLayer(LayerConstants.IGNORE_REYCAST);
             NPC.Face.AngryFace();
             NPC.Animation.IsAngry(true);
 

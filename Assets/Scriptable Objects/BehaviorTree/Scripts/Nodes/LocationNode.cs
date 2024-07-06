@@ -33,6 +33,11 @@ public class LocationNode : ActionNode
         StateEnum state = StateEnum.Running;
         if (NPC.IsHold) return StateEnum.Success;
 
+        if (NPC.transform.position.y < Blackboard.WaterLevel)
+        {
+            return StateEnum.Success;
+        }
+
         switch (_typeWalk)
         {
             case TypeWalk.Free:

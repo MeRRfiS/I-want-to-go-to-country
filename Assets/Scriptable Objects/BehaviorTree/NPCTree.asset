@@ -19,6 +19,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: From 8 am to 20 pm
   Child: {fileID: 4475300022083010864}
@@ -43,9 +45,34 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Move on map
   _typeWalk: 0
+--- !u!114 &-4741941335433885054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5881662f9f540cc4ea82c282f91106d1, type: 3}
+  m_Name: WaterNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 01fa42c3d4e319842a9284893952b942
+  Position: {x: -416.88254, y: 630.4}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 
 --- !u!114 &-3455525985655284850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +92,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Player hold NPC on hand
 --- !u!114 &-3229259785455766439
@@ -86,6 +115,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Player hold NPC on hand
 --- !u!114 &-1153267585447240700
@@ -107,6 +138,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: From 20 pm to 8 am
   Child: {fileID: 1903532756395994747}
@@ -138,9 +171,13 @@ MonoBehaviour:
   - {fileID: 4475300022083010864}
   - {fileID: 1903532756395994747}
   - {fileID: -3455525985655284850}
+  - {fileID: -4741941335433885054}
+  - {fileID: 6111418790663487540}
   Blackboard:
     Road: {fileID: 3944654468898537088, guid: 9653a5f571ad0fb4dbd407f40cc8f91f, type: 3}
     Surface: {fileID: 3468874027106021148, guid: c0aff20345e201e4883dd61a045be2ce, type: 3}
+    WaterLevel: 4.4
+    Explosion: {fileID: 2563861641045172825, guid: c42e514b366f1654c8d91ca7b8850905, type: 3}
 --- !u!114 &1903532756395994747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,9 +197,12 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: When player hold NPC, it can't move on map
   Children:
+  - {fileID: 6111418790663487540}
   - {fileID: 3078731191243840400}
   - {fileID: -3455525985655284850}
 --- !u!114 &3078731191243840400
@@ -184,6 +224,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Move to home
   _typeWalk: 1
@@ -206,6 +248,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Start node
   Child: {fileID: 5739746522959236089}
@@ -228,9 +272,12 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: When player hold NPC, it can't move on map
   Children:
+  - {fileID: -4741941335433885054}
   - {fileID: -7540930527014333819}
   - {fileID: -3229259785455766439}
 --- !u!114 &4936345559343876999
@@ -252,6 +299,8 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Timetable
   Children:
@@ -276,6 +325,31 @@ MonoBehaviour:
   Blackboard:
     Road: {fileID: 0}
     Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
   NPC: {fileID: 0}
   Description: Repeat day
   Child: {fileID: 4936345559343876999}
+--- !u!114 &6111418790663487540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5881662f9f540cc4ea82c282f91106d1, type: 3}
+  m_Name: WaterNode
+  m_EditorClassIdentifier: 
+  State: 0
+  Started: 0
+  guid: 7a40516bf2011004d882c1bc90b62455
+  Position: {x: 239.11575, y: 638.39996}
+  Blackboard:
+    Road: {fileID: 0}
+    Surface: {fileID: 0}
+    WaterLevel: 0
+    Explosion: {fileID: 0}
+  NPC: {fileID: 0}
+  Description: 

@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 981f50823a43648499b93ed73e52af1c, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.21428213
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 981f50823a43648499b93ed73e52af1c, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.042127118
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

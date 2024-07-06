@@ -60,7 +60,8 @@ public class ItemController : MonoBehaviour
 
         InventoryController.GetInstance().RemoveItem();
         OnItemBroke?.Invoke();
-        RuntimeManager.PlayOneShot(FMODEvents.instance.ItemBroke, transform.position);
+        if(_itemObject as Instrument)
+            RuntimeManager.PlayOneShot(FMODEvents.instance.ItemBroke, transform.position);
         Destroy(gameObject);
     }
 
