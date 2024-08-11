@@ -56,6 +56,7 @@ MonoBehaviour:
   <Shop>k__BackingField: {fileID: 0}
   <HomePosition>k__BackingField: {fileID: 0}
   <ShopPosition>k__BackingField: {fileID: 0}
+  <RotationInShop>k__BackingField: 0
 --- !u!195 &5387998379155192353
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3f2dfd26b1dd69f449592eed560ba7e4, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
