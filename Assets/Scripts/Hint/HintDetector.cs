@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HintDetector : MonoBehaviour
+public sealed class HintDetector : MonoBehaviour
 {
     [SerializeField] private HintDisplay _hintDisplay;
 

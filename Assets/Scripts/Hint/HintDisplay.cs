@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class HintDisplay : MonoBehaviour
+public sealed class HintDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _panel;
     [SerializeField] private TMP_Text _text;

@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NPCController : MonoBehaviour
+public sealed class NPCController : MonoBehaviour
 {
     [field: Header("Components")]
     [field: SerializeField] public NPCFace Face { get; private set; }

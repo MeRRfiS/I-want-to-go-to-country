@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
-public class NPCAnimationManager : MonoBehaviour
+public sealed class NPCAnimationManager : MonoBehaviour
 {
     private const string HAPPY = "_IsHappy";
     private const string ANGRY = "_IsAngry";

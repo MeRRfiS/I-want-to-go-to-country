@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class UnderwaterEffect : MonoBehaviour
+public sealed class UnderwaterEffect : MonoBehaviour
 {
     public Shader underwaterShader;
     private Material underwaterMaterial;

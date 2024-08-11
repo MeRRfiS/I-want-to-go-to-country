@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BuildController : MonoBehaviour
+public sealed class BuildController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private CraftsCollection _craftCollection;

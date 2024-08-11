@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class PlayerConstants
 {
     public const float MOVEMENT_SPEED = 6.5f;
+    public const float RUN_SPEED = 1.85f;
     public const float JUMP_SPEED = 3f;
 
     public const float MINIMUM_VERT = -45.0f;

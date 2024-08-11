@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BehaviorTreeRunner : MonoBehaviour
+public sealed class BehaviorTreeRunner : MonoBehaviour
 {
     public BehaviorTree Tree;
 

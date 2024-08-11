@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCFace : MonoBehaviour
+public sealed class NPCFace : MonoBehaviour
 {
     public enum Face
     {

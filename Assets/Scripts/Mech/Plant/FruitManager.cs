@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FruitManager : MonoBehaviour
+public sealed class FruitManager : MonoBehaviour
 {
     private bool _isFruitGrow = false;
     private bool _isNeedWater = false;
