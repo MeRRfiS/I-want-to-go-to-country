@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+public sealed class InventoryController : MonoBehaviour
 {
     private static InventoryController instance;
 

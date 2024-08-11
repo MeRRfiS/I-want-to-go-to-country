@@ -1,13 +1,10 @@
 using FMODUnity;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
-public class ItemController : MonoBehaviour
+public sealed class ItemController : MonoBehaviour
 {
     [SerializeField] private Item _item;
     private Item _itemObject = null;

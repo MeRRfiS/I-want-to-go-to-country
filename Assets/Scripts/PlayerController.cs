@@ -1,10 +1,9 @@
 using FMOD.Studio;
 using FMODUnity;
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public sealed class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
@@ -150,7 +149,13 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (_inputMovement.y * transform.forward) + (_inputMovement.x * transform.right);
         _direction.x = direction.x;
         _direction.z = direction.z; 
-        _chController.Move(_direction * PlayerConstants.MOVEMENT_SPEED * Time.deltaTime);
+        float runSpeed = Input.GetAxis("Run") * PlayerConstants.RUN_SPEED;
+        // sorry for this moment PLEASE! ---
+        float movementSpeed;
+        if (runSpeed <= 0) movementSpeed = PlayerConstants.MOVEMENT_SPEED;
+        else movementSpeed = PlayerConstants.MOVEMENT_SPEED * runSpeed;
+        // SORRY! ---
+        _chController.Move(_direction * movementSpeed * Time.deltaTime);
 
         HandsAnimationManager.GetInstance().IsMoving(_chController.velocity.x != 0 || _chController.velocity.z != 0);
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public static class TagConstants
+﻿public static class TagConstants
 {
     public const string PLAYER = "Player";
     public const string HOLD = "Hold";

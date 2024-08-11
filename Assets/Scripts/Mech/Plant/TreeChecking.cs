@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeChecking : MonoBehaviour
+public sealed class TreeChecking : MonoBehaviour
 {
     private bool isInObject = false;
     private bool isNearTree = false;

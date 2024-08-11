@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
-using Unity.VisualScripting;
 
-public class AudioController : MonoBehaviour
+public sealed class AudioController : MonoBehaviour
 {
     private FMOD.Studio.System studioSystem;
     private FMOD.System coreSystem;
@@ -25,14 +22,14 @@ public class AudioController : MonoBehaviour
         {
             instance = this;
         }
-        // Ініціалізація системи FMOD Studio
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ FMOD Studio
         studioSystem = RuntimeManager.StudioSystem;
         studioSystem.getCoreSystem(out coreSystem);
 
-        // Отримання головної групи каналів (master channel group)
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ (master channel group)
         coreSystem.getMasterChannelGroup(out masterChannelGroup);
 
-        // Отримання шини музики та звукових ефектів
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
 
@@ -49,19 +46,19 @@ public class AudioController : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        // Встановлення гучності головної групи каналів
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         masterChannelGroup.setVolume(volume);
     }
 
     public void SetMusicVolume(float volume)
     {
-        // Встановлення гучності групи каналів для музики
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         musicBus.setVolume(volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        // Встановлення гучності групи каналів для звукових ефектів
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         sfxBus.setVolume(volume);
     }
 

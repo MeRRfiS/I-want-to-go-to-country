@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HandsAnimationManager : MonoBehaviour
+public sealed class HandsAnimationManager : MonoBehaviour
 {
     private const string CHANGING_ITEM = "_IsChangingItem";
     private const string HOLD_INTRUMENT = "_IsHoldInst";

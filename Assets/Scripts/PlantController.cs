@@ -7,7 +7,7 @@ using UnityEngine.Timeline;
 
 [RequireComponent(typeof(SignalReceiver))]
 [RequireComponent(typeof(BoxCollider))]
-public class PlantController : MonoBehaviour
+public sealed class PlantController : MonoBehaviour
 {
     private const string WAIT_WATER_COR = "WaitWater";
     private const string SHADER_COLOR_VAR = "BaseColor";

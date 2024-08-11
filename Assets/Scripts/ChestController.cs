@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestController : MonoBehaviour
+public sealed class ChestController : MonoBehaviour
 {
     private Inventory _inventory;
 

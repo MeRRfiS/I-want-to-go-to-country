@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
-public class SeedbedChecking : MonoBehaviour
+public sealed class SeedbedChecking : MonoBehaviour
 {
     private bool isInObject = false;
     //Checking horizontal and vertical symmetrical;

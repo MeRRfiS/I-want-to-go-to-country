@@ -1,9 +1,8 @@
 using FMODUnity;
-using FMOD.Studio;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seedbed : MonoBehaviour
+public sealed class Seedbed : MonoBehaviour
 {
     [SerializeField] private List<Renderer> _seedbadLods;
 

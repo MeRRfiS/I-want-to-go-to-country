@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSettings : MonoBehaviour
+public sealed class GameSettings : MonoBehaviour
 {
     public const string MASTER_VOLUME_KEY = "Master Volume";
     public const string MUSIC_VOLUME_KEY = "Music Volume";

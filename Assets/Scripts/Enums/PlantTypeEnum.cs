@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public enum PlantTypeEnum
+﻿public enum PlantTypeEnum
 {
     Normal = 100,
     Special = 50,

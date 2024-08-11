@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public class MovedItemsModel
+﻿public sealed class MovedItemsModel
 {
     public int FirstIndex { get; set; }
     public int SecondIndex { get; set; }
